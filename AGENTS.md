@@ -8,7 +8,11 @@ Read `APP_SPEC.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `STATE.md`, and `.loop/prog
 
 Keep current work within M0 research and foundation only. Do not represent future product capabilities as implemented.
 
-The active role is the Loop Conductor. Future roles are Research, Architecture, Audio, MIDI, Apple, Android, Product/UI, Persistence/Cloud, QA/Performance, Security, and Licensing. Do not launch a specialist role without explicit task approval.
+The durable project agents are Conductor, Researcher, Flutter Builder, Apple Specialist, Android Specialist, QA/Performance Verifier, Licensing/Security Reviewer, and Final Code Reviewer.
+
+Owner approval of one task authorizes the Conductor to select and launch only the specialists needed within that task without separate per-agent approval. The authorization ends at the task boundary. The Conductor must still stop for a different task, architecture decision, dependency or asset adoption, unapproved protected path, credentials, hardware, licensing or legal uncertainty, destructive action, external action, failed safety gate, or scope expansion.
+
+Run at most three spawned specialists concurrently. Parallelize independent read-heavy work. For write work, assign each sensitive file set to one agent, use isolated worktrees for independent tasks, and never let agents edit the same sensitive files concurrently. The manual L1 Loop remains report-only and may not launch the project-agent team.
 
 ## Verification and evidence
 
