@@ -1,0 +1,16 @@
+version: 1
+denylist:
+  - "lib/**"
+  - "android/**"
+  - "ios/**"
+  - "pubspec.yaml"
+  - "pubspec.lock"
+  - "AGENTS.md"
+  - "APP_SPEC.md"
+  - "ARCHITECTURE.md"
+  - "ROADMAP.md"
+  - "docs/adr/**"
+  - "gate.yaml"
+  - "loop-budget.md"
+autoMergeAllowlist: []
+maxFiles: 3
