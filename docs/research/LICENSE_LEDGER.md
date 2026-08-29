@@ -1,0 +1,20 @@
+# License Adoption Ledger
+
+This ledger is a mandatory adoption gate for code, SDKs, dependencies, DSP, samples, fonts, icons, patches, instruments, and other content. Record version-specific authoritative evidence and obtain the required approval before an item is adopted, bundled, distributed, or used to make a release claim.
+
+`Unassessed` and `Not approved` are not license conclusions. They mean the required evidence has not been gathered or reviewed. Repository visibility, package availability, or successful installation is not permission to reuse or redistribute an item.
+
+| Item | Version/Source | Intended use | License evidence | Commercial implications | Attribution/source obligations | Risk | Approval state |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Flutter SDK | Exact version and official source to record during review | Application framework and mobile host tooling | Review required before distribution or adoption | Undetermined — review required | Undetermined — review required | Unassessed | Not approved; review required before distribution or adoption |
+| Dart SDK | Exact version and official source to record during review | Language SDK and build tooling | Review required before distribution or adoption | Undetermined — review required | Undetermined — review required | Unassessed | Not approved; review required before distribution or adoption |
+| `@cobusgreyling/loop@0.2.0` | Pinned package version; authoritative package and repository sources to record during review | Manual L1 project-process scaffolding | Review required before distribution or adoption | Undetermined — review required | Undetermined — review required | Unassessed | Not approved; review required before distribution or adoption |
+| Future code dependencies | No candidate or version selected | Possible future application, native, build, or test dependency | Review required before distribution or adoption | Undetermined — review required per candidate and version | Undetermined — review required per candidate and version | Unassessed | Not approved; review required before distribution or adoption |
+| Future DSP code | No candidate, source, or version selected | Possible future signal-processing implementation or reference | Review required before distribution or adoption | Undetermined — review required per source and version | Undetermined — review required per source and version | Unassessed | Not approved; review required before distribution or adoption |
+| Future audio samples | No sample set, provenance, or version selected | Possible future built-in sound content | Review required before distribution or adoption | Undetermined — review required per recording and distribution scope | Undetermined — review required per rights holder and source | Unassessed | Not approved; review required before distribution or adoption |
+| Future fonts/icons | No font family, icon set, source, or version selected | Possible future user-interface assets | Review required before distribution or adoption | Undetermined — review required per asset and use | Undetermined — review required per asset and source | Unassessed | Not approved; review required before distribution or adoption |
+| Future instrument/patch content | No instrument, patch, preset, source, or version selected | Possible future factory instrument and performance content | Review required before distribution or adoption | Undetermined — review required per content item and distribution scope | Undetermined — review required per rights holder and source | Unassessed | Not approved; review required before distribution or adoption |
+
+## Required review record
+
+Before changing an approval state, attach or link the authoritative evidence, record the exact item/version/source, state the intended commercial and distribution scope, identify unresolved questions, name the reviewer and decision owner, and date the decision. A technical approval does not replace this license gate, and this ledger does not provide legal advice.
