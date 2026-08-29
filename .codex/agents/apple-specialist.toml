@@ -10,5 +10,5 @@ For research, use current Apple documentation and primary sources, separating fa
 
 Do not select audio or plugin architecture, adopt frameworks/assets, edit Flutter or Android scope, or claim physical-device, latency, callback-safety, background, AUv3, or MIDI behavior without direct evidence. Stop for signing, entitlements, credentials, hardware, licensing uncertainty, protected paths outside the task, or a real-time safety violation.
 
-Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
+Make a local task commit only when the Conductor explicitly requests it. Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
 """

@@ -95,7 +95,7 @@ Do not implement product code. Coordinate research, implementation ownership, ve
 
 The manual L1 Loop is report-only and may not launch agents. Stop for a different task, architecture decision, dependency or asset action, unapproved protected path, credentials, hardware, licensing or legal uncertainty, destructive action, external action, failed safety gate, or scope expansion.
 
-Do not push, merge, force-push, sign, release, deploy, schedule automation, or lower a gate without the required owner authorization. End with observed facts, command evidence, findings, remaining limitations, and exactly one proposed next action.
+Make a local task commit only when the parent agent explicitly requests it. Do not push, merge, force-push, sign, release, deploy, schedule automation, or lower a gate without the required owner authorization. End with observed facts, command evidence, findings, remaining limitations, and exactly one proposed next action.
 """
 ```
 
@@ -232,7 +232,7 @@ For research, use current Apple documentation and primary sources, separating fa
 
 Do not select audio or plugin architecture, adopt frameworks/assets, edit Flutter or Android scope, or claim physical-device, latency, callback-safety, background, AUv3, or MIDI behavior without direct evidence. Stop for signing, entitlements, credentials, hardware, licensing uncertainty, protected paths outside the task, or a real-time safety violation.
 
-Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
+Make a local task commit only when the Conductor explicitly requests it. Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
 """
 ```
 
@@ -253,7 +253,7 @@ For research, use current Android documentation, specifications, and primary rep
 
 Do not select audio architecture, adopt frameworks/assets, edit Flutter or Apple scope, or claim physical-device, latency, callback-safety, background, plugin, or MIDI behavior without direct evidence. Stop for signing, credentials, hardware, licensing uncertainty, protected paths outside the task, or a real-time safety violation.
 
-Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
+Make a local task commit only when the Conductor explicitly requests it. Never push, merge, force-push, sign, release, deploy, or schedule automation. Return sources or changed files, verification evidence, warnings, limitations, and commit SHA when applicable.
 """
 ```
 
@@ -378,7 +378,7 @@ Return APPROVE only when no Critical or Important finding remains. Otherwise ret
 """
 ```
 
-- [ ] **Step 5: Replace the role paragraph in `AGENTS.md`**
+- [ ] **Step 5: Replace the role paragraph and local-commit policy in `AGENTS.md`**
 
 Replace:
 
@@ -394,6 +394,12 @@ The durable project agents are Conductor, Researcher, Flutter Builder, Apple Spe
 Owner approval of one task authorizes the Conductor to select and launch only the specialists needed within that task without separate per-agent approval. The authorization ends at the task boundary. The Conductor must still stop for a different task, architecture decision, dependency or asset adoption, unapproved protected path, credentials, hardware, licensing or legal uncertainty, destructive action, external action, failed safety gate, or scope expansion.
 
 Run at most three spawned specialists concurrently. Parallelize independent read-heavy work. For write work, assign each sensitive file set to one agent, use isolated worktrees for independent tasks, and never let agents edit the same sensitive files concurrently. The manual L1 Loop remains report-only and may not launch the project-agent team.
+```
+
+Replace the licensing and change-control commit paragraph with:
+
+```markdown
+Make small local task commits only when the parent agent explicitly requests them. Do not force-push, commit secret files, automate merges, or push autonomously. Use isolated worktrees for approved parallel code work, and never allow agents to edit the same sensitive file concurrently.
 ```
 
 - [ ] **Step 6: Run the global eight-agent acceptance checks**
@@ -414,12 +420,18 @@ test "$(rg '^name = ' .codex/agents/*.toml | sed 's/.*name = //' | sort -u | wc 
 ! rg -n '^(instructions|reasoning_effort) = ' .codex/agents
 test "$(rg -l '^sandbox_mode = "workspace-write"$' .codex/agents/*.toml | wc -l | tr -d ' ')" -eq 4
 test "$(rg -l '^sandbox_mode = "read-only"$' .codex/agents/*.toml | wc -l | tr -d ' ')" -eq 4
+rg -q 'Make a local task commit only when the parent agent explicitly requests it\.' .codex/agents/conductor.toml
+for file in flutter-builder apple-specialist android-specialist; do
+  rg -q 'Make a local task commit only when the Conductor explicitly requests it\.' ".codex/agents/$file.toml"
+done
+test "$(rg -l 'Make a local task commit only when' .codex/agents/*.toml | wc -l | tr -d ' ')" -eq 4
+rg -q 'Make small local task commits only when the parent agent explicitly requests them\.' AGENTS.md
 rg -n 'task authorizes the Conductor|at most three spawned specialists|manual L1 Loop remains report-only' AGENTS.md
 rg -n 'Do not launch agents' .codex/skills/loop-conductor/SKILL.md
 git diff --check
 ```
 
-Expected: all checks exit 0; exactly eight unique current-schema agents exist, split four write-capable and four read-only, with task-level delegation and L1 separation documented.
+Expected: all checks exit 0; exactly eight unique current-schema agents exist, split four write-capable and four read-only; every write-capable role and `AGENTS.md` require explicit local-commit authority; and task-level delegation and L1 separation are documented.
 
 - [ ] **Step 7: Run Codex and Flutter checks**
 

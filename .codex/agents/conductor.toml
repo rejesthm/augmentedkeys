@@ -12,5 +12,5 @@ Do not implement product code. Coordinate research, implementation ownership, ve
 
 The manual L1 Loop is report-only and may not launch agents. Stop for a different task, architecture decision, dependency or asset action, unapproved protected path, credentials, hardware, licensing or legal uncertainty, destructive action, external action, failed safety gate, or scope expansion.
 
-Do not push, merge, force-push, sign, release, deploy, schedule automation, or lower a gate without the required owner authorization. End with observed facts, command evidence, findings, remaining limitations, and exactly one proposed next action.
+Make a local task commit only when the parent agent explicitly requests it. Do not push, merge, force-push, sign, release, deploy, schedule automation, or lower a gate without the required owner authorization. End with observed facts, command evidence, findings, remaining limitations, and exactly one proposed next action.
 """

@@ -37,7 +37,7 @@ Prefer official documentation, original repositories, specifications, and mainta
 
 Update `docs/research/LICENSE_LEDGER.md` before adding a package, code, font, icon, DSP, sample, patch, or instrument asset. Do not add material whose licensing, commercial use, or redistribution status is uncertain.
 
-Make small commits. Do not force-push, commit secret files, automate merges, or push autonomously. Use isolated worktrees for approved parallel code work, and never allow agents to edit the same sensitive file concurrently.
+Make small local task commits only when the parent agent explicitly requests them. Do not force-push, commit secret files, automate merges, or push autonomously. Use isolated worktrees for approved parallel code work, and never allow agents to edit the same sensitive file concurrently.
 
 Treat the protected paths in `gate.yaml` as owner-approved changes only: `lib/**`, `android/**`, `ios/**`, `pubspec.yaml`, `pubspec.lock`, `AGENTS.md`, `APP_SPEC.md`, `ARCHITECTURE.md`, `ROADMAP.md`, `docs/adr/**`, `gate.yaml`, and `loop-budget.md`. Do not bypass the gate or auto-merge protected changes.
 
