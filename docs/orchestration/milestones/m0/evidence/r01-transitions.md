@@ -32,3 +32,17 @@
 - Child source: `/Users/jestherjordanminor/.codex/sessions/2026/08/30/rollout-2026-08-30T15-31-17-01a05194-6f43-7d11-9142-eb8fc9db2aba.jsonl`. Zero-based ordinal 7 records effective `gpt-5.6-sol` / `high` / `workspace-write`, at the exact assigned task worktree. Fixed first-8-record prefix SHA-256: `df4a8bd50cc2abdb91e15ddc23a403e21b73cf8e3a27cebc3f7a11df983ec8f5`.
 - Runtime phase: documentary investigation and two-file candidate preparation only. One configured read-only Researcher may be selected; QA/final review wait until root records the candidate/evidence and In-review barrier.
 - No candidate exists at dispatch. Preserve this child identity for review/corrections. On resume, inspect the saved child and actual branch before issuing more work; do not repeat the task body or silently substitute another writer.
+
+## T03 — Block on runtime permission gate G01
+
+- Date: 2026-08-30, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In progress → Blocked, only through the separate following ledger/index commit.
+- Current milestone source: `98385e8cc9a8b01d0b6d2e079c83a3360d774662`; task source/base: `563700a839c627ff32ec2fa697e9810bc9b16a84`; brief: `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`; runtime identity: `cdddb1aa9a0d9a765b02ba366c551289264f71db`.
+- Decisive evidence: `docs/orchestration/milestones/m0/evidence/r01-runtime-gate.md`, including actual configured dispatch, effective turn contexts, stopped process and clean-tree results. Intermediate unreviewed source notes are preserved separately at `r01-researcher-unreviewed.md`.
+- Blocker: configured read-only Researcher inherited the relay's workspace-write override. The assigned run was interrupted; no research report or candidate was written. Changing/validating the launch after a safety-gate failure requires owner authorization.
+- Attempts: exact config/context inspection, failed cross-session stop message, targeted SIGINT to verified PID 49532, fresh no-process/clean-task/protected-path/main checks, and official-docs confirmation of override propagation. No alternate launch or configuration change was attempted.
+- Preserved branch/worktree: `task/m0-r01-audio-architecture`, `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`, unchanged at the task base.
+- Preserved writer: Conductor child `01a05194-6f43-7d11-9142-eb8fc9db2aba`, now interrupted; do not silently replace it. Researcher child `01a05195-0f7e-76d2-bafc-76f4f335b904` returned unreviewed notes.
+- Correction round remains 0; no candidate, QA/final task verdict, verification artifact or integration exists.
+- Dependency impact: R02/R06 await R01; the shared mixed-permission launch is not validated for independent tasks either.
+- Requested owner decision: authorize a bounded permission-preserving launch correction and validation, then explicitly resolve G01 and reactivate M0 before research resumes. No global permission broadening, core work, dependency, hardware, main integration or M1.
