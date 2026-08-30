@@ -19,8 +19,8 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## High priority
 
-1. R01 is Eligible through brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`; prepare its isolated branch and assignment evidence.
-2. Assign one Conductor/writer and complete the assignment-evidence/state barrier before research starts.
+1. R01 is In progress through assignment `590e2bb984a01032a77154eb2152383e2a2864c6`; dispatch its sole configured Conductor in the recorded isolated worktree.
+2. Research only the two R01 outputs; obtain candidate evidence and required independent reviews before integration.
 3. Progress through eligible contracted research tasks with required evidence and independent reviews.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -35,4 +35,4 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## Last run
 
-The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is Eligible; R02–R10 remain Queued. No research task or manual L1 Loop has been completed.
+The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is In progress with its writer assigned; R02–R10 remain Queued. No research task or manual L1 Loop has been completed.

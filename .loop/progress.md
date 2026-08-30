@@ -6,7 +6,7 @@ M0 — Research & Architecture (Active)
 
 Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
 
-Status: active M0 Goal; R01 is Eligible through committed brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. No research task has started.
+Status: active M0 Goal; R01 is In progress through assignment evidence `590e2bb984a01032a77154eb2152383e2a2864c6` and brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. Runtime dispatch is next.
 
 Next approval: a non-delegable owner gate or review of the completed M0 package.
 
@@ -16,15 +16,15 @@ None. No specialist agents are active.
 
 # Research Questions
 
-R01 is Eligible; R02–R10 remain Queued in `docs/research/RESEARCH_INDEX.md`. No investigation has started.
+R01 is In progress; R02–R10 remain Queued in `docs/research/RESEARCH_INDEX.md`. No research finding is yet verified.
 
 # Ready Tasks
 
-- Prepare R01's exact isolated branch/worktree, commit assignment evidence, then separately record In progress before dispatch. Other tasks remain Queued.
+- Dispatch R01's assigned Conductor after this completed assignment/state barrier. Other tasks remain Queued.
 
 # In Progress
 
-- One M0 Roadmap Orchestrator Goal is active. No research task or manual L1 Loop is in progress yet.
+- One M0 Goal is active; R01 is In progress with its exact writer/worktree recorded. No manual L1 Loop is running.
 
 # Verification Needed
 
@@ -113,4 +113,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-R01 is Eligible. Complete assignment evidence and the separate In-progress transition before dispatching the Conductor. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.
+Dispatch the assigned R01 Conductor, record its actual saved runtime identity, and obtain only the bounded research candidate. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.
