@@ -4,13 +4,16 @@ This index is the prioritized queue for evidence needed before AugmentedKeys sel
 
 ## Status vocabulary
 
-- `Queued`: approved backlog item with no active investigation.
-- `In progress`: investigation is active and sources or experiments are being recorded.
-- `Blocked`: investigation cannot continue until a named dependency or owner decision is resolved.
-- `In review`: evidence and recommendations are complete enough for assigned review.
-- `Accepted`: the assigned reviewer and product owner accepted the documented outcome for its stated scope.
+- `Queued`: contracted backlog item with no active investigation.
+- `Eligible`: dependencies, inputs, path authority, and evidence requirements are satisfied, and a bounded brief is committed.
+- `In progress`: investigation is active and its assigned writer, branch, and brief are recorded.
+- `In review`: candidate evidence and its verification artifact are committed for assigned review.
+- `Verified`: required checks and independent review passed with no Critical or Important finding.
+- `Blocked`: investigation cannot continue until a named blocker or owner decision is resolved.
+- `Deferred`: the task remains in the contract but cannot proceed in the current sequence for a recorded reason.
+- `Accepted`: the product owner accepted the verified outcome during milestone review.
 
-Changing a status requires a dated record in the expected output. `Accepted` applies only to the reviewed question and does not by itself approve implementation, dependency adoption, or distribution.
+Changing a status requires a dated transition in `docs/orchestration/milestones/M0_LEDGER.md` with task identifier, responsible role, source commit, evidence location, and reason. `Accepted` is owner-only and applies only to the reviewed question; it does not by itself approve implementation, dependency adoption, architecture adoption, or distribution.
 
 ## 1. Mobile low-latency audio architecture
 

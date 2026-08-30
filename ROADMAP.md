@@ -1,10 +1,14 @@
 # AugmentedKeys Roadmap
 
-Only M0 is active. Every later milestone is not started; its title describes planned scope, not delivered capability.
+Milestone status is recorded in each milestone section below. Milestone titles describe planned scope, not delivered capability.
+
+## Gated milestone execution
+
+One explicit owner approval may activate one long-running Roadmap Orchestrator Goal for one milestone. The Goal may progress through eligible tasks on the approved milestone branch under `AGENTS.md` and `.codex/skills/roadmap-orchestrator/SKILL.md`. It must stop for non-delegable gates, milestone integration, and the next milestone. This is goal-driven project governance, not scheduled, heartbeat, release, or deployment automation.
 
 ## M0  Research & Architecture
 
-Status: active. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope. Evidence gate: owner reviews the foundation, prioritized research backlog, measurement plan, licensing gate, and ADR/spike process. Excluded work: product-core implementation, architecture selection, dependencies, automation, and deployment.
+Status: awaiting owner approval. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope and accepted `docs/orchestration/milestones/M0_CONTRACT.md`. Evidence gate: every contracted M0 task is verified and the owner reviews the complete milestone package. Excluded work: product-core implementation, architecture selection or adoption, dependencies, scheduled or heartbeat automation, and deployment. The owner-approved gated Goal workflow is permitted as governance only; activating M0 still requires explicit owner approval of the displayed foundation and contract commits.
 
 ## M1  Audio/MIDI Foundation
 
