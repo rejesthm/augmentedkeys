@@ -58,9 +58,32 @@ if [[ ! "$local_sha" =~ ^[0-9a-f]{40}$ ]]; then
   refuse 'resolved local SHA is invalid' 68
 fi
 
+# The contract authorizes origin, not a distinct or ambiguous publication site.
+if ! fetch_endpoints="$(git remote get-url --all origin 2>/dev/null)" ||
+   ! push_endpoints="$(git remote get-url --push --all origin 2>/dev/null)"; then
+  refuse 'origin endpoints cannot be resolved' 73
+fi
+if [[ -z "$fetch_endpoints" || "$fetch_endpoints" == *$'\n'* ||
+      -z "$push_endpoints" || "$push_endpoints" == *$'\n'* ||
+      "$fetch_endpoints" != "$push_endpoints" ]]; then
+  refuse 'origin must have one identical fetch and push endpoint' 73
+fi
+remote_endpoint="$push_endpoints"
+# Passing a resolved URL literally must not apply another URL rewrite or
+# reinterpret it as a configured remote with its own push destinations.
+if git remote get-url -- "$remote_endpoint" >/dev/null 2>&1; then
+  refuse 'resolved endpoint is also a configured remote name' 73
+fi
+while IFS= read -r -d '' rewrite; do
+  rewrite_prefix="${rewrite#*$'\n'}"
+  if [[ "$remote_endpoint" == "$rewrite_prefix"* ]]; then
+    refuse 'resolved endpoint can be rewritten again' 73
+  fi
+done < <(git config --null --get-regexp '^url\..*\.(insteadof|pushinsteadof)$')
+
 resolve_remote_sha() {
   local remote_output
-  if ! remote_output="$(git ls-remote --exit-code origin "$local_ref" 2>/dev/null)"; then
+  if ! remote_output="$(git ls-remote --exit-code -- "$remote_endpoint" "$local_ref" 2>/dev/null)"; then
     return 1
   fi
   printf '%s\n' "${remote_output%%[[:space:]]*}"
@@ -71,7 +94,7 @@ case "$mode" in
     printf 'authorized:%s:%s:%s\n' "$candidate" "$local_sha" "$refspec"
     ;;
   push)
-    if ! git push origin "$refspec"; then
+    if ! git push --no-follow-tags --no-signed -- "$remote_endpoint" "$refspec"; then
       refuse 'constrained milestone push failed' 72
     fi
     if ! remote_sha="$(resolve_remote_sha)"; then
