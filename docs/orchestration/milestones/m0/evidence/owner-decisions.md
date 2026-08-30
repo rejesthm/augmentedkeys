@@ -53,3 +53,7 @@ Read-only checks at accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d0
 ### Two-commit barrier
 
 This decision must be committed first. A separate next commit must record this decision commit's SHA and transition the M0 ledger, `STATE.md`, `.loop/progress.md`, and only the leading M0 status sentence in `ROADMAP.md` together to `Active`. No research or task execution may occur between those two commits. The contract itself remains unchanged; this committed owner decision supplies its activation authority.
+
+### Evidence-retention correction — activation review round 1
+
+The round-0 activation review rejected the bookkeeping because the fresh baseline output was not retained at a durable artifact location; it did not report a test failure. The original command and both output chunks have now been recovered from the source conversation and preserved in `docs/orchestration/milestones/m0/evidence/activation-baseline.md`, with exact source ordinals, fixed-prefix hash, environment, exit code, and warnings. This is the original 15:14:34 run, not a newly performed run. The original rejected review and its source-backed literal reply remain in `activation-review.md` and `activation-review-provenance.md` in the same evidence directory. This addendum changes no owner statement, accepted commit, authority, state transition, or performance claim; independent correction re-review is pending.
