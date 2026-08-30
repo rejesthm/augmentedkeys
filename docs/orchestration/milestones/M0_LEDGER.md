@@ -36,7 +36,6 @@
 | Date | Task | From | To | Responsible role | Source commit | Evidence | Reason |
 |---|---|---|---|---|---|---|---|
 | 2026-08-30 | M0 | Not recorded | `Awaiting owner approval` | Roadmap Orchestrator setup | `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` | `docs/orchestration/milestones/M0_CONTRACT.md` | Proposed contract is committed but inactive pending independent setup verification and explicit owner approval |
-
 | 2026-08-30 | M0 | `Awaiting owner approval` | `Active` | Owner; recorded by Roadmap Orchestrator | `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` | `docs/orchestration/milestones/m0/evidence/owner-decisions.md` (OD-001) | Exact owner activation statement accepts the recorded foundation and contract; the separate state commit follows the committed decision |
 
 One M0 Goal and its milestone branch are active. All research tasks remain Queued. No task brief, assigned task writer, candidate, task correction round, task verification, or reviewed integration tip exists yet.

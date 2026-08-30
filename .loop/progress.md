@@ -41,7 +41,7 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 - Eight project-scoped Codex agents configured with task-level delegation, three-specialist concurrency, isolated write ownership, independent QA, and final review. Configuration does not mean an agent is currently active.
 - Owner-approved gated Roadmap Orchestrator design and implementation plan.
 - Project-local Roadmap Orchestrator skill and one-milestone governance implemented and locally pressure-tested. This setup does not activate a milestone Goal.
-- Independent final review approved the gated Roadmap Orchestrator setup with no remaining Critical or Important finding. The workflow remains inactive.
+- Independent final review approved the gated Roadmap Orchestrator setup with no remaining Critical or Important finding. At setup approval, the workflow remained inactive; OD-001 subsequently activated M0.
 
 - The owner accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and activated M0 under contract commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` through OD-001 (`e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`).
 
@@ -99,6 +99,8 @@ No research task is completed.
 - 2026-08-30 — Owner decision OD-001 was committed first at `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`, bound to accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and contract-changing commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`. This separate state commit activates the ledger, STATE, progress, and only ROADMAP's leading M0 status sentence together. The M0 Goal runs in Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; branch `milestone/m0-research` is isolated at `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`. All ten research tasks remain Queued; no specialist, research, or core work started between the decision and state commits. The fresh accepted-foundation worktree baseline passed all four Flutter checks, with two files formatted/zero changed, no analysis issues, and one widget test; the seven constrained-package notices remain. Exact preflight environment, commands, source commits, owner statement, results, and limitations are recorded in OD-001. No device or latency evidence is claimed.
 
 # Failed Attempts
+
+- Activation review round 0 rejected the bookkeeping with 1 Important evidence-retention gap and 2 Minor documentation findings. Original baseline output and literal review are now retained at `docs/orchestration/milestones/m0/evidence/activation-baseline.md` and `activation-review-provenance.md`, committed in `60705597626be2908301032197182387f4a4413b`. Source-prefix, both original result chunks, literal child reply, and effective reviewer configuration were checked (`ACTIVATION_SOURCE_RETENTION=PASS`); this was evidence recovery, not a test rerun. The stale inactive wording and transition-table formatting are corrected. Fresh independent re-review is pending; R01 has not started.
 
 - Setup-validation history only: ephemeral custom-agent dispatch failed; saved-session recovery passed. Earlier pressure artifacts exposed format/taxonomy ambiguity before the owner-approved protocol-defined prompt passed. No research task failed.
 - Whole-implementation round 0 was rejected with 2 Important and 1 Minor finding; the bounded correction and fresh round-1 review resolved all three. The original rejection remains preserved.
