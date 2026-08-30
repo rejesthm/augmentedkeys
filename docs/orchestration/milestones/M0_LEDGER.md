@@ -2,14 +2,15 @@
 
 ## Milestone
 
-- State: `Awaiting owner approval`
-- Goal: inactive
-- Milestone branch: not created
-- Accepted foundation commit: not recorded because activation has not occurred
+- State: `Active`
+- Goal: active — Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`
+- Milestone branch: `milestone/m0-research`
+- Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`
+- Accepted foundation commit: `b1b0c1edd5e42d3ea791f665c22954834e962d05`
 - Contract source commit: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`
-- Accepted contract commit: not recorded because activation has not occurred
+- Accepted contract commit: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
-- Owner-decision commit: Not created
+- Owner-decision commit: `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` (OD-001)
 - Milestone transition evidence: `docs/orchestration/milestones/m0/evidence/milestone-transitions.md`
 - Milestone-transition evidence commit: Not created
 - Completion package: `docs/orchestration/milestones/m0/evidence/completion-package.md`
@@ -19,16 +20,16 @@
 
 | ID | State | Branch | Worktree | Writer | Correction round | Brief commit | Candidate commit | Verification artifact | Evidence commit | Transition evidence | Transition evidence commit | Reviewed integration tip | Reason |
 |---|---|---|---|---|---:|---|---|---|---|---|---|---|---|
-| R01 | `Queued` | `task/m0-r01-audio-architecture` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r01-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r01-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R02 | `Queued` | `task/m0-r02-uapmd` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r02-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r02-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R03 | `Queued` | `task/m0-r03-apple-audio` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r03-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r03-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R04 | `Queued` | `task/m0-r04-android-audio` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r04-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r04-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R05 | `Queued` | `task/m0-r05-midi` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r05-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r05-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R06 | `Queued` | `task/m0-r06-sound-engine` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r06-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r06-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R07 | `Queued` | `task/m0-r07-licensing` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r07-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r07-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R08 | `Queued` | `task/m0-r08-sunday-keys` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r08-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r08-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R09 | `Queued` | `task/m0-r09-mainstage` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r09-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r09-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
-| R10 | `Queued` | `task/m0-r10-mobile-competitors` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r10-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r10-transitions.md` | Not created | Not integrated | Awaiting milestone activation |
+| R01 | `Queued` | `task/m0-r01-audio-architecture` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r01-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r01-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R02 | `Queued` | `task/m0-r02-uapmd` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r02-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r02-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R03 | `Queued` | `task/m0-r03-apple-audio` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r03-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r03-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R04 | `Queued` | `task/m0-r04-android-audio` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r04-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r04-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R05 | `Queued` | `task/m0-r05-midi` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r05-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r05-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R06 | `Queued` | `task/m0-r06-sound-engine` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r06-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r06-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R07 | `Queued` | `task/m0-r07-licensing` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r07-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r07-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R08 | `Queued` | `task/m0-r08-sunday-keys` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r08-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r08-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R09 | `Queued` | `task/m0-r09-mainstage` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r09-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r09-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
+| R10 | `Queued` | `task/m0-r10-mobile-competitors` | Not created | Unassigned | 0 | Not created | Not created | `docs/orchestration/milestones/m0/evidence/r10-verification.md` | Not created | `docs/orchestration/milestones/m0/evidence/r10-transitions.md` | Not created | Not integrated | Awaiting bounded brief and eligibility |
 
 ## Transition log
 
@@ -36,4 +37,6 @@
 |---|---|---|---|---|---|---|---|
 | 2026-08-30 | M0 | Not recorded | `Awaiting owner approval` | Roadmap Orchestrator setup | `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` | `docs/orchestration/milestones/M0_CONTRACT.md` | Proposed contract is committed but inactive pending independent setup verification and explicit owner approval |
 
-No Goal, milestone branch, task brief, research task, candidate, correction round, evidence commit, or reviewed integration tip is active or complete.
+| 2026-08-30 | M0 | `Awaiting owner approval` | `Active` | Owner; recorded by Roadmap Orchestrator | `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` | `docs/orchestration/milestones/m0/evidence/owner-decisions.md` (OD-001) | Exact owner activation statement accepts the recorded foundation and contract; the separate state commit follows the committed decision |
+
+One M0 Goal and its milestone branch are active. All research tasks remain Queued. No task brief, assigned task writer, candidate, task correction round, task verification, or reviewed integration tip exists yet.

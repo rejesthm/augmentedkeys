@@ -8,7 +8,7 @@ One explicit owner approval may activate one long-running Roadmap Orchestrator G
 
 ## M0  Research & Architecture
 
-Status: awaiting owner approval. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope and accepted `docs/orchestration/milestones/M0_CONTRACT.md`. Evidence gate: every contracted M0 task is verified and the owner reviews the complete milestone package. Excluded work: product-core implementation, architecture selection or adoption, dependencies, scheduled or heartbeat automation, and deployment. The owner-approved gated Goal workflow is permitted as governance only; activating M0 still requires explicit owner approval of the displayed foundation and contract commits.
+Status: Active. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope and accepted `docs/orchestration/milestones/M0_CONTRACT.md`. Evidence gate: every contracted M0 task is verified and the owner reviews the complete milestone package. Excluded work: product-core implementation, architecture selection or adoption, dependencies, scheduled or heartbeat automation, and deployment. The owner-approved gated Goal workflow is permitted as governance only; activating M0 still requires explicit owner approval of the displayed foundation and contract commits.
 
 ## M1  Audio/MIDI Foundation
 

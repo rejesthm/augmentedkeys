@@ -1,14 +1,14 @@
 # Current Milestone
 
-M0 — Research & Architecture (Awaiting owner approval)
+M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Present the verified setup for owner acceptance. Product-core implementation remains blocked.
+Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
 
-Status: ready for owner foundation/M0 decision.
+Status: active M0 Goal; R01 brief and eligibility are next. No research task has started.
 
-Next approval: owner acceptance and M0 activation.
+Next approval: a non-delegable owner gate or review of the completed M0 package.
 
 # Active Agents
 
@@ -20,15 +20,16 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 
 # Ready Tasks
 
-- Owner acceptance gate, tied to displayed accepted foundation and M0 contract-containing commits after any separately authorized integration.
+- Prepare the canonical R01 bounded brief and commit its separate eligibility transition before dispatch. Other tasks remain Queued; dependencies and priority still apply.
 
 # In Progress
 
-- No manual loop, research task, or milestone Goal is in progress. The verified setup remains inactive pending the owner gate.
+- One M0 Roadmap Orchestrator Goal is active. No research task or manual L1 Loop is in progress yet.
 
 # Verification Needed
 
-- Owner review of the verified foundation and exact M0 activation inputs. Setup approval is not foundation acceptance or activation authority.
+- For each research task: exact committed brief, verification evidence, applicable specialist reviews, and fresh independent final review.
+- Verify the activation representations agree with committed owner decision OD-001.
 
 # Completed
 
@@ -42,11 +43,13 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 - Project-local Roadmap Orchestrator skill and one-milestone governance implemented and locally pressure-tested. This setup does not activate a milestone Goal.
 - Independent final review approved the gated Roadmap Orchestrator setup with no remaining Critical or Important finding. The workflow remains inactive.
 
+- The owner accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and activated M0 under contract commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` through OD-001 (`e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`).
+
 No research task is completed.
 
 # Blockers
 
-- Product-core work is blocked until the M0 foundation is reviewed and a later task is explicitly approved.
+- Product-core work remains outside M0 and requires later explicit approval. There is no known blocker to preparing the bounded R01 research brief.
 
 # Evidence Log
 
@@ -92,6 +95,9 @@ No research task is completed.
   - Raw directory is the repository Git path returned by `git rev-parse --git-path roadmap-orchestrator-validation`. Decisive review, transcript and dispatch-provenance stems use suffix `8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-pre-review.txt`; final branch evidence is `branch-safety-8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-final.txt`; final-precommit evidence is `final-precommit-verification-8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-final-precommit.txt`. Historical correction: `conductor-runtime-dispatch-provenance-f8202dbe7927fd652976c030aa8d623c21836f80-round-0-pre-review-correction-round-1.txt`. The SDD Task 4 report indexes source hashes, zero-based ordinals, full reviewed replies, prior findings and their corrections. These are local setup checks only; no simulator-runtime, emulator-runtime, physical-device, audio/MIDI, latency, benchmark or performance evidence is claimed.
   - Setup approval does not accept the repository foundation, activate M0, create a Goal or milestone branch, begin research or product work, authorize dependencies or architecture, or prove device performance or low latency.
 
+
+- 2026-08-30 — Owner decision OD-001 was committed first at `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`, bound to accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and contract-changing commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`. This separate state commit activates the ledger, STATE, progress, and only ROADMAP's leading M0 status sentence together. The M0 Goal runs in Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; branch `milestone/m0-research` is isolated at `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`. All ten research tasks remain Queued; no specialist, research, or core work started between the decision and state commits. The fresh accepted-foundation worktree baseline passed all four Flutter checks, with two files formatted/zero changed, no analysis issues, and one widget test; the seven constrained-package notices remain. Exact preflight environment, commands, source commits, owner statement, results, and limitations are recorded in OD-001. No device or latency evidence is claimed.
+
 # Failed Attempts
 
 - Setup-validation history only: ephemeral custom-agent dispatch failed; saved-session recovery passed. Earlier pressure artifacts exposed format/taxonomy ambiguity before the owner-approved protocol-defined prompt passed. No research task failed.
@@ -103,4 +109,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Present the verified setup for the owner acceptance gate. Integration remains a separate owner choice; after any authorized integration, display the exact accepted foundation and M0 contract-containing commits before requesting explicit M0 activation approval. Do not create a Goal or milestone branch, begin research, or treat setup approval as activation.
+Prepare and commit `docs/orchestration/milestones/m0/tasks/r01-brief.md`, then make its separate Queued-to-Eligible ledger/index transition. Complete assignment evidence and the separate In-progress transition before dispatching the Conductor. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.
