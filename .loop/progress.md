@@ -6,7 +6,7 @@ M0 — Research & Architecture (Active)
 
 Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
 
-Status: active M0 Goal; R01 brief and eligibility are next. No research task has started.
+Status: active M0 Goal; R01 is Eligible through committed brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. No research task has started.
 
 Next approval: a non-delegable owner gate or review of the completed M0 package.
 
@@ -16,11 +16,11 @@ None. No specialist agents are active.
 
 # Research Questions
 
-The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investigation has started.
+R01 is Eligible; R02–R10 remain Queued in `docs/research/RESEARCH_INDEX.md`. No investigation has started.
 
 # Ready Tasks
 
-- Prepare the canonical R01 bounded brief and commit its separate eligibility transition before dispatch. Other tasks remain Queued; dependencies and priority still apply.
+- Prepare R01's exact isolated branch/worktree, commit assignment evidence, then separately record In progress before dispatch. Other tasks remain Queued.
 
 # In Progress
 
@@ -113,4 +113,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Prepare and commit `docs/orchestration/milestones/m0/tasks/r01-brief.md`, then make its separate Queued-to-Eligible ledger/index transition. Complete assignment evidence and the separate In-progress transition before dispatching the Conductor. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.
+R01 is Eligible. Complete assignment evidence and the separate In-progress transition before dispatching the Conductor. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.

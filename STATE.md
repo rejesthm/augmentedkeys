@@ -19,7 +19,7 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## High priority
 
-1. Commit the bounded R01 mobile low-latency audio research brief, then separately record eligibility.
+1. R01 is Eligible through brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`; prepare its isolated branch and assignment evidence.
 2. Assign one Conductor/writer and complete the assignment-evidence/state barrier before research starts.
 3. Progress through eligible contracted research tasks with required evidence and independent reviews.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
@@ -35,4 +35,4 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## Last run
 
-The owner accepted the foundation and authorized M0 through OD-001. No research task or manual L1 Loop has been completed. All ten research tasks remain Queued pending their exact eligibility barriers.
+The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is Eligible; R02–R10 remain Queued. No research task or manual L1 Loop has been completed.
