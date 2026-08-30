@@ -6,26 +6,25 @@ M0 — Research & Architecture (Active)
 
 Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
 
-Status: active M0 Goal; R01 is In progress through assignment evidence `590e2bb984a01032a77154eb2152383e2a2864c6` and brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. Actual writer runtime identity is committed at `cdddb1aa9a0d9a765b02ba366c551289264f71db`.
+Status: R01 is Blocked on G01 through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`. Its run is stopped; canonical M0 pause recording is next.
 
 Next approval: a non-delegable owner gate or review of the completed M0 package.
 
 # Active Agents
 
-- Conductor: actual configured `conductor`, `/root/r01_conductor`, child `01a05194-6f43-7d11-9142-eb8fc9db2aba`; Phase 1 R01 documentary research, sole writer of its two reports.
-- Additional specialist dispatch is not yet recorded; no QA or final review is active.
+None. R01's saved CLI run was interrupted; the Researcher returned unreviewed source notes. Exact writer/researcher identities and evidence remain in `r01-runtime-gate.md`. No QA or final task review ran.
 
 # Research Questions
 
-R01 is In progress; R02–R10 remain Queued in `docs/research/RESEARCH_INDEX.md`. No research finding is yet verified.
+R01 is Blocked; R02–R10 remain Queued. Intermediate source notes are preserved but no research finding or task is verified.
 
 # Ready Tasks
 
-- No new write task may start while R01 owns its two outputs. R02–R10 remain Queued.
+- No safe dispatch through the current mixed-permission launch; preserve R01 and record the milestone pause.
 
 # In Progress
 
-- One M0 Goal is active; R01 is In progress with its exact writer/worktree recorded. No manual L1 Loop is running.
+- No research task or manual L1 Loop is running. R01's clean task worktree and interrupted writer are preserved.
 
 # Verification Needed
 
@@ -50,7 +49,8 @@ No research task is completed.
 
 # Blockers
 
-- Product-core work remains outside M0 and requires later explicit approval. There is no known blocker to preparing the bounded R01 research brief.
+- G01: the relay's workspace-write override propagated to the configured read-only Researcher. A bounded launch correction and effective-permission validation require owner authorization before resumption.
+- Product-core work remains outside M0.
 
 # Evidence Log
 
@@ -114,4 +114,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Obtain the assigned Conductor's bounded R01 candidate, then commit exact candidate/evidence and separately record In review before final review/integration. Resume the exact recorded writer; do not repeat the task body.
+Record the canonical milestone pause, then obtain the owner's bounded launch-correction decision. Do not resume research, replace the writer, change configuration, or dispatch another task under this unresolved gate.

@@ -19,9 +19,9 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## High priority
 
-1. R01 is In progress; its sole configured Conductor is dispatched in the recorded isolated worktree. Runtime identity is retained at `cdddb1aa9a0d9a765b02ba366c551289264f71db`.
-2. Research only the two R01 outputs; obtain candidate evidence and required independent reviews before integration.
-3. Progress through eligible contracted research tasks with required evidence and independent reviews.
+1. R01 is Blocked on runtime permission gate G01, recorded in `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped and task branch unchanged.
+2. Record the canonical milestone pause; request owner approval for bounded permission-preserving launch correction and validation.
+3. Do not dispatch another task through the same unvalidated mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
 ## Watch list
@@ -35,4 +35,4 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## Last run
 
-The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is In progress with its writer assigned; R02–R10 remain Queued. No research task or manual L1 Loop has been completed.
+The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is Blocked; R02–R10 remain Queued. No research task or manual L1 Loop has been completed; no report candidate or core change was produced. Milestone pause recording is next.
