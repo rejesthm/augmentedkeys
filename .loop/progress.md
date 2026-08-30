@@ -1,14 +1,14 @@
 # Current Milestone
 
-M0 — Research & Architecture (Active)
+M0 — Research & Architecture (Paused for owner decision)
 
 # Current Objective
 
-Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
+Await owner decision on runtime permission gate G01. The ten contracted M0 questions remain unfinished; product-core implementation remains outside scope.
 
-Status: R01 is Blocked on G01 through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`. Its run is stopped; canonical M0 pause recording is next.
+Status: M0 is Paused for owner decision through `998fb53884f986154e1238ea3d76539adc565b70` (MT-001). R01 is Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped.
 
-Next approval: a non-delegable owner gate or review of the completed M0 package.
+Next approval: bounded agent-launch correction/validation and explicit resolution of G01 before M0 reactivation; not M0 completion, core implementation or M1.
 
 # Active Agents
 
@@ -20,7 +20,7 @@ R01 is Blocked; R02–R10 remain Queued. Intermediate source notes are preserved
 
 # Ready Tasks
 
-- No safe dispatch through the current mixed-permission launch; preserve R01 and record the milestone pause.
+- None while M0 is paused. Preserve R01; do not dispatch through the unvalidated mixed-permission launch.
 
 # In Progress
 
@@ -114,4 +114,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Record the canonical milestone pause, then obtain the owner's bounded launch-correction decision. Do not resume research, replace the writer, change configuration, or dispatch another task under this unresolved gate.
+Obtain the owner's bounded launch-correction decision. Do not resume research, replace the writer, change configuration, or dispatch another task under this unresolved gate. A committed owner decision and separate four-state reactivation commit are required before M0 resumes.

@@ -4,11 +4,11 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Active`
+Milestone state: `Paused for owner decision`
 
 ## Milestone orchestration
 
-One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`.
+The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milestone execution is paused on runtime permission gate G01.
 
 - Milestone branch: `milestone/m0-research`.
 - Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`.
@@ -16,11 +16,12 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 - Accepted contract-changing commit: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`.
 - Owner activation decision: `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`, OD-001 in `docs/orchestration/milestones/m0/evidence/owner-decisions.md`.
 - Canonical recovery state: `docs/orchestration/milestones/M0_LEDGER.md`.
+- Pause evidence: `998fb53884f986154e1238ea3d76539adc565b70`, MT-001 in `docs/orchestration/milestones/m0/evidence/milestone-transitions.md`.
 
 ## High priority
 
 1. R01 is Blocked on runtime permission gate G01, recorded in `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped and task branch unchanged.
-2. Record the canonical milestone pause; request owner approval for bounded permission-preserving launch correction and validation.
+2. Await owner approval for bounded permission-preserving launch correction and validation; no recovery attempt or research restart is authorized yet.
 3. Do not dispatch another task through the same unvalidated mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -35,4 +36,4 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## Last run
 
-The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. R01 is Blocked; R02–R10 remain Queued. No research task or manual L1 Loop has been completed; no report candidate or core change was produced. Milestone pause recording is next.
+The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. M0 is now Paused for owner decision through MT-001; R01 is Blocked and R02–R10 remain Queued. No research task or manual L1 Loop has been completed; no report candidate or core change was produced. Branches, stopped writer identity and intermediate evidence are preserved locally.
