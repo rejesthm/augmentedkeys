@@ -4,11 +4,11 @@ M0 — Research & Architecture (Awaiting owner approval)
 
 # Current Objective
 
-Verify the gated Roadmap Orchestrator setup. Product-core implementation remains blocked.
+Present the verified setup for owner acceptance. Product-core implementation remains blocked.
 
-Status: ready for independent review.
+Status: ready for owner foundation/M0 decision.
 
-Next approval: independent final review.
+Next approval: owner acceptance and M0 activation.
 
 # Active Agents
 
@@ -20,15 +20,15 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 
 # Ready Tasks
 
-- Independent final review.
+- Owner acceptance gate, tied to displayed accepted foundation and M0 contract-containing commits after any separately authorized integration.
 
 # In Progress
 
-- No manual loop, research task, or milestone Goal is in progress. Setup is ready for independent review.
+- No manual loop, research task, or milestone Goal is in progress. The verified setup remains inactive pending the owner gate.
 
 # Verification Needed
 
-- Independent final review.
+- Owner review of the verified foundation and exact M0 activation inputs. Setup approval is not foundation acceptance or activation authority.
 
 # Completed
 
@@ -40,6 +40,7 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 - Eight project-scoped Codex agents configured with task-level delegation, three-specialist concurrency, isolated write ownership, independent QA, and final review. Configuration does not mean an agent is currently active.
 - Owner-approved gated Roadmap Orchestrator design and implementation plan.
 - Project-local Roadmap Orchestrator skill and one-milestone governance implemented and locally pressure-tested. This setup does not activate a milestone Goal.
+- Independent final review approved the gated Roadmap Orchestrator setup with no remaining Critical or Important finding. The workflow remains inactive.
 
 No research task is completed.
 
@@ -82,9 +83,19 @@ No research task is completed.
   - Raw evidence directory: the repository Git path returned by `git rev-parse --git-path roadmap-orchestrator-validation`. File stem suffix is `f8202dbe7927fd652976c030aa8d623c21836f80-round-0-<phase>.txt`: `structural-validation`, `quick-validate`, `flutter-baseline`, `discovery`, `conductor-fixture`, `conductor-runtime`, `conductor-runtime-transcript`, `conductor-runtime-dispatch-provenance`, and `branch-safety` use `pre-review`; `agent-discovery`, `agent-discovery-transcript`, and `agent-discovery-dispatch-provenance` use `recovery-saved`; `pressure` and `pressure-prompt` use `protocol-defined`. This evidence binds the Task 2 source tip only; the full committed-provisional-tip rerun and independent final review remain pending. No physical-device, simulator-runtime, emulator-runtime, audio/MIDI, latency, or performance evidence is claimed.
   - No milestone Goal, research task, product code, dependency, architecture decision, scheduled automation, device operation, audio/MIDI work, latency benchmark, release, project merge, or project-remote push occurred. Disposable local guard fixtures exercised pushes only to their temporary bare repositories.
 
+- 2026-08-30 — Independent whole-implementation review approved corrected tip `8ea518562758d796431c8c9e4ce9f2ae63716bbd` from immutable base `db57da41d94bc5ca46834bc7d3b8c5667a34241e`, correction round `1`, phase `pre-review`. Actual configured `final_code_reviewer` returned `Spec Compliance: PASS`, `Configuration Quality: PASS`, `Evidence Honesty: PASS`, `Critical findings: 0`, `Important findings: 0`, `Minor findings: 0`, `Final verdict: APPROVE`. Source-backed dispatch and exact full child reply are retained; child effective model/effort/sandbox were `gpt-5.6-sol` / `xhigh` / read-only. No residual Minor finding remains.
+  - Prior round-0 rejection at `50bc0e48e0ff3b24dd97e233ef84e0d6219cc590` (0 Critical, 2 Important, 1 Minor) remains historical, not approval. The reviewer explicitly closed I1: automatic tag publication/signing disabled; I2: ambiguous or unstable endpoints refused and publication/hash verification bound to one identical validated endpoint; M1: old paraphrased Conductor replies correctly relabeled through a new append-only correction with exact source excerpts. The original mislabeled artifact and earlier failed evidence remain unchanged. Guard-only correction commit is `8ea518562758d796431c8c9e4ce9f2ae63716bbd`.
+  - Fresh final-precommit verification at the approved implementation tip and round `1` passed (`FINAL_PRECOMMIT_VERIFICATION=PASS`). The skill validator passed; the guard remained executable; exactly eight configured agents remained, four workspace-write/four read-only; concurrency remained three; Conductor intake remained task-bounded; ROADMAP, contract and ledger remained awaiting owner approval. Flutter `3.44.8` stable / Dart `3.12.2`: `flutter pub get` exited `0`; `dart format --output=none --set-exit-if-changed .` exited `0`, 2 files checked/0 changed; `flutter analyze` exited `0`, `No issues found!`; `flutter test` exited `0`, 1 widget test passed. Both `git diff --check` and `git diff --check db57da41d94bc5ca46834bc7d3b8c5667a34241e..HEAD` passed, with exact implementation HEAD unchanged and tracked tree clean before these final state edits.
+  - Fresh final-phase branch verification passed every original scenario and all eight added regression cases (`REGRESSION_CASES_PASSED=8`, `REGRESSION_CASES_FAILED=0`, `GUARD_REGRESSIONS=PASS`, `BRANCH_SAFETY=PASS`). Guard-only publication tests used temporary local bare repositories, not the project remote. The original final fixture verified matching local/remote hashes `7d3d0ca61d8941c067090d2eb7b75feb70fdeaf3` and `420cf110570a5c046f03d3f20ba6e8ebd40afb15`. No real M0 milestone branch was created.
+  - Exact repeated package notice: `7 packages have newer versions incompatible with dependency constraints.` Follow-up: ``Try `flutter pub outdated` for more information.`` Current/available versions: clock 1.1.2/1.1.3, matcher 0.12.19/0.12.20, material_color_utilities 0.13.0/0.13.1, meta 1.18.0/1.19.0, stack_trace 1.12.1/1.12.2, test_api 0.7.11/0.7.13, vector_math 2.2.0/2.4.2. No package upgrade, manifest, lockfile, product source or native-host change occurred.
+  - Known read-only CLI diagnostics remain in raw evidence: `ignoring interface.icon_small: icon path with '..' must resolve under plugin assets/`; `ignoring interface.icon_large: icon path with '..' must resolve under plugin assets/`; `skipping duplicated tool firestore_query_collection`; `recorded sandbox violation: resource=filesystem backend=seatbelt reason=operation_not_permitted path=unknown`; `git: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead`; `DVTFilePathFSEvents: Failed to start fs event stream.` Representative retained cache diagnostic: `git: error: couldn't create cache file '/tmp/xcrun_db-lN62x71T' (errno=Operation not permitted)`. These diagnostics do not establish product failure or device evidence, and no pristine-diagnostic claim is made. Saved-session and pressure-protocol recoveries remain bounded approved harness adaptations; their earlier failed attempts were not overwritten or marked passing.
+  - Raw directory is the repository Git path returned by `git rev-parse --git-path roadmap-orchestrator-validation`. Decisive review, transcript and dispatch-provenance stems use suffix `8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-pre-review.txt`; final branch evidence is `branch-safety-8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-final.txt`; final-precommit evidence is `final-precommit-verification-8ea518562758d796431c8c9e4ce9f2ae63716bbd-round-1-final-precommit.txt`. Historical correction: `conductor-runtime-dispatch-provenance-f8202dbe7927fd652976c030aa8d623c21836f80-round-0-pre-review-correction-round-1.txt`. The SDD Task 4 report indexes source hashes, zero-based ordinals, full reviewed replies, prior findings and their corrections. These are local setup checks only; no simulator-runtime, emulator-runtime, physical-device, audio/MIDI, latency, benchmark or performance evidence is claimed.
+  - Setup approval does not accept the repository foundation, activate M0, create a Goal or milestone branch, begin research or product work, authorize dependencies or architecture, or prove device performance or low latency.
+
 # Failed Attempts
 
 - Setup-validation history only: ephemeral custom-agent dispatch failed; saved-session recovery passed. Earlier pressure artifacts exposed format/taxonomy ambiguity before the owner-approved protocol-defined prompt passed. No research task failed.
+- Whole-implementation round 0 was rejected with 2 Important and 1 Minor finding; the bounded correction and fresh round-1 review resolved all three. The original rejection remains preserved.
 
 # Architectural Decisions Required
 
@@ -92,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Independent final review. Do not begin a research task without separate owner approval.
+Present the verified setup for the owner acceptance gate. Integration remains a separate owner choice; after any authorized integration, display the exact accepted foundation and M0 contract-containing commits before requesting explicit M0 activation approval. Do not create a Goal or milestone branch, begin research, or treat setup approval as activation.
