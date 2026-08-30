@@ -29,7 +29,7 @@ The ten M0 questions in `docs/research/RESEARCH_INDEX.md` are queued. No investi
 # Verification Needed
 
 - For each research task: exact committed brief, verification evidence, applicable specialist reviews, and fresh independent final review.
-- Verify the activation representations agree with committed owner decision OD-001.
+- Activation consistency and retained baseline were independently approved in the fresh round-1 review; task-specific research verification is still required.
 
 # Completed
 
@@ -99,6 +99,8 @@ No research task is completed.
 - 2026-08-30 — Owner decision OD-001 was committed first at `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`, bound to accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and contract-changing commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`. This separate state commit activates the ledger, STATE, progress, and only ROADMAP's leading M0 status sentence together. The M0 Goal runs in Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; branch `milestone/m0-research` is isolated at `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`. All ten research tasks remain Queued; no specialist, research, or core work started between the decision and state commits. The fresh accepted-foundation worktree baseline passed all four Flutter checks, with two files formatted/zero changed, no analysis issues, and one widget test; the seven constrained-package notices remain. Exact preflight environment, commands, source commits, owner statement, results, and limitations are recorded in OD-001. No device or latency evidence is claimed.
 
 # Failed Attempts
+
+Activation correction round 1 was independently approved at `79a9e0c27154266ab5e0acc0de60c79fce941bc4`, with Spec Compliance PASS, Evidence Honesty PASS and zero findings. The full reply and source-backed dispatch/effective configuration are committed at `577ec8d07934110a1da5c214e38455c2e4356ab1`, in `docs/orchestration/milestones/m0/evidence/activation-review-round-1-provenance.md`. The following round-0 rejection remains historical; its pending wording describes the moment before this fresh approval, not the current state. No research task or performance claim was approved by the activation review.
 
 - Activation review round 0 rejected the bookkeeping with 1 Important evidence-retention gap and 2 Minor documentation findings. Original baseline output and literal review are now retained at `docs/orchestration/milestones/m0/evidence/activation-baseline.md` and `activation-review-provenance.md`, committed in `60705597626be2908301032197182387f4a4413b`. Source-prefix, both original result chunks, literal child reply, and effective reviewer configuration were checked (`ACTIVATION_SOURCE_RETENTION=PASS`); this was evidence recovery, not a test rerun. The stale inactive wording and transition-table formatting are corrected. Fresh independent re-review is pending; R01 has not started.
 
