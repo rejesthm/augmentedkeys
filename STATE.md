@@ -19,7 +19,7 @@ One M0 Roadmap Orchestrator Goal is active in Codex task `01a04c45-76d8-7ef0-9cb
 
 ## High priority
 
-1. R01 is In progress through assignment `590e2bb984a01032a77154eb2152383e2a2864c6`; dispatch its sole configured Conductor in the recorded isolated worktree.
+1. R01 is In progress; its sole configured Conductor is dispatched in the recorded isolated worktree. Runtime identity is retained at `cdddb1aa9a0d9a765b02ba366c551289264f71db`.
 2. Research only the two R01 outputs; obtain candidate evidence and required independent reviews before integration.
 3. Progress through eligible contracted research tasks with required evidence and independent reviews.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.

@@ -6,13 +6,14 @@ M0 — Research & Architecture (Active)
 
 Execute the ten contracted M0 research questions with evidence and independent review. Product-core implementation remains blocked.
 
-Status: active M0 Goal; R01 is In progress through assignment evidence `590e2bb984a01032a77154eb2152383e2a2864c6` and brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. Runtime dispatch is next.
+Status: active M0 Goal; R01 is In progress through assignment evidence `590e2bb984a01032a77154eb2152383e2a2864c6` and brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`. Actual writer runtime identity is committed at `cdddb1aa9a0d9a765b02ba366c551289264f71db`.
 
 Next approval: a non-delegable owner gate or review of the completed M0 package.
 
 # Active Agents
 
-None. No specialist agents are active.
+- Conductor: actual configured `conductor`, `/root/r01_conductor`, child `01a05194-6f43-7d11-9142-eb8fc9db2aba`; Phase 1 R01 documentary research, sole writer of its two reports.
+- Additional specialist dispatch is not yet recorded; no QA or final review is active.
 
 # Research Questions
 
@@ -20,7 +21,7 @@ R01 is In progress; R02–R10 remain Queued in `docs/research/RESEARCH_INDEX.md`
 
 # Ready Tasks
 
-- Dispatch R01's assigned Conductor after this completed assignment/state barrier. Other tasks remain Queued.
+- No new write task may start while R01 owns its two outputs. R02–R10 remain Queued.
 
 # In Progress
 
@@ -113,4 +114,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Dispatch the assigned R01 Conductor, record its actual saved runtime identity, and obtain only the bounded research candidate. Resume from the committed ledger and unconsumed canonical artifacts, never from chat memory alone.
+Obtain the assigned Conductor's bounded R01 candidate, then commit exact candidate/evidence and separately record In review before final review/integration. Resume the exact recorded writer; do not repeat the task body.
