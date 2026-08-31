@@ -57,3 +57,29 @@ This decision must be committed first. A separate next commit must record this d
 ### Evidence-retention correction — activation review round 1
 
 The round-0 activation review rejected the bookkeeping because the fresh baseline output was not retained at a durable artifact location; it did not report a test failure. The original command and both output chunks have now been recovered from the source conversation and preserved in `docs/orchestration/milestones/m0/evidence/activation-baseline.md`, with exact source ordinals, fixed-prefix hash, environment, exit code, and warnings. This is the original 15:14:34 run, not a newly performed run. The original rejected review and its source-backed literal reply remain in `activation-review.md` and `activation-review-provenance.md` in the same evidence directory. This addendum changes no owner statement, accepted commit, authority, state transition, or performance claim; independent correction re-review is pending.
+
+## OD-002 — Bounded G01 launch recovery
+
+- Recorded: 2026-08-31, Asia/Manila.
+- Decision owner: repository owner in the same Codex conversation.
+- Responsible recorder: Roadmap Orchestrator (`/root`).
+- Source: the owner's reply to the request for approval to correct and verify agent-launch permissions before research resumes.
+- Exact owner statement:
+
+> continue please. what's next?
+
+- Interpretation stated to the owner before acting: permission for the bounded launch correction and validation; research remains paused until the permission checks pass. This is not quoted as a more specific statement than the owner actually made.
+- Accepted foundation remains `b1b0c1edd5e42d3ea791f665c22954834e962d05`; accepted contract remains `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`, unchanged.
+- Recorded gate: G01 at `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; pause evidence MT-001 at `998fb53884f986154e1238ea3d76539adc565b70`; paused state at `6da91d7520a0473127a6529bda94d54daac4dac4`.
+
+### Bounded scope
+
+Test a command-line-only correction which removes the live `-s workspace-write` override and supplies the parent's existing workspace-write setting through the configuration layer (`-c 'sandbox_mode="workspace-write"'`). This is a hypothesis, not a passing result. Do not edit global/project configuration, role files, skills, contract, app code or dependencies. Do not use bypass flags or broaden the required role permissions.
+
+Use saved runtime evidence to verify the actual Conductor remains `gpt-5.6-sol` / `high` / workspace-write and each configured reader remains its declared model/effort / read-only. First test the preserved Conductor's recovery and a fresh configured Researcher with no-write diagnostic instructions. Only after that passes, validate the QA/Performance, Licensing/Security and fresh Final Code Reviewer boundaries and obtain independent recovery review. Never infer an effective permission from a TOML file or inherited context alone.
+
+The diagnostic task permits no research-body execution, file edits by probe agents, commits by probe agents, package or asset action, hardware, permission escalation, publication, or external mutation. Root alone records allowlisted evidence and shared state. Preserve every original failure, branch, saved writer and unreviewed source note. Stop the probe if its expected permission boundary fails; do not convert a mismatch into permission to work.
+
+### State and continuation
+
+This decision authorizes recovery work, not a claim that G01 is resolved. M0 stays `Paused for owner decision` and R01 stays `Blocked` during diagnostics. Research can continue only after effective-permission evidence and independent review resolve G01, the owner-decision resolution is committed, and the required separate milestone/task state barriers are completed. Any necessary expansion beyond this bounded invocation correction requires new owner direction. Main integration, M1, architecture adoption, product/core/UI/native work, hardware, dependencies, automation, credentials and other existing gates remain excluded.
