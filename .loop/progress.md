@@ -4,11 +4,11 @@ M0 — Research & Architecture (Paused for owner decision)
 
 # Current Objective
 
-Await owner decision on runtime permission gate G01. The ten contracted M0 questions remain unfinished; product-core implementation remains outside scope.
+Validate the owner-authorized bounded launch correction for G01 under OD-002 (`4a8349000864b2f06dbe62a287c5a4378e0bd278`). M0 research remains paused; product-core implementation remains outside scope.
 
 Status: M0 is Paused for owner decision through `998fb53884f986154e1238ea3d76539adc565b70` (MT-001). R01 is Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped.
 
-Next approval: bounded agent-launch correction/validation and explicit resolution of G01 before M0 reactivation; not M0 completion, core implementation or M1.
+Next gate: prove G01 resolved and complete the owner-decision/state barriers before M0 reactivation. OD-002 authorizes diagnostics, not a passing result, M0 completion, core implementation or M1.
 
 # Active Agents
 
@@ -49,7 +49,7 @@ No research task is completed.
 
 # Blockers
 
-- G01: the relay's workspace-write override propagated to the configured read-only Researcher. A bounded launch correction and effective-permission validation require owner authorization before resumption.
+- G01: the relay's workspace-write override propagated to the configured read-only Researcher. OD-002 authorizes bounded launch correction/validation; effective-permission checks and independent recovery review remain outstanding.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -114,4 +114,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Obtain the owner's bounded launch-correction decision. Do not resume research, replace the writer, change configuration, or dispatch another task under this unresolved gate. A committed owner decision and separate four-state reactivation commit are required before M0 resumes.
+Execute only the OD-002 no-write launch diagnostic. Do not resume research, silently replace the writer, edit configuration, or dispatch another research task under the unresolved gate. Successful recovery evidence, committed owner-decision resolution and separate four-state reactivation are required before M0 resumes.

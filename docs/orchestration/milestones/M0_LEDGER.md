@@ -11,6 +11,7 @@
 - Accepted contract commit: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
 - Owner-decision commit: `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` (OD-001)
+- Recovery-only owner decision: `4a8349000864b2f06dbe62a287c5a4378e0bd278` (OD-002); no milestone/task state transition, G01 unresolved
 - Milestone transition evidence: `docs/orchestration/milestones/m0/evidence/milestone-transitions.md`
 - Milestone-transition evidence commit: `998fb53884f986154e1238ea3d76539adc565b70` (MT-001)
 - Completion package: `docs/orchestration/milestones/m0/evidence/completion-package.md`

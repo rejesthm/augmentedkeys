@@ -21,7 +21,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is Blocked on runtime permission gate G01, recorded in `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped and task branch unchanged.
-2. Await owner approval for bounded permission-preserving launch correction and validation; no recovery attempt or research restart is authorized yet.
+2. OD-002 (`4a8349000864b2f06dbe62a287c5a4378e0bd278`) authorizes bounded command-line-only launch correction and validation. Diagnostic work may proceed; research remains paused until G01 resolution and the required state barriers.
 3. Do not dispatch another task through the same unvalidated mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
