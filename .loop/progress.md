@@ -4,15 +4,15 @@ M0 — Research & Architecture (Paused for owner decision)
 
 # Current Objective
 
-Validate the owner-authorized bounded launch correction for G01 under OD-002 (`4a8349000864b2f06dbe62a287c5a4378e0bd278`). M0 research remains paused; product-core implementation remains outside scope.
+Await approval for a bounded project-configuration experiment after the OD-002 launch-only diagnostics failed to resolve G01. M0 research remains paused; product-core implementation remains outside scope.
 
 Status: M0 is Paused for owner decision through `998fb53884f986154e1238ea3d76539adc565b70` (MT-001). R01 is Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped.
 
-Next gate: prove G01 resolved and complete the owner-decision/state barriers before M0 reactivation. OD-002 authorizes diagnostics, not a passing result, M0 completion, core implementation or M1.
+Next gate: separately approve the project-only configuration correction/validation described in `g01-launch-recovery.md`. OD-002's launch-only probes did not pass; no configuration edit, M0 reactivation, core implementation or M1 is authorized by their completion.
 
 # Active Agents
 
-None. R01's saved CLI run was interrupted; the Researcher returned unreviewed source notes. Exact writer/researcher identities and evidence remain in `r01-runtime-gate.md`. No QA or final task review ran.
+None. The preserved R01 Conductor resumed only for OD-002 diagnostics and stopped; the fresh relay also stopped before dispatch. The original unreviewed research notes remain preserved. Exact identities and outcomes are in `r01-runtime-gate.md` and `g01-launch-recovery.md`. No QA/security/final recovery or task review ran.
 
 # Research Questions
 
@@ -49,7 +49,7 @@ No research task is completed.
 
 # Blockers
 
-- G01: the relay's workspace-write override propagated to the configured read-only Researcher. OD-002 authorizes bounded launch correction/validation; effective-permission checks and independent recovery review remain outstanding.
+- G01: launch-only correction did not restore the read-only Researcher boundary. A fresh no-override relay also failed its read-only precondition. Configuration changes are outside OD-002 and the M0 allowlist; successful permission checks and independent recovery review remain outstanding.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -101,6 +101,8 @@ No research task is completed.
 
 # Failed Attempts
 
+- 2026-08-31 — OD-002 recovery evidence `6e0f00b8ba860b53b6d9e412e25c7e06ebed4ca4`: direct child resume required loading its parent first; parent recovery successfully resumed the existing writer. Attempt A failed because the fresh configured Researcher's actual own context remained workspace-write. Attempt B stopped before dispatch because the fresh relay, with no sandbox flag, was workspace-write rather than its predeclared read-only prerequisite. Both diagnostic processes exited 0, not permission-test passes. Original results, literal replies and source hashes are retained in `g01-launch-recovery.md`. No research/configuration/product change or performance evidence was produced.
+
 Activation correction round 1 was independently approved at `79a9e0c27154266ab5e0acc0de60c79fce941bc4`, with Spec Compliance PASS, Evidence Honesty PASS and zero findings. The full reply and source-backed dispatch/effective configuration are committed at `577ec8d07934110a1da5c214e38455c2e4356ab1`, in `docs/orchestration/milestones/m0/evidence/activation-review-round-1-provenance.md`. The following round-0 rejection remains historical; its pending wording describes the moment before this fresh approval, not the current state. No research task or performance claim was approved by the activation review.
 
 - Activation review round 0 rejected the bookkeeping with 1 Important evidence-retention gap and 2 Minor documentation findings. Original baseline output and literal review are now retained at `docs/orchestration/milestones/m0/evidence/activation-baseline.md` and `activation-review-provenance.md`, committed in `60705597626be2908301032197182387f4a4413b`. Source-prefix, both original result chunks, literal child reply, and effective reviewer configuration were checked (`ACTIVATION_SOURCE_RETENTION=PASS`); this was evidence recovery, not a test rerun. The stale inactive wording and transition-table formatting are corrected. Fresh independent re-review is pending; R01 has not started.
@@ -114,4 +116,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Execute only the OD-002 no-write launch diagnostic. Do not resume research, silently replace the writer, edit configuration, or dispatch another research task under the unresolved gate. Successful recovery evidence, committed owner-decision resolution and separate four-state reactivation are required before M0 resumes.
+Obtain separate bounded setup approval before testing an explicit project-only read-only relay default in `.codex/config.toml`; individual role settings and global configuration would remain unchanged. This is an untested proposal, not a fix or a change already made. Do not resume research or silently replace the writer. Successful recovery/reviews, committed owner-decision resolution and separate milestone/task state barriers remain required.
