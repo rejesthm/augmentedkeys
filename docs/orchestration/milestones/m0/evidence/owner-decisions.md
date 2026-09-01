@@ -83,3 +83,29 @@ The diagnostic task permits no research-body execution, file edits by probe agen
 ### State and continuation
 
 This decision authorizes recovery work, not a claim that G01 is resolved. M0 stays `Paused for owner decision` and R01 stays `Blocked` during diagnostics. Research can continue only after effective-permission evidence and independent review resolve G01, the owner-decision resolution is committed, and the required separate milestone/task state barriers are completed. Any necessary expansion beyond this bounded invocation correction requires new owner direction. Main integration, M1, architecture adoption, product/core/UI/native work, hardware, dependencies, automation, credentials and other existing gates remain excluded.
+
+## OD-003 — Project-only sandbox-default correction
+
+- Decision date: 2026-09-01, Asia/Manila.
+- Decision owner: repository owner in the same Codex conversation.
+- Responsible recorder: Roadmap Orchestrator (`/root`).
+- Decision source: the owner's reply to the explicit request to set a read-only default in the project's `.codex/config.toml` and re-test agent permissions while leaving global settings and individual agent settings unchanged.
+- Exact owner statement:
+
+> approved
+
+- Accepted foundation remains `b1b0c1edd5e42d3ea791f665c22954834e962d05`; accepted M0 contract remains `0d86705ca130fcc3bdb73a9acf3f21fd803912dd`, unchanged.
+- Pre-correction milestone tip: `86fac7a614e40490de264b3d736e8936cd9233bd`.
+- Prior recovery decision: OD-002 at `4a8349000864b2f06dbe62a287c5a4378e0bd278`; failed invocation-only evidence: `6e0f00b8ba860b53b6d9e412e25c7e06ebed4ca4`.
+
+### Exact authority
+
+Add only `sandbox_mode = "read-only"` as the project-level default in `.codex/config.toml`. Do not change global configuration or any individual agent file. Do not add a CLI sandbox override. First retain the existing failure as the RED baseline, then test whether the effective fresh relay is read-only, the actual configured Conductor remains `gpt-5.6-sol` / `high` / workspace-write, and its actual configured Researcher is `gpt-5.6-terra` / `high` / read-only.
+
+If those boundaries pass, validate the applicable QA/Performance, Licensing/Security and fresh Final Code Reviewer as actual configured read-only roles and preserve their literal results and source-backed effective contexts. No diagnostic agent may edit files, commit, resume R01 research, launch hardware, change configuration/permissions, or perform an external mutation. Root alone may make the approved configuration edit and write allowlisted recovery evidence/state.
+
+### Limits and next gate
+
+This is a separately approved setup correction outside the M0 research allowlist. It does not change the M0 objective, queue, contract or safety gates and does not authorize another configuration file, role/skill change, global setting, product/core/UI/native code, dependency, hardware, credentials, publication, main integration or M1.
+
+This decision authorizes correction and validation only. It is not advance acceptance that G01 is resolved and does not itself reactivate M0 or R01. M0 remains `Paused for owner decision` and R01 remains `Blocked` until the evidence passes, independent review has no unresolved Critical or Important finding, and a later committed owner reactivation decision plus the required separate milestone/task state barriers are completed.
