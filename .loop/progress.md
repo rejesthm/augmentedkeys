@@ -4,15 +4,15 @@ M0 — Research & Architecture (Paused for owner decision)
 
 # Current Objective
 
-Await approval for a bounded project-configuration experiment after the OD-002 launch-only diagnostics failed to resolve G01. M0 research remains paused; product-core implementation remains outside scope.
+Await owner direction on a role-isolated orchestration redesign after three nested mixed-permission corrections failed G01. M0 research remains paused; product-core implementation remains outside scope.
 
 Status: M0 is Paused for owner decision through `998fb53884f986154e1238ea3d76539adc565b70` (MT-001). R01 is Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped.
 
-Next gate: separately approve the project-only configuration correction/validation described in `g01-launch-recovery.md`. OD-002's launch-only probes did not pass; no configuration edit, M0 reactivation, core implementation or M1 is authorized by their completion.
+Next gate: approve or reject a governance redesign using separate permission-isolated agent trees with root-mediated handoffs. OD-003's configuration candidate was tested, failed the Conductor boundary and was reverted. No M0 reactivation, research, core implementation or M1 is authorized.
 
 # Active Agents
 
-None. The preserved R01 Conductor resumed only for OD-002 diagnostics and stopped; the fresh relay also stopped before dispatch. The original unreviewed research notes remain preserved. Exact identities and outcomes are in `r01-runtime-gate.md` and `g01-launch-recovery.md`. No QA/security/final recovery or task review ran.
+None. The OD-003 relay and diagnostic Conductor stopped after the Conductor inherited read-only; no Researcher or reviewer was launched. The preserved R01 writer and original unreviewed research notes remain intact. Exact identities and outcomes are in `r01-runtime-gate.md` and `g01-launch-recovery.md`. No QA/security/final recovery or task review ran.
 
 # Research Questions
 
@@ -49,7 +49,7 @@ No research task is completed.
 
 # Blockers
 
-- G01: launch-only correction did not restore the read-only Researcher boundary. A fresh no-override relay also failed its read-only precondition. Configuration changes are outside OD-002 and the M0 allowlist; successful permission checks and independent recovery review remain outstanding.
+- G01: nested agents inherit one effective parent sandbox in every tested launch on codex-cli 0.150.0-alpha.12.2. Workspace-write parents make the Researcher workspace-write; a project read-only parent makes the Conductor read-only. A role-isolated governance design, successful runtime evidence and independent review remain outstanding.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -102,6 +102,7 @@ No research task is completed.
 # Failed Attempts
 
 - 2026-08-31 — OD-002 recovery evidence `6e0f00b8ba860b53b6d9e412e25c7e06ebed4ca4`: direct child resume required loading its parent first; parent recovery successfully resumed the existing writer. Attempt A failed because the fresh configured Researcher's actual own context remained workspace-write. Attempt B stopped before dispatch because the fresh relay, with no sandbox flag, was workspace-write rather than its predeclared read-only prerequisite. Both diagnostic processes exited 0, not permission-test passes. Original results, literal replies and source hashes are retained in `g01-launch-recovery.md`. No research/configuration/product change or performance evidence was produced.
+- 2026-09-01 — OD-003 correction evidence `39fa64bfe4fc34e99207148fd6d1465cf0eb98ee`: RED relay was workspace-write; candidate `2c1a3d7d235120d96d8cca36d6908afad007d806` made the relay read-only but also made the actual configured Conductor sol/high/read-only rather than workspace-write. The chain stopped before Researcher/reviewers. Revert `c0aa7967d2b7bc9f783a8bd2c339ffe3598f62fc` restored the exact prior `.codex/config.toml`. No fourth nested-tree experiment is permitted without architectural discussion.
 
 Activation correction round 1 was independently approved at `79a9e0c27154266ab5e0acc0de60c79fce941bc4`, with Spec Compliance PASS, Evidence Honesty PASS and zero findings. The full reply and source-backed dispatch/effective configuration are committed at `577ec8d07934110a1da5c214e38455c2e4356ab1`, in `docs/orchestration/milestones/m0/evidence/activation-review-round-1-provenance.md`. The following round-0 rejection remains historical; its pending wording describes the moment before this fresh approval, not the current state. No research task or performance claim was approved by the activation review.
 
@@ -116,4 +117,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Obtain separate bounded setup approval before testing an explicit project-only read-only relay default in `.codex/config.toml`; individual role settings and global configuration would remain unchanged. This is an untested proposal, not a fix or a change already made. Do not resume research or silently replace the writer. Successful recovery/reviews, committed owner-decision resolution and separate milestone/task state barriers remain required.
+Present a bounded role-isolated orchestration design for owner approval; do not implement it, retry nested mixed permissions, resume research or replace the preserved R01 writer yet. Any approved design must keep one write task, at most three specialists, root-controlled handoffs, exact role/runtime evidence, and all existing owner gates. Successful recovery/reviews, an explicit reactivation decision and separate milestone/task state barriers remain required.

@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is Blocked on runtime permission gate G01, recorded in `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped and task branch unchanged.
-2. OD-002 launch-only diagnostics have stopped without resolving G01. Evidence: `6e0f00b8ba860b53b6d9e412e25c7e06ebed4ca4`, `docs/orchestration/milestones/m0/evidence/g01-launch-recovery.md`. A project-only configuration experiment needs separately approved scope before any edit; research remains paused.
-3. Do not dispatch another task through the same unvalidated mixed-permission launch.
+2. OD-003's approved project-only sandbox experiment also failed G01: the relay became read-only, but so did the configured Conductor. Evidence and rollback: `39fa64bfe4fc34e99207148fd6d1465cf0eb98ee`; candidate `2c1a3d7d235120d96d8cca36d6908afad007d806`; restored configuration `c0aa7967d2b7bc9f783a8bd2c339ffe3598f62fc`.
+3. Do not try another nested mixed-permission launch. Three correction designs failed; a role-isolated orchestration redesign requires owner-approved governance scope before implementation.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
 ## Watch list
@@ -36,4 +36,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. M0 remains Paused for owner decision through MT-001; R01 is Blocked and R02–R10 remain Queued. OD-002 authorized launch-only diagnostics: the preserved Conductor resumed, but its fresh Researcher still had workspace-write; a fresh no-override relay also failed its read-only precondition and stopped before dispatch. No configuration edit or research restart occurred. No research task or manual L1 Loop has been completed; no report candidate or core change was produced. Branches, stopped writer identity and intermediate evidence are preserved locally.
+The owner accepted the foundation and authorized M0 through OD-001. Activation bookkeeping passed independent correction review. M0 remains Paused for owner decision through MT-001; R01 is Blocked and R02–R10 remain Queued. OD-002's launch-only approaches made the Researcher workspace-write. OD-003's project read-only default made the relay read-only but also made the configured Conductor read-only, so the chain stopped before Researcher/reviewer dispatch. The exact candidate was reverted and project configuration matches the pre-OD-003 content. No research task or manual L1 Loop has been completed; no report candidate or core change was produced. Branches, stopped writer identity and evidence are preserved locally.
