@@ -281,3 +281,216 @@ G01 is **unresolved**. No QA/Performance, Licensing/Security or Final Code Revie
 The tested invocation-only recovery did not establish the required boundary. The next proposed smallest configuration experiment is a project-only explicit read-only relay default in `.codex/config.toml`, with the existing individual role settings unchanged and no CLI sandbox override. Its objective is to obtain a read-only relay, workspace-write configured Conductor and read-only configured specialists; this is **untested**, not a promised fix. That file is outside M0's allowlist and OD-002's launch-only scope, so it requires a separately approved bounded setup correction before any edit. No global configuration, contract/gate weakening, core implementation or silent replacement of the R01 writer is proposed.
 
 Keep M0 Paused and R01 Blocked. Record any new owner decision and successful recovery/reviews before the existing reactivation and task-transition barriers; no research may proceed just because the diagnostic process exited successfully.
+
+
+## OD-003 — Explicit project read-only default (failed mixed-role validation)
+
+### Authority and change
+
+- Owner decision: OD-003, commit `3fff1f4869a28900956cae0857d5834a13576606`.
+- Pre-change milestone tip: `3fff1f4869a28900956cae0857d5834a13576606`.
+- Configuration candidate: `2c1a3d7d235120d96d8cca36d6908afad007d806`.
+- Exact candidate change: add only `sandbox_mode = "read-only"` to project `.codex/config.toml`; global configuration and all eight agent files unchanged.
+- Date/timezone: 2026-09-01, Asia/Manila.
+- Environment: arm64 macOS 26.6.1 (25G76); codex-cli 0.150.0-alpha.12.2.
+- Device/simulator/emulator, app build, audio/MIDI workload, sample rate, buffer and hardware: Not applicable; permission metadata validation only.
+- Responsible recorder: Roadmap Orchestrator; no independent approval because the prerequisite failed.
+
+### RED → GREEN relay check
+
+Before the change, the structural assertion failed because the setting was absent, and a fresh no-tool `codex exec` returned `workspace-write`. After the one-line commit, the same no-tool invocation returned `read-only`. This establishes only the relay-level behavior of the candidate.
+
+Exact commands:
+
+```json
+{
+  "red": "'/Applications/ChatGPT.app/Contents/Resources/codex' 'exec' '-m' 'gpt-5.6-terra' 'G01 RED baseline only. Do not use tools, read files, change anything, or spawn agents. Return exactly the runtime sandbox mode presented to you and stop.'",
+  "green": "'/Applications/ChatGPT.app/Contents/Resources/codex' 'exec' '-m' 'gpt-5.6-terra' 'G01 GREEN baseline only. Do not use tools, read files, change anything, or spawn agents. Return exactly the runtime sandbox mode presented to you and stop.'"
+}
+```
+
+### Mixed-role validation
+
+Expected chain: read-only relay → sol/high/workspace-write configured Conductor → terra/high/read-only configured Researcher. Actual chain: read-only relay → sol/high/**read-only** configured Conductor. The Conductor stopped immediately, so no Researcher or reviewer was launched.
+
+Result: **FAIL**. The explicit project default is inherited by the nested Conductor and prevents the write-capable role required by the approved workflow. The candidate therefore does not resolve G01 even though the relay-only check is green. Process exit 0 indicates normal diagnostic completion, not a passing permission test.
+
+Source-backed records below use zero-based ordinals. Hashes identify completed saved files. Only effective contexts, bounded dispatch/start metadata, tool names and literal complete final replies are retained; unrelated session contents and encrypted dispatch messages are excluded.
+
+```json
+[
+  {
+    "path": "/Users/jestherjordanminor/.codex/sessions/2026/09/01/rollout-2026-09-01T14-57-09-01a05bc1-e837-72b3-9bc1-6068ca0de22b.jsonl",
+    "sha256": "ac7840c24e2bec9e2512d2a0d53c178dc7ac69cfd5bb024bfd4b5027cc4fd521",
+    "records": 16,
+    "contexts": [
+      {
+        "ordinal": 7,
+        "model": "gpt-5.6-terra",
+        "effort": "medium",
+        "sandbox": {
+          "type": "workspace-write",
+          "network_access": false,
+          "exclude_tmpdir_env_var": false,
+          "exclude_slash_tmp": false
+        }
+      }
+    ],
+    "dispatches": [],
+    "starts": [],
+    "finals": [
+      {
+        "ordinal": 13,
+        "content": [
+          {
+            "type": "output_text",
+            "text": "workspace-write"
+          }
+        ]
+      }
+    ],
+    "toolNames": []
+  },
+  {
+    "path": "/Users/jestherjordanminor/.codex/sessions/2026/09/01/rollout-2026-09-01T14-57-38-01a05bc2-57f5-7e01-9c3d-206b13f1c8f3.jsonl",
+    "sha256": "741fd5668ca00dd82e8e5edff8663fd4ad2dd1ccdc82797a889fb9ab8d310d91",
+    "records": 16,
+    "contexts": [
+      {
+        "ordinal": 7,
+        "model": "gpt-5.6-terra",
+        "effort": "medium",
+        "sandbox": {
+          "type": "read-only"
+        }
+      }
+    ],
+    "dispatches": [],
+    "starts": [],
+    "finals": [
+      {
+        "ordinal": 13,
+        "content": [
+          {
+            "type": "output_text",
+            "text": "read-only"
+          }
+        ]
+      }
+    ],
+    "toolNames": []
+  },
+  {
+    "path": "/Users/jestherjordanminor/.codex/sessions/2026/09/01/rollout-2026-09-01T14-58-04-01a05bc2-be5b-7da0-8b76-ce6ffe981db2.jsonl",
+    "sha256": "0218b3b16a26d7ee70630d4a1b2bc1a58d14f2b1c6f4da3de650aac4af5f4e7d",
+    "records": 50,
+    "contexts": [
+      {
+        "ordinal": 7,
+        "model": "gpt-5.6-terra",
+        "effort": "medium",
+        "sandbox": {
+          "type": "read-only"
+        }
+      }
+    ],
+    "dispatches": [
+      {
+        "ordinal": 30,
+        "name": "spawn_agent",
+        "agent_type": "conductor",
+        "task_name": "g01_od003_conductor_probe",
+        "fork_turns": "none"
+      }
+    ],
+    "starts": [
+      {
+        "ordinal": 31,
+        "child": "01a05bc3-2302-7bd2-9445-ddd913b6c9a3",
+        "path": "/root/g01_od003_conductor_probe"
+      }
+    ],
+    "finals": [
+      {
+        "ordinal": 47,
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Effective root sandbox: **read-only**.\n\nConductor probe ID: `/root/g01_od003_conductor_probe`\n\nLiteral complete final reply:\n\n> Exact ID: `/root/g01_od003_conductor_probe`\n>\n> Effective runtime context:\n>\n> - Model: `gpt-5.6-sol` — match\n> - Reasoning effort: `high` — match\n> - Sandbox: `read-only` — mismatch; required `workspace-write`\n>\n> Stopped immediately after validation. No Researcher or other child was launched, and no files were changed.\n>\n> Proposed next action: preserve this failed probe as G01 evidence and keep M0/R01 paused.\n\nStopped after the mismatch; no reviewers or Researcher were launched."
+          }
+        ]
+      }
+    ],
+    "toolNames": [
+      {
+        "ordinal": 12,
+        "name": "exec"
+      },
+      {
+        "ordinal": 22,
+        "name": "exec"
+      },
+      {
+        "ordinal": 30,
+        "name": "spawn_agent"
+      },
+      {
+        "ordinal": 37,
+        "name": "wait_agent"
+      }
+    ]
+  },
+  {
+    "path": "/Users/jestherjordanminor/.codex/sessions/2026/09/01/rollout-2026-09-01T14-58-30-01a05bc3-2302-7bd2-9445-ddd913b6c9a3.jsonl",
+    "sha256": "4e6da68fffcc61c07d8fd7547ba081886bfd6df0671355b9bca18a1a7c17fca8",
+    "records": 48,
+    "contexts": [
+      {
+        "ordinal": 7,
+        "model": "gpt-5.6-sol",
+        "effort": "high",
+        "sandbox": {
+          "type": "read-only"
+        }
+      }
+    ],
+    "dispatches": [],
+    "starts": [],
+    "finals": [
+      {
+        "ordinal": 45,
+        "content": [
+          {
+            "type": "output_text",
+            "text": "Exact ID: `/root/g01_od003_conductor_probe`\n\nEffective runtime context:\n\n- Model: `gpt-5.6-sol` — match\n- Reasoning effort: `high` — match\n- Sandbox: `read-only` — mismatch; required `workspace-write`\n\nStopped immediately after validation. No Researcher or other child was launched, and no files were changed.\n\nProposed next action: preserve this failed probe as G01 evidence and keep M0/R01 paused."
+          }
+        ]
+      }
+    ],
+    "toolNames": [
+      {
+        "ordinal": 14,
+        "name": "exec"
+      },
+      {
+        "ordinal": 20,
+        "name": "exec"
+      },
+      {
+        "ordinal": 35,
+        "name": "exec"
+      }
+    ]
+  }
+]
+```
+
+The child tool names were read-only `exec` checks. A tool-name inventory plus clean Git checks is not a comprehensive proof that no path on the machine was written. No intentional probe write was attempted.
+
+### Architecture stop
+
+This was the third permission-design correction attempt: live workspace-write override, configuration-layer workspace-write override/no-override recovery, and explicit project read-only default. The first patterns made the Researcher workspace-write; the third made the Conductor read-only. Continuing with a fourth nested-tree sandbox variation would be guesswork.
+
+The evidence indicates that this runtime applies one effective inherited sandbox across a nested subagent tree for these launches. A single nested tree cannot currently satisfy the project's required mixed boundary of one write-capable Conductor plus read-only specialists. This is an observation about the tested codex-cli version and launch paths, not a general Codex defect claim.
+
+The candidate configuration will be restored to its pre-OD-003 content in a separate non-destructive revert commit. M0 remains Paused and R01 Blocked. A different orchestration design—such as separate role-isolated agent trees with root-mediated handoffs—requires an approved governance design before implementation. No research, QA/security/final recovery review, app/core code, dependency, device operation, publication or M0 reactivation occurred.
