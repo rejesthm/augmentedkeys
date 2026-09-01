@@ -23,17 +23,15 @@ No other path is authorized by this correction task. Shared milestone state file
 ## Required topology
 
 ```text
-Roadmap Orchestrator controller (sole shared-state writer and relay)
-├── independent top-level workspace-write session
-│   └── configured Conductor; assigned writer only when an eligible task starts
-└── independent top-level read-only sessions
-    ├── configured Researcher
-    ├── configured QA/Performance Verifier
-    ├── configured Licensing/Security Reviewer
-    └── configured Final Code Reviewer
+Roadmap Orchestrator controller (sole shared-state writer and handoff mediator)
+├── independent top-level workspace-write relay
+│   └── exactly one same-sandbox configured Conductor child
+└── one independent top-level read-only relay per required role
+    └── exactly one same-sandbox configured Researcher, QA/Performance,
+        Licensing/Security, or Final Code Reviewer child
 ```
 
-The Conductor selects only the roles materially needed for one bounded task and returns exact dispatch requests to the controller. The controller launches each role from the project root in a separate top-level session with the role's required effective sandbox and relays only committed briefs, exact commits, evidence paths, and bounded findings. The Conductor must not spawn a read-only specialist from its workspace-write session. A read-only role must not spawn a write-capable role.
+The Conductor selects only the roles materially needed for one bounded task and returns exact dispatch requests to the controller. Because Codex CLI 0.150.0-alpha.12.2 cannot invoke a project custom agent directly, the controller launches one project-rooted top-level relay per role with the same effective sandbox required by that role; each relay may spawn exactly one actual configured child of that same permission class. The controller binds the outer spawn record to the child's saved runtime context and relays only committed briefs, exact commits, evidence paths, and bounded findings. The Conductor must not spawn a read-only specialist from its workspace-write session. A read-only relay or role must not spawn a write-capable role. No relay may dispatch task work itself.
 
 ## Required governance changes
 
@@ -44,7 +42,7 @@ The Conductor selects only the roles materially needed for one bounded task and 
 
 ## Runtime verification requirements
 
-Use separate top-level project-rooted Codex sessions. Each probe must be diagnostic-only and must not edit, commit, publish, perform research-body work, use hardware, or change permissions.
+Use separate top-level project-rooted Codex relay sessions, with relay and configured child in the same permission class. Each probe must be diagnostic-only and must not edit, commit, publish, perform research-body work, use hardware, or change permissions.
 
 Committed validation evidence must identify:
 
