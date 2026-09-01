@@ -109,3 +109,42 @@ If those boundaries pass, validate the applicable QA/Performance, Licensing/Secu
 This is a separately approved setup correction outside the M0 research allowlist. It does not change the M0 objective, queue, contract or safety gates and does not authorize another configuration file, role/skill change, global setting, product/core/UI/native code, dependency, hardware, credentials, publication, main integration or M1.
 
 This decision authorizes correction and validation only. It is not advance acceptance that G01 is resolved and does not itself reactivate M0 or R01. M0 remains `Paused for owner decision` and R01 remains `Blocked` until the evidence passes, independent review has no unresolved Critical or Important finding, and a later committed owner reactivation decision plus the required separate milestone/task state barriers are completed.
+
+## OD-004 — Narrow role-isolated G01 dispatch correction
+
+- Decision date: 2026-09-02, Asia/Manila.
+- Decision owner: repository owner in the same Codex conversation.
+- Responsible recorder: Roadmap Orchestrator (`/root`).
+- Decision source: the owner's exact reply to the request to supersede only the failed nested dispatch rule, validate separate top-level permission sessions, and reactivate M0 only after independent verification passes.
+- Accepted foundation remains `b1b0c1edd5e42d3ea791f665c22954834e962d05`.
+- Previously accepted M0 contract commit remains `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` until the narrow correction is implemented, verified, independently approved, and recorded as the superseding contract source.
+- Preserved pre-decision milestone tip: `80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac`.
+
+### Exact owner statement
+
+> I approve the narrow G01 role-isolated dispatch correction and authorize M0 reactivation after it passes independent verification.
+
+### Authorized correction
+
+Replace only the failed nested mixed-permission launch topology with root-mediated, permission-isolated top-level sessions:
+
+```text
+Roadmap Orchestrator controller
+├── independent workspace-write session: Conductor and an assigned writer when needed
+└── independent read-only sessions: Researcher, QA/Performance Verifier,
+    Licensing/Security Reviewer, and Final Code Reviewer
+```
+
+The Conductor may select the specialist roles needed for one bounded task, but it returns exact dispatch requests to the controller. The controller launches each configured role in a separate top-level session with that role's required effective sandbox and relays only the committed brief, exact candidate/evidence commits, and bounded findings. No read-only role may be nested below a workspace-write session, and no write-capable role may be nested below a read-only session.
+
+This decision authorizes only the minimum corresponding corrections to `AGENTS.md`, `.codex/agents/conductor.toml`, `.codex/skills/roadmap-orchestrator/SKILL.md`, `docs/orchestration/milestones/M0_CONTRACT.md`, and allowlisted G01 evidence/state artifacts. It also authorizes non-product runtime probes that prove the actual effective Conductor session is workspace-write and each configured reader session is read-only. Probe agents may not perform research-body work, edit repository files, commit, publish, use hardware, or change permissions.
+
+### Verification and reactivation barrier
+
+M0 remains `Paused for owner decision` and R01 remains `Blocked` while the correction is implemented and tested. G01 is resolved only when committed runtime evidence identifies the exact tool version, project root, configured role, model, reasoning effort, effective sandbox, source session, and no-write/write-boundary result for each required role, and fresh independent review reports no Critical or Important finding.
+
+After that verification passes, the controller must commit a separate reactivation decision artifact bound to the exact corrected contract and validation commits. Separate later commits must transition M0 from `Paused for owner decision` to `Active` and R01 from `Blocked` to `Eligible` under the existing two-commit barriers. No research may execute between these commits.
+
+### Unchanged limits
+
+This decision does not change the M0 objective, R01–R10 queue, dependencies, definition of done, research outputs, one-writer rule, three-specialist limit, evidence requirements, correction limit, or branch/publication rules. It does not authorize product/core/UI/native code, architecture or ADR adoption, dependencies or assets, hardware operations, credentials/signing, releases, automation, task-branch or `main` publication, cleanup, M1, or unmeasured performance claims. Only the existing deterministic milestone-branch guard remains authorized for external publication.
