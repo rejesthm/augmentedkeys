@@ -174,17 +174,12 @@ or Android mobile lifecycle, distribution, or real-time requirements.
 
 ## Real-time constraints applied to every candidate
 
-Until a later evidence-backed decision narrows the boundary, the future audio
-callback and everything it invokes must prohibit:
-
-- blocking file, device, database, or network I/O;
-- UI work or communication that can block on the UI thread;
-- parsing or other unbounded work;
-- plugin discovery, loading, initialization, or teardown;
-- unbounded or avoidable allocation, deallocation, finalization, or garbage
-  collection pressure;
-- arbitrary mutex, condition, semaphore, task, thread, or service waiting; and
-- logging that allocates, locks, performs I/O, or can otherwise block.
+The binding rule is exact: the future audio callback and anything it invokes,
+directly or indirectly, must not perform blocking work, I/O, UI work, parsing,
+allocation, arbitrary lock waiting, or potentially blocking logging. The current
+rule permits no exception for bounded allocation or nonblocking I/O. Any narrower
+rule requires later evidence-backed approval through the project's decision
+process.
 
 Android's low-latency guidance independently warns against allocation/freeing,
 file/network I/O, waiting on locks, sleeping, and heavy one-time CPU work in an
