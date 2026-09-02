@@ -94,7 +94,11 @@ Do not reorder tasks across a dependency, alter milestone outcomes, invent a mis
 
 ## Delegation
 
-Give one bounded task to the existing Conductor. The Conductor may select only specialists that materially improve that task and may run at most three spawned specialists concurrently.
+Give one bounded task to the existing Conductor through a separate project-rooted top-level workspace-write relay. The relay may spawn exactly one actual configured Conductor child, must share the Conductor's effective workspace-write permission class, and performs no task work. The Conductor selects only roles that materially improve that task and returns exact dispatch requests to the Roadmap Orchestrator controller instead of spawning specialists.
+
+The controller is the sole top-level launcher and cross-role handoff mediator. For every requested role, launch a separate project-rooted top-level relay with the same effective permission class required by that role; that relay may spawn exactly one actual configured child of the same permission class and performs no task work. Bind each outer spawn record to the configured child's source-backed runtime context. Relay only the committed brief, exact candidate and evidence commits, allowed paths, and bounded findings. Never nest a read-only Researcher or reviewer below a workspace-write session, and never nest a write-capable role below a read-only session. Stop if the relay and child permission classes differ or authoritative effective runtime context is unavailable.
+
+Run at most three configured specialist children concurrently. Coordination-only relays do not widen that limit or receive specialist authority.
 
 Parallelize independent read-heavy work. Permit only one active write task and one writer per sensitive file set. Every write task uses the contract's `task/<milestone-id>-<task-id>-<short-slug>` branch in an isolated worktree created from the current milestone branch.
 

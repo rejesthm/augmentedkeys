@@ -1,7 +1,7 @@
 # M0 Roadmap Orchestrator Authorization Contract
 
-Status: `Awaiting owner approval`
-Contract version: 1
+Status: `Paused for owner decision`
+Contract version: 2
 
 ## Binding inputs
 
@@ -11,8 +11,16 @@ Contract version: 1
 - Queue: `docs/research/RESEARCH_INDEX.md`
 - Ledger: `docs/orchestration/milestones/M0_LEDGER.md`
 - Gate controls: `gate.yaml` and `loop-budget.md`
+- Previously accepted contract source: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` (version 1)
+- Narrow correction authority: OD-004 at `82dc35ac2042ab4697b322dabd1fb03c61a5ae5a`
 
 The controller must display and record the exact accepted `main` commit and the latest commit returned by `git log -1 --format=%H -- docs/orchestration/milestones/M0_CONTRACT.md` before requesting activation. Owner approval binds only to those displayed commits.
+
+## Version 2 dispatch correction
+
+OD-004 authorizes only replacement of the failed nested mixed-permission launch topology. For each role selected by the Conductor, the Roadmap Orchestrator controller launches one separate project-rooted top-level relay whose effective permission class matches its exactly one configured child. Relays perform no task work. The Conductor returns exact dispatch requests to the controller and must not directly spawn specialists. No read-only role may be nested below a workspace-write session, and no write-capable role may be nested below a read-only session.
+
+This correction does not reactivate M0 or R01 by itself. M0 remains `Paused for owner decision` and R01 remains `Blocked` until committed runtime evidence proves the configured Conductor and all required read-only roles have their contracted model, reasoning effort, and effective sandbox; a fresh independent reviewer reports no Critical or Important finding; and the controller commits the separate reactivation decision and state barriers required by OD-004. The correction changes no research authority, milestone outcome, queue, dependency, output, definition of done, safety gate, publication authority, or non-goal.
 
 ## Objective
 
@@ -27,6 +35,9 @@ Produce verified, evidence-backed answers for the ten contracted M0 research que
 5. The owner sends the exact M0 activation statement in response to those displayed commits.
 6. No Roadmap Orchestrator Goal or write task is active.
 7. The branch `milestone/m0-research` is absent, or it is an exact clean resumable branch recorded in the ledger.
+8. For reactivation after G01, the role-isolated correction is committed under OD-004 and the controller has committed source-backed runtime proof for the configured Conductor, Researcher, QA/Performance Verifier, Licensing/Security Reviewer, and Final Code Reviewer.
+9. A fresh independent read-only review of the exact correction and runtime provenance reports no Critical or Important finding.
+10. A separate committed reactivation decision artifact binds the corrected contract and validation/review commits before the milestone and R01 state-transition barriers run; no research executes between those commits.
 
 ## Definition of done
 
