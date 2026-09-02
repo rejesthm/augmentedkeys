@@ -51,7 +51,7 @@ Date: `2026-09-02`
 - Contracted output: exactly `docs/research/UAPMD_EVALUATION.md`.
 - Researcher evidence: `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05`.
 - Conductor provenance: `04b8fd1a2b49a10033e698090c051c40898bcc7d`.
-- Canonical pre-review verification: `8530cd1e30054b933175836063d2056579b6b458`.
+- Canonical pre-review verification: `8530cd16beedfd3994a20d9a9c96910205cd05f8`.
 - Correction round: `0`.
 
 ### Gate result
