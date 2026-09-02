@@ -1,93 +1,74 @@
 # R01 Verification Evidence
 
-Status: `Correction-round-2 candidate committed; fresh specialist review pending`
-Execution timestamp: `2026-09-02T11:43:02+08:00`
+Status: `Correction-round-3 candidate committed; affected fresh reviews pending`
+Timestamp: `2026-09-02T12:11:09+08:00`
 
-## Named responsibility
+## Responsibility
 
-- Named responsible pre-review verifier: `Copernicus`, configured Conductor child `01a05fff-3c57-73a3-a747-8cb5f8611940`, for the exact candidate diff, path scope, output hash/line evidence and callback correction.
-- Controller/recorder: Roadmap Orchestrator (`/root`), which independently inspected and committed the exact Conductor content and retained the raw/provenance artifacts.
-- Named assigned independent QA reviewer: `James`, configured QA/Performance Verifier child `01a06028-bfa5-7c33-86cb-6f8ba50f0a8f`. Its fresh verdict on this exact candidate is pending; assignment is not approval.
-- No work or review is attributed to the repository owner.
+- Named pre-review verifier: `Copernicus`, configured Conductor child `01a05fff-3c57-73a3-a747-8cb5f8611940`.
+- Controller/recorder: Roadmap Orchestrator (`/root`), which independently inspected and committed the exact Conductor content.
+- Independent QA reviewer `James` and Licensing/Security reviewer `Epicurus` must re-review this changed candidate; prior round-2 approvals are retained as history, not applied to the new candidate.
 
-## Candidate and evidence lineage
+## Exact lineage
 
-- Brief: `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`.
-- Corrected contract: `13b864f09ca083d10910bcffa4432b81c040bda9`.
-- Original Researcher evidence/candidate parent: `b8d245683170a3f4961ca89e9cbf3a2d1d4cdfdb`.
-- Rejected candidates: `c94abe038f9c7bad224246bbc2a5a8bf2b61974f`, then `ef640cf0644b41de99302441ff539d7293443b57`.
-- Actual first specialist-review commit: `60be2835790681859c8b38a8762ea20ac0f3c72c`. The mistyped historical current-reference SHA is mapped and proven in `r01-correction-round2-provenance.md`; historical commits are not rewritten.
-- Fresh corrected-candidate review: `befd18b970c02f3f0372ec5058ac9c28ebbcae78`.
-- Correction-round-2 transition T09: `d779f5526ad23c20e3475d935ef4b386ac9e005c`; state `c6fcc72799d953bfa314ab171c8d1860b7e8553d`.
-- Provenance/source-retention correction: `486dba4b0287d5f22dbd9f6accc1879f4cd41864`.
-- Candidate under review: `60c619ed0f54c4008e5e64ff5771576bb6a3e095`.
+- Brief `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`; contract `13b864f09ca083d10910bcffa4432b81c040bda9`.
+- Original Researcher evidence/candidate parent `b8d245683170a3f4961ca89e9cbf3a2d1d4cdfdb`.
+- Prior candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095`.
+- Round-2 specialist approvals `c88771862e30d14a8f1aea2bb47455b61c48153c`.
+- Round-2 Final Code Review rejection `9c474aa5dd015d4a2b9d70c413ba6efe56c2f156`.
+- T11 `4fcf602972e2c355315d2fb6438a41c978dc437c`; correction-round-3 state `9f5761db7e1759c7026bcf9adc733d674b7d040f`.
+- Official chronology/implementer provenance `18ab13b5aaeb30b902f7d4588399f7350214bcce`.
+- Candidate under review `09266fdc17e137db44495d85c6b42cf296efb89c`.
 - Branch/worktree: `task/m0-r01-audio-architecture`; `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`.
 
-## Corrected outputs
+## Outputs
 
-- `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` — 313 lines; SHA-256 `ae30b4a02a341b9d41b1c335ab2b9412d34edd26f59a5ff7de531b4dcc1e5872`.
-- `docs/research/LOW_LATENCY_RESEARCH.md` — 483 lines; SHA-256 `bf7ede0c45db30d5cd6efd99b88b9908d40c61efebae04a14505838ffd9e2216`.
+- `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`: 323 lines; SHA-256 `55fcb9ba3f4e2256b6df4b5aab74f42f3536d624dc62f68dcabb5d0959640fd4`.
+- `docs/research/LOW_LATENCY_RESEARCH.md`: 483 lines; SHA-256 `bf7ede0c45db30d5cd6efd99b88b9908d40c61efebae04a14505838ffd9e2216`.
 
-From original evidence parent to candidate, exactly those two contracted reports are added, 796 lines total. Round 2 changes only `MOBILE_AUDIO_ARCHITECTURE.md`, 6 insertions and 11 deletions, to restore the binding callback prohibition. Protected paths remain unchanged.
+Full candidate scope remains exactly those two reports, 806 lines total. Round 3 changes only `MOBILE_AUDIO_ARCHITECTURE.md`, 14 insertions and 4 deletions. Protected product/platform/dependency/configuration/ADR paths remain unchanged.
 
-## Environment and durable raw evidence
+## Durable evidence
 
-- Host: arm64 macOS 26.6.1 (25G76).
-- Git 2.50.1 (Apple Git-155); ripgrep 15.2.0; shasum 6.02; Codex CLI 0.150.0-alpha.12.2.
-- Task worktree: clean at exact candidate.
-- Local `main` and `origin/main`: `b1b0c1edd5e42d3ea791f665c22954834e962d05`. The separate main checkout's pre-existing unrelated changes are not represented as clean.
-- Raw static output: `docs/orchestration/milestones/m0/evidence/r01-verification-round2-raw.md`; SHA-256 `e3d606d047b18620b1e89742857100767dbf98883ab94343e60f50c658b8f3c6`; 142 lines.
-- Implementer/source provenance: `docs/orchestration/milestones/m0/evidence/r01-correction-round2-provenance.md`; SHA-256 `abe1b40ecec642c4e3b87a81aca0914173d7ea0c0dd6fbabf82ca8c4083801ba`; 104 lines.
+- Raw verification: `r01-verification-round3-raw.md`; SHA-256 `df2eddd17b08a97e06c0abe4b2581160a4d76549cc1182a4c512b9da52fb72b1`; 87 lines.
+- Chronology/implementer provenance: `r01-correction-round3-provenance.md`; SHA-256 `a4ed1d2a0641295e6aafea7cb6b552900c17b69fdaeb5802ce5cf89f32b1438a`; 66 lines.
+- The provenance retains official GitHub release/tag API output and exact commands, the `1.10.0` publication/creation timestamps, tag commit, complete Conductor report and source-backed rollout hashes/line counts/ordinals.
 
-The raw artifact records fully resolved commands/refs, outputs, empty-output labels, environment, candidate/protected scope, hashes, counts and callback text. The provenance artifact retains the complete literal Conductor report, exact rollout locations/hashes/line counts/ordinal, official GitHub API identities, complete immutable README response hashes/lengths and bounded source excerpts.
+## Round-3 correction
 
-## Verification results
+Official Oboe facts now recorded:
+
+- `1.10.0` was published `2025-09-15T18:59:30Z` and was available before the 2026-09-02 access date.
+- Official `1.10.0` tag commit: `a81bb9f87d4105b84b682685d3bfbb5beca371d1`.
+- Separately audited README content commit: `2a45aa2d9e94d209c4636eec4014dd83cda110f4`.
+- The report explicitly does not assert that the tag commit equals the audited README content commit.
+- The stale `2026-09-15` chronology is absent.
+
+## Static checks
 
 | Check | Result |
 |---|---|
-| Candidate/parent | `60c619ed0f54c4008e5e64ff5771576bb6a3e095`; parent `ef640cf0644b41de99302441ff539d7293443b57` |
-| Whitespace | Full candidate `git diff --check` exit 0 |
-| Full candidate scope | Exactly the two contracted reports |
-| Round-2 scope | Exactly `MOBILE_AUDIO_ARCHITECTURE.md` |
+| Candidate/parent | `09266fdc17e137db44495d85c6b42cf296efb89c` / `60c619ed0f54c4008e5e64ff5771576bb6a3e095` |
+| Full diff check | Exit 0; empty output |
+| Full scope | Exactly two contracted reports |
+| Round-3 scope | Exactly `MOBILE_AUDIO_ARCHITECTURE.md` |
 | Protected paths | Empty output; exit 0 |
-| Task cleanliness | Clean branch header only |
-| URLs | 16 file-URL occurrences; 14 normalized unique URLs |
-| Source identities | Four full SHA-pinned repository sources; official commit identities and full-response hashes retained |
-| Prior-review object | Actual full SHA exists; invalid transcription mapped explicitly |
-| Callback boundary | Exact no-blocking-work/I/O/UI/parsing/allocation/arbitrary-lock-waiting/potentially-blocking-logging rule restored; narrower rule requires later evidence-backed approval |
-| CPAL/Oboe corrections | Retained from prior candidate |
-| Measurement privacy/security gate | Retained unchanged from prior candidate |
-| TEST_STRATEGY identity fields | 11/11 retained |
-| Device/route planning | 8/8 categories and required route classes retained; no model/OS invented |
+| Task state | Clean branch header only |
+| URLs | 17 file-URL occurrences; 15 normalized unique URLs |
+| Callback boundary | Exact binding prohibition retained |
+| CPAL/privacy corrections | Retained unchanged |
+| Device/template coverage | 8/8 categories and 11/11 identity fields retained |
 
-## Round-2 finding disposition before review
+## Criteria pre-review
 
-1. Invalid prior-review SHA: corrected in current references and append-only mapping/proof.
-2. Named reviewer: named configured verifier and assigned independent QA reviewer are explicit, with exact role/child/candidate. No owner work is invented.
-3. Callback prohibition: restored exactly in candidate `60c619e…`.
-4. Implementer report: complete literal final report and immutable rollout provenance retained.
-5. Primary-source audit: controller performed a network-enabled read-only pass and retained official commit identities, complete README response hashes/lengths and bounded exact excerpts.
-6. Stale project memory: `.loop/progress.md` synchronized in state commit `c6fcc72799d953bfa314ab171c8d1860b7e8553d`.
+All ten brief criteria are structurally satisfied after the chronology correction. This is not approval. Fresh source-aware QA/Performance and Licensing/Security review must cover exact candidate `09266fd…` and exact evidence before a fresh Final Code Review.
 
-These are pre-review results, not approval.
+## Limitations
 
-## Acceptance-criteria pre-review audit
+- Static documentary verification and official release/tag retrieval only.
+- No source code was downloaded into the repository or executed.
+- No Flutter/build/software test/simulator/emulator/device/audio/MIDI/profiling/latency/thermal/soak/performance/hardware/benchmark work occurred.
+- No architecture, dependency, asset, permission, license, compatibility, support, numeric budget or product-performance conclusion was selected or approved.
+- Candidate remains unintegrated and unpublished.
 
-All ten brief criteria are structurally satisfied: current platform/candidate sources and revisions; native/portable/candidate boundaries without selection; platform channels/FFI as integration only; exact callback prohibitions and bounded ownership/lifecycle questions; separated evidence classes; distinct latency quantities; complete future methodology plus privacy/security gate; eight planning categories and routes; gap/spike/risk/decision/template coverage; and no adoption, benchmark, device result or measured-performance claim.
-
-Fresh QA/Performance and Licensing/Security review must independently confirm this. Only zero Critical and zero Important findings unlock fresh Final Code Review.
-
-## Limitations and honesty
-
-- Static/documentary inspection and read-only primary-source retrieval: performed.
-- No source was downloaded to the repository or executed.
-- No Flutter command, build, unit/widget/integration test, simulator/emulator runtime, physical-device, audio, MIDI, profiling, latency, thermal, soak, long-run, hardware or benchmark run occurred.
-- No architecture, ADR, dependency, asset, permission, license, compatibility, device/OS commitment or numeric performance budget was selected or approved.
-- Smoothness, low latency, callback safety, continuity, compatibility and reliability remain unverified product outcomes.
-- Candidate is unintegrated and unpublished.
-
-## Provisional verdict
-
-Static correction preparation: `PASS`.
-
-Task verdict: `PENDING` fresh specialist review.
+Task verdict: `PENDING` affected fresh reviews.
