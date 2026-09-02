@@ -148,3 +148,36 @@ After that verification passes, the controller must commit a separate reactivati
 ### Unchanged limits
 
 This decision does not change the M0 objective, R01–R10 queue, dependencies, definition of done, research outputs, one-writer rule, three-specialist limit, evidence requirements, correction limit, or branch/publication rules. It does not authorize product/core/UI/native code, architecture or ADR adoption, dependencies or assets, hardware operations, credentials/signing, releases, automation, task-branch or `main` publication, cleanup, M1, or unmeasured performance claims. Only the existing deterministic milestone-branch guard remains authorized for external publication.
+
+## OD-005 — Verified G01 resolution and M0 reactivation decision
+
+- Decision date: 2026-09-02, Asia/Manila.
+- Decision owner: repository owner in the same Codex conversation.
+- Responsible recorder: Roadmap Orchestrator (`/root`).
+- Decision source: OD-004's exact advance authorization to reactivate M0 after independent verification passes.
+- Exact owner authorization: `I approve the narrow G01 role-isolated dispatch correction and authorize M0 reactivation after it passes independent verification.`
+- Accepted foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`.
+- Superseding corrected M0 contract source: `13b864f09ca083d10910bcffa4432b81c040bda9` (`docs/orchestration/milestones/M0_CONTRACT.md`, version 2).
+- Runtime validation artifact: `docs/orchestration/milestones/m0/evidence/g01-role-isolated-validation.md`; initial evidence commit `ec4e76345519973d09a4dbeff6d043e6477e67bc`; accurate call-inventory correction included at `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`.
+- Independent review artifact: `docs/orchestration/milestones/m0/evidence/g01-role-isolated-review.md`; final review-record commit `88fe4ece13bfedd8b67eaa8882c5adf020654418`.
+- Reviewed implementation tip: `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`.
+- Fresh review verdict: `APPROVE`; Critical 0, Important 0, Minor 0, Blocking 0.
+
+### Decision
+
+OD-004's verification condition is satisfied. The source-backed Codex CLI `0.150.0-alpha.12.2` evidence proves the configured Conductor at `gpt-5.6-sol` / `high` / `workspace-write` and the configured Researcher, QA/Performance Verifier, Licensing/Security Reviewer, and Final Code Reviewer at their required models/efforts / `read-only`, each through a separate same-sandbox relay and child tree. The fresh independent re-review verified the exact correction, all ten probe rollouts, no probe-authored mutation, unchanged accepted main refs, and preserved paused/blocked state with zero findings.
+
+The owner therefore reactivates M0 under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. This artifact is the decisive source for the separate M0 `Paused for owner decision` to `Active` state commit. It also resolves G01 as the prerequisite owner decision for the separate R01 `Blocked` to `Eligible` transition artifact and its later ledger commit.
+
+### Required barriers
+
+1. Commit this OD-005 artifact and resolve its exact SHA.
+2. In a separate commit, record that SHA and synchronize M0 to `Active` in `M0_LEDGER.md`, `STATE.md`, `.loop/progress.md`, and only ROADMAP's leading M0 status sentence.
+3. Commit the canonical `r01-transitions.md` resolution artifact recording the prior blocker, resolution evidence, rechecked eligibility, existing brief commit, and this OD-005 commit.
+4. In a separate commit, record that artifact SHA and transition R01 from `Blocked` to `Eligible` in the ledger and permitted mirrored queue state.
+
+No research or task-body execution may occur between these barrier commits. R01 may return to `In progress` only through its separate assigned-writer transition evidence and following state commit.
+
+### Limits
+
+This decision reactivates only M0 and resolves only G01. It does not accept any research task, start M1, adopt architecture or an ADR, add a dependency or asset, authorize hardware, credentials, signing, release, automation, task-branch publication, main integration/publication, cleanup, or any product, latency, smoothness, reliability, compatibility, audio/MIDI, simulator/emulator, or physical-device claim. Existing contract gates, evidence requirements, task order/dependencies, one-writer rule, three-specialist limit, correction limit, and guarded milestone-branch-only publication authority remain unchanged.
