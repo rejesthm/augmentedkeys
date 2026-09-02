@@ -59,3 +59,18 @@ Date: `2026-09-02`
 The controller independently reproduced the clean exact-scope diff, report measurements and digest, 14-URL inventory, ten-criterion trace, non-adoptive disposition, clean task worktree, unchanged protected paths and unchanged local/remote `main`. The verification records the exact environment and all unperformed build, device, performance and adoption work.
 
 R02 may enter `In review` only through the next separate state commit. Then independent QA/Performance and Licensing/Security reviewers may assess this exact package in parallel. Final Code Review remains held until both specialist verdicts and their provenance are committed with no unresolved Critical or Important finding.
+
+## T03 — Review rejection for `In review` to `In progress`
+
+Date: `2026-09-02`
+
+- Current state: `In review`.
+- Requested next state: `In progress` through a separate shared-state commit.
+- Rejected candidate: `6a5dbf8247237477f3ac8366677b3e1f77ea61b5`.
+- Specialist review evidence: `037361c9a7f68f664631cd376841f634acaf9d44`.
+- QA/Performance: `REJECT`, Critical 0, Important 2, Minor 1.
+- Licensing/Security: `APPROVE`, Critical 0, Important 0, Minor 0.
+- Correction round: `1`.
+- Same writer: configured Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`.
+
+The Conductor must correct only the report omissions named by QA Important I2. The controller must correct verification configuration and task-start terminology under Important I1 and Minor M1. The existing disposition and all evidence gaps must remain bounded. A new candidate, corrected verification, and fresh affected specialist reviews are required before Final Code Review. No owner gate is implicated and no product, dependency, architecture, hardware, build, benchmark, publication or `main` action is authorized.
