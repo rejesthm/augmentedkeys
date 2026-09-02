@@ -46,3 +46,19 @@
 - Correction round remains 0; no candidate, QA/final task verdict, verification artifact or integration exists.
 - Dependency impact: R02/R06 await R01; the shared mixed-permission launch is not validated for independent tasks either.
 - Requested owner decision: authorize a bounded permission-preserving launch correction and validation, then explicitly resolve G01 and reactivate M0 before research resumes. No global permission broadening, core work, dependency, hardware, main integration or M1.
+
+## T04 — Resolve G01 and restore eligibility
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: Blocked → Eligible, only through the separate following ledger/index commit.
+- Prior blocker source: `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; G01 evidence in `docs/orchestration/milestones/m0/evidence/r01-runtime-gate.md`; task branch preserved clean and no candidate created.
+- Prerequisite owner decision: OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`, which exercises OD-004's exact conditional reactivation authority after verification passed.
+- Corrected contract source: `13b864f09ca083d10910bcffa4432b81c040bda9`, M0 contract version 2; M0 reactivation state commit: `bdbbd7d3a889efc8e5b4f887ab938e78d0b652a7`.
+- Resolution evidence: role-isolated correction `13b864f09ca083d10910bcffa4432b81c040bda9`; five-role runtime validation `ec4e76345519973d09a4dbeff6d043e6477e67bc`; accurate call-inventory/review-minor correction `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`; final independent review record `88fe4ece13bfedd8b67eaa8882c5adf020654418`, verdict APPROVE with Critical 0, Important 0, Minor 0, Blocking 0.
+- Existing bounded brief: `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`, `docs/orchestration/milestones/m0/tasks/r01-brief.md`. It was rechecked against contract version 2: objective, dependencies, two output paths, non-goals, acceptance criteria, evidence, required reviewers, owner gates, and publication exclusions are unchanged. No revised brief is needed because OD-004/version 2 changes only dispatch topology and adds reactivation evidence conditions; this transition binds the brief to the corrected contract and OD-005.
+- Dependencies: none. Inputs and controls remain available. Exact path authority remains only `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` and `docs/research/LOW_LATENCY_RESEARCH.md` for the future writer; root retains canonical evidence/shared-state ownership.
+- Preserved branch/worktree: `task/m0-r01-audio-architecture`, `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`, clean at `563700a839c627ff32ec2fa697e9810bc9b16a84` when eligibility was rechecked.
+- Writer at Eligible: Unassigned. The historical stopped Conductor child `01a05194-6f43-7d11-9142-eb8fc9db2aba` and unreviewed Researcher notes remain preserved as history; neither is silently resumed or treated as current evidence. A fresh same-sandbox workspace-write Conductor relay/child assignment requires a separate Eligible → In progress transition artifact and later state commit.
+- Correction round remains 0. Candidate, verification artifact, task review, reviewed integration and publication remain Not created / Not integrated.
+- Evidence honesty: G01 validation proves only the Codex role-isolation boundary. It supplies no Flutter, audio/MIDI, latency, smoothness, reliability, compatibility, simulator/emulator, device, controller, interface, dependency, licensing, architecture, or product evidence.
+- Stop conditions remain unchanged. Research may start only after this artifact is committed, the separate Eligible ledger/index transition is committed, and a separate assigned-writer transition plus state commit completes. No task work, research, integration, publication, or later transition occurs between these barriers.
