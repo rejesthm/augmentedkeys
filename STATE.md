@@ -22,7 +22,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is `Verified` and integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`; reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` remain its exact evidence.
-2. R02 is `In review` in correction round 1 at candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` through corrected verification `c4f4b2869c907355f5baf35ea09ca90d02884036`; dispatch fresh affected QA/Performance and Licensing/Security reviews.
+2. R02 is `In review` in correction round 1 at candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`; specialist evidence `c62346d3098233a5f3d4a29d932493bcfb28e80b` records QA/Performance and Licensing/Security approval with zero findings. Dispatch fresh Final Code Review.
 3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
 4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-R02 is In review in correction round 1 at candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`. The same Conductor added only 19 source-bounded report lines; controller verification `c4f4b2869c907355f5baf35ea09ca90d02884036` addresses the remaining QA evidence fields. Fresh affected specialist reviews are next; Final Code Review remains held. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.
+R02 remains In review in correction round 1 at candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`. Fresh QA/Performance and Licensing/Security reviews both approved with zero findings at `c62346d3098233a5f3d4a29d932493bcfb28e80b`. Fresh Final Code Review is next. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.

@@ -8,11 +8,11 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: dispatch fresh affected QA/Performance and Licensing/Security reviews against corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` and verification `c4f4b2869c907355f5baf35ea09ca90d02884036`; hold Final Code Review until both pass.
+Next action: dispatch one fresh independent Final Code Reviewer against corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`, verification `c4f4b2869c907355f5baf35ea09ca90d02884036`, and specialist approvals `c62346d3098233a5f3d4a29d932493bcfb28e80b`.
 
 # Active Agents
 
-No agent is active at this state boundary. The R02 corrected candidate is frozen; the controller will dispatch two fresh read-only specialist reviews and owns all shared evidence/state handoffs.
+No agent is active at this state boundary. The R02 corrected candidate and both specialist approvals are frozen; the controller will dispatch one fresh read-only Final Code Reviewer.
 
 # Research Questions
 
@@ -24,7 +24,7 @@ R01 is Verified in correction round 3; R02 is In review in correction round 1; R
 
 # In Progress
 
-- None. R02 correction round 1 is frozen for fresh affected specialist review.
+- None. R02 correction round 1 is frozen for Final Code Review.
 
 # Verification Needed
 
@@ -120,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Dispatch fresh affected R02 QA/Performance and Licensing/Security reviews against the corrected exact package; preserve both verdicts before Final Code Review.
+Dispatch fresh independent R02 Final Code Review against the exact corrected package and both specialist approvals.
