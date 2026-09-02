@@ -22,8 +22,8 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current official Apple, Android, Flutter, and candidate-project documentation; relevant platform specifications; original repositories and maintainer material; reproducible technical spikes and physical-device measurements where required.
 - **Expected output:** `MOBILE_AUDIO_ARCHITECTURE.md` and `LOW_LATENCY_RESEARCH.md`.
 - **Decision it unlocks:** Approval to define and benchmark a narrow audio-architecture spike; it does not select an engine by itself.
-- **Status:** `In review` — correction round 2
-- **Findings:** Candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` restores the binding callback rule. Provenance/source retention `486dba4b0287d5f22dbd9f6accc1879f4cd41864` and verification `550881309bbbf40a1a100386c28d46fb50bb7eac` repair controller evidence. Fresh specialist approval remains pending; candidate is unintegrated.
+- **Status:** `In progress` — correction round 3
+- **Findings:** Specialists approved round 2 with zero findings, but Final Code Review rejected candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095`: Oboe `1.10.0` was released 2025-09-15 and was available before access, not 2026-09-15. Candidate remains unintegrated pending correction and affected fresh review.
 
 ## 2. UAPMD objective evaluation
 

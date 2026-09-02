@@ -6,9 +6,9 @@ M0 — Research & Architecture (Active)
 
 Complete independent review of the exact R01 documentary candidate. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review in correction round 2 at candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` and verification `550881309bbbf40a1a100386c28d46fb50bb7eac`.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In progress in correction round 3 after final rejection `9c474aa5dd015d4a2b9d70c413ba6efe56c2f156`; prior candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` is unintegrated.
 
-Next action: run fresh QA/Performance and Licensing/Security reviews against exact candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095`, provenance `486dba4b0287d5f22dbd9f6accc1879f4cd41864` and verification `550881309bbbf40a1a100386c28d46fb50bb7eac`. Final Code Review remains locked.
+Next action: correct Oboe `1.10.0` to release date 2025-09-15/current-before-access, retain its tag commit separately from the audited README commit, regenerate evidence, and rerun affected source-aware review.
 
 # Active Agents
 
@@ -16,15 +16,15 @@ Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a74
 
 # Research Questions
 
-R01 is In review in correction round 2; R02–R10 remain Queued. No research task is Verified.
+R01 is In progress in correction round 3; R02–R10 remain Queued. No research task is Verified.
 
 # Ready Tasks
 
-- None. R01 is already In review in correction round 2.
+- None. R01 is already In progress in correction round 3.
 
 # In Progress
 
-- R01 candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` and source-retained verification are committed; fresh specialist reviews are pending.
+- R01 round-2 specialists approved, but Final Code Review rejected the Oboe chronology; bounded correction round 3 is active.
 
 # Verification Needed
 
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Run fresh QA/Performance and Licensing/Security reviews of candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` and evidence `550881309bbbf40a1a100386c28d46fb50bb7eac`; run Final Code Review only after zero Critical and zero Important specialist findings.
+Complete the Oboe chronology/source-provenance correction, regenerate R01 verification, rerun affected source-aware specialist review, then obtain a fresh Final Code Review.

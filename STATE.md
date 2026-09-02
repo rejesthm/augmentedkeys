@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. R01 is `In review` in correction round 2 at candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` and verification `550881309bbbf40a1a100386c28d46fb50bb7eac`.
-2. Run fresh QA/Performance and Licensing/Security review against the exact candidate, provenance and source-retained evidence. Final Code Review remains locked until both return zero Critical and zero Important findings.
+1. R01 is `In progress` in correction round 3; candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` remains rejected and unintegrated.
+2. Correct only the Oboe `1.10.0` chronology/current baseline, append official release/tag provenance, regenerate hashes/evidence, synchronize mirrors, and rerun affected source-aware reviews before fresh Final Code Review.
 3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-005 keeps M0 active under the validated role-isolated topology. Candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095`, provenance `486dba4b0287d5f22dbd9f6accc1879f4cd41864`, verification `550881309bbbf40a1a100386c28d46fb50bb7eac` and T10 `1f7aab05aed9134a35e227a2b11222d802b3f662` place R01 in fresh review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+OD-005 keeps M0 active under the validated role-isolated topology. Specialists approved round 2 at `c88771862e30d14a8f1aea2bb47455b61c48153c`, but Final Code Review `9c474aa5dd015d4a2b9d70c413ba6efe56c2f156` found one Important Oboe chronology error and one state-lag Minor. T11 `4fcf602972e2c355315d2fb6438a41c978dc437c` starts correction round 3. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
