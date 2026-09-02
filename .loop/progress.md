@@ -4,19 +4,19 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Run R01 documentary research through the fresh configured Conductor and permission-isolated read-only specialists. Product-core implementation remains outside scope.
+Complete independent review of the exact R01 documentary candidate. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In progress through T05 at `f7b73886c88348f72d6b1e8337c22b9eaf409a99` with a fresh configured Conductor assignment.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review at candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` and evidence `6364a055c52bb0eae5b11f75992b4d830e29219e`.
 
-Next action: fast-forward the clean R01 task worktree to this state commit, launch its workspace-write relay/configured Conductor, and execute only the bounded role dispatch it returns.
+Next action: run the required QA/Performance and Licensing/Security reviews in separate read-only trees, record their literal source-backed results, then run fresh Final Code Review.
 
 # Active Agents
 
-Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, is the sole writer. Its first turn completed without edits and requested one separate read-only Researcher pass. Historical unreviewed notes remain preserved and are not accepted evidence.
+Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, remains the sole correction writer. No review role is currently active; historical unreviewed notes remain preserved and are not accepted evidence.
 
 # Research Questions
 
-R01 is In progress; R02–R10 remain Queued. Intermediate historical source notes are preserved but no research finding or task is verified.
+R01 is In review; R02–R10 remain Queued. No research task is Verified.
 
 # Ready Tasks
 
@@ -24,7 +24,7 @@ R01 is In progress; R02–R10 remain Queued. Intermediate historical source note
 
 # In Progress
 
-- R01 is active at the exact task base with source-backed Conductor identity; the requested read-only Researcher pass is next.
+- R01 candidate and preliminary verification artifact are committed; independent specialist and final reviews are pending.
 
 # Verification Needed
 
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Launch the Conductor-requested R01 Researcher through a separate same-sandbox read-only relay, preserve its source-backed identity and literal evidence, then relay that evidence to the exact assigned Conductor for two-file synthesis.
+Launch QA/Performance and Licensing/Security reviews of exact candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` and evidence `6364a055c52bb0eae5b11f75992b4d830e29219e`, then obtain a fresh Final Code Review.
