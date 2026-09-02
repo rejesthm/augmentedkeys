@@ -17,6 +17,11 @@ in the retrieved text. Claims below are therefore bounded to the rendered
 maintainer material available during the recorded access window, not to a
 source audit of a frozen revision.
 
+The U1 platform-format table is explicitly qualified by the maintainer's note
+that a handful of formats are experimental. The retrieved text does not name
+which formats carry that status, so format-by-format maturity is unavailable
+and no listed format is classified as production-ready here. [U1]
+
 **Disposition: `retain for later spike comparison`.**
 
 This means only that the documented modularity and stated mobile/plugin paths
@@ -124,6 +129,15 @@ unsuitability.
 - Maintainer material describes project save/load, plugin binary state, a
   directed acyclic graph, latency compensation, remote scanning, offline
   rendering, JavaScript, and MCP surfaces. [U1]
+
+U1 explicitly documents JavaScript and MCP as access surfaces, but it does not
+provide a UAPMD implementation-language inventory; the rendered GitHub
+`Languages` section was unavailable in the retained response. CMake, Gradle,
+and platform build scripts are documented build interfaces, not evidence of
+the implementation languages behind each UAPMD module. AAP1 separately
+documents a C public plugin API and reference-purpose C++ and Kotlin hosting
+APIs, but those AAP language surfaces are not attributed to UAPMD itself.
+[U1][AAP1]
 
 ### Inferred documentary flow
 
@@ -293,6 +307,11 @@ workflows including `build android` and `build dist`, and 1,208 workflow runs.
 [U1][U4] The project supplies component descriptions, platform/build guidance,
 release notes, examples of broad host/sequencer responsibilities, and recent
 defect history.
+
+U2 names added undo integration tests, project-file identity tests, and a
+considerably expanded sequencer-engine output test suite. These are documentary
+release-note signals only: none of those tests was executed in R02, and no
+passing result or coverage claim follows from their names. [U2]
 
 ### Assessment
 
