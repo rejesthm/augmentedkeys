@@ -6,9 +6,9 @@ M0 — Research & Architecture (Active)
 
 Complete independent review of the exact R01 documentary candidate. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In progress in correction round 3 after final rejection `9c474aa5dd015d4a2b9d70c413ba6efe56c2f156`; prior candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095` is unintegrated.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review in correction round 3 at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and evidence `33face3c844250b9a41f293b1ac14de164d6f525`.
 
-Next action: correct Oboe `1.10.0` to release date 2025-09-15/current-before-access, retain its tag commit separately from the audited README commit, regenerate evidence, and rerun affected source-aware review.
+Next action: run affected fresh QA/Performance and Licensing/Security reviews of the corrected Oboe chronology, then fresh Final Code Review only after zero blocking findings.
 
 # Active Agents
 
@@ -16,15 +16,15 @@ Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a74
 
 # Research Questions
 
-R01 is In progress in correction round 3; R02–R10 remain Queued. No research task is Verified.
+R01 is In review in correction round 3; R02–R10 remain Queued. No research task is Verified.
 
 # Ready Tasks
 
-- None. R01 is already In progress in correction round 3.
+- None. R01 is already In review in correction round 3.
 
 # In Progress
 
-- R01 round-2 specialists approved, but Final Code Review rejected the Oboe chronology; bounded correction round 3 is active.
+- R01 round-3 candidate/evidence are committed; affected specialist and final reviews are pending.
 
 # Verification Needed
 
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete the Oboe chronology/source-provenance correction, regenerate R01 verification, rerun affected source-aware specialist review, then obtain a fresh Final Code Review.
+Run affected QA/Performance and Licensing/Security reviews of candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, then fresh Final Code Review only if both are clear.
