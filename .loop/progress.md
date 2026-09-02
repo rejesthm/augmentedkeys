@@ -4,27 +4,27 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Assign a fresh configured Conductor to eligible R01 through its separate transition and state barrier. Product-core implementation remains outside scope.
+Run R01 documentary research through the fresh configured Conductor and permission-isolated read-only specialists. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Eligible through T04 at `fa7091e7c138e3343036943ed009bf6d3ebae2da` and has no current writer.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In progress through T05 at `f7b73886c88348f72d6b1e8337c22b9eaf409a99` with a fresh configured Conductor assignment.
 
-Next gate: commit a fresh R01 assigned-writer transition, then separately transition R01 to `In progress`. No research or task-body work may run between these barrier commits.
+Next action: fast-forward the clean R01 task worktree to this state commit, launch its workspace-write relay/configured Conductor, and execute only the bounded role dispatch it returns.
 
 # Active Agents
 
-None. G01 diagnostic and review sessions have stopped. The preserved R01 worktree and original unreviewed notes remain intact; a fresh writer has not yet been assigned.
+Fresh configured R01 Conductor is assigned but not yet launched. G01 diagnostic/review sessions are stopped; historical unreviewed notes remain preserved and are not accepted evidence.
 
 # Research Questions
 
-R01 is Eligible; R02–R10 remain Queued. Intermediate source notes are preserved but no research finding or task is verified.
+R01 is In progress; R02–R10 remain Queued. Intermediate historical source notes are preserved but no research finding or task is verified.
 
 # Ready Tasks
 
-- R01 — assign one fresh configured Conductor through a same-sandbox workspace-write relay after its separate assignment evidence/state barrier.
+- None. R01 is already In progress; resume its exact branch/worktree/writer state.
 
 # In Progress
 
-- No research task or manual L1 Loop is running. R01's clean task worktree and interrupted writer are preserved.
+- R01 writer assignment is active; task execution starts only after the task branch fast-forward and source-backed Conductor dispatch.
 
 # Verification Needed
 
@@ -50,7 +50,7 @@ No research task is completed.
 
 # Blockers
 
-- G01 is resolved for the validated role-isolated same-sandbox relay topology. R01 is Eligible and awaits its separate writer-assignment barrier.
+- G01 is resolved for the validated role-isolated same-sandbox relay topology. R01 must preserve exact branch/worktree/writer ownership and evidence boundaries.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Record a fresh R01 configured-Conductor assignment in the canonical transition artifact, then make the separate ledger transition to `In progress`. Only after that barrier may R01 research resume through the validated role-isolated topology.
+Fast-forward R01's clean task branch to the In-progress state commit, launch the assigned configured Conductor, and mediate its requested read-only specialist work through separate same-sandbox relays.
