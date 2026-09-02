@@ -95,7 +95,7 @@
 
 - Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
 - From / to: In review → In progress, only through the separate following ledger/index/state commit.
-- Review-output source: `60be283266f50c64799973f64fa920ab57b190a6`, `docs/orchestration/milestones/m0/evidence/r01-review-round1.md`.
+- Review-output source: `60be2835790681859c8b38a8762ea20ac0f3c72c`, `docs/orchestration/milestones/m0/evidence/r01-review-round1.md`. The originally committed T07 text contained a transcribed invalid full SHA; history is preserved and the mapping is proven in `r01-correction-round2-provenance.md`.
 - Candidate under review: `c94abe038f9c7bad224246bbc2a5a8bf2b61974f`; preliminary verification: `6364a055c52bb0eae5b11f75992b4d830e29219e`; In-review state: `5fe715e5de2d47aa0a02b9802e313b34307aaa8d`.
 - QA/Performance verdict: REJECT; Critical 0, Important 2, Minor 1. Licensing/Security verdict: REJECT; Critical 0, Important 2, Minor 0. Final Code Review was not dispatched because Important findings remain.
 - Blocking corrections: pin Oboe, JUCE, CPAL and miniaudio to full immutable revisions and re-audit claims; correct stale CPAL source/version identity; add a mandatory privacy and secure-storage gate to future capture/measurement execution; rebuild canonical verification with exact timestamp, fully resolved commands/refs, complete relevant tool configuration, durable raw-output path/hash and named reviewer. Also correct the file-URL occurrence versus normalized-unique URL count.

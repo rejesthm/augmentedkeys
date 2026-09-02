@@ -7,7 +7,7 @@ Access date: 2026-09-02
 
 - Brief: `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`.
 - Rejected candidate: `c94abe038f9c7bad224246bbc2a5a8bf2b61974f`.
-- Round-1 review: `60be283266f50c64799973f64fa920ab57b190a6`.
+- Round-1 review: `60be2835790681859c8b38a8762ea20ac0f3c72c`. Earlier current evidence transcribed this SHA incorrectly; the append-only mapping and proof are recorded in `r01-correction-round2-provenance.md`.
 - Correction transition T07: `659f6aaf9e3a440403d4796518d668647759de93`.
 - In-progress state: `0b5418a4f60dc447858119f7d3baba252d643c9e`.
 - Read-only relay: `01a0601a-fb60-70c0-ae5e-fe99689cd10e`, `gpt-5.6-luna` / `low` / `read-only`; rollout SHA-256 `50f0b1d9c2deb2eb3d7edeeb90b30dbd8fb32832435a00456d3b7b19ba56f798` (88 lines).
