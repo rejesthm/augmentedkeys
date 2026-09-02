@@ -4,27 +4,27 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Activate R02 from its exact bounded brief, then continue the ordered M0 research queue. Product-core implementation remains outside scope.
+Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered M0 research queue. Product-core implementation remains outside scope.
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: record R02 eligibility from brief `8652877b5d87706739076da4bdc69a72fd9c01ba`, then commit writer/branch/worktree assignment before any UAPMD research begins.
+Next action: launch the requested read-only Researcher against brief `8652877b5d87706739076da4bdc69a72fd9c01ba`, preserve its primary-source findings, then return them to the assigned Conductor for the single contracted output.
 
 # Active Agents
 
-No specialist role is active. The R01 Conductor's task authority ended at Verified; the controller alone owns exact reviewed integration and shared milestone state.
+Assigned R02 Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`, owns only `docs/research/UAPMD_EVALUATION.md`. No read-only specialist is active yet. The controller owns shared evidence/state and all role handoffs.
 
 # Research Questions
 
-R01 is Verified in correction round 3; R02 is Eligible from its exact committed brief; R03–R10 remain Queued.
+R01 is Verified in correction round 3; R02 is In progress in correction round 0; R03–R10 remain Queued.
 
 # Ready Tasks
 
-- R02 is Eligible for assignment after the separate eligibility state commit.
+- None. R02 is already In progress.
 
 # In Progress
 
-- No research task is In progress. R01 is Verified and integrated; R02 awaits a separate assignment transition.
+- R02 has a committed brief, exact isolated branch/worktree and sole Conductor writer; read-only Researcher dispatch is next.
 
 # Verification Needed
 
@@ -120,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Commit the R02 writer/branch/worktree assignment, then dispatch its bounded Conductor.
+Dispatch the R02 read-only Researcher, preserve source-backed findings, and return them to the assigned Conductor.

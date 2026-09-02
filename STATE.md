@@ -22,7 +22,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is `Verified` and integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`; reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` remain its exact evidence.
-2. R02 is `Eligible` from bounded brief `8652877b5d87706739076da4bdc69a72fd9c01ba`; assign one fresh Conductor in an isolated task worktree.
+2. R02 is `In progress` through assignment evidence `d7f98804d12c37b8cf7283b3bff42c6119639ca8`; launch only the requested read-only Researcher and return its source-backed findings to the assigned Conductor.
 3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
 4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-R01 is Verified, integrated, and included in guarded milestone publication `6eabee4dd99c3761b68e52fe81a9e8e8738b600c`. This separate state commit records R02 as Eligible from exact bounded brief `8652877b5d87706739076da4bdc69a72fd9c01ba`, with no intervening task work. R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, or manual L1 Loop occurred.
+R02 is In progress through assignment evidence `d7f98804d12c37b8cf7283b3bff42c6119639ca8` with configured Conductor `Chandrasekhar` on isolated branch `task/m0-r02-uapmd`. Only a read-only Researcher is authorized next; no UAPMD report content exists yet. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, or manual L1 Loop occurred.
