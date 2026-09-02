@@ -22,7 +22,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is `In review` in correction round 3 at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and evidence `33face3c844250b9a41f293b1ac14de164d6f525`.
-2. Run affected fresh QA/Performance and Licensing/Security reviews, then a fresh Final Code Review only after both are clear.
+2. Affected fresh QA/Performance and Licensing/Security reviews are approved at `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395`; run a fresh Final Code Review.
 3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-005 keeps M0 active under the validated role-isolated topology. Candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, provenance `18ab13b5aaeb30b902f7d4588399f7350214bcce`, verification `33face3c844250b9a41f293b1ac14de164d6f525` and T12 `923702d553e2a609ef31940019f4165bf9253db0` place R01 in affected fresh review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+OD-005 keeps M0 active under the validated role-isolated topology. Candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, provenance `18ab13b5aaeb30b902f7d4588399f7350214bcce`, verification `33face3c844250b9a41f293b1ac14de164d6f525`, T12 `923702d553e2a609ef31940019f4165bf9253db0`, and specialist approval evidence `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395` place R01 at fresh Final Code Review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.

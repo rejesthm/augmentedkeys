@@ -8,7 +8,7 @@ Complete independent review of the exact R01 documentary candidate. Product-core
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review in correction round 3 at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and evidence `33face3c844250b9a41f293b1ac14de164d6f525`.
 
-Next action: run affected fresh QA/Performance and Licensing/Security reviews of the corrected Oboe chronology, then fresh Final Code Review only after zero blocking findings.
+Next action: run fresh Final Code Review. Affected QA/Performance and Licensing/Security reviews approved the corrected Oboe chronology with zero findings at `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395`.
 
 # Active Agents
 
@@ -24,7 +24,7 @@ R01 is In review in correction round 3; R02–R10 remain Queued. No research tas
 
 # In Progress
 
-- R01 round-3 candidate/evidence are committed; affected specialist and final reviews are pending.
+- R01 round-3 candidate/evidence are committed; affected specialists approved with zero findings; fresh Final Code Review is pending.
 
 # Verification Needed
 

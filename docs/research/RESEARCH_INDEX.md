@@ -23,7 +23,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Expected output:** `MOBILE_AUDIO_ARCHITECTURE.md` and `LOW_LATENCY_RESEARCH.md`.
 - **Decision it unlocks:** Approval to define and benchmark a narrow audio-architecture spike; it does not select an engine by itself.
 - **Status:** `In review` — correction round 3
-- **Findings:** Candidate `09266fdc17e137db44495d85c6b42cf296efb89c` records Oboe `1.10.0` as published 2025-09-15 with its tag commit separate from the audited README commit. Evidence `33face3c844250b9a41f293b1ac14de164d6f525`; affected fresh review pending; unintegrated.
+- **Findings:** Candidate `09266fdc17e137db44495d85c6b42cf296efb89c` records Oboe `1.10.0` as published 2025-09-15 with its tag commit separate from the audited README commit. Evidence `33face3c844250b9a41f293b1ac14de164d6f525`; affected specialists approved with zero findings at `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395`; fresh Final Code Review pending; unintegrated.
 
 ## 2. UAPMD objective evaluation
 
