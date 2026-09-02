@@ -22,8 +22,8 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current official Apple, Android, Flutter, and candidate-project documentation; relevant platform specifications; original repositories and maintainer material; reproducible technical spikes and physical-device measurements where required.
 - **Expected output:** `MOBILE_AUDIO_ARCHITECTURE.md` and `LOW_LATENCY_RESEARCH.md`.
 - **Decision it unlocks:** Approval to define and benchmark a narrow audio-architecture spike; it does not select an engine by itself.
-- **Status:** `In progress` — correction round 1
-- **Findings:** Round-1 specialist review requires immutable revisions for Oboe/JUCE/CPAL/miniaudio, corrected CPAL identity, a future-measurement privacy/security gate, and reproducible canonical verification. Prior candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` remains rejected and unintegrated.
+- **Status:** `In review` — correction round 1
+- **Findings:** Corrected candidate `ef640cf0644b41de99302441ff539d7293443b57` and reproducible evidence `dca892713555f229887fd8522e47e3533fe1d10c` address the round-1 immutable-source, CPAL-identity, measurement privacy/security and verification findings. Fresh specialist approval remains pending; candidate is unintegrated.
 
 ## 2. UAPMD objective evaluation
 

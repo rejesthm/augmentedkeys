@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. R01 is `In progress` in correction round 1; prior candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` remains rejected and unintegrated.
-2. Return the committed round-1 findings to the same Conductor, obtain fresh immutable-revision evidence from a role-isolated read-only Researcher, correct only the two contracted reports, rebuild verification, and rerun both specialist reviews before any Final Code Review.
+1. R01 is `In review` in correction round 1 at corrected candidate `ef640cf0644b41de99302441ff539d7293443b57` and verification evidence `dca892713555f229887fd8522e47e3533fe1d10c`.
+2. Run fresh QA/Performance and Licensing/Security reviews through separate role-isolated read-only relays. Run Final Code Review only if both return zero Critical and zero Important findings.
 3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-005 keeps M0 active under the validated role-isolated topology. R01 specialist review round 1 at `60be283266f50c64799973f64fa920ab57b190a6` rejected candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` with four Important findings and one Minor finding. T07 at `659f6aaf9e3a440403d4796518d668647759de93` returns R01 to In progress, correction round 1, with the same Conductor; Final Code Review was not dispatched. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+OD-005 keeps M0 active under the validated role-isolated topology. The same Conductor produced corrected candidate `ef640cf0644b41de99302441ff539d7293443b57`; exact verification evidence is `dca892713555f229887fd8522e47e3533fe1d10c`, and T08 at `aa5a97222a5fd2c7b46a7a8912fd9be6a5bafc01` moves R01 into fresh review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
