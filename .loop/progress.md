@@ -8,23 +8,23 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: dispatch one fresh independent Final Code Reviewer against corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`, verification `c4f4b2869c907355f5baf35ea09ca90d02884036`, and specialist approvals `c62346d3098233a5f3d4a29d932493bcfb28e80b`.
+Next action: integrate exact Verified R02 candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` into `milestone/m0-research`, record the integration, and publish only through the branch guard before starting R03.
 
 # Active Agents
 
-No agent is active at this state boundary. The R02 corrected candidate and both specialist approvals are frozen; the controller will dispatch one fresh read-only Final Code Reviewer.
+No agent is active at this state boundary. R02 is Verified; the controller alone owns exact-candidate milestone integration and guarded publication.
 
 # Research Questions
 
-R01 is Verified in correction round 3; R02 is In review in correction round 1; R03–R10 remain Queued.
+R01 is Verified in correction round 3; R02 is Verified in correction round 1; R03–R10 remain Queued.
 
 # Ready Tasks
 
-- None. R02 is already In review.
+- R03 becomes the next ordered task only after R02 integration and guarded milestone publication are recorded.
 
 # In Progress
 
-- None. R02 correction round 1 is frozen for Final Code Review.
+- None.
 
 # Verification Needed
 
@@ -49,6 +49,7 @@ R01 is Verified in correction round 3; R02 is In review in correction round 1; R
 No research task is Accepted.
 
 - R01 documentary research is Verified at `1c3d4618b1cbf2c583f2c4950800edaab58ee185` and integrated at `63081f5f50b03c9337f9f10032a94373f214aaa0`; it remains unaccepted until milestone decision.
+- R02 documentary research is Verified at `c7952ea12d19a6c42abc3d19425a694448256b76`; exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` remains unintegrated until the next controller step and unaccepted until milestone decision.
 
 # Blockers
 
@@ -120,4 +121,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Dispatch fresh independent R02 Final Code Review against the exact corrected package and both specialist approvals.
+Integrate and guard-publish the exact Verified R02 candidate, then brief R03 without beginning product-core work.
