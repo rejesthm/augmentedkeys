@@ -21,10 +21,10 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. R01 is `In review` in correction round 3 at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and evidence `33face3c844250b9a41f293b1ac14de164d6f525`.
-2. Affected fresh QA/Performance and Licensing/Security reviews are approved at `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395`; run a fresh Final Code Review.
-3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
-4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
+1. R01 is `Verified` at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
+2. Integrate only the exact reviewed R01 candidate into `milestone/m0-research`, record its reviewed integration tip, and then activate the highest-priority eligible successor.
+3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
+4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
 ## Watch list
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-005 keeps M0 active under the validated role-isolated topology. Candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, provenance `18ab13b5aaeb30b902f7d4588399f7350214bcce`, verification `33face3c844250b9a41f293b1ac14de164d6f525`, T12 `923702d553e2a609ef31940019f4165bf9253db0`, and specialist approval evidence `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395` place R01 at fresh Final Code Review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`. QA/Performance and Licensing/Security approved with zero findings; Final Code Review approved with zero Critical, zero Important and one deferred nonblocking Minor. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.

@@ -4,27 +4,27 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Complete independent review of the exact R01 documentary candidate. Product-core implementation remains outside scope.
+Integrate the exact Verified R01 documentary candidate, then continue the ordered M0 research queue. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review in correction round 3 at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and evidence `33face3c844250b9a41f293b1ac14de164d6f525`.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: run fresh Final Code Review. Affected QA/Performance and Licensing/Security reviews approved the corrected Oboe chronology with zero findings at `80e0f6f973ef94bc0cfe415b9017c3fde3c7d395`.
+Next action: integrate only exact reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` into `milestone/m0-research`, record the reviewed integration tip, then prepare R02 because it is the highest-priority queued task whose R01 dependency will be satisfied.
 
 # Active Agents
 
-Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, remains the sole report writer. The controller alone owns canonical evidence/state corrections. No review role is active.
+No specialist role is active. The R01 Conductor's task authority ended at Verified; the controller alone owns exact reviewed integration and shared milestone state.
 
 # Research Questions
 
-R01 is In review in correction round 3; R02–R10 remain Queued. No research task is Verified.
+R01 is Verified in correction round 3; R02–R10 remain Queued.
 
 # Ready Tasks
 
-- None. R01 is already In review in correction round 3.
+- R01 is ready for exact reviewed integration into the milestone branch.
 
 # In Progress
 
-- R01 round-3 candidate/evidence are committed; affected specialists approved with zero findings; fresh Final Code Review is pending.
+- No research task is In progress. R01 is Verified and awaiting integration.
 
 # Verification Needed
 
@@ -46,7 +46,9 @@ R01 is In review in correction round 3; R02–R10 remain Queued. No research tas
 - The owner accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and activated M0 under contract commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` through OD-001 (`e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`).
 - OD-004's role-isolated G01 correction passed five-role runtime validation and fresh independent review with zero findings. OD-005 (`5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`) reactivated M0 under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`.
 
-No research task is completed.
+No research task is Accepted.
+
+- R01 documentary research is Verified at `1c3d4618b1cbf2c583f2c4950800edaab58ee185`; it remains unintegrated and unaccepted.
 
 # Blockers
 
@@ -118,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Run affected QA/Performance and Licensing/Security reviews of candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, then fresh Final Code Review only if both are clear.
+Integrate exact reviewed R01 candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, then prepare the bounded R02 brief and eligibility transition.
