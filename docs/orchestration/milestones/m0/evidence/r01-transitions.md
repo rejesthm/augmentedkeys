@@ -79,3 +79,14 @@
 - Correction round: 0. Candidate, verification artifact, review and integration remain Not created / Not integrated.
 - Before dispatch, the clean task branch must fast-forward to the separate In-progress state commit. Research begins only afterward.
 - No dependency, asset, architecture/ADR adoption, product code, hardware, benchmark, publication, main integration, M1, or performance claim is authorized. Stop on any contract gate, permission mismatch, missing source evidence, or out-of-scope request.
+
+## T06 — Fresh assigned Conductor runtime identity
+
+- Date: 2026-09-02, Asia/Manila. State remains In progress; this records source-backed writer identity and the first dispatch request, not a state transition.
+- In-progress state and task execution base: `d1da638cf0b440ad17ceb6f6036806136e4b38e8`. The clean task branch fast-forwarded to that exact commit before launch.
+- Top-level workspace-write relay: `01a05fff-03df-7943-a68e-c316014d35fc`; saved rollout `/Users/jestherjordanminor/.codex/sessions/2026/09/02/rollout-2026-09-02T10-42-23-01a05fff-03df-7943-a68e-c316014d35fc.jsonl`; SHA-256 `4324e161a1c0731530031da3f7e016f1075b57f009dc295b4a9a0b4e1e207a37`; 40 lines. Its runtime context is project-rooted `workspace-write`; it performed only required control reads, one configured child spawn and one wait.
+- Actual configured writer: `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, role `conductor`; source-backed runtime `gpt-5.6-sol` / `high` / `workspace-write`; exact R01 task worktree.
+- Child rollout: `/Users/jestherjordanminor/.codex/sessions/2026/09/02/rollout-2026-09-02T10-42-37-01a05fff-3c57-73a3-a747-8cb5f8611940.jsonl`; SHA-256 `15a521ffa93dffd1256e19437b2b618bb6d761ee9f1c7e69f9b4b7e9d53209be`; 155 lines; 23 read-only `exec` inspections and no edit, commit, nested dispatch, publication, hardware, network, permission-change or external-mutation call.
+- First result: one exact controller dispatch request for a configured `researcher` through a separate project-rooted read-only relay/child. No second specialist was requested for the first pass; QA/Performance, Licensing/Security and Final Code Review remain later evidence/review phases.
+- The requested Researcher objective is documentary R01 evidence only, with direct primary-source URLs and dated/versioned source register; facts separated from inference, recommendation, disagreement, missing evidence and owner gates; no write authority, adoption, benchmark, hardware or performance claim.
+- Candidate remains Not created. The Conductor made no research-output edit. The controller must launch the requested Researcher separately, record its source-backed identity/context, and relay its literal evidence back to this exact Conductor session before synthesis.

@@ -12,7 +12,7 @@ Next action: fast-forward the clean R01 task worktree to this state commit, laun
 
 # Active Agents
 
-Fresh configured R01 Conductor is assigned but not yet launched. G01 diagnostic/review sessions are stopped; historical unreviewed notes remain preserved and are not accepted evidence.
+Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, is the sole writer. Its first turn completed without edits and requested one separate read-only Researcher pass. Historical unreviewed notes remain preserved and are not accepted evidence.
 
 # Research Questions
 
@@ -24,7 +24,7 @@ R01 is In progress; R02–R10 remain Queued. Intermediate historical source note
 
 # In Progress
 
-- R01 writer assignment is active; task execution starts only after the task branch fast-forward and source-backed Conductor dispatch.
+- R01 is active at the exact task base with source-backed Conductor identity; the requested read-only Researcher pass is next.
 
 # Verification Needed
 
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Fast-forward R01's clean task branch to the In-progress state commit, launch the assigned configured Conductor, and mediate its requested read-only specialist work through separate same-sandbox relays.
+Launch the Conductor-requested R01 Researcher through a separate same-sandbox read-only relay, preserve its source-backed identity and literal evidence, then relay that evidence to the exact assigned Conductor for two-file synthesis.
