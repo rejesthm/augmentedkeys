@@ -1,6 +1,6 @@
 # G01 Role-Isolated Dispatch Correction Brief
 
-Status: `Authorized setup correction; implementation not started`
+Status: `Implemented and runtime-validated; independent correction re-review pending`
 Authority: OD-004 at `82dc35ac2042ab4697b322dabd1fb03c61a5ae5a`
 Owner: Roadmap Orchestrator controller (`/root`)
 

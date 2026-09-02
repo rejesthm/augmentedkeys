@@ -49,7 +49,7 @@ Exact command shape, with the role-specific substitutions in the table below:
 
 All child `session_meta` records bind the actual configured role to its relay through `source.subagent.thread_spawn.parent_thread_id` and `agent_role`. All first child `turn_context` records use the project root above.
 
-| Configured role | Relay ID / sandbox | Child ID | Child runtime context | Child rollout SHA-256 / lines | Literal result |
+| Configured role | Relay ID / sandbox | Child ID | Child runtime context | Child rollout SHA-256 / lines | Result summary |
 |---|---|---|---|---|---|
 | `conductor` | `01a05fe0-b0a1-7070-bade-ee9a87f31b48` / `workspace-write` | `01a05fe0-f399-7302-8942-ad7c75783589` | `gpt-5.6-sol`; `high`; `workspace-write` | `86d16a787de8f7b1b5e0abb4a0c943e64f0d06dded0e60a0be8afc58a972fb27` / 68 | Returned one bounded controller dispatch request; performed no task work |
 | `researcher` | `01a05fe2-8f58-7e92-a8e5-1723124ddea7` / `read-only` | `01a05fe2-bf16-7d43-87ee-178698f634e7` | `gpt-5.6-terra`; `high`; `read-only` | `daf4a38431f0485520e2bfb8b7781a3d54e3b087c214e4833a1d4a3631fa1203` / 16 | `I cannot perform R01 research because M0 is paused and R01 remains blocked.` |
@@ -57,7 +57,7 @@ All child `session_meta` records bind the actual configured role to its relay th
 | `licensing_security_reviewer` | `01a05fe3-818c-73f2-9e84-3fc5a2f8de61` / `read-only` | `01a05fe3-aeae-7861-8544-f7f3528c040a` | `gpt-5.6-sol`; `high`; `read-only` | `57bf0bf505513bc45234187bb4905da42bd13a6e6f9a8785c48f20855e2a627b` / 16 | `No dependency, asset, credential, license conclusion, or external action is authorized by this permission probe.` |
 | `final_code_reviewer` | `01a05fe3-ee08-7521-93fc-cd002739a037` / `read-only` | `01a05fe4-1f46-7552-b3ac-6c506bca6a89` | `gpt-5.6-sol`; `xhigh`; `read-only` | `2f1cbb49fd2eff0d01b56688531bd8243c7d19bd4e74e5e368d4238feef2e9e7` / 22 | `Runtime role discovery is not final approval of the G01 correction.` |
 
-The Conductor child rollout contains no function call. Each read-only configured child rollout also contains no function call. Therefore no child attempted an edit, shell command, network call, nested dispatch, or other repository mutation. Each relay rollout contains exactly one `spawn_agent` and one `wait_agent` call and no task-work call.
+The configured-child call inventory is: Conductor, eight read-only `exec` calls; Researcher, no call; QA/Performance, one read-only `exec` call; Licensing/Security, no call; Final Code Reviewer, one read-only `exec` call. The raw rollouts show that these calls only read required controls or repository state. No child attempted an edit, network call, nested dispatch, or other repository mutation. Each relay rollout contains exactly one `spawn_agent` and one `wait_agent` call and no task-work call.
 
 ## Rollout provenance
 
