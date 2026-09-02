@@ -133,3 +133,17 @@
 - Controller-owned corrections: map mistyped `60be283266…` to actual `60be2835790681859c8b38a8762ea20ac0f3c72c` in current evidence; preserve implementer final-report provenance; retain network-enabled, content-hashed primary-source metadata/excerpts; identify the named configured reviewer transparently; regenerate verification; synchronize `.loop/progress.md` with canonical state.
 - Exact task branch/worktree remain `task/m0-r01-audio-architecture`; `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`.
 - No integration, publication, dependency/asset/permission action, architecture/ADR selection, build, device/hardware action, benchmark, performance claim, main integration or M1 is authorized.
+
+## T10 — Submit correction-round-2 candidate for fresh review
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In progress → In review, only through the separate following ledger/index/state/progress commit.
+- Correction round: 2 of maximum 5.
+- Same configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, produced the single-report correction.
+- Candidate: `60c619ed0f54c4008e5e64ff5771576bb6a3e095`; parent `ef640cf0644b41de99302441ff539d7293443b57`; round-2 diff changes only `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`.
+- Provenance/source-retention correction: `486dba4b0287d5f22dbd9f6accc1879f4cd41864`; exact Conductor report and rollout identity retained; invalid prior-review SHA mapped to actual `60be2835790681859c8b38a8762ea20ac0f3c72c`; official source identities/full-response hashes/excerpts retained.
+- Verification evidence: `550881309bbbf40a1a100386c28d46fb50bb7eac`, including raw artifact SHA-256 `e3d606d047b18620b1e89742857100767dbf98883ab94343e60f50c658b8f3c6`.
+- Named responsible pre-review verifier: Conductor `Copernicus`; named assigned independent QA reviewer: `James`, configured child `01a06028-bfa5-7c33-86cb-6f8ba50f0a8f`. Assignment is not approval.
+- Callback rule now exactly prohibits blocking work, I/O, UI work, parsing, allocation, arbitrary lock waiting and potentially blocking logging throughout the callback call graph; any narrower rule requires later evidence-backed approval.
+- Required fresh review: QA/Performance and Licensing/Security against this exact candidate/evidence/state. Final Code Review remains prohibited until both report zero Critical and zero Important findings.
+- Candidate remains unintegrated and unpublished. No product/core code, dependency/asset/permission, architecture/ADR, build, hardware/device, benchmark, measured performance, main integration or M1 occurred.
