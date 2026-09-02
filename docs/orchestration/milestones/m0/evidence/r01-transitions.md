@@ -147,3 +147,16 @@
 - Callback rule now exactly prohibits blocking work, I/O, UI work, parsing, allocation, arbitrary lock waiting and potentially blocking logging throughout the callback call graph; any narrower rule requires later evidence-backed approval.
 - Required fresh review: QA/Performance and Licensing/Security against this exact candidate/evidence/state. Final Code Review remains prohibited until both report zero Critical and zero Important findings.
 - Candidate remains unintegrated and unpublished. No product/core code, dependency/asset/permission, architecture/ADR, build, hardware/device, benchmark, measured performance, main integration or M1 occurred.
+
+## T11 — Return Final Code Review finding for correction round 3
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In review → In progress, only through the separate following ledger/index/state/progress commit.
+- Final review source: `9c474aa5dd015d4a2b9d70c413ba6efe56c2f156`, `docs/orchestration/milestones/m0/evidence/r01-final-review-round2.md`.
+- Reviewed candidate `60c619ed0f54c4008e5e64ff5771576bb6a3e095`; specialist approval `c88771862e30d14a8f1aea2bb47455b61c48153c`; verification `550881309bbbf40a1a100386c28d46fb50bb7eac`; state `9bdee5c5b6c9d06b9bed3f4fd5d331c94c70c705`.
+- Final Code Reviewer Turing verdict: REJECT; Critical 0, Important 1, Minor 1. Criterion 1 and evidence honesty fail because the Oboe `1.10.0` release year is wrong. The state-lag Minor is corrected through this transition's following state commit.
+- Controller independently confirmed the official record: Oboe `1.10.0` was published `2025-09-15T18:59:30Z`, before the 2026-09-02 access date; official tag commit `a81bb9f87d4105b84b682685d3bfbb5beca371d1`.
+- Correction round: 3 of maximum 5.
+- Same sole writer: configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`. Correct only Oboe chronology/source-register and internally dependent statements in `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`; keep the `2a45aa2d…` content commit separate from the release tag.
+- Controller must append official release/tag provenance, regenerate candidate/verification hashes, synchronize all mirrors and rerun affected source-aware specialist review before a fresh Final Code Review.
+- Prior candidate remains unintegrated and unpublished. No product/core, dependency/asset/permission, architecture/ADR, build, hardware/device, benchmark, measured performance, main integration or M1 is authorized.
