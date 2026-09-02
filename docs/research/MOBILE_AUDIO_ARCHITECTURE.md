@@ -40,7 +40,8 @@ All web sources were accessed on 2026-09-02. Live documentation may change.
 | A4 | Apple, [Handling audio interruptions](https://developer.apple.com/documentation/AVFAudio/handling-audio-interruptions) | Live, unversioned; publication date unavailable | 2026-09-02 |
 | D1 | Android Developers, [AAudio](https://developer.android.com/ndk/guides/audio/aaudio/aaudio) | Android NDK documentation; last updated 2026-03-06 UTC | 2026-09-02 |
 | D2 | Android Developers, [Low latency audio](https://developer.android.com/games/sdk/oboe/low-latency-audio) | Live guidance; last updated 2026-02-26 UTC | 2026-09-02 |
-| D3 | Google, [Oboe README at `2a45aa2d9e94d209c4636eec4014dd83cda110f4`](https://github.com/google/oboe/blob/2a45aa2d9e94d209c4636eec4014dd83cda110f4/README.md) | Immutable content commit dated 2026-08-13; not asserted to be a release tag. `1.9.3` was the last release verified before access; the `1.10.0` release record was dated 2026-09-15, after access, and is not used. | 2026-09-02 |
+| D3 | Google, [Oboe README at `2a45aa2d9e94d209c4636eec4014dd83cda110f4`](https://github.com/google/oboe/blob/2a45aa2d9e94d209c4636eec4014dd83cda110f4/README.md) | Immutable audited content commit dated 2026-08-13. It is separate from and is not asserted to equal the `1.10.0` release tag commit. | 2026-09-02 |
+| D4 | Google, [Oboe release `1.10.0`](https://github.com/google/oboe/releases/tag/1.10.0) | Official release published 2025-09-15T18:59:30Z and available before access; official tag commit `a81bb9f87d4105b84b682685d3bfbb5beca371d1`. The tag commit is not asserted to equal D3's audited README content commit. | 2026-09-02 |
 | F1 | Flutter, [Writing custom platform-specific code](https://docs.flutter.dev/platform-integration/platform-channels) | Flutter documentation 3.44.7; updated 2026-08-24; live | 2026-09-02 |
 | F2 | Flutter, [Bind to native code using FFI](https://docs.flutter.dev/platform-integration/bind-native-code) | Flutter documentation 3.44.7; updated 2026-06-08; live | 2026-09-02 |
 | C1 | JUCE maintainers, [JUCE README at `7aae7d8e8deb8413bb01633d2795ef9974a181c5`](https://github.com/juce-framework/JUCE/blob/7aae7d8e8deb8413bb01633d2795ef9974a181c5/README.md) | Immutable content commit dated 2026-08-20; not asserted to be the `9.0.1` release tag. `9.0.1` was released 2026-08-10. | 2026-09-02 |
@@ -100,6 +101,13 @@ Android 8.1/API 27 and later and OpenSL ES fallback on earlier supported
 versions. [D2] These are documentary API-selection claims, not device or
 performance results. Oboe is Android platform adaptation, not evidence of a
 cross-platform engine.
+
+Oboe `1.10.0` was officially published on 2025-09-15T18:59:30Z and was
+available before the 2026-09-02 access date; its official tag commit is
+`a81bb9f87d4105b84b682685d3bfbb5beca371d1`. [D4] The API-selection claims
+above were separately audited against README content commit
+`2a45aa2d9e94d209c4636eec4014dd83cda110f4`. [D3] This report does not claim
+that the audited README commit equals the release tag commit.
 
 These facts apply to Android platform APIs used by phone and tablet
 applications. They do not establish behavior on any particular device, Android
@@ -237,7 +245,7 @@ call-graph, lifecycle, overload, and device evidence would still be required.
 | --- | --- | --- | --- |
 | Apple `AVAudioEngine` plus `AVAudioSession` | Node graph; route and interruption notification model; preferred versus actual I/O duration. [A1][A2][A3][A4] | Apple-specific graph, session, route, and interruption adapter | Physical-device lifecycle, graph replacement, route-specific latency, callback ownership, shutdown, overload |
 | Android AAudio | Stream/callback model; asynchronous lifecycle; disconnect constraints; buffer trade-off. [D1] | Android-specific device, state, disconnect, and reopen adapter | Device/build/route variation, underruns, reconfiguration, end-to-end latency, lifecycle recovery |
-| Android Oboe | Immutable README identifies Android C++ scope and API 16+ OpenSL ES/API 27+ AAudio selection. [D3] | Android-only abstraction and version/device behavior | Device behavior, callback/lifecycle audit, release/tag resolution if needed, license review |
+| Android Oboe | Immutable README identifies Android C++ scope and API 16+ OpenSL ES/API 27+ AAudio selection; the separate official `1.10.0` release/tag identity is recorded. [D3][D4] | Android-only abstraction and version/device behavior | Device behavior, callback/lifecycle audit, version-specific license review |
 | Flutter platform channels | Asynchronous serialized control integration on the platform main thread. [F1] | Message schema, copying/serialization, ordering, backpressure, lifecycle handoff | Proof that render-time traffic never depends on the channel; bounded control protocol |
 | Flutter FFI | Native API and C-binding integration mechanism. [F2] | ABI, memory ownership, threading, packaging, error propagation | Audited call boundary and lifetime protocol; no assumption of callback suitability |
 | Portable native DSP/control core | Inferred candidate boundary; no implementation exists | ABI/language/toolchain plus separate Apple and Android adapters | Bounded queues, prepare/swap/retire, full callback call graph, lifecycle and device benchmarks |
@@ -292,8 +300,10 @@ boundaries rather than conflicting facts.
   were available to the Researcher only as JavaScript-required shells; their
   detailed current content was not treated as verified.
 - Full immutable content SHAs are recorded for the audited Oboe, JUCE, CPAL,
-  and miniaudio claims. Oboe and JUCE release-tag-to-content equivalence was not
-  established and is not asserted.
+  and miniaudio claims. Oboe's `1.10.0` tag commit and its separately audited
+  README content commit are both recorded and are not asserted to be equal.
+  JUCE release-tag-to-content equivalence was not established and is not
+  asserted.
 - No complete callback call graph, code audit, package, build, spike, simulator,
   emulator, physical-device run, controller, audio interface, trace, or benchmark
   exists for R01.
