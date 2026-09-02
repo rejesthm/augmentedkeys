@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. R01 is `Verified` at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
-2. Integrate only the exact reviewed R01 candidate into `milestone/m0-research`, record its reviewed integration tip, and then activate the highest-priority eligible successor.
+1. R01 is `Verified` and integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`; reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` remain its exact evidence.
+2. Publish only the clean guarded milestone branch, then prepare the R02 bounded brief and eligibility transition.
 3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
 4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`. QA/Performance and Licensing/Security approved with zero findings; Final Code Review approved with zero Critical, zero Important and one deferred nonblocking Minor. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+R01 is Verified and its exact reviewed candidate is integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`. QA/Performance and Licensing/Security approved with zero findings; Final Code Review approved with zero Critical, zero Important and one deferred nonblocking Minor. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, publication, or manual L1 Loop occurred.

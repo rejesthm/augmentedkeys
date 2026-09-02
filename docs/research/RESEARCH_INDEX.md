@@ -23,7 +23,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Expected output:** `MOBILE_AUDIO_ARCHITECTURE.md` and `LOW_LATENCY_RESEARCH.md`.
 - **Decision it unlocks:** Approval to define and benchmark a narrow audio-architecture spike; it does not select an engine by itself.
 - **Status:** `Verified` — correction round 3
-- **Findings:** Candidate `09266fdc17e137db44495d85c6b42cf296efb89c` passed QA/Performance, Licensing/Security, and Final Code Review with zero Critical/Important through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`. One nonblocking provenance-label Minor is deferred for milestone triage. Documentary result only; unintegrated and not an architecture or dependency adoption.
+- **Findings:** Candidate `09266fdc17e137db44495d85c6b42cf296efb89c` passed QA/Performance, Licensing/Security, and Final Code Review with zero Critical/Important through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`; integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`. One nonblocking provenance-label Minor is deferred for milestone triage. Documentary result only; not an architecture or dependency adoption.
 
 ## 2. UAPMD objective evaluation
 

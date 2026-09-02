@@ -4,11 +4,11 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Integrate the exact Verified R01 documentary candidate, then continue the ordered M0 research queue. Product-core implementation remains outside scope.
+Publish the clean milestone branch after exact R01 integration, then continue the ordered M0 research queue. Product-core implementation remains outside scope.
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: integrate only exact reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` into `milestone/m0-research`, record the reviewed integration tip, then prepare R02 because it is the highest-priority queued task whose R01 dependency will be satisfied.
+Next action: use the milestone-only branch guard for tip `63081f5f50b03c9337f9f10032a94373f214aaa0`, then prepare R02 because its R01 dependency is satisfied.
 
 # Active Agents
 
@@ -20,11 +20,11 @@ R01 is Verified in correction round 3; R02–R10 remain Queued.
 
 # Ready Tasks
 
-- R01 is ready for exact reviewed integration into the milestone branch.
+- R02 becomes the highest-priority task for bounded briefing after guarded milestone publication.
 
 # In Progress
 
-- No research task is In progress. R01 is Verified and awaiting integration.
+- No research task is In progress. R01 is Verified and integrated; R02 remains Queued until its separate brief and eligibility commits.
 
 # Verification Needed
 
@@ -48,7 +48,7 @@ R01 is Verified in correction round 3; R02–R10 remain Queued.
 
 No research task is Accepted.
 
-- R01 documentary research is Verified at `1c3d4618b1cbf2c583f2c4950800edaab58ee185`; it remains unintegrated and unaccepted.
+- R01 documentary research is Verified at `1c3d4618b1cbf2c583f2c4950800edaab58ee185` and integrated at `63081f5f50b03c9337f9f10032a94373f214aaa0`; it remains unaccepted until milestone decision.
 
 # Blockers
 
@@ -120,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Integrate exact reviewed R01 candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, then prepare the bounded R02 brief and eligibility transition.
+Guard-publish the recorded milestone tip, then prepare the bounded R02 brief and eligibility transition.
