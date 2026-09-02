@@ -1,18 +1,18 @@
 # Current Milestone
 
-M0 — Research & Architecture (Paused for owner decision)
+M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Await owner direction on a role-isolated orchestration redesign after three nested mixed-permission corrections failed G01. M0 research remains paused; product-core implementation remains outside scope.
+Complete the evidence-backed R01 `Blocked` to `Eligible` barrier after verified G01 resolution. Product-core implementation remains outside scope.
 
-Status: M0 is Paused for owner decision through `998fb53884f986154e1238ea3d76539adc565b70` (MT-001). R01 is Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e`; its run is stopped.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 remains Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e` until its separate resolution artifact and state commit.
 
-Next gate: approve or reject a governance redesign using separate permission-isolated agent trees with root-mediated handoffs. OD-003's configuration candidate was tested, failed the Conductor boundary and was reverted. No M0 reactivation, research, core implementation or M1 is authorized.
+Next gate: commit the canonical R01 G01-resolution artifact, then separately transition R01 to `Eligible`. No research or task-body work may run between these barrier commits.
 
 # Active Agents
 
-None. The OD-003 relay and diagnostic Conductor stopped after the Conductor inherited read-only; no Researcher or reviewer was launched. The preserved R01 writer and original unreviewed research notes remain intact. Exact identities and outcomes are in `r01-runtime-gate.md` and `g01-launch-recovery.md`. No QA/security/final recovery or task review ran.
+None. G01 diagnostic and review sessions have stopped. The preserved R01 worktree and original unreviewed notes remain intact; a fresh writer has not yet been assigned.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01 is Blocked; R02–R10 remain Queued. Intermediate source notes are preserved
 
 # Ready Tasks
 
-- None while M0 is paused. Preserve R01; do not dispatch through the unvalidated mixed-permission launch.
+- None until R01's `Blocked` to `Eligible` barrier completes. Use only the validated role-isolated launch topology.
 
 # In Progress
 
@@ -44,12 +44,13 @@ R01 is Blocked; R02–R10 remain Queued. Intermediate source notes are preserved
 - Independent final review approved the gated Roadmap Orchestrator setup with no remaining Critical or Important finding. At setup approval, the workflow remained inactive; OD-001 subsequently activated M0.
 
 - The owner accepted foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05` and activated M0 under contract commit `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` through OD-001 (`e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`).
+- OD-004's role-isolated G01 correction passed five-role runtime validation and fresh independent review with zero findings. OD-005 (`5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`) reactivated M0 under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`.
 
 No research task is completed.
 
 # Blockers
 
-- G01: nested agents inherit one effective parent sandbox in every tested launch on codex-cli 0.150.0-alpha.12.2. Workspace-write parents make the Researcher workspace-write; a project read-only parent makes the Conductor read-only. A role-isolated governance design, successful runtime evidence and independent review remain outstanding.
+- G01 is resolved for the validated role-isolated same-sandbox relay topology. R01 remains administratively Blocked until its separate eligibility barrier is committed.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -117,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Present a bounded role-isolated orchestration design for owner approval; do not implement it, retry nested mixed permissions, resume research or replace the preserved R01 writer yet. Any approved design must keep one write task, at most three specialists, root-controlled handoffs, exact role/runtime evidence, and all existing owner gates. Successful recovery/reviews, an explicit reactivation decision and separate milestone/task state barriers remain required.
+Commit R01's canonical G01-resolution transition artifact, then make the separate ledger transition to `Eligible`. After that, record a fresh assigned-writer transition and state commit before resuming R01 research through the validated role-isolated topology.
