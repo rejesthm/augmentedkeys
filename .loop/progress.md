@@ -6,25 +6,25 @@ M0 — Research & Architecture (Active)
 
 Complete independent review of the exact R01 documentary candidate. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In review at candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` and evidence `6364a055c52bb0eae5b11f75992b4d830e29219e`.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is In progress in correction round 2; candidate `ef640cf0644b41de99302441ff539d7293443b57` remains rejected and unintegrated after review `befd18b970c02f3f0372ec5058ac9c28ebbcae78`.
 
-Next action: run the required QA/Performance and Licensing/Security reviews in separate read-only trees, record their literal source-backed results, then run fresh Final Code Review.
+Next action: restore the exact binding callback prohibition and repair current provenance, named-reviewer, durable source-audit, implementer-report and state evidence; then submit a new candidate/evidence pair for fresh specialist review. Final Code Review remains locked.
 
 # Active Agents
 
-Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, remains the sole correction writer. No review role is currently active; historical unreviewed notes remain preserved and are not accepted evidence.
+Configured R01 Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, remains the sole report writer. The controller alone owns canonical evidence/state corrections. No review role is active.
 
 # Research Questions
 
-R01 is In review; R02–R10 remain Queued. No research task is Verified.
+R01 is In progress in correction round 2; R02–R10 remain Queued. No research task is Verified.
 
 # Ready Tasks
 
-- None. R01 is already In progress; resume its exact branch/worktree/writer state.
+- None. R01 is already In progress in correction round 2; resume its exact branch/worktree/writer state.
 
 # In Progress
 
-- R01 candidate and preliminary verification artifact are committed; independent specialist and final reviews are pending.
+- R01 candidate `ef640cf0644b41de99302441ff539d7293443b57` is rejected and unintegrated; bounded report/evidence/state corrections are active under T09.
 
 # Verification Needed
 
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Launch QA/Performance and Licensing/Security reviews of exact candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f` and evidence `6364a055c52bb0eae5b11f75992b4d830e29219e`, then obtain a fresh Final Code Review.
+Complete R01 correction round 2 under T09, then submit the exact new candidate and regenerated evidence to fresh QA/Performance and Licensing/Security review. Final Code Review remains conditional on zero Critical and zero Important specialist findings.

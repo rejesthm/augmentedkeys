@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. R01 is `In review` in correction round 1 at corrected candidate `ef640cf0644b41de99302441ff539d7293443b57` and verification evidence `dca892713555f229887fd8522e47e3533fe1d10c`.
-2. Run fresh QA/Performance and Licensing/Security reviews through separate role-isolated read-only relays. Run Final Code Review only if both return zero Critical and zero Important findings.
+1. R01 is `In progress` in correction round 2; candidate `ef640cf0644b41de99302441ff539d7293443b57` remains rejected and unintegrated.
+2. Same Conductor restores the exact callback prohibition. The controller repairs the bad prior-review SHA, preserves implementer/source provenance, names the configured reviewer, regenerates verification, and keeps all state mirrors synchronized before fresh specialist review.
 3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-005 keeps M0 active under the validated role-isolated topology. The same Conductor produced corrected candidate `ef640cf0644b41de99302441ff539d7293443b57`; exact verification evidence is `dca892713555f229887fd8522e47e3533fe1d10c`, and T08 at `aa5a97222a5fd2c7b46a7a8912fd9be6a5bafc01` moves R01 into fresh review. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
+OD-005 keeps M0 active under the validated role-isolated topology. Fresh reviews at `befd18b970c02f3f0372ec5058ac9c28ebbcae78` rejected candidate `ef640cf0644b41de99302441ff539d7293443b57`; T09 at `d779f5526ad23c20e3475d935ef4b386ac9e005c` starts correction round 2 with the same Conductor and controller-owned evidence repairs. R02–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, integration, publication, or manual L1 Loop occurred.
