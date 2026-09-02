@@ -90,3 +90,18 @@
 - First result: one exact controller dispatch request for a configured `researcher` through a separate project-rooted read-only relay/child. No second specialist was requested for the first pass; QA/Performance, Licensing/Security and Final Code Review remain later evidence/review phases.
 - The requested Researcher objective is documentary R01 evidence only, with direct primary-source URLs and dated/versioned source register; facts separated from inference, recommendation, disagreement, missing evidence and owner gates; no write authority, adoption, benchmark, hardware or performance claim.
 - Candidate remains Not created. The Conductor made no research-output edit. The controller must launch the requested Researcher separately, record its source-backed identity/context, and relay its literal evidence back to this exact Conductor session before synthesis.
+
+## T07 — Return rejected candidate for correction round 1
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In review → In progress, only through the separate following ledger/index/state commit.
+- Review-output source: `60be283266f50c64799973f64fa920ab57b190a6`, `docs/orchestration/milestones/m0/evidence/r01-review-round1.md`.
+- Candidate under review: `c94abe038f9c7bad224246bbc2a5a8bf2b61974f`; preliminary verification: `6364a055c52bb0eae5b11f75992b4d830e29219e`; In-review state: `5fe715e5de2d47aa0a02b9802e313b34307aaa8d`.
+- QA/Performance verdict: REJECT; Critical 0, Important 2, Minor 1. Licensing/Security verdict: REJECT; Critical 0, Important 2, Minor 0. Final Code Review was not dispatched because Important findings remain.
+- Blocking corrections: pin Oboe, JUCE, CPAL and miniaudio to full immutable revisions and re-audit claims; correct stale CPAL source/version identity; add a mandatory privacy and secure-storage gate to future capture/measurement execution; rebuild canonical verification with exact timestamp, fully resolved commands/refs, complete relevant tool configuration, durable raw-output path/hash and named reviewer. Also correct the file-URL occurrence versus normalized-unique URL count.
+- Correction round: 1 of maximum 5.
+- Preserved sole writer: same configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, through saved workspace-write relay `01a05fff-03df-7943-a68e-c316014d35fc`. No substitute writer is authorized.
+- Exact task branch/worktree: `task/m0-r01-audio-architecture`; `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`.
+- The Conductor may edit only `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` and `docs/research/LOW_LATENCY_RESEARCH.md`. Root owns canonical verification, review evidence and shared state.
+- Because immutable source identity requires fresh public evidence, the same Conductor must first return an exact read-only Researcher correction dispatch request. The controller will launch that configured role in its own read-only relay and mediate the committed evidence back to the Conductor.
+- The prior candidate remains unintegrated. No task integration, publication, dependency/architecture adoption, product code, device work, performance claim, main integration or M1 is authorized.
