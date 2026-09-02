@@ -148,8 +148,31 @@ manifest containing:
 - calibration procedure, error budget, clock-alignment method, artifact plan,
   and responsible operator/reviewer.
 
+Future capture or measurement execution is **Blocked** unless that manifest
+also defines and receives approval for all of the following privacy and security
+controls:
+
+- data classification for every audio/MIDI capture, trace, log, device or user
+  identifier, environment record, local path, and derived report;
+- synthetic and non-personal input signals wherever they can satisfy the
+  measurement boundary;
+- informed consent and a controlled environment for any ambient or microphone
+  capture that could record a person or third-party content;
+- least-privilege application, device, microphone, MIDI, file, trace, and tool
+  permissions, with no permission broadened merely for convenience;
+- secret, credential, token, account, personal, device-identifier, and local-path
+  redaction before an artifact leaves its approved capture environment;
+- an approved local or access-controlled storage location, named authorized
+  readers, and encryption at rest or in transit where applicable;
+- explicit separate authority for every network transfer or external upload;
+- artifact-specific retention periods, review checkpoints, and verified deletion
+  procedures for raw and derived data; and
+- a prohibition on public artifact links and on URLs containing credentials,
+  tokens, signed access parameters, or other reusable authorization material.
+
 Unset fields make the run `Blocked`, not failed. This report supplies no values
-for owner-gated hardware or numeric acceptance budgets.
+for owner-gated hardware or numeric acceptance budgets. Missing any privacy or
+security control above also keeps execution `Blocked`.
 
 ### Gate 2: calibrate instruments and clocks
 
@@ -263,6 +286,12 @@ Retain immutable or content-hashed copies of:
 - warnings, failed and inconclusive trials, and operator notes; and
 - the completed evidence record below.
 
+Retention must use only the approved local or access-controlled storage and
+retention/deletion rules from Gate 1. Public links, credential-bearing links,
+and unapproved network transfers are prohibited. Artifact copies must preserve
+the approved redaction and encryption controls; hashing does not itself make
+sensitive content safe to retain or disclose.
+
 An independent reviewer must confirm boundaries, calibration, commit,
 environment, artifacts, computations, exclusions, and conclusion scope. A rerun
 is a new evidence record; it does not replace the earlier result.
@@ -320,8 +349,9 @@ They must not be guessed.
   session/stream mode.
 - **Result:** `Pass`, `Fail`, `Blocked`, or `Inconclusive` against the predeclared
   criteria, with measured values where required.
-- **Artifact/log location:** Repository path or durable link to raw captures,
-  logs, traces, recordings, reports, and content hashes.
+- **Artifact/log location:** Approved local or access-controlled location for
+  raw captures, logs, traces, recordings, reports, and content hashes. Never a
+  public or credential-bearing link.
 - **Reviewer:** Named person responsible for checking that the evidence supports
   the claim.
 
@@ -335,6 +365,27 @@ They must not be guessed.
   `Not applicable`.
 - **Measurement instruments:** Exact models, firmware/software, acquisition rate,
   channels, probes, actuator/detector/microphone, and cabling.
+
+### Privacy, security, and retention
+
+- **Data classification:** Classification for every raw and derived artifact,
+  identifier, environment record, and path.
+- **Synthetic/non-personal input plan:** How personal or ambient data is avoided
+  where possible.
+- **Ambient-capture consent:** Responsible person, consent record, controlled
+  environment, or `Not applicable` with reason.
+- **Least-privilege permissions:** Exact approved application, device, capture,
+  file, and tracing permissions.
+- **Redaction:** Secrets, credentials, tokens, accounts, personal/device
+  identifiers, and local paths removed or transformed before transfer.
+- **Approved storage and access:** Local or access-controlled location, named
+  readers, and applicable encryption at rest/in transit.
+- **Network-transfer authority:** Exact separate approval and destination, or
+  `No network transfer authorized`.
+- **Retention and deletion:** Per-artifact retention period, review checkpoint,
+  deletion owner, procedure, and verification evidence.
+- **Link safety:** Confirmation that no public or credential-bearing artifact
+  URL is used.
 
 ### Calibration, clocks, and error
 
