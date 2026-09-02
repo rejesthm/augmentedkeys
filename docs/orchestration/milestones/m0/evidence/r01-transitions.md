@@ -160,3 +160,13 @@
 - Same sole writer: configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`. Correct only Oboe chronology/source-register and internally dependent statements in `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`; keep the `2a45aa2d…` content commit separate from the release tag.
 - Controller must append official release/tag provenance, regenerate candidate/verification hashes, synchronize all mirrors and rerun affected source-aware specialist review before a fresh Final Code Review.
 - Prior candidate remains unintegrated and unpublished. No product/core, dependency/asset/permission, architecture/ADR, build, hardware/device, benchmark, measured performance, main integration or M1 is authorized.
+
+## T12 — Submit correction-round-3 candidate for affected fresh review
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In progress → In review, only through the separate following ledger/index/state/progress commit.
+- Candidate `09266fdc17e137db44495d85c6b42cf296efb89c`; parent `60c619ed0f54c4008e5e64ff5771576bb6a3e095`; round-3 diff changes only `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`.
+- Official chronology/implementer provenance `18ab13b5aaeb30b902f7d4588399f7350214bcce`; verification `33face3c844250b9a41f293b1ac14de164d6f525`.
+- Oboe `1.10.0` is now recorded as published 2025-09-15T18:59:30Z with tag commit `a81bb9f87d4105b84b682685d3bfbb5beca371d1`, separate from audited README content commit `2a45aa2d9e94d209c4636eec4014dd83cda110f4`.
+- Required affected fresh review: QA/Performance and Licensing/Security against exact candidate/evidence; then fresh Final Code Review only if both are clear.
+- Candidate remains unintegrated/unpublished; all product, adoption, hardware, benchmark, performance, main and M1 boundaries remain unchanged.
