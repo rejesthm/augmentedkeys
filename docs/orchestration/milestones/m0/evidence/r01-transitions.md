@@ -62,3 +62,20 @@
 - Correction round remains 0. Candidate, verification artifact, task review, reviewed integration and publication remain Not created / Not integrated.
 - Evidence honesty: G01 validation proves only the Codex role-isolation boundary. It supplies no Flutter, audio/MIDI, latency, smoothness, reliability, compatibility, simulator/emulator, device, controller, interface, dependency, licensing, architecture, or product evidence.
 - Stop conditions remain unchanged. Research may start only after this artifact is committed, the separate Eligible ledger/index transition is committed, and a separate assigned-writer transition plus state commit completes. No task work, research, integration, publication, or later transition occurs between these barriers.
+
+## T05 — Assign fresh role-isolated R01 writer
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: Eligible → In progress, only through the separate following ledger/index/state commit.
+- Eligibility state commit and starting milestone tip: `4c71fee112314979925b816dcd518938e0b18478`.
+- Prerequisite eligibility evidence: T04 at `fa7091e7c138e3343036943ed009bf6d3ebae2da`.
+- Owner authority: OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`; corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`.
+- Exact bounded brief: `docs/orchestration/milestones/m0/tasks/r01-brief.md` at `b50e58e187f60b20ab9f12c7306af63a3cba3a9e`, rechecked and bound to contract version 2 by T04.
+- Exact task branch: `task/m0-r01-audio-architecture`.
+- Exact worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`.
+- Assigned sole writer: fresh configured `conductor`, planned unique task name `r01_conductor_v2`, through one project-rooted top-level `workspace-write` relay with an exactly one same-sandbox configured Conductor child. Actual relay/child IDs and source-backed context will be recorded after dispatch; no historical child is resumed.
+- Exclusive writer files: `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` and `docs/research/LOW_LATENCY_RESEARCH.md`. Root alone owns canonical evidence and shared state. No other write task is active.
+- Required initial action: the Conductor reads the committed controls and returns exact controller dispatch requests for only the read-only specialist roles materially required for R01. It must not directly launch specialists or begin unsupported synthesis. The controller launches each requested role through a separate same-sandbox read-only relay and mediates findings back to this writer.
+- Correction round: 0. Candidate, verification artifact, review and integration remain Not created / Not integrated.
+- Before dispatch, the clean task branch must fast-forward to the separate In-progress state commit. Research begins only afterward.
+- No dependency, asset, architecture/ADR adoption, product code, hardware, benchmark, publication, main integration, M1, or performance claim is authorized. Stop on any contract gate, permission mismatch, missing source evidence, or out-of-scope request.
