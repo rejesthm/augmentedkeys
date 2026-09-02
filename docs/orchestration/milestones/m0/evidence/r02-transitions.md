@@ -74,3 +74,18 @@ Date: `2026-09-02`
 - Same writer: configured Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`.
 
 The Conductor must correct only the report omissions named by QA Important I2. The controller must correct verification configuration and task-start terminology under Important I1 and Minor M1. The existing disposition and all evidence gaps must remain bounded. A new candidate, corrected verification, and fresh affected specialist reviews are required before Final Code Review. No owner gate is implicated and no product, dependency, architecture, hardware, build, benchmark, publication or `main` action is authorized.
+
+## T04 — Corrected candidate for `In progress` to `In review`
+
+Date: `2026-09-02`
+
+- Current state: `In progress`, correction round 1.
+- Requested next state: `In review` through a separate shared-state commit.
+- Prior rejected candidate: `6a5dbf8247237477f3ac8366677b3e1f77ea61b5`.
+- Corrected candidate: `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`.
+- Correction provenance: `cef5147fa992f2b22824d2153719ef0ddbb6691d`.
+- Corrected canonical verification: `c4f4b2869c907355f5baf35ea09ca90d02884036`.
+- Writer-content comparison base: `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05`.
+- Assignment/state lifecycle base: `bfbe3abd7cc3576386f971a247f4a96e5c1f7187`.
+
+The same Conductor changed only the report with 19 additions and no deletions, addressing QA Important I2 while retaining the exact disposition and all non-adoption limits. The controller added the explicit documentary/static configuration fields required by Important I1 and clarified the two comparison-base meanings under Minor M1. Full writer content remains exactly one contracted report. Fresh QA/Performance and affected Licensing/Security review of the corrected package are required; Final Code Review remains held.
