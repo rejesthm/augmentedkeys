@@ -8,11 +8,11 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: record and guard-publish R02 milestone integration `f7e2670ee7c9d12d47467e13139420a347b8cc29`, then create the bounded R03 brief and eligibility transition.
+Next action: create the bounded R03 Apple audio/AUv3 research brief and its separate eligibility transition.
 
 # Active Agents
 
-No agent is active at this state boundary. R02 is Verified and integrated; the controller owns integration evidence, guarded publication and the next R03 brief barrier.
+No agent is active at this state boundary. R02 is Verified, integrated and guard-published; the controller owns the next R03 brief barrier.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01 is Verified in correction round 3; R02 is Verified in correction round 1; R0
 
 # Ready Tasks
 
-- R03 becomes the next ordered task after guarded R02 milestone publication is recorded.
+- R03 is the next ordered task and awaits its bounded brief.
 
 # In Progress
 
@@ -121,4 +121,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Record and guard-publish the R02 integration, then brief R03 without beginning product-core work.
+Brief R03 without beginning product-core work.

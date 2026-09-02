@@ -22,7 +22,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is `Verified` and integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`; reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` remain its exact evidence.
-2. R02 is `Verified` and integrated at milestone tip `f7e2670ee7c9d12d47467e13139420a347b8cc29`; record and guard-publish the milestone state, then begin the bounded R03 brief.
+2. R02 is `Verified`, integrated and guard-published through evidence `22bf9f15b503bc11a3238638b1f4aacea26df922`; begin the bounded R03 brief.
 3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
 4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-R02 is Verified and exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` is integrated at milestone tip `f7e2670ee7c9d12d47467e13139420a347b8cc29`; finalized verification is `c7952ea12d19a6c42abc3d19425a694448256b76`. Guarded milestone publication and then R03 briefing are next. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.
+R02 is Verified and exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` is integrated at milestone tip `f7e2670ee7c9d12d47467e13139420a347b8cc29`; guarded publication of state tip `14004c5059a772943fc6949034d656c1d357b0e8` passed and is recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922`. R03 briefing is next. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.
