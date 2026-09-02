@@ -8,23 +8,23 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: return QA Important I2 to the same R02 Conductor for a bounded report correction while the controller adds explicit configuration and task-start terminology to verification; then commit a new candidate and rerun affected specialist review.
+Next action: dispatch fresh affected QA/Performance and Licensing/Security reviews against corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` and verification `c4f4b2869c907355f5baf35ea09ca90d02884036`; hold Final Code Review until both pass.
 
 # Active Agents
 
-No agent is active at this state boundary. R02 Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`, retains sole report ownership for correction round 1. The controller owns shared evidence/state corrections and all review handoffs.
+No agent is active at this state boundary. The R02 corrected candidate is frozen; the controller will dispatch two fresh read-only specialist reviews and owns all shared evidence/state handoffs.
 
 # Research Questions
 
-R01 is Verified in correction round 3; R02 is In progress in correction round 1; R03–R10 remain Queued.
+R01 is Verified in correction round 3; R02 is In review in correction round 1; R03–R10 remain Queued.
 
 # Ready Tasks
 
-- None. R02 is already In progress.
+- None. R02 is already In review.
 
 # In Progress
 
-- R02 correction round 1: same Conductor corrects report omissions; controller corrects verification configuration and comparison-base terminology.
+- None. R02 correction round 1 is frozen for fresh affected specialist review.
 
 # Verification Needed
 
@@ -120,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Resume the same R02 Conductor with QA Important I2 and preserve its correction provenance; update controller-owned verification for Important I1 and Minor M1.
+Dispatch fresh affected R02 QA/Performance and Licensing/Security reviews against the corrected exact package; preserve both verdicts before Final Code Review.
