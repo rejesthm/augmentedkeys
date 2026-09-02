@@ -39,3 +39,23 @@ No Apple Specialist, Android Specialist, or Flutter Builder is requested for R02
 Stop for any constitution or contract gate; missing or contradictory decision-driving primary evidence; architecture/ADR selection; dependency, asset, package, SDK, submodule or license-clearance action; credentials; licensing/legal uncertainty; hardware, build, benchmark, simulator/emulator/device work; out-of-allowlist path; destructive or unauthorized external action; unsupported real-time, compatibility, continuity, reliability or performance claim; failed safety gate; unresolved Critical/Important finding; scope expansion; or missing exact commits required by a review dispatch.
 
 This artifact assigns bounded ownership but does not itself change task state or authorize work before the separate ledger/state transition records its exact commit.
+
+## T02 — Candidate for `In progress` to `In review`
+
+Date: `2026-09-02`
+
+- Current state: `In progress`.
+- Requested next state: `In review` through a separate shared-state commit.
+- Exact candidate: `6a5dbf8247237477f3ac8366677b3e1f77ea61b5`.
+- Candidate parent/task-content base: `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05`.
+- Contracted output: exactly `docs/research/UAPMD_EVALUATION.md`.
+- Researcher evidence: `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05`.
+- Conductor provenance: `04b8fd1a2b49a10033e698090c051c40898bcc7d`.
+- Canonical pre-review verification: `8530cd1e30054b933175836063d2056579b6b458`.
+- Correction round: `0`.
+
+### Gate result
+
+The controller independently reproduced the clean exact-scope diff, report measurements and digest, 14-URL inventory, ten-criterion trace, non-adoptive disposition, clean task worktree, unchanged protected paths and unchanged local/remote `main`. The verification records the exact environment and all unperformed build, device, performance and adoption work.
+
+R02 may enter `In review` only through the next separate state commit. Then independent QA/Performance and Licensing/Security reviewers may assess this exact package in parallel. Final Code Review remains held until both specialist verdicts and their provenance are committed with no unresolved Critical or Important finding.
