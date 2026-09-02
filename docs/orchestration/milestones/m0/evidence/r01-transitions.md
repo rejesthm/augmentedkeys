@@ -119,3 +119,17 @@
 - Pre-review correction results: four repository sources pinned to full immutable SHAs; CPAL current/historical identity reconciled; Oboe post-access release conflict corrected; future measurement execution privacy/security gate added; canonical verification timestamp, exact commands/configuration, raw location/hash, named reviewer and URL counts corrected.
 - Required fresh review: separate configured QA/Performance and Licensing/Security read-only relays/children against exact candidate and evidence. Final Code Review remains prohibited unless both specialist reviews contain zero Critical and zero Important findings.
 - Candidate remains unintegrated and unpublished. No product/core code, dependency, asset, permission, architecture/ADR, build, device, hardware, benchmark, measured performance, main integration or M1 occurred.
+
+## T09 — Return fresh-review findings for correction round 2
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In review → In progress, only through the separate following ledger/index/state/progress commit.
+- Review-output source: `befd18b970c02f3f0372ec5058ac9c28ebbcae78`, `docs/orchestration/milestones/m0/evidence/r01-review-correction-round1.md`.
+- Candidate under review: `ef640cf0644b41de99302441ff539d7293443b57`; evidence `dca892713555f229887fd8522e47e3533fe1d10c`; In-review state `e2deead1a5bc36de3a9aadd97d4e9314ffab1964`.
+- QA/Performance: REJECT, Critical 0 / Important 5 / Minor 0. Licensing/Security: REJECT, Critical 0 / Important 2 / Minor 0. Final Code Review was not dispatched.
+- Correction round: 2 of maximum 5.
+- Same sole report writer: configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, via relay `01a05fff-03df-7943-a68e-c316014d35fc`.
+- Sole writer correction: restore the exact binding hard-real-time prohibition in `docs/research/MOBILE_AUDIO_ARCHITECTURE.md`; do not weaken it to bounded allocation or nonblocking I/O. No other product/research conclusion change is authorized unless necessary for internal consistency.
+- Controller-owned corrections: map mistyped `60be283266…` to actual `60be2835790681859c8b38a8762ea20ac0f3c72c` in current evidence; preserve implementer final-report provenance; retain network-enabled, content-hashed primary-source metadata/excerpts; identify the named configured reviewer transparently; regenerate verification; synchronize `.loop/progress.md` with canonical state.
+- Exact task branch/worktree remain `task/m0-r01-audio-architecture`; `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r01-audio-architecture`.
+- No integration, publication, dependency/asset/permission action, architecture/ADR selection, build, device/hardware action, benchmark, performance claim, main integration or M1 is authorized.
