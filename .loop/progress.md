@@ -8,11 +8,11 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: integrate exact Verified R02 candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` into `milestone/m0-research`, record the integration, and publish only through the branch guard before starting R03.
+Next action: record and guard-publish R02 milestone integration `f7e2670ee7c9d12d47467e13139420a347b8cc29`, then create the bounded R03 brief and eligibility transition.
 
 # Active Agents
 
-No agent is active at this state boundary. R02 is Verified; the controller alone owns exact-candidate milestone integration and guarded publication.
+No agent is active at this state boundary. R02 is Verified and integrated; the controller owns integration evidence, guarded publication and the next R03 brief barrier.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01 is Verified in correction round 3; R02 is Verified in correction round 1; R0
 
 # Ready Tasks
 
-- R03 becomes the next ordered task only after R02 integration and guarded milestone publication are recorded.
+- R03 becomes the next ordered task after guarded R02 milestone publication is recorded.
 
 # In Progress
 
@@ -49,7 +49,7 @@ R01 is Verified in correction round 3; R02 is Verified in correction round 1; R0
 No research task is Accepted.
 
 - R01 documentary research is Verified at `1c3d4618b1cbf2c583f2c4950800edaab58ee185` and integrated at `63081f5f50b03c9337f9f10032a94373f214aaa0`; it remains unaccepted until milestone decision.
-- R02 documentary research is Verified at `c7952ea12d19a6c42abc3d19425a694448256b76`; exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` remains unintegrated until the next controller step and unaccepted until milestone decision.
+- R02 documentary research is Verified at `c7952ea12d19a6c42abc3d19425a694448256b76` and integrated at `f7e2670ee7c9d12d47467e13139420a347b8cc29`; it remains unaccepted until milestone decision.
 
 # Blockers
 
@@ -121,4 +121,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Integrate and guard-publish the exact Verified R02 candidate, then brief R03 without beginning product-core work.
+Record and guard-publish the R02 integration, then brief R03 without beginning product-core work.
