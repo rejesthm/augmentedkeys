@@ -21,8 +21,8 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## High priority
 
-1. Complete R01's canonical `Blocked` to `Eligible` evidence and state barrier; no research runs before that barrier completes.
-2. Preserve the clean R01 branch/worktree at `563700a839c627ff32ec2fa697e9810bc9b16a84` until a fresh assigned-writer transition is committed.
+1. R01 is `Eligible` through T04 at `fa7091e7c138e3343036943ed009bf6d3ebae2da`; commit a fresh assigned-writer transition before research resumes.
+2. Preserve the clean R01 branch/worktree at `563700a839c627ff32ec2fa697e9810bc9b16a84` until that assigned-writer transition and its separate state commit complete.
 3. Use only the validated role-isolated relay topology; do not retry a nested mixed-permission launch.
 4. Stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-OD-004's narrow role-isolated correction was implemented at `13b864f09ca083d10910bcffa4432b81c040bda9`, runtime-validated at `ec4e76345519973d09a4dbeff6d043e6477e67bc`, corrected at `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`, and independently approved with zero findings in review record `88fe4ece13bfedd8b67eaa8882c5adf020654418`. OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` reactivated M0 under contract version 2. R01 remains Blocked pending its separate eligibility barrier; R02–R10 remain Queued. No research task, product/core change, dependency action, hardware action, performance measurement, publication, or manual L1 Loop ran during reactivation.
+OD-004's narrow role-isolated correction was implemented at `13b864f09ca083d10910bcffa4432b81c040bda9`, runtime-validated at `ec4e76345519973d09a4dbeff6d043e6477e67bc`, corrected at `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`, and independently approved with zero findings in review record `88fe4ece13bfedd8b67eaa8882c5adf020654418`. OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` reactivated M0 under contract version 2. T04 at `fa7091e7c138e3343036943ed009bf6d3ebae2da` resolved G01 and restored R01 to Eligible; R02–R10 remain Queued. No research task, product/core change, dependency action, hardware action, performance measurement, publication, or manual L1 Loop ran during these barriers.

@@ -4,11 +4,11 @@ M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Complete the evidence-backed R01 `Blocked` to `Eligible` barrier after verified G01 resolution. Product-core implementation remains outside scope.
+Assign a fresh configured Conductor to eligible R01 through its separate transition and state barrier. Product-core implementation remains outside scope.
 
-Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 remains Blocked through `411e9ff73b1390ed1c95c24c8c09cc284c63645e` until its separate resolution artifact and state commit.
+Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Eligible through T04 at `fa7091e7c138e3343036943ed009bf6d3ebae2da` and has no current writer.
 
-Next gate: commit the canonical R01 G01-resolution artifact, then separately transition R01 to `Eligible`. No research or task-body work may run between these barrier commits.
+Next gate: commit a fresh R01 assigned-writer transition, then separately transition R01 to `In progress`. No research or task-body work may run between these barrier commits.
 
 # Active Agents
 
@@ -16,11 +16,11 @@ None. G01 diagnostic and review sessions have stopped. The preserved R01 worktre
 
 # Research Questions
 
-R01 is Blocked; R02–R10 remain Queued. Intermediate source notes are preserved but no research finding or task is verified.
+R01 is Eligible; R02–R10 remain Queued. Intermediate source notes are preserved but no research finding or task is verified.
 
 # Ready Tasks
 
-- None until R01's `Blocked` to `Eligible` barrier completes. Use only the validated role-isolated launch topology.
+- R01 — assign one fresh configured Conductor through a same-sandbox workspace-write relay after its separate assignment evidence/state barrier.
 
 # In Progress
 
@@ -50,7 +50,7 @@ No research task is completed.
 
 # Blockers
 
-- G01 is resolved for the validated role-isolated same-sandbox relay topology. R01 remains administratively Blocked until its separate eligibility barrier is committed.
+- G01 is resolved for the validated role-isolated same-sandbox relay topology. R01 is Eligible and awaits its separate writer-assignment barrier.
 - Product-core work remains outside M0.
 
 # Evidence Log
@@ -118,4 +118,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Commit R01's canonical G01-resolution transition artifact, then make the separate ledger transition to `Eligible`. After that, record a fresh assigned-writer transition and state commit before resuming R01 research through the validated role-isolated topology.
+Record a fresh R01 configured-Conductor assignment in the canonical transition artifact, then make the separate ledger transition to `In progress`. Only after that barrier may R01 research resume through the validated role-isolated topology.
