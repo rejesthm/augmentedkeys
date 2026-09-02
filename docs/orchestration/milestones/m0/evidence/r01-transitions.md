@@ -105,3 +105,17 @@
 - The Conductor may edit only `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` and `docs/research/LOW_LATENCY_RESEARCH.md`. Root owns canonical verification, review evidence and shared state.
 - Because immutable source identity requires fresh public evidence, the same Conductor must first return an exact read-only Researcher correction dispatch request. The controller will launch that configured role in its own read-only relay and mediate the committed evidence back to the Conductor.
 - The prior candidate remains unintegrated. No task integration, publication, dependency/architecture adoption, product code, device work, performance claim, main integration or M1 is authorized.
+
+## T08 — Submit corrected candidate for fresh review
+
+- Date: 2026-09-02, Asia/Manila; responsible role: Roadmap Orchestrator.
+- From / to: In progress → In review, only through the separate following ledger/index/state commit.
+- Correction round: 1 of maximum 5.
+- Same sole writer: configured Conductor `/root/r01_conductor_v2`, child `01a05fff-3c57-73a3-a747-8cb5f8611940`, via relay `01a05fff-03df-7943-a68e-c316014d35fc`.
+- Correction Researcher evidence: `efd3a124137e98c10072ff21af582cca2ac908c9`; configured Researcher child `01a0601b-4948-7bc1-b325-99913adc84cb`, read-only.
+- Corrected candidate: `ef640cf0644b41de99302441ff539d7293443b57`; parent rejected candidate `c94abe038f9c7bad224246bbc2a5a8bf2b61974f`.
+- Candidate scope: exactly `docs/research/MOBILE_AUDIO_ARCHITECTURE.md` and `docs/research/LOW_LATENCY_RESEARCH.md`; controller verified and committed the exact Conductor content after its sandbox denied Git lock creation.
+- Corrected verification evidence: `dca892713555f229887fd8522e47e3533fe1d10c`, including exact raw-output artifact `docs/orchestration/milestones/m0/evidence/r01-verification-round1-raw.md` with SHA-256 `62daa6d2f3175cf97a41f59de754b9354a0d892b3fe39cafce53cb5e755205bc`.
+- Pre-review correction results: four repository sources pinned to full immutable SHAs; CPAL current/historical identity reconciled; Oboe post-access release conflict corrected; future measurement execution privacy/security gate added; canonical verification timestamp, exact commands/configuration, raw location/hash, named reviewer and URL counts corrected.
+- Required fresh review: separate configured QA/Performance and Licensing/Security read-only relays/children against exact candidate and evidence. Final Code Review remains prohibited unless both specialist reviews contain zero Critical and zero Important findings.
+- Candidate remains unintegrated and unpublished. No product/core code, dependency, asset, permission, architecture/ADR, build, device, hardware, benchmark, measured performance, main integration or M1 occurred.
