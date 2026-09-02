@@ -22,7 +22,7 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 ## High priority
 
 1. R01 is `Verified` and integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`; reviewed candidate `09266fdc17e137db44495d85c6b42cf296efb89c` and finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` remain its exact evidence.
-2. R02 is `In review` at exact candidate `6a5dbf8247237477f3ac8366677b3e1f77ea61b5` through verification `8530cd16beedfd3994a20d9a9c96910205cd05f8`; dispatch independent QA/Performance and Licensing/Security review of that frozen package.
+2. R02 is `In progress` in correction round 1 through review evidence `037361c9a7f68f664631cd376841f634acaf9d44`; the same Conductor must correct QA Important I2 while the controller corrects verification Important I1 and Minor M1.
 3. Preserve the nonblocking Final Code Review Minor for whole-milestone triage; it does not authorize changing the reviewed candidate.
 4. Use only the validated role-isolated relay topology; stop at non-delegable owner gates and at the completed M0 package; do not begin M1.
 
@@ -37,4 +37,4 @@ The M0 Goal belongs to Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milest
 
 ## Last run
 
-R02 is In review at candidate `6a5dbf8247237477f3ac8366677b3e1f77ea61b5`, which adds only `docs/research/UAPMD_EVALUATION.md`; verification `8530cd16beedfd3994a20d9a9c96910205cd05f8` passed static scope checks. Independent QA/Performance and Licensing/Security reviews are next; Final Code Review remains held. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.
+R02 returned to In progress for correction round 1 at transition `e6df25db3e049eaf0f258bdb069291f982feb67f`. QA/Performance rejected candidate `6a5dbf8247237477f3ac8366677b3e1f77ea61b5` with two Important and one Minor finding; Licensing/Security approved with zero findings. Same-writer report and controller-evidence corrections are next, followed by a new candidate and fresh affected review. Final Code Review remains held. R01 remains Verified and integrated; R03–R10 remain Queued. No product/core change, dependency action, hardware action, performance measurement, adoption, or manual L1 Loop occurred.
