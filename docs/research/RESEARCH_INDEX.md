@@ -32,8 +32,8 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** The original UAPMD repository and documentation, maintainer material, relevant specifications, issue history where material, and reproducible spikes or measurements against predeclared criteria.
 - **Expected output:** `UAPMD_EVALUATION.md`.
 - **Decision it unlocks:** Evidence-backed inclusion or exclusion of UAPMD in a later architecture ADR.
-- **Status:** `In progress`
-- **Findings:** R01 dependency satisfied. Exact bounded brief `8652877b5d87706739076da4bdc69a72fd9c01ba` and assignment evidence `d7f98804d12c37b8cf7283b3bff42c6119639ca8` authorize one Conductor-owned documentary output. Read-only Researcher dispatch is next; no adoption, build, benchmark, device, architecture or licensing-clearance authority exists.
+- **Status:** `In review` — correction round 0
+- **Findings:** Candidate `6a5dbf8247237477f3ac8366677b3e1f77ea61b5` adds only `UAPMD_EVALUATION.md` and recommends `retain for later spike comparison`; static scope and evidence checks pass through verification `8530cd16beedfd3994a20d9a9c96910205cd05f8`. Independent QA/Performance and Licensing/Security review, then fresh Final Code Review, remain required. No adoption, build, benchmark, device, architecture or licensing-clearance authority exists.
 
 ## 3. iOS/iPadOS audio and AUv3 hosting
 

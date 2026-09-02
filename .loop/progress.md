@@ -8,23 +8,23 @@ Complete the bounded R02 documentary UAPMD evaluation, then continue the ordered
 
 Status: M0 is Active through OD-005 at `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under corrected contract source `13b864f09ca083d10910bcffa4432b81c040bda9`. R01 is Verified at candidate `09266fdc17e137db44495d85c6b42cf296efb89c` through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`.
 
-Next action: launch the requested read-only Researcher against brief `8652877b5d87706739076da4bdc69a72fd9c01ba`, preserve its primary-source findings, then return them to the assigned Conductor for the single contracted output.
+Next action: launch independent QA/Performance and Licensing/Security reviewers against frozen candidate `6a5dbf8247237477f3ac8366677b3e1f77ea61b5` and verification `8530cd16beedfd3994a20d9a9c96910205cd05f8`; hold Final Code Review until both verdicts are committed.
 
 # Active Agents
 
-Assigned R02 Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`, owns only `docs/research/UAPMD_EVALUATION.md`. No read-only specialist is active yet. The controller owns shared evidence/state and all role handoffs.
+No agent is active at this state boundary. R02 Conductor `Chandrasekhar`, child `01a060d7-c366-7121-9614-98aaad0c4441`, completed the frozen candidate. The controller owns shared evidence/state and will dispatch two fresh read-only specialist reviews.
 
 # Research Questions
 
-R01 is Verified in correction round 3; R02 is In progress in correction round 0; R03–R10 remain Queued.
+R01 is Verified in correction round 3; R02 is In review in correction round 0; R03–R10 remain Queued.
 
 # Ready Tasks
 
-- None. R02 is already In progress.
+- None. R02 is already In review.
 
 # In Progress
 
-- R02 has a committed brief, exact isolated branch/worktree and sole Conductor writer; read-only Researcher dispatch is next.
+- None. R02's candidate is frozen for independent review.
 
 # Verification Needed
 
@@ -120,4 +120,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Dispatch the R02 read-only Researcher, preserve source-backed findings, and return them to the assigned Conductor.
+Dispatch R02 QA/Performance and Licensing/Security review against the exact committed candidate and verification; preserve both verdicts before any Final Code Review.
