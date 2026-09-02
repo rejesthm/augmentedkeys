@@ -1,6 +1,6 @@
 # R02 Verification Evidence
 
-Status: `CORRECTED CANDIDATE COMMITTED — fresh affected specialist and final reviews pending`
+Status: `VERIFIED PACKAGE — ready for separate task-state transition`
 Timestamp: `2026-09-02T15:17:29+08:00`
 
 ## Responsibility and lineage
@@ -16,6 +16,8 @@ Timestamp: `2026-09-02T15:17:29+08:00`
 - Correction transition/state: `e6df25db3e049eaf0f258bdb069291f982feb67f`; `a8c6eea1322668cedeb83949b4d985f9a500e342`.
 - Correction provenance: `cef5147fa992f2b22824d2153719ef0ddbb6691d`.
 - Corrected candidate: `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`; direct parent `6a5dbf8247237477f3ac8366677b3e1f77ea61b5`.
+- Fresh specialist approvals: `c62346d3098233a5f3d4a29d932493bcfb28e80b`.
+- Fresh Final Code Review approval: `9b9f6150d40826e32044ccda41235ee1548054ea`.
 - Writer task-content start/comparison base: `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05`, the tip immediately before any report content existed.
 - Assignment/state lifecycle base: `bfbe3abd7cc3576386f971a247f4a96e5c1f7187`. Its full-history diff includes controller-owned assignment, state, Researcher and index evidence committed before report writing; it is not used to misclassify those governance paths as Conductor output.
 - Branch/worktree: `task/m0-r02-uapmd`; `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r02-uapmd`.
@@ -80,19 +82,20 @@ Timestamp: `2026-09-02T15:17:29+08:00`
 - Feature flags/product configuration: `Not applicable`; none enabled or changed.
 - Candidate source configuration/toolchain: `Not applicable`; no clone, checkout, submodule, SDK, package or toolchain was resolved.
 
-## Required review gates
+## Independent review result
 
-1. Independent QA/Performance review of exact candidate, verification and provenance for real-time, measurement, environment, device and evidence claims.
-2. Independent Licensing/Security review of the same package for dependency, license, permission, privacy, credential, redistribution and supply-chain boundaries.
-3. If both specialist reviews have no unresolved Critical or Important finding, one fresh independent Final Code Review of the complete exact package.
+- QA/Performance correction-round-1 review: `APPROVE`; Critical 0, Important 0, Minor 0. Round-0 I1, I2 and M1 are closed; all ten criteria and evidence honesty pass.
+- Licensing/Security correction-round-1 review: `APPROVE`; Critical 0, Important 0, Minor 0. No adoption, dependency, asset, permission, entitlement, credential, redistribution or supply-chain change; all clearance boundaries remain explicit.
+- Fresh Final Code Review: `APPROVE`; Critical 0, Important 0, Minor 0; spec compliance `PASS`; evidence honesty `PASS`; no blocking finding or correction.
+- Review provenance, exact child/relay configurations, hashes, line counts, final ordinals, commands and limitations are preserved in `r02-review-round1.md` and `r02-final-review-round1.md`.
 
-Any Critical or Important finding returns R02 to the same Conductor for a bounded correction round. This artifact must be finalized with exact review evidence before a separate `In review` to `Verified` transition.
+The approvals bind only to exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`. Any later content change requires affected verification and review again.
 
 ## Limitations
 
 - Documentary/static verification only; public source retrieval evidence is preserved in the Researcher and Conductor provenance.
 - No source clone, checkout, submodule initialization, package resolution, build, executable test, simulator, emulator, physical device, audio, MIDI, profiling, latency, thermal, soak, continuity, performance or hardware work occurred.
 - No architecture, dependency, asset, permission, license clearance, commercial suitability, platform compatibility, minimum OS, support promise, numeric budget or product-performance conclusion was selected or approved.
-- The candidate is not integrated or published. `main` remains unchanged.
+- At finalization time the candidate is not integrated or published. `main` remains unchanged.
 
-Pre-review verdict: `PASS FOR INDEPENDENT REVIEW` — all static contract checks passed; no review approval is implied.
+Task verdict: `PASS` — zero Critical, Important or Minor findings remain; eligible for the separate `In review` to `Verified` state transition.
