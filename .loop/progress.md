@@ -16,11 +16,11 @@ R01–R04 Verified; R05–R10 Queued. No task/milestone Accepted. R04 candidate 
 
 # Ready Tasks
 
-R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; guarded publication pending. R05 follows its own committed brief/eligibility/assignment barriers; a local non-executable draft is prepared.
+R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; guarded publication proved at `980a9576b2b37ac6a9364d1e5ad21f52c847db9f`. R05 follows its own committed brief/eligibility/assignment barriers; a local non-executable draft is prepared.
 
 # In Progress
 
-Controller R04 guarded publication; integration complete. No manual L1 Loop or product implementation.
+R04 verification/integration/publication complete; R05 briefing next. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Publish integrated Verified R04 through milestone guard; then bind R05 MIDI research brief. No architecture/adoption, main integration or M1 activation.
+Bind R05 MIDI research brief, then separate eligibility/assignment barriers. No architecture/adoption, main integration or M1 activation.
