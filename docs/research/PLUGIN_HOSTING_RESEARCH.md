@@ -336,22 +336,26 @@ compatibility result. Access date: 2026-10-23 (Asia/Manila).
 
 | ID | Original source / inspected moving identity | Documentary fact or limitation |
 | --- | --- | --- |
-| H1 | [AAP core README](https://github.com/atsushieno/aap-core), `main` at access | README labels AAP as active/unstable and documents apps/services, metadata, MIDI 2 messaging, and AAPXS. Browser did not expose a full branch-tip SHA. |
-| H2 | [AAP Developers Guide](https://github.com/atsushieno/aap-core/blob/main/docs/DEVELOPERS.md), `main` at access | Inspected full host/plugin package, service, metadata, AIDL/Binder, shared-memory, lifecycle, and hosting text. Full immutable SHA unavailable through browser. |
-| H3 | [AAP core LICENSE](https://github.com/atsushieno/aap-core/blob/main/LICENSE), `main` at access | Repository license text is MIT; README names additional component licenses. This is not clearance. |
-| H4 | [AAP-JUCE README](https://github.com/atsushieno/aap-juce/blob/main/README.md), `main` at access | Inspected host/plugin, instability, porting, UI, patch, and build-toolchain statements. Full immutable SHA unavailable through browser. |
-| H5 | [AAP-JUCE GUI guide](https://github.com/atsushieno/aap-juce/blob/main/docs/JUCE_GUI_SUPPORT.md), `main` at access | Inspected remote-view/plugin-process GUI and manifest/service examples; it labels requirements including API 29 for that route. |
-| H6 | [AAP-JUCE LICENSE](https://github.com/atsushieno/aap-juce/blob/main/LICENSE), `main` at access | License body identifies GNU AGPLv3. |
+| H1 | [AAP core README](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/README.md), `682e7…3ec3` (C17/C22) | Active/unstable AAP, apps/services, metadata, MIDI 2 messaging, and AAPXS. |
+| H2 | [AAP Developers Guide](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/DEVELOPERS.md), `682e7…3ec3` (C48) | Full host/plugin package, service, metadata, AIDL/Binder, shared-memory, lifecycle, and hosting text. |
+| H3 | [AAP core LICENSE](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/LICENSE), `682e7…3ec3` (C23) | MIT text; README names additional component licenses. Not clearance. |
+| H4 | [AAP-JUCE README](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/README.md), `07b99…b3d4` (C18/C25) | Host/plugin, instability, porting, UI, patch, and build-toolchain statements. |
+| H5 | [AAP-JUCE GUI guide](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/docs/JUCE_GUI_SUPPORT.md), `07b99…b3d4` (C49) | Remote-view/plugin-process GUI and manifest/service example; API 29 for that stated route. |
+| H6 | [AAP-JUCE LICENSE](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/LICENSE), `07b99…b3d4` (C26) | GNU AGPLv3 license body. |
 
-The controller must later retain full bodies and pin full Git SHAs for H1–H6
-before a source-dependent spike. This task read no archive or repository clone,
-ran no build, and incorporated no code.
+Controller capture C17–C27/C48–C49 resolved the initial browser/DNS retrieval
+failure with 200 bodies, full SHAs, URLs, access times, and hashes. No archive,
+clone, build, or code incorporation occurred.
 
-**Retrieval limitation:** Browser-opened AAP pages did not expose a full
-branch-tip SHA. A read-only `git ls-remote` for both repositories failed on
-2026-10-23 with `Could not resolve host: github.com`; no clone, download, or
-write occurred. These moving-branch pages are not substitutes for immutable
-controller-captured source evidence.
+**Android controls inspected:** Controller captured on 2026-10-23
+[C09 activity lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
+(displayed 2026-10-19), [C10 app sandbox](https://source.android.com/docs/security/app-sandbox)
+(2026-09-30), [C11 bound services](https://developer.android.com/guide/components/bound-services)
+(2026-10-20), and [C12 runtime permissions](https://developer.android.com/training/permissions/requesting)
+(2026-10-16). The cited AAP-core `682e7a6871a6c1414619dc483c1e234cb44e3ec3`
+[C30 real-time document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/REALTIME_SAFETY.md)
+and [C31 lifecycle document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/AAPXS_LIFECYCLE.md)
+are pinned source texts; no displayed revision date was supplied.
 
 ## Host/plugin/process boundary
 
@@ -382,17 +386,20 @@ controller-captured source evidence.
 | Boundary | Known from H1–H5 | Unknown / must be separately tested |
 | --- | --- | --- |
 | Package/identity | PackageManager finds exported services; metadata carries a plugin unique ID/version. | Authenticity, signer continuity, naming collision policy, update/revocation policy, and Play-distribution status. |
-| Process/UID | Host/client and plugin service are distinct application/process participants; Binder is used. | Exact UID relation, SELinux/domain behavior, permissions, crash/stall containment, memory/CPU scheduling, or recovery guarantees. |
+| Process/UID | Host/client and plugin service are distinct application/process participants; Binder is used. Android's sandbox assigns each app a distinct UID and isolates files by default (C10). | Exact UID relation, SELinux/domain behavior, permissions, crash/stall containment, memory/CPU scheduling, or recovery guarantees. |
 | IPC/data | AIDL/Binder methods and `ParcelFileDescriptor` shared-memory exchange are documented. | Validation/size/lifetime/ownership of buffers, data confidentiality/integrity, backpressure, fd leakage, malformed service behavior, and deadline bounds. |
 | State | AAP supports extension/state concepts and metadata includes identity/version. | State schema/size/source trust, storage/container location, migration, encryption, retention, deletion, backup, or privacy disclosure. |
 | UI | AAP-JUCE documents a remote Android View/plugin-process editor path and says it is preliminary. | View lifecycle, accessibility, input focus, malicious/misbehaving UI, host containment, UI crash recovery, and Flutter integration. |
 | MIDI/render | AAP uses MIDI 2/UMP-related messaging and plugin processing lifecycle exists. | Controller compatibility, timestamp semantics, render timing, audible latency, event loss/ordering, and callback safety. |
 
-Separate process or Binder transport is not a proof of safety, sandbox
-sufficiency, reliable recovery, low latency, trusted input, or compatible
-plugin behavior. No AAP source establishes cross-app file/container access for
-an arbitrary host and plugin; all file/resource/state access must therefore be
-treated as an explicit component-specific question.
+Android documents that a bound service is available only while clients bind,
+unless also started (C11); activity/process death and recreation remain normal
+lifecycle possibilities (C09), and runtime permissions can be revoked (C12).
+Thus future scope must identify package/UID, exported/bound/started service,
+permission grant/revocation, file/state owner and restore path. Separate
+process/Binder is not proof of safety, sandbox sufficiency, reliable recovery,
+low latency, trusted input, or compatible behavior; no AAP source establishes
+cross-app file/container access for an arbitrary host/plugin.
 
 ## Lifecycle, render, and control-plane separation
 
@@ -411,13 +418,13 @@ bounded, preallocated data-exchange path could later become render-visible.
 Do not invoke Binder, JNI, Kotlin, service discovery, UI, persistence, plugin
 load/unload, or arbitrary plugin control calls from the future audio callback.
 
-**Disagreement/limit:** AAP's guide presents service/process architecture and
-some tracing capability; it also says APIs are unstable, Kotlin/Binder are not
-RT-safe, and the supplied proof-of-concept host is a static generator rather
-than live processing [H1–H2]. That is evidence against treating framework
-availability or separate processes as callback-safety evidence. It does not
-prove an AAP host cannot be engineered safely after a bounded platform-specific
-spike.
+**Disagreement/limit:** C30 calls Binder mutex paths inevitable blockers and
+directs non-RT extension work off the audio path; C31 describes newer typed
+request/cancellation/lifecycle rules that also put control operations outside
+`process()`. They differ in mechanism and must not be reconciled by assumption.
+Together with H1–H2's unstable/reference APIs and static-generator sample,
+they reject a framework-label or process-separation safety claim but do not
+prove a future bounded host cannot be evaluated.
 
 ## AAP-JUCE surface and toolchain limits
 

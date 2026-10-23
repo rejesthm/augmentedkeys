@@ -15,17 +15,18 @@ adoption or license clearance.
 
 | Source | Inspected identity | What was inspected | Limitation |
 | --- | --- | --- | --- |
-| Android NDK AAudio guide/reference | Current official web documentation, accessed 2026-10-23 | Stream, callback, lifecycle, format, timestamp, and API-availability entries | Web content is moving; this is not an Android-version/product baseline. |
-| Android Oboe guide | Current official web documentation, last updated 2026-02-26 UTC, accessed 2026-10-23 | API/backend statement and low-latency guidance | Guidance is not a device measurement or suitability proof. |
-| `google/oboe` | `main` commit `2a45aa2d9e94d209c4636eec4014dd83cda110f4`, shown by GitHub commits page, accessed 2026-10-23 | Commit identity and repository license page | No source checkout, build, or source-call-graph review occurred. |
-| `atsushieno/aap-core` | Moving `main` branch, accessed 2026-10-23 | README, LICENSE, Developers Guide | Browser did not expose a full commit object for this repository; immutable revision capture is a controller evidence gap. |
-| `atsushieno/aap-juce` | Moving `main` branch, accessed 2026-10-23 | README, GUI support, porting surface, LICENSE | Browser did not expose a full commit object; this is not a stable interface claim. |
+| Android NDK AAudio guide/reference | Current official pages C02/C05, captured 2026-10-23; displayed revisions 2026-03-06 UTC / 2026-08-27 UTC | Stream, callback, lifecycle, format, timestamp, and API-availability entries | Web content is moving; this is not an Android-version/product baseline. |
+| Android Oboe guide | Official C50; related low-latency guide C04 displayed last updated 2026-02-26 UTC, captured 2026-10-23 | API/backend statement and low-latency guidance | Guidance is not a device measurement or suitability proof. |
+| `google/oboe` | current `main` `4468344c8fdfdd7df068d5abefe2d8615fd6b431` (C15); latest release `1.11.0` (C16) | Pinned README/LICENSE/full guide/callback sources C19–21/C45–47 | No source checkout, build, or source-call-graph review occurred. |
+| `atsushieno/aap-core` | current `main` `682e7a6871a6c1414619dc483c1e234cb44e3ec3` (C17) | Pinned README/LICENSE/tree and Developers Guide C22–24/C48 | Exact capture does not establish a stable interface or adoption. |
+| `atsushieno/aap-juce` | current `main` `07b99087c3675b7fa41c0bae61525d8d0bc4b3d4` (C18) | Pinned README/LICENSE/tree and GUI guide C25–27/C49 | Exact capture does not establish a stable interface or adoption. |
 
-The two unpinned AAP branch identities are deliberately not represented as
-immutable revisions. Before any future experiment relies on either, the
-controller must capture the full commit SHA, exact bodies, and content hashes.
-The Oboe short GitHub history link was expanded to the full SHA above; all
-other repository conclusions below remain tied to the accessed `main` pages.
+Controller independently captured 47 initial plus four reconciliation bodies
+(51 HTTP-200 responses) with URLs, SHA-256, and access times. This report cites
+and the writer inspected only the relevant subset listed here; capture alone
+does not establish review of every body. The earlier Oboe SHA
+`2a45aa2d9e94d209c4636eec4014dd83cda110f4` is historical (2026-08-13), not
+the observed current main; no source is adopted.
 
 ## Claim-to-source matrix
 
@@ -36,15 +37,15 @@ other repository conclusions below remain tied to the accessed `main` pages.
 | A3 | The callback is real-time; Android explicitly prohibits allocation, file/network work, mutexes, sleep, stop/close, and read/write on its stream. | [AAudio NDK reference](https://developer.android.com/ndk/reference/group/audio) |
 | A4 | AAudio data callbacks start after start and stop after pause/stop; callbacks are not simultaneous across multiple threads. | [AAudio NDK reference](https://developer.android.com/ndk/reference/group/audio) |
 | A5 | A disconnected stream must be stopped and closed; callback-mode disconnection uses an error callback and closure from that callback thread can deadlock. | [AAudio guide](https://developer.android.com/ndk/guides/audio/aaudio/aaudio) |
-| A6 | `getTimestamp` reports a played/recorded frame time; frames written are monotonic application/endpoint counters. | [AAudio NDK reference](https://developer.android.com/ndk/reference/group/audio) |
-| A7 | Oboe exposes one native C++ API from Android 4.1/API 16; its documented backend is AAudio on API 27+ and OpenSL ES below that. | [Android Oboe guide](https://developer.android.com/games/sdk/oboe) |
-| A8 | The Android low-latency guide recommends requests for low-latency/exclusive modes, device rate, data callbacks, and buffer tuning; requests may not be granted. | [Low-latency audio guide](https://developer.android.com/games/sdk/oboe/low-latency-audio) |
+| A6 | `getTimestamp` is API 26 and reports a played/recorded frame time; hardware channel/format/rate getters are API 34 and can expose conversion. | [AAudio NDK reference](https://developer.android.com/ndk/reference/group/audio) (C05) |
+| A7 | Oboe exposes one native C++ API from Android 4.1/API 16; its documented backend is AAudio on API 27+ and OpenSL ES below that. | [Android Oboe guide](https://developer.android.com/games/sdk/oboe) (C50), [pinned full guide](https://raw.githubusercontent.com/google/oboe/4468344c8fdfdd7df068d5abefe2d8615fd6b431/docs/FullGuide.md) (C45) |
+| A8 | The Android low-latency guide recommends requests for low-latency/exclusive modes, device rate, data callbacks, and buffer tuning; requests may not be granted. | [Low-latency audio guide](https://developer.android.com/games/sdk/oboe/low-latency-audio) (C04; displayed revision 2026-02-26 UTC) |
 | A9 | Focus behavior changes by Android version; target-35 focus needs top-app or foreground-service status. | [Manage audio focus](https://developer.android.com/media/optimize/audio-focus) |
 | A10 | Foreground-service, microphone, connected-device, USB, and Bluetooth rules have version- and use-case-specific declarations/prerequisites. | [Foreground service types](https://developer.android.com/develop/background-work/services/fgs/service-types), [USB host](https://developer.android.com/develop/connectivity/usb/host), [Bluetooth permissions](https://developer.android.com/develop/connectivity/bluetooth/bt-permissions) |
-| A11 | AAP packages plugins as apps/services; hosts query intent services and metadata, then use Binder/shared-memory-oriented machinery. | [AAP Developers Guide](https://github.com/atsushieno/aap-core/blob/main/docs/DEVELOPERS.md) |
-| A12 | AAP describes its host-facing C++/Kotlin APIs as unstable/reference-oriented and documents separate processes, MIDI 2 messaging, and AAPXS extensions. | [AAP README](https://github.com/atsushieno/aap-core), [AAP Developers Guide](https://github.com/atsushieno/aap-core/blob/main/docs/DEVELOPERS.md) |
-| A13 | AAP-JUCE documents breaking AAP API/ABI change risk, local patches, mobile UI limits, and a simple host able to enumerate/instantiate installed AAP plugins. | [AAP-JUCE README](https://github.com/atsushieno/aap-juce/blob/main/README.md) |
-| A14 | Original repository license pages identify Oboe as Apache-2.0, AAP core as MIT, and AAP-JUCE as AGPLv3. | [Oboe LICENSE](https://github.com/google/oboe/blob/main/LICENSE), [AAP core LICENSE](https://github.com/atsushieno/aap-core/blob/main/LICENSE), [AAP-JUCE LICENSE](https://github.com/atsushieno/aap-juce/blob/main/LICENSE) |
+| A11 | AAP packages plugins as apps/services; hosts query intent services and metadata, then use Binder/shared-memory-oriented machinery. | [Pinned AAP Developers Guide](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/DEVELOPERS.md) (C48) |
+| A12 | AAP describes its host-facing C++/Kotlin APIs as unstable/reference-oriented and documents separate processes, MIDI 2 messaging, and AAPXS extensions. | [Pinned AAP README](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/README.md) (C22) |
+| A13 | AAP-JUCE documents breaking AAP API/ABI change risk, local patches, mobile UI limits, and a simple host able to enumerate/instantiate installed AAP plugins. | [Pinned AAP-JUCE README](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/README.md) (C25) |
+| A14 | Pinned repository LICENSE bodies identify Oboe as Apache-2.0, AAP core as MIT, and AAP-JUCE as AGPLv3. | [C20](https://raw.githubusercontent.com/google/oboe/4468344c8fdfdd7df068d5abefe2d8615fd6b431/LICENSE), [C23](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/LICENSE), [C26](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/LICENSE) |
 
 ## 1. Native API roles and availability
 
@@ -93,7 +94,7 @@ count can vary unless requested, and a fixed request may add buffering [A3].
 ### Facts
 
 - In callback mode, supplied audio data is the transfer path: do not call
-  stream read/write on that same stream [A3]. Output fills at most `numFrames`;
+  stream read/write on that same stream [A3]. Output must fill `numFrames`;
   input processing must not mutate the supplied buffer directly [A3].
 - Android calls the data callback on an AAudio-owned real-time thread; low
   latency streams may have higher priority. Calls do not arrive concurrently
@@ -109,7 +110,8 @@ count can vary unless requested, and a fixed request may add buffering [A3].
   close [A1].
 - AAudio is not wholly thread-safe. The guide says not to concurrently wait,
   read/write, or close the same stream from different threads; it calls out
-  `getTimestamp` as an exception to otherwise thread-safe getters [A1].
+  `getTimestamp` as an exception to otherwise thread-safe getters [A1]. This
+  does not establish a blanket cross-stream/same-thread safety rule.
 
 ### Recommended ownership model (not an implementation)
 
@@ -140,6 +142,14 @@ the official guide requires stopping/closing from another thread to avoid a
 deadlock [A5]. Therefore a future recovery procedure must re-query every actual
 property before resume, rather than reusing prior negotiated values.
 
+Oboe adds distinct `onError`, `onErrorBeforeClose`, and `onErrorAfterClose`
+callbacks on an Oboe-created error thread: default `onError` false delegates
+stop/close to Oboe; before-close may query but not close/delete; after-close
+may query parameters but the underlying AAudio/OpenSL ES stream is closed
+[C47 pinned callback header](https://raw.githubusercontent.com/google/oboe/4468344c8fdfdd7df068d5abefe2d8615fd6b431/include/oboe/AudioStreamCallback.h).
+This is not the AAudio error-callback contract and does not make either path
+callback-safe without a later call-graph and device review.
+
 No source here supplies the product's note/sustain policy, restart UX, retry
 budget, shutdown deadline, or failure presentation. Those are open product and
 spike questions. A stream pointer is invalid after close; closure while another
@@ -147,8 +157,9 @@ thread uses it is expressly unsafe [A1].
 
 ## 3. Timing, counters, and measurement limits
 
-`AAudioStream_getTimestamp` gives a frame position/time for when audio was
-played or recorded and can align audio with video or MIDI [A6].
+`AAudioStream_getTimestamp` is API 26, valid only after Started, and gives a
+frame position/time for when audio was played or recorded [A6]. Hardware
+channel/format/rate getters are API 34 and disclose conversions, not latency.
 `getFramesWritten` is a monotonically increasing count advanced by callback or
 write for output [A6]. These properties can support a proposed clock-boundary
 instrumentation design, but do not by themselves measure input-to-audible
@@ -281,14 +292,15 @@ hosting behavior until separate policy, licensing, and device evidence exist.
 
 **Missing evidence:** No actual Android device/OS/interface/controller result;
 no Android minimum API or target SDK; no stream/property measurement; no
-callback call-graph; no AAP immutable revision capture; no route, background,
-Bluetooth, USB, microphone, MIDI, UI, privacy, sandbox, or performance
-validation. Owner decisions remain required for architecture, dependencies,
-permissions, hardware, product policy, legal conclusions, and adoption.
+callback call-graph; no route, background, Bluetooth, USB, microphone, MIDI,
+UI, privacy, sandbox, or performance validation. Owner decisions remain
+required for architecture, dependencies, permissions, hardware, product
+policy, legal conclusions, and adoption.
 
-**Retrieval limitation:** Browser-opened original AAP pages did not expose the
-full branch-tip commit SHA. A read-only `git ls-remote` attempt for AAP core,
-AAP-JUCE, and Oboe failed locally on 2026-10-23 with `Could not resolve host:
-github.com`; it performed no clone or write. The Oboe full SHA is therefore
-from the browser's GitHub commit link; full immutable AAP identities remain
-explicitly missing until controller capture.
+**Initial retrieval failure, resolved:** Browser-opened AAP pages did not
+expose branch-tip SHAs, and the writer's read-only `git ls-remote` attempt for
+AAP core, AAP-JUCE, and Oboe failed DNS on 2026-10-23 (`Could not resolve
+host: github.com`); it performed no clone or write. Controller capture
+C15–C27/C45–C50 then returned HTTP 200 and preserves URLs, SHA-256/access
+times, and the immutable identities recorded above. This is historical, not a
+current evidence gap.
