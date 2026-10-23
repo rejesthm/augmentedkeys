@@ -1,3 +1,61 @@
+# R06 verification — correction round1
+
+Exact candidate `446493053c94e5be336036bab212ca85ba61cc9c`, task base `131fff075db2b89cd35abf714b3590e0c8b22029`, brief `b5a85d4a36827d00d83ca727de2c6e72093b8861`, T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6`, In-progress `09639b0a9377933579b67a92bd4c69f37064b741`, runtime `757883f18f8378e6552c49564c284a5efd3e41d9`. Sources `5b5d3e84fd999d105cd8441ea39916bee93e2367` reconciled at `ce9d12a34ea19044d366cb5cdca6e3309389505b`. Rejected candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`, rejection `da24bca4d1f3ea17c26c4dcdb53289c7f87779a2`, T02 `cc435d60cc23fe46abe2d14fbe9bf6aeecc4e905`, correction state `553a95abf8e48be36b78f6780c65d97423407f12`. Same sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
+
+## Fresh controller verification
+
+UTC `2026-10-23T12:22:19.078239+00:00`; ProductName:		macOS; ProductVersion:		26.6.2; BuildVersion:		25G83, arm64; git version 2.54.0 (Apple Git-157). Only `docs/research/SOUND_ENGINE_RESEARCH.md` differs from base; task clean. Report 329lines, SHA256 `6526deba5037529cd277059fe75fb3059da8c002885c4c7792ed2520df2ecd19`. All50 source body hashes across four indexes match, zero retrieval failures. Local/live remote main unchanged at `b1b0c1edd5e42d3ea791f665c22954834e962d05`; both excluded owner main-guard edit hashes match preserved originals. No product/protected/native/manifest/license-adoption or dependency/asset change.
+
+```text
+git diff --check 131fff075db2b89cd35abf714b3590e0c8b22029 446493053c94e5be336036bab212ca85ba61cc9c
+exit0; no output
+git diff --name-only 131fff075db2b89cd35abf714b3590e0c8b22029 446493053c94e5be336036bab212ca85ba61cc9c
+docs/research/SOUND_ENGINE_RESEARCH.md
+git status --porcelain
+exit0; empty
+```
+
+These are documentary/static scope, whitespace and provenance checks. No Flutter/build/device/audio/MIDI/performance or conformance evidence was produced. No engine, format, platform API, architecture, content, budget or legal conclusion is adopted. Historical mirrored SF2 edition and community SFZ scope remain explicit; sources and handoffs are not substitutes for independent claim review.
+
+## Local immutable evidence
+
+- `candidate-verification-round1.json` SHA256 `2afbc92a06401ce5bb0c0a000a30e77d7f15726a99dc6b49248246dc41808e30`.
+- `conductor-correction1-runtime.json` SHA256 `8bb1451d4357b86bace2ca7461cd595610bb3f4e1698ef7da67d11a30519f53e`.
+- `conductor-correction1.final.txt` SHA256 `edff8e78a7be88424315b11a910321e292183614bab802e564e6b5e8775bd1e3`.
+
+## Literal writer handback
+
+Configured Conductor `gpt-5.6-sol`, high, workspace-write; UUID `01a1672e-2573-7cf2-990e-310ef956eca3`.
+
+Corrected only [SOUND_ENGINE_RESEARCH.md](/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r06-sound-engine/docs/research/SOUND_ENGINE_RESEARCH.md).
+
+- **QA I1:** Separated API return from observable render readiness; defined process, engine, cache, and fixture conditions; added correlated request/worker/I/O IDs; separated safe-state, rendered, and audible recovery markers; retained incomplete, censored, and unrecovering trials.
+- **Security I1:** Added source-qualified FluidSynth LGPL, relinking, modified-source, historical App Store, and GPLv3/VST3 details. Expanded sfizz’s configurable dependency-license branches and stated that root BSD does not clear transitives.
+- **Security I2:** Reconciled TinySoundFont’s 2017–2023 root and 2017–2025 header notices with SFZero attribution. Recorded the two example-asset paths, unknown rights, exclusion from future fixtures, lack of asset inspection, and separate no-LLM contribution restriction.
+
+Evidence read included brief `b5a85d4a36827d00d83ca727de2c6e72093b8861`, T02 `cc435d60cc23fe46abe2d14fbe9bf6aeecc4e905`, state `553a95abf8e48be36b78f6780c65d97423407f12`, review artifact `da24bca4d1f3ea17c26c4dcdb53289c7f87779a2`, both full reviewer handoffs, canonical round-zero review, and source bodies S16, S20, S26, S29–S31, S35–S37, S44, and S45.
+
+Validation:
+
+- SHA-256: `6526deba5037529cd277059fe75fb3059da8c002885c4c7792ed2520df2ecd19`
+- Size: 329 lines, 38,496 bytes
+- Diff: 30 insertions, 11 deletions
+- `git diff --check`: passed
+- Source-body assertions: passed
+- UTF-8, final newline present, no CR bytes or trailing whitespace
+- Scope: exactly the assigned report is modified
+- Staging: empty
+- HEAD unchanged at `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`
+- No Git metadata mutation, commit, build, device work, download, or external action occurred
+
+The procedure remains unperformed and unapproved. Actual build graphs, cache controllability, asset rights, distribution obligations, and legal conclusions remain unresolved for R07 and the owner. Writer changes do not close the review findings.
+
+I relinquish sole ownership and am idle. The one next action is for the controller to freeze and commit the corrected candidate, then run fresh independent QA/Security reviews followed by Final Code Review.
+
+---
+
+## Preserved earlier verification
+
 # R06 verification — review candidate
 
 Exact candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`, task base `131fff075db2b89cd35abf714b3590e0c8b22029`, brief `b5a85d4a36827d00d83ca727de2c6e72093b8861`, T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6`, In-progress `09639b0a9377933579b67a92bd4c69f37064b741`, runtime `757883f18f8378e6552c49564c284a5efd3e41d9`. Sources `5b5d3e84fd999d105cd8441ea39916bee93e2367` reconciled at `ce9d12a34ea19044d366cb5cdca6e3309389505b`. Sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
