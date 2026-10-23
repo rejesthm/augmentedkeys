@@ -215,3 +215,14 @@ Full paths/access timestamps are bound by local indexes; home abbreviated below.
 - `primary-sources/P73-last.png` SHA256 `cd848f75aaedd86f72664ce1c7def719598cd2290fd779d1b5c1c5abb8e1d001`.
 - `researcher-research.final.txt` SHA256 `c4e045eadec91cde12b5f84e0798a0a0e8a7d044ce4d0f0c7d8373368aa223c0`.
 - `researcher-research-runtime.json` SHA256 `2c4aa5e554bdb44ee521ca8748320fb8f062ee063b8437e35ac77c3a9d666e46`.
+
+## Researcher reconciliation and controller corrections
+
+The independent read-only Researcher completed its amendment after the fuller captures. Initial gaps are historical preliminary findings, superseded where the captured bodies supply exact facts. There are **five**, not six, public request indexes: the controller reconciliation prompt and Researcher amendment incorrectly said six. Correct counts remain 78 requests, 77 successful bodies, one preserved JUCE HTTP403; two local indexes contain56 bodies;25 earlier bodies are reused with original provenance. No source failure is erased.
+
+- `researcher-reconciliation.final.txt` SHA256 `874b234d894348598fb98d7ce9f196782d8adad526550794a582ad02081938a4`.
+- `researcher-reconciliation-runtime.json` SHA256 `dd40592a6f19c7ba96b7cf4febf5565c471dd959817fa86f06b7331ace13d06d`.
+- `researcher-reconciliation-relay.jsonl` SHA256 `34ae2c5cf0411db3dfa4d4ffa19dc22346d2294411a6beffc04883f49c101fa9`.
+- `researcher-reconciliation-child.jsonl` SHA256 `fe9c72b1f5815527f17901235b7786de82be3017509e43a6bd13e24a210e8ccc`.
+
+Controller source observations for the assigned writer: P06 release0.5.6 explicitly states the application-level Apache V2 effect when ARA is enabled with `-DUAPMD_ENABLE_ARA`; the same release prose also describes runtime enable/disable, so preserve the maintainer statement and unresolved configuration interpretation rather than infer a legal conclusion. P65 separately identifies the Apache module and MIT remainder. P09 sections3.1–3.5 limit the SDK grant to compatible Android applications and distinguish SDK redistribution restrictions from open-source-component licenses; sections3.7–3.8 address trademarks/notices,4.3 user privacy and5.1 credential confidentiality. P73 sections2.2 and2.10 distinguish internal Apple-platform SDK/test use, separate distribution agreement requirements and platform-limited system images. These positive captured terms must not be replaced by generic unknowns. P73 date is printed `06/08/2026`; retain that literal date without an unproved locale interpretation. L54 is local Material Icons CC-BY4.0 license text; local license text does not authenticate any font binary or exact shipped artifact. No agreement acceptance, content adoption or rights clearance occurred.
