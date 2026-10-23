@@ -62,7 +62,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Published MIDI specifications available for legitimate use, current Apple Core MIDI and Android MIDI documentation, official platform samples, original library documentation, and reproducible controller/device tests where required.
 - **Expected output:** `MIDI_RESEARCH.md`.
 - **Decision it unlocks:** An evidence-backed MIDI scope, compatibility matrix, spike plan, and later architecture ADR.
-- **Status:** `In review` — candidate `5b7390d91fd074479d1144d76233320999f3161e`; verification `bad1afb95bb59135ebf92bc5314e7112c979cfc2`; independent reviews pending
+- **Status:** `In progress` — correction1 under T02 `59ee0ed5677261ad57a3ed4140593ed774577e88`; Final2Important at `664aec80035ef44fad5d88d409d28f2bb8597805`; same writer assigned
 - **Findings:** No findings recorded
 
 ## 6. Built-in sampler/synth engine and SF2/SFZ options
