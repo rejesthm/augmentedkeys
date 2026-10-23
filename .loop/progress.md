@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture contains68 bodies and2 retained failures; Final raised two Important findings, and the same Conductor is assigned correction1 under T02. Permission-isolated roles, one writer and at most3 specialists remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture now contains69 bodies and2 retained failures; same Conductor completed correction1, writer idle, fresh affected reviews next. Permission-isolated roles, one writer and at most3 specialists remain binding.
 
 # Research Questions
 
-R01–R04 Verified; R05 In progress (correction1); R06–R10 Queued. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R04 Verified; R05 In review (correction1); R06–R10 Queued. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,7 +20,7 @@ R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; gu
 
 # In Progress
 
-R04 complete; R05 Final rejection `664aec80035ef44fad5d88d409d28f2bb8597805` records2Important. T02 `59ee0ed5677261ad57a3ed4140593ed774577e88` precedes this separate correction1 In-progress state; same writer correction, then fresh reviews. No manual L1 Loop or product implementation.
+R04 complete; R05 Final rejection `664aec80035ef44fad5d88d409d28f2bb8597805` records2Important. Correction1 candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` and verification `8bc677ec3341139d8f6bc8f9def443f2f34d2cf8` precede this separate In-review state; fresh affected reviews pending. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R05 correction1 for CC recovery semantics and Android virtual-service security, then verify new candidate and repeat affected independent reviews. No architecture/adoption, main integration or M1 activation.
+Complete fresh affected QA/Security then Final review of R05 correction1; require explicit closure of both Important findings. No architecture/adoption, main integration or M1 activation.
