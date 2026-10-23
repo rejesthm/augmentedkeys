@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller owns Git/state. R06 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
+R06 sole writer, Researcher and all3 independent reviewers completed and are idle. Controller alone integrates and publishes exact Verified candidate.
 
 # Research Questions
 
-R01–R05 Verified; R06 In review; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R06 Verified; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R05 are Verified and integrated; R05 guarded publication proved at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. R07–R10 remain Queued.
+R01–R06 Verified; R07–R10 Queued. R07 formal dependencies are Verified; its brief and state barriers follow R06 integration/publication.
 
 # In Progress
 
-R06 In review: candidate `446493053c94e5be336036bab212ca85ba61cc9c`, verification `873af424d1853269a493b4efb9e3b1855c9f264e`. Separate state barrier consumes the committed artifact; no integration before Verified.
+No active task writer. R06 exact candidate `446493053c94e5be336036bab212ca85ba61cc9c` is Verified under `ef499f19643bcee06060198a98a8cfa40e442841`; all3 original Important findings closed, allreviews0/0/0.
 
 # Verification Needed
 
-Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. Fifty source bodies hashed; no runtime/device/adoption claim.
+Integrate only exact Verified R06 candidate, compare reviewed blob, then guarded milestone publication and local/remote equality proof. No main integration or product adoption.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete independent R06 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
+After R06 integration/publication, prepare R07 licensing-risk brief with all four formal dependencies Verified.

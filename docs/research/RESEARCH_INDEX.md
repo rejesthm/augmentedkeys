@@ -72,7 +72,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Format specifications, official or original engine documentation and repositories, maintainer material, license evidence, reproducible spikes, and measured physical-device behavior where required.
 - **Expected output:** `SOUND_ENGINE_RESEARCH.md`.
 - **Decision it unlocks:** Approval to compare narrowly scoped engine/format candidates in spikes and a later ADR.
-- **Status:** `In review` — candidate `446493053c94e5be336036bab212ca85ba61cc9c`; verification `873af424d1853269a493b4efb9e3b1855c9f264e`; independent reviews pending
+- **Status:** `Verified` — candidate `446493053c94e5be336036bab212ca85ba61cc9c`; finalized verification `ef499f19643bcee06060198a98a8cfa40e442841`; allrequiredreviews0/0/0 and all3 original Important closed
 - **Findings:** No findings recorded
 
 ## 7. Licensing risks for engines, plugins, samples, fonts, icons, and DSP
