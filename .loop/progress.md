@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R10 writer and Researcher completed handoffs and are idle; controller owns all Git/state. Required reviewers operate independently read-only.
+All R10 writer/reviewer sessions completed and idle. Controller alone records research completion and governance blockers.
 
 # Research Questions
 
-R01–R09 Verified; R10 Verified. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R10 Verified. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R09 Verified; R10 Verified; none Accepted.
+R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
 
 # In Progress
 
-R10 Verified: exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, evidence `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d`.
+M0 closure is pending the independent protocol assessment and owner-only correction boundary. No active product writer.
 
 # Verification Needed
 
-integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews. No app/device/audio/performance or adoption evidence.
+Record exact published task evidence and independent governance findings. No acceptance/main/successor authority follows from task completion.
 
 # Completed
 
@@ -103,6 +103,6 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews.
+Present the bounded governance correction proposal and preserve the human-only pause; app implementation remains outside M0.
 
-R10 exact report integrated at `393300c37cc337c0127ed86203ec110c6c2b8b30`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
+R10 guarded publication/equality proved at `a68e294b88c0157cd02ee2e9c5a3b66b66ef79fd`. All ten research tasks Verified; no app-completion claim.
