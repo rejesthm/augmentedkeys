@@ -8,11 +8,11 @@ Complete unchanged R01–R10 documentary research with independent reviews under
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 Android writer `01a16827-4c1c-7b81-aa06-bb9acccdce41` active after runtime proof `d62c0ea95ed1bb107cfbba5a4667b2695911dd8b`. Permission-isolated roles and one-writer/three-specialist limits remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 Android writer handed back; independent QA/Security reviews pending. Permission-isolated roles and one-writer/three-specialist limits remain binding.
 
 # Research Questions
 
-R01–R03 are Verified; R04 In progress; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
+R01–R03 are Verified; R04 In review; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
 
 # Ready Tasks
 
@@ -20,7 +20,7 @@ R03 exact verified candidate is integrated; guarded publication proved at `576fb
 
 # In Progress
 
-R04 research body active; source evidence capture in progress. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
+R04 candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade` and verification `3e571870622fdc8501df2d239a52fc8caa973753` committed; independent review pending. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R04 research and verify exact candidate before QA/Security/Final reviews. No architecture/adoption, main integration or M1 activation.
+Review exact R04 candidate through independent QA/Security then Final; preserve all findings. No architecture/adoption, main integration or M1 activation.
