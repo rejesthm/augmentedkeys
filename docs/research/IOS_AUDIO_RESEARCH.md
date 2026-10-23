@@ -13,6 +13,25 @@ is isolated in `PLUGIN_HOSTING_RESEARCH.md`. AVAudioEngine, lower-level Audio
 Unit/Core Audio, category/mode/options, minimum OS, background capability,
 entitlements, and engine ownership are **not selected** here.
 
+## API availability is not a product baseline
+
+The following is transcribed from the controller’s preserved Apple Markdown
+metadata, not a support decision. `iPadOS` availability did not exist as a
+separate platform name before iPadOS; it is shown exactly where Apple’s current
+metadata supplies it. A dash/absent metadata field is **unknown**, never an
+inferred minimum. The project has selected no minimum OS.
+
+| API / sample | iOS | iPadOS | Other metadata relevant here | Source record |
+| --- | ---: | ---: | --- | --- |
+| `AVAudioSession` | 3.0 | 3.0 | macCatalyst 13.1 | S1 / controller source 01 |
+| `AVAudioEngine` and `prepare()` | 8.0 | 8.0 | macCatalyst 13.1 | S6 / sources 07–08 |
+| Apple hosting sample | 13.0 | Unknown | macCatalyst 13.0; macOS 10.15; Xcode 16.0 | P1 / source 12 |
+
+Availability means only that Apple’s current documentation metadata lists the
+symbol/sample for that platform/version. It does not establish route support,
+usable latency, third-party component availability, toolchain choice, or a
+product support commitment.
+
 ## Claim/source matrix
 
 | ID | Fact (not a product claim) | Primary Apple source / retrieval | Availability / limitation |
@@ -144,7 +163,7 @@ All procedures below are **unperformed**. Hardware, interfaces, controllers,
 budgets, and operating authority are unapproved.
 
 1. **Built-in/session first:** On each owner-selected iPhone and iPad category,
-   execute 30 repetitions each of activation/deactivation, interruption
+   execute **a proposed 30 repetitions** each of activation/deactivation, interruption
    begin/end, wired/USB connect-disconnect, and foreground/background return.
    Record actual route, rate, I/O duration, channels, activation result, engine
    state, note/sustain cleanup state, and bounded callback counters.
@@ -168,6 +187,10 @@ and observed configuration, measurement method, run duration, artifacts, and
 reviewer. Simulator evidence cannot establish physical-device latency,
 callback safety, background behavior, or hardware route compatibility.
 
+The fixed 30 and 100 counts above are this report’s proposed study design—not
+approved test procedures, measurement budgets, acceptance thresholds, or a
+claim of a known maximum workload. A future approved manifest may change them.
+
 ## Risks, recommendation, and missing evidence
 
 **Strengths (fact):** Apple provides semantic session control, notifications,
@@ -178,9 +201,15 @@ deadline behavior to application evidence; that follows from S2–S7 and the
 absence of measurements. **Recommendation:** approve one built-in playback and
 session-lifecycle spike before scoping any engine ADR or third-party hosting.
 
-**Retrieval limitations:** public references were readable at retrieval; API
-pages do not supply a selected product minimum OS, and no immutable local
-source excerpt was created because the assignment permits only these two
-reports. The controller transcript records retrieval URLs/date. The project has
-no device, route, source-code, benchmark, signing, entitlement, or background
-capability evidence. These gaps are intentional, not negative findings.
+**Retrieval provenance and limitations:** The writer’s initial research used
+four public web searches and returned search excerpts; it did not successfully
+open full Apple pages. The controller subsequently retrieved every cited source
+directly from Apple Markdown endpoints or original HTML with HTTP 200, access
+timestamps, SHA-256 hashes, and saved responses. The controller-owned source
+catalog is to be recorded as
+`docs/orchestration/milestones/m0/evidence/r03-source-evidence.md`; the raw
+records currently reside in the shared Git evidence area. API metadata supplies
+the availability table above but does not select a product minimum OS. The
+project has no device, route, source-code, benchmark, signing, entitlement, or
+background-capability evidence. These gaps are intentional, not negative
+findings.
