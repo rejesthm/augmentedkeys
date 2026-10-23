@@ -1,3 +1,9 @@
+# R06 correction1 specialist approvals — Final pending
+
+Exact unchanged candidate `446493053c94e5be336036bab212ca85ba61cc9c` has QA and Licensing/Security APPROVE0/0/0 with all three original Important findings closed. Complete outputs and runtime evidence accompany this update in r06-review-round1.md. Remains In review; fresh independent Final and finalized-verification/Verified barrier still required. No integration, adoption, build/device/performance or legal claim.
+
+---
+
 # R06 verification — correction round1
 
 Exact candidate `446493053c94e5be336036bab212ca85ba61cc9c`, task base `131fff075db2b89cd35abf714b3590e0c8b22029`, brief `b5a85d4a36827d00d83ca727de2c6e72093b8861`, T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6`, In-progress `09639b0a9377933579b67a92bd4c69f37064b741`, runtime `757883f18f8378e6552c49564c284a5efd3e41d9`. Sources `5b5d3e84fd999d105cd8441ea39916bee93e2367` reconciled at `ce9d12a34ea19044d366cb5cdca6e3309389505b`. Rejected candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`, rejection `da24bca4d1f3ea17c26c4dcdb53289c7f87779a2`, T02 `cc435d60cc23fe46abe2d14fbe9bf6aeecc4e905`, correction state `553a95abf8e48be36b78f6780c65d97423407f12`. Same sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
