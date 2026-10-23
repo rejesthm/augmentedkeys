@@ -26,7 +26,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 1. R01 is `Verified`: exact candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`, integration `63081f5f50b03c9337f9f10032a94373f214aaa0`. Retain its nonblocking provenance-label Minor for milestone triage.
 2. R02 is `Verified`: exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`, verification `c7952ea12d19a6c42abc3d19425a694448256b76`, integration `f7e2670ee7c9d12d47467e13139420a347b8cc29`, publication evidence `22bf9f15b503bc11a3238638b1f4aacea26df922`.
-3. R03 is `Verified`: exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`, QA/Security/Final approvals0/0/0. Integrated at `c8a2151d996455b84b9f1b4b462cc4a635194c84`; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is `Verified` under finalized verification `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; R05 is `Verified` (correction1) under brief `f30f02a5c76d5f08e07c45627b023819d811e289`; R06 is `In progress`; R07–R10 remain `Queued`.
+3. R03 is `Verified`: exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`, QA/Security/Final approvals0/0/0. Integrated at `c8a2151d996455b84b9f1b4b462cc4a635194c84`; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is `Verified` under finalized verification `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; R05 is `Verified` (correction1) under brief `f30f02a5c76d5f08e07c45627b023819d811e289`; R06 is `In review`; R07–R10 remain `Queued`.
 4. G01 was resolved for the historically validated role-isolated topology through validation `ec4e76345519973d09a4dbeff6d043e6477e67bc`, correction `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db` and independent approval `88fe4ece13bfedd8b67eaa8882c5adf020654418`. All earlier nested-permission failures and rollback remain in the unchanged evidence artifacts. Do not retry mixed-permission nesting.
 
 ## Current gates and next action
@@ -48,3 +48,5 @@ The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bb
 R06 current review candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da` is frozen under verification `0d200280fc4df9294fbd718aa8ee48c974b78b9a`; independent QA/Security/Final pending. No integration or acceptance.
 
 R06 current correction round1: QA1/Security2 Important findings at `da24bca4d1f3ea17c26c4dcdb53289c7f87779a2`; T02 `cc435d60cc23fe46abe2d14fbe9bf6aeecc4e905` is consumed by this separate In-progress transition. Original candidate preserved; same writer, no Final/integration.
+
+R06 current review candidate `446493053c94e5be336036bab212ca85ba61cc9c` is frozen under verification `873af424d1853269a493b4efb9e3b1855c9f264e`; independent QA/Security/Final pending. No integration or acceptance.
