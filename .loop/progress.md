@@ -12,19 +12,19 @@ R10 writer and Researcher completed handoffs and are idle; controller owns all G
 
 # Research Questions
 
-R01–R09 Verified; R10 In progress. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R09 Verified; R10 In review. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R09 Verified; R10 In progress; none Accepted.
+R01–R09 Verified; R10 In review; none Accepted.
 
 # In Progress
 
-R10 In progress: exact candidate `6e310401726928501b4b6afc863c7a0a1de6205f`, evidence `e43637326a9cefd43e5be0977333c2101fe5eecb`.
+R10 In review: exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, evidence `f75da999ee8bbec4d20cbcf43a2b618adab86f0f`.
 
 # Verification Needed
 
-correct shared I1 within sole report, preserve all eight criteria, then freeze and independently review a new candidate. No app/device/audio/performance or adoption evidence.
+independent QA/Performance and Licensing/Security re-review shared I1 and all criteria, then Final; no integration before Verified. No app/device/audio/performance or adoption evidence.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-correct shared I1 within sole report, preserve all eight criteria, then freeze and independently review a new candidate.
+independent QA/Performance and Licensing/Security re-review shared I1 and all criteria, then Final; no integration before Verified.
