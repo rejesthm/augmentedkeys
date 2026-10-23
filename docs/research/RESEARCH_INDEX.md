@@ -92,7 +92,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party product documentation, published support material, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `SUNDAY_KEYS_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original workflow requirements and explicit differentiation opportunities.
-- **Status:** `Queued`
+- **Status:** `Eligible` — brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`; no formal dependencies; assignment/runtime barriers still required
 - **Findings:** No findings recorded
 
 ## 9. MainStage public capability/workflow analysis

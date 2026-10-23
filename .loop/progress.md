@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R07 sole writer, Researcher and all3 independent reviewers completed and idle. Controller alone integrates/publishes exact Verified candidate.
+No specialist active. Controller creates R08 isolated task worktree, then Conductor intake only.
 
 # Research Questions
 
-R01–R07 Verified; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R07 Verified; R08 Eligible; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R07 Verified; R08–R10 Queued. R08 has no formal dependencies; own brief and barriers follow R07 publication.
+R01–R07 Verified. R08 Eligible under exact committed brief; R09–R10 Queued.
 
 # In Progress
 
-No active task writer. R07 exact candidate `a1805e40b765d19f10e248186e147c1c27de68f2` Verified under `609231c5ab3e9c82717f269398158e6cb3ec7a21`; all3 Important closed, reviews0/0/0.
+No active task writer. R08 intake only before assignment/state/runtime barriers.
 
 # Verification Needed
 
-Integrate exact R07 candidate, compare reviewed blob, guarded milestone publication and equality proof. No main integration or license/content/adoption approval.
+Conductor intake then bounded assignment and separate In-progress state; actual role/runtime/path probes before body.
 
 # Completed
 
@@ -103,8 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-After R07 integration/publication, prepare R08 Sunday Keys public capability/workflow brief.
-
-R07 exact report integrated at `582461fedbf973c08eb00c06753d31901b1c9e1e`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded publication/equality proved at `de64d78dfaf0e669629d96a406f216c1f3b971e4`. R08 brief/eligibility next.
-
-R07 publication proved at `de64d78dfaf0e669629d96a406f216c1f3b971e4`; no task/milestone Accepted, no main/successor action.
+R08 Sunday Keys public capability/workflow research after its assignment/runtime barriers.
