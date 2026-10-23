@@ -1,3 +1,15 @@
+# Finalized R04 verification — correction round1
+
+Exact candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7`, base `55f9a9651d100007435bb8a4d96fc6eea828ed22`. Required independent QA, Licensing/Security and fresh Final reviews all APPROVE this same candidate with0Critical/0Important/0Minor. QA/Security literal closures at `21cb420a4fd96cfbf213495de13a244378eea11e` in `r04-review-round1.md`; Final literal report and source-backed read-only runtime are committed with this finalized artifact in `r04-final-review.md`. All3 original Important findings closed; original rejection/candidate retained.
+
+Spec compliance PASS; evidence honesty PASS. All8 criteria have independent coverage.54 primary bodies/hash indexes retained; no source/candidate changes after reviews. Fresh final controller committed-range whitespace returned0; exact task worktree clean. Two report paths only; original24,521-byte Apple prefix unchanged; product/native/manifests/permissions/ADRs/configuration unaffected. The586 added lines exceed only a rough concision target; independent Final explicitly accepts bounded necessary correction scope.
+
+This is decisive evidence for separate In review→Verified state commit. It does not accept M0, authorize main/successor, adopt architecture/dependencies/assets/permissions or prove runtime/device/performance. After that separate barrier, integrate only this exact candidate and publish milestone through existing guard. R05 follows its own brief/barriers. Writer/reviewers have completed their assignments and are idle.
+
+---
+
+## Preserved verification stages
+
 # R04 specialist approvals — Final review pending
 
 Unchanged candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` now has fresh QA and Security APPROVE0/0/0; all3 original Important findings explicitly closed. Literal reviews and actual read-only runtime provenance are committed alongside this update in `r04-review-round1.md`. Original rejections retained. No candidate/source change after reviews. Task remains In review; fresh independent Final review and finalized-artifact/state barrier still required.
