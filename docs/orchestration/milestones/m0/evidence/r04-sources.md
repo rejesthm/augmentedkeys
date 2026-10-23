@@ -78,3 +78,17 @@ C51 confirms Oboe `2a45aa2d9e94d209c4636eec4014dd83cda110f4` has committer date2
 - `android-research-runtime.json` SHA256 `5838dfbbd6c1671a56b94157ea948add4e0d6d7e8657da77bbda5048603d3f61`.
 - `android-research.final.txt` SHA256 `04b8ccefe6a72046e2516cf54197c3fea619c6f9a13f125b99676bfce3aaa9e1`.
 - `android-refine.prompt.txt` SHA256 `1e3784d72f41b66ebee787b5f31705b79aa3839d72cc7756c02b53ed5a6308fd`.
+
+## Correction round1 official rule sources
+
+Following QA/Security rejection `5385671e0a9a3cabb09b3755483480196b188a96`, controller captured three additional full official Android HTML pages via urllib.request on2026-10-23 UTC. AllHTTP200; exact URL/finalURL/access time/bytes/hashes in `primary-sources-round1/index.json`. Original51 bodies remain unchanged; total54. These support OS/target-SDK/foreground-service conditions. No device, permission adoption, archive/installation or executable action. Derived article text is optional reading aid, raw bytes authoritative.
+
+| ID | URL | SHA256 | Bytes | Displayed revision |
+|---|---|---|---:|---|
+| C52 | https://developer.android.com/about/versions/14/changes/fgs-types-required | `77f3a0b235aba8fbc3b9df58461f5862938e383bef3962cd808c4914d8986902` | 303738 | 2026-09-21 |
+| C53 | https://developer.android.com/about/versions/12/foreground-services | `164fad7486020eb962a5369dcd6efc7a958f8a0565e68b611860e49ffe97bd0c` | 287601 | 2026-10-16 |
+| C54 | https://developer.android.com/develop/background-work/services/fgs/launch | `ae5199efe3179058b9b3e3293982e420abdd267f207cda2faf72fdbe72ea0cbb` | 303092 | 2026-10-16 |
+
+- `primary-sources-round1/index.json` SHA256 `2677adf111b25ee17ea7c0a7f672a31356a126ce26b82c84141f7e69648b8807`.
+
+- `primary-sources-round1/derived-index.json` SHA256 `84671413bb6798796469e697298d4d6877c1242ce4e0d04e6f776d7e968b372a`.
