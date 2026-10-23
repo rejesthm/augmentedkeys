@@ -4,35 +4,35 @@ M0 — Research & Architecture (Active under OD-006).
 
 # Current Objective
 
-Complete unchanged R01–R10 documentary research with independent reviews under accepted contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Full working-app objective remains unfinished; M0 is its only active execution milestone.
+Complete unchanged R01–R10 research with independent reviews under accepted contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Full working-app objective remains unfinished; M0 is the only active execution milestone.
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 writer handed back corrected candidate; affected QA/Security reviews pending. Permission-isolated roles and one-writer/three-specialist limits remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. No active output writer. Permission-isolated roles, one writer and at most3 specialists remain binding.
 
 # Research Questions
 
-R01–R03 are Verified; R04 In review correction1; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
+R01–R04 Verified; R05–R10 Queued. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3` is committed; assignment T01 `d342ce41a2b874f3dea19c2c0866f7c816a15247` precedes this separate In-progress barrier.
+R04 exact candidate awaits integration and guarded publication. R05 follows its own committed brief/eligibility/assignment barriers; a local non-executable draft is prepared.
 
 # In Progress
 
-R04 candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade` and verification `3e571870622fdc8501df2d239a52fc8caa973753` committed; round0 rejection preserved; corrected candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` and verification `45edd77e4c5a72e65a0b62f03640cbb6fdbc69d0` pending fresh affected review. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
+Controller R04 integration/publication preparation. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
-R04 requires fresh current primary sources, Apple text preservation, exact output-scope checks and independent QA/Security/Final reviews. R03 integration/publication checks passed.
+Pin candidate/finalized evidence and clean branches, compare integrated report blobs, publish only milestone/m0-research through existing guard and prove local/remote equality. R05 needs current primary-source research and independent reviews.
 
 # Completed
 
-OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` activated the accepted CT03 baseline; guarded activation publication passed at `dc59f822924b96330ef0184866067aef9c8f7352`. CT01–CT03 team/context/reconciliation reviews and historical G01 evidence are preserved. R01/R02 remain Verified; R03 now adds Apple audio/AUv3 documentary evidence with27 preserved primary source bodies and no runtime claims.
+OD006 activation and R01–R03 preserved. R04 adds Android audio/lifecycle/AAP documentary findings with54 captured primary bodies, unchanged Apple hosting prefix and no runtime/device/performance claims. QA/Security/Final approval evidence is preserved.
 
 # Blockers and boundaries
 
-Excluded original main-guard recovery edits remain rejected/unadopted and require correction plus fresh review before main readiness. Independent M0 research/publication remains authorized. No engine/architecture/ADR, package/asset, entitlement/minimum OS, hardware, credentials/signing, spending/legal commitment, public release, main integration or M1 action is authorized here. App remains a Flutter shell without playable audio/MIDI, patches, persistence, variations or setlists.
+Excluded original main-guard recovery edits remain rejected/unadopted and require correction plus fresh review before main readiness. Independent M0 research/publication remains authorized. No architecture/ADR, package/asset, permission/minimum OS, hardware, credentials/signing, spending/legal commitment, public release, main integration or M1 action is authorized here. App remains Flutter shell without playable audio/MIDI, patches, persistence, variations or setlists.
 
 # Source-history note
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Fresh affected QA/Security then Final for R04 correction1; preserve rejected candidate/reviews. No architecture/adoption, main integration or M1 activation.
+Integrate/publish exact Verified R04 candidate; then bind R05 MIDI research brief. No architecture/adoption, main integration or M1 activation.
