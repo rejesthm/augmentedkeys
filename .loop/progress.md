@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor assigned as sole documentary writer; independent Researcher assigned, runtime/path probes pending. Permission-isolated roles, one writer and at most3 specialists remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture contains68 bodies and2 retained failures; synthesis is next. Permission-isolated roles, one writer and at most3 specialists remain binding.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; gu
 
 # In Progress
 
-R04 verification/integration/publication complete; R05 assigned, runtime/path probes pending before body. No manual L1 Loop or product implementation.
+R04 verification/integration/publication complete; R05 source reconciliation complete and sole-writer synthesis next. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Prove R05 assigned runtime/path boundaries, then independent Researcher and Conductor synthesis. No architecture/adoption, main integration or M1 activation.
+Complete R05 Conductor synthesis from both Researcher handoffs and captured primary bodies, then candidate verification and independent reviews. No architecture/adoption, main integration or M1 activation.

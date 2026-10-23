@@ -98,3 +98,10 @@ Controller documentary capture on 2026-10-23 UTC under exact R05 brief `f30f02a5
 - `roli-web-provenance.json` SHA256 `f28d6ffe62ebe39ec72b3c52a1ca55993c85f22cf22d36972209c917f0ab2fae`.
 
 HTML `*-derived.txt`, PDF `*-extracted.txt` and rendered `*-page*.png` are navigation aids; original body hashes above are authoritative. Researcher original handoff is preserved; supplementary source reconciliation is active after controller retrieval resolved some earlier session gaps. Sole Conductor report synthesis and all independent reviews remain pending. No implemented MIDI, audio, device/performance, adoption or acceptance claim.
+
+## Completed supplemental Researcher handoff
+
+Same read-only Researcher child `01a1672e-07ef-7650-af24-1a51ffc6d6c0` / relay `01a1672d-d7a4-7ca1-aee0-7262d495a5f9` completed supplementary source reconciliation. Actual saved final turn context remains read-only, gpt-5.6-terra/high, R05 task cwd. Original handoff retained. Supplement inspected source subset, not every capture; its pending-index statements describe its earlier observation and are now resolved by the completed70-request register above. M53–M70 provide additional public control/Apple lifecycle/privacy/API bodies for writer inspection. Remaining normative/current-edition gaps are explicitly bounded; no source-derived legal conclusion or universal transport/permission guarantee is adopted.
+
+- `researcher-supplement-runtime.json` SHA256 `6fe213d9d69a3f6b9b5b188a1f1797f9b682d66f4101325272fbdedb9a1460f0`.
+- `researcher-supplement.final.txt` SHA256 `e457251c764d86589049813af731af8a27f1ebd46f86643a446c866e94adaf59`.
