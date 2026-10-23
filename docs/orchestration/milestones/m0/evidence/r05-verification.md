@@ -1,3 +1,17 @@
+# Finalized R05 verification — correction round1
+
+Exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de`, base `22afbe4c38e2f46a758cce7e744b4819e116c6ad`. Required independent QA, Licensing/Security and fresh Final all APPROVE with0Critical/0Important/1Minor each; the Minor is one shared wording issue, not three distinct findings. QA/Security literal approvals at `9f10a1453ebf6bf4cb02c50ed1684fab02f82af6` in `r05-review-round1.md`; Final literal output and actual read-only runtime accompany this finalized artifact in `r05-final-review.md`. All2 original Important findings explicitly closed; original rejection/candidate retained.
+
+Spec compliancePASS; evidence honestyPASS; all8 brief criteria covered. Current evidence71requests/69successful bodies/2retained failures, four complete indexes; current detailed MIDI1/MIDI-CI/MPE normative gaps remain explicit. All source/body hashes passed independent fresh reviews; candidate unchanged afterward. Fresh controller committed-range whitespace check returned0, task clean, exact single-report scope and report SHA256 `034ad9cc008dbc836ca73301de26f725046f754c9b6e526b708a518e2c93b078` confirmed. No product/protected/native/manifest/permission/dependency/asset/ADR change.
+
+Carry forward nonblocking Minor: `MIDI_RESEARCH.md:50` says “three” request indexes where four exist. The71/69/2 totals, M71 identity and canonical catalog are correct. All reviewers explicitly approve with this note; no Critical/Important gate is weakened. Later correction requires its own permitted process, not an unreviewed edit to this candidate.
+
+This finalized artifact is decisive evidence for a separate In review→Verified state commit. It does not accept M0, authorize main/successor, adopt architecture/dependencies/assets/permissions or prove runtime/device/performance. After that barrier, integrate only this candidate and publish milestone through the existing guard. Writer/reviewers completed and are idle. R06 remains queued until its own brief/barriers.
+
+---
+
+## Preserved verification stages
+
 # R05 correction1 specialist approvals — Final pending
 
 Unchanged candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` has fresh affected QA and Security APPROVE0/0/1, with explicit closure of both original Final Important findings. Literal reports and actual read-only provenance accompany this update in `r05-review-round1.md`. The shared single Minor at reportline50 (“three” vs four indexes) remains nonblocking and is carried to Final/milestone triage; substantive71/69/2 counts and source evidence are correct. Task remains In review; no integration before fresh Final and finalized-artifact/Verified barrier.
