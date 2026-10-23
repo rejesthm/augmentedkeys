@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R09 independent Researcher read-only source research next; sole Conductor writer idle with pending marker. Actual role/path proof passed. Controller owns Git/state/evidence.
+R09 Researcher handoff/reconciliation completed and idle; sole Conductor report synthesis next. Actual role/path proof passed. Controller owns Git/state/evidence.
 
 # Research Questions
 
