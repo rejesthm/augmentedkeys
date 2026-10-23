@@ -44,6 +44,7 @@ product support commitment.
 | S6 | `AVAudioEngine` manages an attached-node graph; `prepare()` preallocates many start resources; `start()` may fail. | [AVAudioEngine](https://developer.apple.com/documentation/avfaudio/avaudioengine), [prepare](https://developer.apple.com/documentation/avfaudio/avaudioengine/prepare%28%29?changes=__3) — public API references, retrieved 2026-10-23 | No assertion that all graph or framework calls are callback-safe. |
 | S7 | UIKit scene lifecycle is per scene; scenes can be foreground/background/suspended independently. | [Managing your app’s life cycle](https://developer.apple.com/documentation/uikit/managing-your-app-s-life-cycle?changes=l__4_8) — public article, retrieved 2026-10-23 | Product lifecycle ownership remains undecided. |
 | S8 | Background audio requires an adopted background execution mode; ordinary background apps are normally suspended. | [Configuring background execution modes](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes?changes=__7), [media playback](https://developer.apple.com/documentation/avfoundation/configuring-your-app-for-media-playback?changes=_2.&language=objc) — public articles, retrieved 2026-10-23 | No capability, entitlement, or background behavior is adopted. |
+| S9 | An archived Apple route guide says a route change can alter sample rate, I/O duration, channel counts, or other hardware values; query them after the change when material. | [Audio Session Programming Guide: Responding to Route Changes](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioHardwareRouteChanges/HandlingAudioHardwareRouteChanges.html) — historical Apple guide, retrieved 2026-10-23 | Historical context only; corroborates, but does not replace, current route-notification evidence in S3. |
 
 ## 1. Session ownership, configuration, and observed hardware
 
@@ -96,9 +97,10 @@ product support commitment.
   for the app’s resume decision, not an unconditional auto-resume directive.
 - A route change follows added/removed audio I/O and carries details for
   observers [S3]. Apple identifies USB audio-interface removal as one example.
-  Its archived route guide additionally warns that sample rate, I/O duration,
-  and channel count can change; that historical guide is corroborative context,
-  not current performance evidence.
+  The [archived route guide](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioHardwareRouteChanges/HandlingAudioHardwareRouteChanges.html)
+  additionally warns that sample rate, I/O duration, and channel count can
+  change [S9]; it is corroborative historical context, not current performance
+  evidence.
 - Current session documentation lists both media-services-lost and
   media-services-reset notifications [S1]. For reset, Apple directs
   reinitialization of audio objects and resetting category/options/mode, and

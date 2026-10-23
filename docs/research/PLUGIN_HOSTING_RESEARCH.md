@@ -3,9 +3,10 @@
 **Status:** R03 documentary research, Apple findings only. This is not a
 commitment to host AUv3, ship an Audio Unit extension, select an engine, or
 claim Android/AAP compatibility. Android conclusions are reserved for R04.
-**Access date:** 2026-10-23 (Asia/Manila). No plugin, sample, SDK, extension,
-device, simulator, account, signing identity, entitlement, or executable code
-was downloaded, run, or adopted.
+**Access date:** 2026-10-23 (Asia/Manila). No plugin, sample project/archive,
+SDK, extension, device, simulator, account, signing identity, entitlement, or
+executable code was downloaded or run, and no code was adopted. Preserved Apple
+documentation contains instructional snippets; reading them is not adoption.
 
 ## API/sample availability is not a product baseline
 
@@ -42,7 +43,10 @@ for the product.
 | P7 | `fullState` / `fullStateForDocument` are persistable state snapshots; `fullState` should omit transitory stream formats. | [fullState](https://developer.apple.com/documentation/audiotoolbox/auaudiounit/fullstate?changes=_2_9&language=objc), [fullStateForDocument](https://developer.apple.com/documentation/audiotoolbox/auaudiounit/fullstatefordocument?changes=_4) — public API references, retrieved 2026-10-23 | Content, size, safety, restore compatibility, and plugin correctness are unguaranteed. |
 | P8 | MIDI scheduling and parameter scheduling use sample-time event interfaces. | [scheduleMIDIEventBlock](https://developer.apple.com/documentation/audiotoolbox/auaudiounit/schedulemidieventblock?changes=_8&language=objc), [AUScheduleParameterBlock](https://developer.apple.com/documentation/audiotoolbox/auscheduleparameterblock?changes=l_2_9%2Cl_2_9&language=objc%2Cobjc) — public API references, retrieved 2026-10-23 | Protocol/controller scope remains R05. |
 | P9 | Apple’s program terms require use of documented APIs and put third-party content/SDK responsibility on the developer. | [Apple Developer Program License Agreement](https://developer.apple.com/support/terms/apple-developer-program-license-agreement/) — public terms, retrieved 2026-10-23 | This is a source of contractual facts, not legal clearance. |
-| P10 | App Review Guidelines require rights for included content and responsibility for third-party SDK compliance. | [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) — public guidelines, retrieved 2026-10-23 | Review outcome and rights clearance remain unknown. |
+| P10 | App Review Guidelines require rights for included content and responsibility for third-party SDK compliance. | [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) — public guidelines, last updated 2026-10-16, retrieved 2026-10-23 | Review outcome and rights clearance remain unknown. |
+| P11 | Current general Apple guidance says an app’s sandbox container is accessible only to its owning app; sharing files with its app extension requires an app group for both processes and proper entitlement. | [Shared data](https://developer.apple.com/documentation/technologyoverviews/shared-data) — current Apple overview, retrieved 2026-10-23 by web search/open | General app/extension rule; it does not establish AUv3 host/plugin rights. |
+| P12 | Current App Groups guidance says app groups are for apps developed by the same developer/team; they can share data between an app extension and its host app and expose shared-container APIs. | [Configuring app groups](https://developer.apple.com/documentation/Xcode/configuring-app-groups?changes=l__8&language=objc) — current Apple article, retrieved 2026-10-23 by web search/open | Entitlement/configuration is an adoption-only future decision. |
+| P13 | Historical Apple extension guidance says a containing app and its contained extension have no direct access to each other’s containers; an enabled shared container gives participating contained extensions read/write access. | [Handling Common Scenarios](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html) — historical guide, retrieved 2026-10-23 | Historical context, corroborated for generic sharing by P11/P12; not an AUv3-specific rule. |
 
 ## 1. What “host AUv3” means; what it does not mean
 
@@ -204,6 +208,51 @@ approved.
   implications, but no conclusion about required permissions for a future host
   should be drawn without an approved implementation and component inventory.
 
+### Process, sandbox, container, and data-access boundary
+
+**Facts about distinct layers:** The AU sample documents iOS third-party AUv3
+as out-of-process IPC [P2]. That is **process isolation**, not a statement
+about sandbox/container/file rights. Current general Apple guidance says an
+app’s own sandbox container is accessible only by that app; sharing files with
+an app extension requires an app group for both processes and proper
+entitlement [P11]. Current App Groups guidance describes shared containers and
+shared preferences between an app extension and its host app, but limits app
+groups to apps developed by the same developer/team [P12]. Historical Apple
+guidance more specifically says that a **containing app** and its
+**contained** extension have no direct access to one another’s containers, and
+that permitted participants in an enabled shared container gain read/write
+access [P13].
+
+**Necessary distinction:** The containing-app relationship in P13 is not
+established for an independent third-party AUv3 selected by an unrelated host.
+Neither P2 nor the generic P11/P12 guidance proves that an AUv3 host and an
+independent plugin share an app group, containers, files, presets, assets, or
+any entitlement. Owner approval cannot by itself create cross-team app-group
+sharing for an unrelated AUv3. The only AUv3-specific process fact cited here
+is P2’s out-of-process/IPC statement.
+
+**Questions for a later approved component inventory/spike:**
+
+1. Is a selected component a containing app’s own extension, an OS-provided
+   component, or an independently distributed third-party AUv3? Who signs and
+   distributes it, and what exact host/component relationship is documented?
+2. Which data crosses documented AU host interfaces/IPC, and which host data,
+   plugin state, presets, files, resources, identities, and diagnostics must
+   remain inaccessible to the other process? Current R03 evidence does not
+   answer this component-by-component.
+3. Does either party request an app-group shared container? If so, which
+   same-developer/team processes may receive the entitlement, what files/records
+   are shared, and what ownership, validation, synchronization, retention, and
+   revocation rules apply? Do not assume the answer is yes for AUv3 or that
+   owner approval creates cross-team sharing.
+4. What file/resource access does the component require for its own operation,
+   and can the host instead use a bounded, validated control-plane exchange?
+   No source here establishes third-party file access or permission scope.
+
+These questions are a risk inventory, not an entitlement request, architecture
+choice, sandbox design, or legal conclusion. Any shared-container I/O must
+remain outside the future render callback.
+
 ### R07 adoption-only ledger questions
 
 1. For every candidate plugin: publisher, version, distribution channel,
@@ -212,8 +261,9 @@ approved.
    signature/provenance verification.
 2. For any Apple sample/source considered: exact download revision, bundled
    license/notice, permitted use, modification, redistribution, attribution,
-   and dependency provenance. This research did not download sample code, so
-   no sample-code license conclusion is made.
+   and dependency provenance. This research downloaded no sample project or
+   archive and adopted no code; captured documentation’s instructional snippets
+   do not support a sample-code license conclusion.
 3. For a release candidate: current Apple agreement and review applicability,
    entitlement/background/privacy disclosures, required signing, store policy,
    user data/state retention, and supply-chain review. These are not legal
@@ -259,7 +309,14 @@ Apple pages. The controller subsequently direct-retrieved every cited source
 from Apple Markdown endpoints or original HTML with HTTP 200, access times,
 SHA-256 hashes, and preserved responses. The controller-owned catalog is to be
 recorded at `docs/orchestration/milestones/m0/evidence/r03-source-evidence.md`;
-raw records currently reside in shared Git evidence. The cited APIs establish
+raw records currently reside in shared Git evidence. The writer initially
+reached the new current generic extension/container pages through the browser’s
+official Apple search/open path; `web.open` exposed JavaScript shells while the
+search response supplied excerpts, and a direct shell `curl` to Apple Markdown
+endpoints failed DNS resolution. The controller has now direct-urllib captured
+and hashed sources 24–27, including the archived route guide and the current
+shared-data, App-Groups, and historical container-guidance bodies. The cited
+APIs establish
 interfaces and the table’s metadata availability—not a selected minimum OS,
 real plugin availability, third-party behavior, desktop compatibility,
 Android equivalence, performance, legal clearance, or release approval.
