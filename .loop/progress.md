@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller owns Git/shared state. R06 independent read-only Researcher completed the original handoff and pinned-source reconciliation. Sole workspace-write Conductor is assigned to `SOUND_ENGINE_RESEARCH.md`; runtime/path proof passed at `757883f18f8378e6552c49564c284a5efd3e41d9`. Prior writers/reviewers are idle. At most3 specialists and one writer; no mixed-permission nesting.
+Controller owns Git/state. R06 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
 
 # Research Questions
 
-R01–R05 Verified; R06 In progress; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R05 Verified; R06 In review; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,11 +20,11 @@ R01–R05 are Verified and integrated; R05 guarded publication proved at `ba19ff
 
 # In Progress
 
-R06 remains In progress under T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6`. Source evidence `5b5d3e84fd999d105cd8441ea39916bee93e2367` binds50 public bodies and four indexes; Researcher reconciliation is complete. Sole Conductor synthesis follows. No report candidate or review verdict yet.
+R06 In review: candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`, verification `0d200280fc4df9294fbd718aa8ee48c974b78b9a`. Separate state barrier consumes the committed artifact; no integration before Verified.
 
 # Verification Needed
 
-Freeze R06 report after writer handback; verify exact one-file scope, primary-source support and hashes, then independent QA/Performance, Licensing/Security and Final reviews. No build/device/performance evidence exists.
+Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. Fifty source bodies hashed; no runtime/device/adoption claim.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Sole Conductor synthesizes R06 from the completed Researcher handoffs and50 source bodies. Preserve all gates; no engine/format/content adoption, main integration or M1 activation.
+Complete independent R06 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
