@@ -156,3 +156,13 @@ Known limits remain explicit: no archive/content authentication, selected shippi
 I relinquish sole ownership of `docs/research/LICENSE_LEDGER.md` and am idle.
 
 **Next action:** the controller should freeze and commit this exact candidate, establish the separate In-review barrier, then request fresh independent QA/Performance and Licensing/Security reviews followed by Final Code Review.
+
+## Exact integration and guarded milestone publication
+
+Exact Verified candidate `a1805e40b765d19f10e248186e147c1c27de68f2` integrated at `582461fedbf973c08eb00c06753d31901b1c9e1e` with unchanged reviewed ledger blob. Publication candidate `de64d78dfaf0e669629d96a406f216c1f3b971e4` passed unchanged milestone guard authorize, push and verify; local/remote equality independently confirmed. Local/live remote main remains foundation b1b0c1edd5e42d3ea791f665c22954834e962d05. Both excluded owner main-guard edit hashes remain unchanged. No task-branch/main publication or PR. This publication record is a later local bookkeeping commit and does not falsely claim its own SHA was already published.
+
+- `integration.json` SHA256 `388140a427fe15e7b7f6be917b8052f370e776867a2d09e68a2f97af84a40a96`.
+- `publication-authorize.json` SHA256 `1d3d5173d3a16b1f496384c3c129e6a36e440e664934f70805115d3031276ece`.
+- `publication-push.json` SHA256 `13904b1c28ff97258cbe09d1fffdcb912521c7858e238e6a4f41041fb5a9e495`.
+- `publication-verify.json` SHA256 `3a0b3fa01ce2b59eaf6c55ff4d0d330c736563e163e9aa38d0668cd3eb8dd24a`.
+- `publication.json` SHA256 `d42535955d5c643bec47454e7825c9af5066ca54a87198dc34800c7af4bb0ec1`.

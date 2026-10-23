@@ -105,4 +105,6 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 After R07 integration/publication, prepare R08 Sunday Keys public capability/workflow brief.
 
-R07 exact report integrated at `582461fedbf973c08eb00c06753d31901b1c9e1e`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
+R07 exact report integrated at `582461fedbf973c08eb00c06753d31901b1c9e1e`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded publication/equality proved at `de64d78dfaf0e669629d96a406f216c1f3b971e4`. R08 brief/eligibility next.
+
+R07 publication proved at `de64d78dfaf0e669629d96a406f216c1f3b971e4`; no task/milestone Accepted, no main/successor action.
