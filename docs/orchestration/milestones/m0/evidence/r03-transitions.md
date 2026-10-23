@@ -46,3 +46,9 @@ Known gaps are the uncommitted assignment barrier, unperformed source retrieval,
 **Next action:** controller commits the R03 assignment barrier, resolves its exact SHA, then dispatches the Apple Specialist.
 
 Raw intake reply SHA-256: `304b769f09e56151e625f411806b18848caeacf1b0633d99de7b59163a86390f`. No research body may execute between this artifact commit and the separate state transition. Probe/intake must prove actual runtime context before the subsequent two-file research dispatch.
+
+## T02 — Correction round1
+
+Date2026-10-23. From In review to In progress; consume only through separate state commit. Review source `863310d70eadbc5459c851fb2a39525646dbc9fc` (`r03-review-round0.md`), prior candidate `8a0b2825ff5e8509ad73c1f8f74492d44b22cb5a`, verification `cc98614d449b6a326ae248b1f934d3dca46c016e`. QA reports1Important/1Minor; Security0Important/2Minor. No finding waived; Final not launched.
+
+Same writer configured Apple Specialist `01a167f2-89ed-74d1-9c28-33ab00fcbc2f`, relay `01a167f2-2fd2-7122-a1f1-40f2142a4a59`, independent workspace-write, owns only the two contracted reports in task/m0-r03-apple-audio at `.worktrees/m0-r03-apple-audio`. Controller owns commits and canonical source/review/state evidence. Correction scope: concrete primary-source sandbox/container/data/file-access distinction and unknowns; archived route-guide citation; accurate sample-project/archive wording. Controller captures new source bytes and known Apple guideline revision. Preserve existing source/claim context; no new architecture, adoption, code, hardware or legal conclusion. Fresh affected QA/Security then Final required. Correction count1 of maximum5.
