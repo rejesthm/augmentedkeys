@@ -69,3 +69,9 @@ The ledger still lacks exact foundation SDK/tool identities and authoritative ev
 No files, sources, or Git metadata were changed, and no specialist was launched. I am idle.
 
 **One next action:** the controller should commit the bounded R07 assignment artifact, then commit the separate In-progress state and verify the independent runtime boundaries before launching the Researcher.
+
+## T02 — correction round1 assignment
+
+Prior candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df`, rejection `f94ee4a3f45d72b5d1d351415c4c5f16eccd767b`, verification `d101b1e646a6784be4f687e951e1a37769dcd3bc`, In-review `0e308078d7779c6d54d4111ffdd5397725436e89`, brief `2580cd495ef218c94f488f1622263e4cd61ff6ae`. QA0/1/0 and Security0/2/0 require: Q1 map SDK0.0.0 labels to known Flutter/Dart/engine identities and distinguish current direct-main Flutter transitives from dev/test/tooling; S1 preserve vector_math BSD plus embedded zlib-style grant and conditions; S2 retain known JUCE9.0.1 SPDX bundled/optional branches, including ASIO/AAX proprietary-or-GPL alternatives and AudioUnitSDK. Controller independently checked L03, local exact Flutter pubspec, L49/P58 and P74. Source availability is not clearance.
+
+Same sole Conductor child `01a1672e-2573-7cf2-990e-310ef956eca3`, sol/high/workspace-write, owns only docs/research/LICENSE_LEDGER.md on task/m0-r07-licensing in `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r07-licensing`, base `a8b8f78c52d40ab03728073c2692ca6edb9a8d20`. Controller alone allGit/state/evidence. Round1 of max5; no adoption, legal conclusion, license-policy, architecture or scope change. After separate In-progress barrier, capture existing pinned SDK package metadata as supplemental documentary support, then correct same ledger. Fresh QA and Security, then Final required. No finding closed by assignment.
