@@ -1,3 +1,9 @@
+# R08 specialist approvals — Final pending
+
+Exact unchanged candidate `d1979355eabf5214f9b3a79eda4323e55164248a` has independent QA and Licensing/Security APPROVE0/0/0, no findings. Complete outputs/runtime accompany this update in r08-review-round0.md. Remains In review until fresh Final and finalized-verification/Verified barrier. No integration, adoption or runtime claim.
+
+---
+
 # R08 verification — review candidate
 
 Exact candidate `d1979355eabf5214f9b3a79eda4323e55164248a`, task base `949c29da2e68e72bd896f74f40717cb0edac5da2`, brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`, T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`, In-progress `164263a340ae6342282df58e13a784d30fab5c9f`, runtime `5559bae08646698060fb118da9e8f93acbb47c31`. Sources `8f291b434d11ada63bd286fa85b5e2b6b4b6ebf5` reconciled at `966ee8d26cb450112ab702ecf35839d590e2de4f`. Sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
