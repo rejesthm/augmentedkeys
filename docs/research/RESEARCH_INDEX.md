@@ -112,5 +112,5 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current first-party product and support documentation, public store information, documented platform requirements, and attributed observations; third-party reports may identify questions but cannot alone establish technical facts.
 - **Expected output:** `COMPETITOR_MATRIX.md`.
 - **Decision it unlocks:** Prioritization of original product workflows, differentiation questions, and research gaps.
-- **Status:** `Eligible` — brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`; no formal dependencies; assignment/runtime barriers still required
+- **Status:** `In progress` — brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`; T01 `3a48477ff96be24ac34fd66e6b9663f1843172cb`; runtime/path proofs before body
 - **Findings:** No findings recorded

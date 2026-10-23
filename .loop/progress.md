@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-No specialist active. Controller creates R10 isolated task worktree, then Conductor intake only.
+R10 Researcher and sole Conductor assigned; independent runtime/path probes only before body. Controller alone Git/state/evidence.
 
 # Research Questions
 
@@ -16,15 +16,15 @@ R01–R09 Verified; R10 Eligible. R05 carries one shared nonblocking index-count
 
 # Ready Tasks
 
-R01–R09 Verified. R10 Eligible under exact committed brief.
+R01–R09 Verified; R10 In progress.
 
 # In Progress
 
-No active task writer. R10 intake only before assignment/state/runtime barriers.
+R10 exact brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`, T01 `3a48477ff96be24ac34fd66e6b9663f1843172cb`; no research body until actual runtime/path proof.
 
 # Verification Needed
 
-Conductor intake then bounded assignment and separate In-progress state; actual role/runtime/path probes before body.
+Verify Researcher read-only and Conductor workspace-write current runtime/parent/cwd and assigned report path; then public documentary research.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-R10 mobile competitor public capability/workflow research after its assignment/runtime barriers.
+Complete R10 runtime/path probes, public source research and sole-writer workflow synthesis.
