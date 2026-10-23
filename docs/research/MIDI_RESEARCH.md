@@ -156,14 +156,14 @@ No mapping, learn, split, layer, transpose, snapshot, program-change, zone, pitc
 | M70 `MIDIEventListInit` — `https://developer.apple.com/documentation/coremidi/midieventlistinit(_:_:).md` | iOS/iPadOS 14.0+ | Initializes an event list for a protocol. |
 | M26 `https://developer.apple.com/documentation/coremidi/midipacketlist.md` | Blank fields | Packet-list structure; availability unknown from capture. |
 | M28 `https://developer.apple.com/documentation/coremidi/midipacketlistadd%28_%3A_%3A_%3A_%3A_%3A_%3A%29.md` | iOS/iPadOS 4.2–27.2 metadata range | Adds packet data; documents 65,536-byte packet-list capacity and SysEx splitting; range end does not prove removal. |
-| M50 `MIDIEventList` — `https://developer.apple.com/documentation/coremidi/midieventlist.md` | iOS/iPadOS 14.0+ | UMP event-list structure with protocol field. |
-| M51 `https://developer.apple.com/documentation/coremidi/midiprotocolid.md` | iOS/iPadOS 14.0+ | MIDI 1 and MIDI 2 protocol identifiers. |
+| M50 `MIDIEventList` — `https://developer.apple.com/documentation/coremidi/midieventlist.md` | Blank fields; exact introduction unknown from capture | UMP event-list structure with protocol field; M70 function availability does not establish this structure’s earliest availability. |
+| M51 `MIDIProtocolID` — `https://developer.apple.com/documentation/coremidi/midiprotocolid.md` | Blank fields; exact introduction unknown from capture | MIDI 1 and MIDI 2 protocol identifiers; no framework-baseline inference is made. |
 | M47 `https://developer.apple.com/documentation/coremidi/miditimestamp.md` | Blank fields | Based on `mach_absolute_time()`; availability unknown. |
 | M48 `https://developer.apple.com/documentation/coremidi/midireceiveblock.md` | Blank fields | High-priority receive thread; availability unknown. |
 | M27 `https://developer.apple.com/documentation/coremidi/midieventpacket/timestamp.md` | Blank fields | Input occurrence/output desired-play time; zero means now. |
 | M31 `https://developer.apple.com/documentation/coremidi/midicisession.md` | iOS/iPadOS 12.0–18.0 metadata range | Bidirectional MIDI-CI-discovered session; captured body does not label it removed/deprecated. |
 
-Blank metadata does not mean “present since baseline.” A range end does not by itself mean an API was removed. M18, `https://developer.apple.com/documentation/coremidi/incorporating-midi-2-into-your-apps.md`, lists iOS 14.0+, Mac Catalyst 14.0+, and Xcode 16.2+ but not iPadOS in metadata. That omission is unknown, not evidence that iPadOS lacks the feature. No minimum deployment target follows.
+Blank metadata does not mean “present since baseline.” M70’s iOS/iPadOS 14.0+ function metadata does not establish the exact introduction of M50 `MIDIEventList` or M51 `MIDIProtocolID`. A range end does not by itself mean an API was removed. M18, `https://developer.apple.com/documentation/coremidi/incorporating-midi-2-into-your-apps.md`, lists iOS 14.0+, Mac Catalyst 14.0+, and Xcode 16.2+ but not iPadOS in metadata. That omission is unknown, not evidence that iPadOS lacks the feature. No minimum deployment target follows.
 
 ### Discovery, callbacks, timing, and lifecycle
 
@@ -177,8 +177,8 @@ M57, `https://developer.apple.com/documentation/uikit/managing-your-app-s-life-c
 
 - M29, `https://developer.apple.com/documentation/coremidi/midi-bluetooth.md`, documents BLE MIDI and iOS 16+ paired-peripheral reconnection behavior.
 - M30, `https://developer.apple.com/documentation/coremidi/midinetworksession.md`, documents network MIDI session APIs.
-- M54, `NSBluetoothAlwaysUsageDescription`, `https://developer.apple.com/documentation/bundleresources/information-property-list/nsbluetoothalwaysusagedescription.md`, requires a Bluetooth usage explanation when an app uses Bluetooth.
-- M55, `https://developer.apple.com/documentation/bundleresources/information-property-list/nslocalnetworkusagedescription.md`, requires a local-network explanation for direct or indirect local-network use.
+- M54, `NSBluetoothAlwaysUsageDescription`, `https://developer.apple.com/documentation/bundleresources/information-property-list/nsbluetoothalwaysusagedescription.md`, has iOS/iPadOS 13.0+ metadata and is required when an app uses Bluetooth; for a deployment target earlier than iOS 13, the source says to add `NSBluetoothPeripheralUsageDescription` as well.
+- M55, `NSLocalNetworkUsageDescription`, `https://developer.apple.com/documentation/bundleresources/information-property-list/nslocalnetworkusagedescription.md`, has iOS/iPadOS 14.0+ metadata and says any app using the local network directly or indirectly should include the explanation, including Bonjour-based services and direct unicast or multicast connections.
 - M56, `https://developer.apple.com/documentation/bundleresources/information-property-list/uibackgroundmodes.md`, identifies background modes as an enabled capability.
 - These sources do not prove every wired route needs a permission or that no wired route needs one.
 - No entitlement, plist key, background mode, or minimum OS is selected.
@@ -235,12 +235,12 @@ The package says an app may declare `android.software.midi` when MIDI is require
 
 M14, `https://developer.android.com/develop/connectivity/bluetooth/bt-permissions`, distinguishes OS from target SDK:
 
-- Android 12/API 31-targeted apps use `BLUETOOTH_SCAN` for relevant scans.
-- Communication with paired devices uses `BLUETOOTH_CONNECT`.
-- Advertising, if used, uses `BLUETOOTH_ADVERTISE`.
-- These are runtime Nearby Devices permissions.
-- Location and `neverForLocation` depend on target, OS, scan use, and location derivation.
-- Android 11-and-lower BLE scanning conditions differ.
+- If the app targets Android 12/API 31 or later, it declares `BLUETOOTH_SCAN` to look for devices, `BLUETOOTH_CONNECT` to communicate with already-paired devices, and `BLUETOOTH_ADVERTISE` only when making the device discoverable.
+- On the relevant Android 12/API 31+ runtime, those operation-specific permissions are runtime Nearby Devices grants; each applicable operation requires user approval rather than one permission covering every Bluetooth use.
+- If scan results derive physical location, `ACCESS_FINE_LOCATION` remains applicable. Otherwise `BLUETOOTH_SCAN` may use `neverForLocation`; M14 warns that this assertion can filter some BLE beacons.
+- For a target SDK of Android 11/API 30 or lower, `BLUETOOTH` covers classic/BLE communication and `ACCESS_FINE_LOCATION` is required for scanning on Android 11 and lower, subject to the documented Companion Device Manager alternative.
+- `BLUETOOTH_ADMIN` is required when initiating local-device discovery or manipulating Bluetooth settings under the legacy model.
+- For an app supporting a service that can run on Android 10/API 29 or Android 11, M14 also requires `ACCESS_BACKGROUND_LOCATION` for background Bluetooth discovery.
 
 BLE conditions do not prove a wired-only route needs Bluetooth permissions. They do not prove universal absence of wired permission or USB user-consent behavior. Target SDK, USB filters/consent, and BLE policy remain unselected.
 
@@ -440,7 +440,7 @@ No result can pass until a later task approves numeric budgets, device/controlle
 - MIDI 1 byte stream, MIDI 1 over UMP, MIDI 2 over UMP, MIDI-CI, and MPE are distinct.
 - Apple and Android APIs have material symbol/API-level differences.
 - Android basic MIDI is API 23; transport-specific UMP management is API 33; virtual UMP service is API 35.
-- Apple protocol event-list APIs inspected here are iOS/iPadOS 14.0+ when metadata is present.
+- Captured protocol-aware functions M25, M68, and M70 have iOS/iPadOS 14.0+ metadata; exact M50 `MIDIEventList` and M51 `MIDIProtocolID` introduction dates remain unknown from their blank fields.
 - MIDI callbacks have ownership/timing rules distinct from audio rendering.
 - Note/sustain recovery needs more evidence than one All Notes Off.
 
