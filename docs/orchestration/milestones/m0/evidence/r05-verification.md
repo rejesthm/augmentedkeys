@@ -1,3 +1,9 @@
+# R05 correction1 specialist approvals — Final pending
+
+Unchanged candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` has fresh affected QA and Security APPROVE0/0/1, with explicit closure of both original Final Important findings. Literal reports and actual read-only provenance accompany this update in `r05-review-round1.md`. The shared single Minor at reportline50 (“three” vs four indexes) remains nonblocking and is carried to Final/milestone triage; substantive71/69/2 counts and source evidence are correct. Task remains In review; no integration before fresh Final and finalized-artifact/Verified barrier.
+
+---
+
 # R05 verification — correction round1
 
 New candidate `00952ed4bd563446ef450ce375cb5ec89edb43de`, rejected prior candidate `5b7390d91fd074479d1144d76233320999f3161e`, original base `22afbe4c38e2f46a758cce7e744b4819e116c6ad`. Final rejection `664aec80035ef44fad5d88d409d28f2bb8597805`; correction T02 `59ee0ed5677261ad57a3ed4140593ed774577e88`; separate In-progress state `34f2917f0abe4bf7e7a5272cae2ca87eabd19715`. Same sole Conductor writer completed handback; actual final runtime snapshot remains independent workspace-write, gpt-5.6-sol/high, exact R05 cwd. No other writer or Git mutation by the role. Original candidate/review evidence retained below and in Git.
