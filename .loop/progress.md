@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-No specialist active. Controller creates R08 isolated task worktree, then Conductor intake only.
+R08 Researcher and sole Conductor assigned; independent runtime/path probes only before body. Controller alone Git/state/evidence.
 
 # Research Questions
 
-R01–R07 Verified; R08 Eligible; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R07 Verified; R08 In progress; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R07 Verified. R08 Eligible under exact committed brief; R09–R10 Queued.
+R01–R07 Verified; R08 In progress; R09–R10 Queued.
 
 # In Progress
 
-No active task writer. R08 intake only before assignment/state/runtime barriers.
+R08 exact brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`, T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; no research body until actual runtime/path proof.
 
 # Verification Needed
 
-Conductor intake then bounded assignment and separate In-progress state; actual role/runtime/path probes before body.
+Verify Researcher read-only and Conductor workspace-write current runtime/parent/cwd and assigned report path; then public documentary research.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-R08 Sunday Keys public capability/workflow research after its assignment/runtime barriers.
+Complete R08 runtime/path probes, public source research and sole-writer workflow synthesis.
