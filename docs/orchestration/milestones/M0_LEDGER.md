@@ -26,18 +26,18 @@
 
 
 - Decision-evidence branch: `governance/decision-evidence`
-- Decision-evidence worktree: Planned `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/decision-evidence`; controller only
+- Decision-evidence worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/decision-evidence` — local, clean, preserved after guard refusal
 - Decision-evidence writer: Program controller only; Decision Steward and reviewers are read-only
 - Decision-evidence governance base: `8138cf965531ffd34a9dd967b1724c837409a1c8` — recorded before branch creation
-- Local decision-evidence tip: Not created
-- Remote decision-evidence tip: Not created
-- Current decision-evidence binding: Not yet decided
+- Local decision-evidence tip: `0db258d158f1d212497ccfdf07675ec399e6f870` — unpublished/unconsumed
+- Remote decision-evidence tip: Absent, freshly proved after authorize refusal
+- Current decision-evidence binding: No published/consumable binding; local `0db258d158f1d212497ccfdf07675ec399e6f870` refused publication
 - Decision Steward status index: `docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md`
 - Canonical Decision Steward evidence root: `docs/orchestration/decisions/m0/` on `governance/decision-evidence`
-- Milestone acceptance package commit: Not yet decided
-- Milestone acceptance verdict commit: Not yet decided
-- Milestone acceptance binding commit: Not yet decided
-- Steward decision commit: Not yet decided
+- Milestone acceptance package commit: `a17d2891250c4757218dd77753643ec260bf2f62` — local unpublished human-pause package
+- Milestone acceptance verdict commit: `819cb32709584c7f1e76ce8db336051c6ddc7bb6` — local PAUSE_HUMAN, unpublished/unconsumed
+- Milestone acceptance binding commit: `0db258d158f1d212497ccfdf07675ec399e6f870` — local unpublished/unconsumed
+- Steward decision commit: `819cb32709584c7f1e76ce8db336051c6ddc7bb6` — returned verdict only; publication gate failed
 - Accepted milestone tip: Not yet decided
 - Original `main` base: Not yet decided
 - Main integration status index: `docs/orchestration/milestones/m0/evidence/main-integration.md`
@@ -220,8 +220,10 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05`, contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, reviewed baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` and acceptance evidence `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Fresh entry evidence is recorded in that owner decision. R01–R10 are Verified. No task/milestone is Accepted.
 
-Next: immutable human-pause package and independent Decision Steward assessment; owner governance-correction authorization required before any further task.
+Next: owner authorization for the committed governance correction AND explicit unpublished evidence-history preservation/recovery; see decision-publication-recovery.md.
 
 The excluded original-checkout main-guard edits were rejected by advisory QA/Security and remain unchanged. They cannot be adopted or used for main integration without correction and fresh review; the independent M0 research/publication procedure remains authorized. No product, device or performance capability is claimed.
 
 MT-002 consumed at this separate state barrier: Active → Paused for owner decision, evidence `8138cf965531ffd34a9dd967b1724c837409a1c8`. All10research tasks Verified;0Critical/2Important governance findings remain open. No acceptance/main/successor action. Governance base `8138cf965531ffd34a9dd967b1724c837409a1c8` is recorded before creation; no branch or verdict is yet claimed.
+
+Publication refusal record `5a23e281b53d38ab43e51a427017c1ea8c0a3918` consumed as failure evidence only. No Steward binding consumed. Existing MT-002 pause remains. Local governance base `8138cf965531ffd34a9dd967b1724c837409a1c8` is retained as mistaken historical setup; guard requires remote main for initial creation. No rewrite or retry authorized.

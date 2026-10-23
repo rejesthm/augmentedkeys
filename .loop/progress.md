@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-All research writers/reviewers idle. Controller records the human-only governance pause and will launch the independent read-only Steward on an immutable package.
+All role sessions completed and idle. Steward returned PAUSE_HUMAN locally; publication guard refused, so no binding was consumed. Owner decision pending.
 
 # Research Questions
 
@@ -24,7 +24,7 @@ No eligible research task remains. M0 Paused for owner decision; all10tasks Veri
 
 # Verification Needed
 
-Decision Steward assessment of exact human-pause package; any future governance correction requires fresh independent reviews and focused fixtures. Historical whole-range whitespace result preserved without waiver.
+Owner-authorized governance correction and explicit preservation/recovery of unpublished evidence history, followed by fresh independent reviews and guard equality proof. No retry or bypass permitted.
 
 # Completed
 
@@ -103,6 +103,6 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Owner decision on the committed bounded governance correction proposal after independent Steward assessment.
+Owner authorization for governance-correction-proposal.md plus decision-publication-recovery.md. No eligible implementation or successor task exists.
 
-MT-002 evidence `8138cf965531ffd34a9dd967b1724c837409a1c8` consumed by separate pause-state commit; governance base `8138cf965531ffd34a9dd967b1724c837409a1c8` recorded before branch creation.
+Evidence publication authorize refused67; local binding `0db258d158f1d212497ccfdf07675ec399e6f870` remains unpublished/unconsumed. MT-002 pause still applies. Last remote milestone `708aaa5968d557a09d3b9f9b207ff3fd77ffd315`; no further push attempted after refusal.

@@ -20,7 +20,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 - Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224`: freshly observed blocked and not loaded at activation preflight.
 - Canonical ledger: `docs/orchestration/milestones/M0_LEDGER.md`.
 - CT03 review evidence: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`; three independent approvals with zero findings for the exact reviewed baseline.
-- Decision-evidence branch remains absent. No Steward verdict, main integration attempt/result or successor activation exists.
+- Local decision-evidence branch exists at `0db258d158f1d212497ccfdf07675ec399e6f870`, but publication was refused and remote branch remains absent. Local Steward PAUSE_HUMAN is unpublished/unconsumed; no main integration or successor activation exists.
 
 ## Research preserved
 
@@ -33,7 +33,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 M0 is `Paused for owner decision` under MT-002 evidence `8138cf965531ffd34a9dd967b1724c837409a1c8`. R01–R10 are Verified; none Accepted. Completion/status package `8138cf965531ffd34a9dd967b1724c837409a1c8` preserves all exact task candidates, reviews, limitations and publication evidence. R01/R05 nonblocking Minors remain. Independent Final protocol assessment found two Important governance conflicts; the proposed bounded correction is docs/orchestration/milestones/m0/evidence/governance-correction-proposal.md. Whole-range whitespace check also returned nonzero on preserved historical review formatting; it is disclosed, not waived or rewritten.
 
-The controller will request a read-only Decision Steward assessment of an immutable human-pause package; no approval is inferred. Owner authorization is required for control paths outside the M0 allowlist. No M0 acceptance, main integration, M1 activation or implementation is permitted. The full-app Goal remains unfinished; current app is a Flutter shell.
+The independent read-only Decision Steward returned PAUSE_HUMAN with0Critical/2Important, recorded locally at `819cb32709584c7f1e76ce8db336051c6ddc7bb6`. The evidence publication guard then refused the controller-selected base; local binding is unpublished and unconsumed. See decision-publication-recovery.md for exact failure and proposed owner-authorized preservation/recovery. No approval is inferred. Owner authorization is required for control paths outside the M0 allowlist. No M0 acceptance, main integration, M1 activation or implementation is permitted. The full-app Goal remains unfinished; current app is a Flutter shell.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
