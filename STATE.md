@@ -31,7 +31,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 ## Current gates and next action
 
-R01–R09 Verified; R10 Verified; none Accepted. R10 exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, evidence `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d`. integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews. R01 provenance-label Minor and R05 index-count wording Minor remain preserved for milestone triage. Current app remains Flutter shell; documentary research does not adopt architecture, dependencies, content, or product features.
+R01–R09 Verified; R10 Verified; none Accepted. R10 exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, evidence `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d`. Exact reviewed report integrated at `393300c37cc337c0127ed86203ec110c6c2b8b30`; guarded milestone publication is next. Independent governance findings remain outside this task approval. R01 provenance-label Minor and R05 index-count wording Minor remain preserved for milestone triage. Current app remains Flutter shell; documentary research does not adopt architecture, dependencies, content, or product features.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
