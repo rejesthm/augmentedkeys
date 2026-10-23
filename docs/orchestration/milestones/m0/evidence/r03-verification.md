@@ -1,3 +1,48 @@
+# Current R03 verification — correction round1
+
+Candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`; prior rejected candidate `8a0b2825ff5e8509ad73c1f8f74492d44b22cb5a`; task base `c66cd8650c601709c84c9bf58ec783b5dcbcda29`. Status: pending fresh affected QA/Security then Final; not Verified. Correction transition `2b79688d257cb5d10a21b0e7104efe967bee4140`, separate state `41ea088fa8133a5cec2a551fa35cf2c948839223`; round0 reviews `863310d70eadbc5459c851fb2a39525646dbc9fc`. Same Apple writer/relay and two-file ownership; handback complete before controller commit. Brief/contract/owner authority unchanged.
+
+Fresh checks at 2026-10-23T09:17:42.281879+00:00, same macOS26.6.2/arm64/Git2.54.0 environment:
+
+```text
+git diff --check c66cd8650c601709c84c9bf58ec783b5dcbcda29 b3eb533c41993c7b236d47a8d347329e9dca6fae
+exit0; no output
+git diff --name-only c66cd8650c601709c84c9bf58ec783b5dcbcda29 b3eb533c41993c7b236d47a8d347329e9dca6fae
+docs/research/IOS_AUDIO_RESEARCH.md
+docs/research/PLUGIN_HOSTING_RESEARCH.md
+git status --porcelain
+exit0; empty
+```
+
+All27 captured full source bodies were SHA-256 rechecked against immutable indexes:27matched,0mismatches. Source evidence now `ba9ff7d41af7df6c8a1bc8f4a7187bdb1342c10b`; initial23 catalog and raw bytes preserved, with new24–27 bodies, URLs/access times and known App Review Guidelines body revision2026-10-16. No product/protected path, dependency, asset, native permission or configuration changed. No Flutter/build/device/runtime/performance check was run or implied. Local main remains unchanged from accepted foundation; live remote main was last observed unchanged in the prior candidate verification, not remeasured by these static checks.
+
+## Correction-to-finding mapping
+
+- QA I1: hosting section6 now separates process isolation from generic sandbox/container/file access, containing app versus unrelated host, same-team app groups, entitlement/data/state/file/resource questions and unknown AUv3-specific behavior, supported by P11–P13 / sources25–27. No shared-container or cross-team right inferred.
+- QA M1: IOS S9 and lifecycle text explicitly cite archived route guide, captured as source24 and labeled historical.
+- Security M1: sample provenance narrowed to no project/archive download and no code adoption; captured documentation snippets acknowledged.
+- Security M2: guidelines body revision recorded in hosting P10 and controller source evidence; prior source22 bytes remain unchanged.
+
+These are correction locations, not reviewer closure. Independent affected review decides whether each finding closes. Criteria1–5/7 retain earlier coverage; criterion6 and8 receive fresh attention. All original rejected artifacts are retained below and in Git history. Writer's failed curl DNS retrieval is preserved; independent controller urllib retrieval of24–27 succeeded. No failure was relabeled as success.
+
+- `docs/research/IOS_AUDIO_RESEARCH.md` SHA-256 `a6a13bf91f9f34dff5e5d4cd04aa1d465c3e78294e66c958b0fbc30f07c03515`.
+- `docs/research/PLUGIN_HOSTING_RESEARCH.md` SHA-256 `2ebdfae97d82850928a00ac983a358014a1e84cefe2e12a994099ea77ee89c5f`.
+
+## Round1 writer handback
+
+Final alignment complete.
+
+- [IOS_AUDIO_RESEARCH.md](/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r03-apple-audio/docs/research/IOS_AUDIO_RESEARCH.md): SHA-256 `a6a13bf91f9f34dff5e5d4cd04aa1d465c3e78294e66c958b0fbc30f07c03515`
+- [PLUGIN_HOSTING_RESEARCH.md](/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r03-apple-audio/docs/research/PLUGIN_HOSTING_RESEARCH.md): SHA-256 `2ebdfae97d82850928a00ac983a358014a1e84cefe2e12a994099ea77ee89c5f`
+
+App-group sharing is now explicitly limited to same-developer/team apps; no cross-team AUv3 sharing is implied. The unsupported optional-sandbox aside is removed, and provenance now reflects controller capture of sources 24–27.
+
+`git diff --check` passed cleanly. Only the two assigned reports are modified. Sole ownership is returned to the controller.
+
+---
+
+# Historical round0 verification (superseded by current candidate above)
+
 # R03 verification — candidate for independent review
 
 Status: pending required independent QA/Performance, Licensing/Security and Final reviews; R03 is not Verified.
