@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller owns Git/state. R09 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
+R09 sole writer, Researcher and all3 independent reviewers completed and idle. Controller alone integrates/publishes exact Verified candidate.
 
 # Research Questions
 
-R01–R08 Verified; R09 In review; R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R09 Verified; R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R08 Verified; R09 In review; R10 Queued.
+R01–R09 Verified; R10 Queued. R10 has no formal dependencies; own brief and barriers follow R09 publication.
 
 # In Progress
 
-R09 In review: candidate `266f263849c737adb1a9759b39967042cd69212b`, verification `eb21fa0c4a7f1822510e17d578fca0b490bc2e3e`. Separate state barrier consumes the committed artifact; no integration before Verified.
+No active task writer. R09 exact candidate `266f263849c737adb1a9759b39967042cd69212b` Verified under `324c06e5302a9009753a884cedbe650a83bb5b13`; no findings, reviews0/0/0.
 
 # Verification Needed
 
-Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. All retained source bodies hashed; no runtime/device/adoption claim.
+Integrate exact R09 candidate, compare reviewed blob, guarded milestone publication and equality proof. No main integration or license/content/adoption approval.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete independent R09 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
+After R09 integration/publication, prepare R10 competing mobile performance workflow brief.

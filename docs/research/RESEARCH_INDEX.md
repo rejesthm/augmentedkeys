@@ -102,8 +102,8 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party Apple documentation, published user guides, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `MAINSTAGE_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original mobile workflow requirements and deliberate non-goals.
-- **Status:** `In review` — candidate `266f263849c737adb1a9759b39967042cd69212b`; verification `eb21fa0c4a7f1822510e17d578fca0b490bc2e3e`; independent reviews pending
-- **Findings:** No findings recorded
+- **Status:** `Verified` — candidate `266f263849c737adb1a9759b39967042cd69212b`; finalized verification `324c06e5302a9009753a884cedbe650a83bb5b13`; allrequiredreviews0/0/0,no findings
+- **Findings:** Public first-party MainStage workflows and edition/date/compatibility/privacy distinctions documented; original mobile questions and future scenarios remain unadopted/unperformed. No runtime, content, legal or distribution clearance.
 
 ## 10. Competing mobile live-performance workflows
 
