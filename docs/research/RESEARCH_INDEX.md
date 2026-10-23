@@ -82,7 +82,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Authoritative license texts, rights-holder or publisher terms, official distribution terms, source provenance, version-specific notices, and qualified legal review when required.
 - **Expected output:** `LICENSE_LEDGER.md`.
 - **Decision it unlocks:** Item-by-item approval or rejection before adoption or distribution; technical suitability remains a separate decision.
-- **Status:** `In progress` — correction1; T02 `28852c771f7234532d9e3d9067d79b88c6abea81`; QA1/Security2 Important open
+- **Status:** `In review` — candidate `a1805e40b765d19f10e248186e147c1c27de68f2`; verification `51fdd8ef0fc2830cfdb7c1f5b589d97a2da35d2f`; independent reviews pending
 - **Findings:** No findings recorded
 
 ## 8. Sunday Keys public capability/workflow analysis
