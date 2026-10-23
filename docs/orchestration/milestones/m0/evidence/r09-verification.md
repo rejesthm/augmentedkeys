@@ -99,3 +99,7 @@ Known gaps remain offline entitlement, full account behavior, plug-in/file compl
 I relinquish sole ownership of `docs/research/MAINSTAGE_ANALYSIS.md` and am idle.
 
 **Next action:** the controller should freeze this exact file as the R09 candidate and dispatch independent QA/Performance and Licensing/Security review, followed by fresh Final Code Review if both pass.
+
+## Guarded publication record
+
+Exact reviewed candidate `266f263849c737adb1a9759b39967042cd69212b` integrated at `26d02a1e71a1ff478240c9737bc41dd588575f6d`. Guard authorize/push/verify each exited0 for exact clean milestone tip `1b8c06a44a3627290fa9d1530fb56eca0eda3efa`; fresh local and live remote milestone hashes equal. Local and live remote main remain accepted foundation; excluded original-checkout owner files retain recorded hashes. Private publication.json SHA256 `0fd3825a8e847db82f563dd1497387c972cf5e26fe22192efe6b122f7d5d2afe`. No main integration, task-branch publication, or task/milestone acceptance. This bookkeeping commit follows the published tip.

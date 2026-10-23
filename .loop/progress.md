@@ -106,3 +106,5 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 After R09 integration/publication, prepare R10 competing mobile performance workflow brief.
 
 R09 exact report integrated at `26d02a1e71a1ff478240c9737bc41dd588575f6d`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
+
+R09 guarded milestone publication/equality proved at `1b8c06a44a3627290fa9d1530fb56eca0eda3efa`; R01–R09 Verified, R10 Queued. R10 briefing/eligibility follows.
