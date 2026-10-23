@@ -78,3 +78,12 @@ Controller documentary capture under brief `b5a85d4a36827d00d83ca727de2c6e72093b
 - `researcher-research-runtime.json` SHA256 `e5945eba9f9446222539a1e7132b4345ac8626c175cd25616e5467cb5ceb7817`.
 
 The initial Researcher handoff is preliminary; controller pin reconciliation and subsequent same-Researcher amendment precede sole Conductor synthesis. Hash availability does not imply every source line was inspected or a full security/real-time audit. All future engine/format/architecture/content/build/hardware/legal decisions remain open.
+
+## Completed reconciliation
+
+All50 requests returned HTTP200. Same Researcher reconciliation completed; the original handoff and its precise amendments remain distinct. S41/S43 completed after the amendment and were not newly read by that researcher. Source capture is complete; no retry or unresolved retrieval failure. The writer receives both handoffs and all four source indexes.
+
+- `researcher-reconciliation.final.txt` SHA256 `44e8d605d5f1ddbc7ce3a6b65089c2062d37e985e1c3928796b353860d254ec4`.
+- `researcher-reconciliation-runtime.json` SHA256 `57ce29e8ccb2c78098c06e4a708d224e2d8093b0a4ddc0e53a4d76401d683a92`.
+- `primary-sources/S42-extracted.txt` SHA256 `d0dcdd99ef779b1cdf3205566fd1258f81f51369c5dad44ef546169680cd71d2`.
+- `primary-sources/S42-cover.png` SHA256 `4361c29e956097b822d70266594746be4b0dd1a0b448bbe94d19a80ccd3fe11d`.

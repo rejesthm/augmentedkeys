@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture contains69 bodies and2 retained failures; all R05 reviewers approve0/0/1 with both Important findings closed. Writer/reviewers idle; exact integration and guarded publication proved at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. Permission-isolated roles, one writer and at most3 specialists remain binding.
+Controller owns Git/shared state. R06 independent read-only Researcher completed the original handoff and pinned-source reconciliation. Sole workspace-write Conductor is assigned to `SOUND_ENGINE_RESEARCH.md`; runtime/path proof passed at `757883f18f8378e6552c49564c284a5efd3e41d9`. Prior writers/reviewers are idle. At most3 specialists and one writer; no mixed-permission nesting.
 
 # Research Questions
 
@@ -16,15 +16,15 @@ R01–R05 Verified; R06 In progress; R07–R10 Queued. R05 carries one shared no
 
 # Ready Tasks
 
-R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; guarded publication proved at `980a9576b2b37ac6a9364d1e5ad21f52c847db9f`. R05 brief `f30f02a5c76d5f08e07c45627b023819d811e289` is committed; assignment T01 `c433ba2b0260afd8319e10e56f151ce8980239ba` precedes this separate In-progress state.
+R01–R05 are Verified and integrated; R05 guarded publication proved at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. R07–R10 remain Queued.
 
 # In Progress
 
-R05 exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` is Verified under `96a82baa49cb561084585115cde4e4658498307b`. Exact report integrated at `a3ea90b189b5b7fd23639455b92b4f9c1ae894fb` and published/equal at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. R06 T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6` assigns one Conductor report writer and independent Researcher before this separate In-progress state; runtime/path probes next.
+R06 remains In progress under T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6`. Source evidence `5b5d3e84fd999d105cd8441ea39916bee93e2367` binds50 public bodies and four indexes; Researcher reconciliation is complete. Sole Conductor synthesis follows. No report candidate or review verdict yet.
 
 # Verification Needed
 
-Pin candidate/finalized evidence and clean branches, compare integrated report blobs, publish only milestone/m0-research through existing guard and prove local/remote equality. R05 needs current primary-source research and independent reviews.
+Freeze R06 report after writer handback; verify exact one-file scope, primary-source support and hashes, then independent QA/Performance, Licensing/Security and Final reviews. No build/device/performance evidence exists.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Prove assigned R06 runtime/path boundaries, then independent Researcher and sole Conductor documentary synthesis; no engine/format/content adoption. No architecture/adoption, main integration or M1 activation.
+Sole Conductor synthesizes R06 from the completed Researcher handoffs and50 source bodies. Preserve all gates; no engine/format/content adoption, main integration or M1 activation.
