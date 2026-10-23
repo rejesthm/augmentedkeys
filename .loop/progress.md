@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R08 Researcher handoff/amendment complete and idle. Sole Conductor synthesis next; controller alone Git/state/evidence.
+Controller owns Git/state. R08 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
 
 # Research Questions
 
-R01–R07 Verified; R08 In progress; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R07 Verified; R08 In review; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R07 Verified; R08 In progress; R09–R10 Queued.
+R01–R07 Verified; R08 In review; R09–R10 Queued.
 
 # In Progress
 
-R08 In progress;26public HTML bodies across2indexes captured/hashed/reconciled; report still179-byte pending marker.
+R08 In review: candidate `d1979355eabf5214f9b3a79eda4323e55164248a`, verification `5da8b083625535ad871a95668b3695256d4f38f8`. Separate state barrier consumes the committed artifact; no integration before Verified.
 
 # Verification Needed
 
-Sole-writer source-qualified report, exact candidate scope/hash checks, QA/Security then Final. No hands-on/product/adoption claim.
+Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. All retained source bodies hashed; no runtime/device/adoption claim.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R08 workflow analysis synthesis and required independent reviews.
+Complete independent R08 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
