@@ -31,7 +31,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 ## Current gates and next action
 
-Activation/R03 publication are proved. R04 exact candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` is Verified through finalized evidence `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; QA/Security/Final each approve0/0/0, all3 original Important findings closed. Next: exact integration and guarded milestone publication, then R05 brief. No specialist writer remains active.
+Activation/R03 publication are proved. R04 exact candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` is Verified through finalized evidence `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; QA/Security/Final each approve0/0/0, all3 original Important findings closed. Exact integration `ed966a7ff7952377109c810a7a8c901c5e4fdbf2` preserves both reviewed report blobs. Next: guarded milestone publication, then R05 brief. No specialist writer remains active.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
