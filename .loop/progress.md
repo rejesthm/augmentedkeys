@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture contains69 bodies and2 retained failures; all R05 reviewers approve0/0/1 with both Important findings closed. Writer/reviewers idle; exact integration/publication next. Permission-isolated roles, one writer and at most3 specialists remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R04 Android writer and independent QA/Security/Final completed their assignments and are idle. R05 Conductor is sole documentary writer; runtime probes passed and independent Researcher handoffs completed. Source capture contains69 bodies and2 retained failures; all R05 reviewers approve0/0/1 with both Important findings closed. Writer/reviewers idle; exact integration complete, guarded publication next. Permission-isolated roles, one writer and at most3 specialists remain binding.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; gu
 
 # In Progress
 
-R05 exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` is Verified under `96a82baa49cb561084585115cde4e4658498307b`. Integrate the unchanged report, then guarded milestone publication. R06 remains queued; no active writer.
+R05 exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` is Verified under `96a82baa49cb561084585115cde4e4658498307b`. Exact report integrated at `a3ea90b189b5b7fd23639455b92b4f9c1ae894fb`; guarded milestone publication next. R06 remains queued; no active writer.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Integrate exact Verified R05 candidate, prove guarded publication, then prepare R06 brief and separate eligibility. No architecture/adoption, main integration or M1 activation.
+Prove guarded publication of integrated R05, then prepare R06 brief and separate eligibility. No architecture/adoption, main integration or M1 activation.
