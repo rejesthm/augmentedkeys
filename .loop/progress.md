@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R08 sole writer, Researcher and all3 independent reviewers completed and idle. Controller alone integrates/publishes exact Verified candidate.
+No specialist active. Controller creates R09 isolated task worktree, then Conductor intake only.
 
 # Research Questions
 
-R01–R08 Verified; R09–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R08 Verified; R09 Eligible; R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R08 Verified; R09–R10 Queued. R09 has no formal dependencies; own brief and barriers follow R08 publication.
+R01–R08 Verified. R09 Eligible under exact committed brief; R10 Queued.
 
 # In Progress
 
-No active task writer. R08 exact candidate `d1979355eabf5214f9b3a79eda4323e55164248a` Verified under `4a8a696e3ad116dc69309fc4451d931ecbb9203f`; no findings, reviews0/0/0.
+No active task writer. R09 intake only before assignment/state/runtime barriers.
 
 # Verification Needed
 
-Integrate exact R08 candidate, compare reviewed blob, guarded milestone publication and equality proof. No main integration or license/content/adoption approval.
+Conductor intake then bounded assignment and separate In-progress state; actual role/runtime/path probes before body.
 
 # Completed
 
@@ -103,8 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-After R08 integration/publication, prepare R09 MainStage public capability/workflow brief.
-
-R08 exact report integrated at `781d9b53ce6202785460753fe4af7ed87944b333`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
-
-R08 guarded milestone publication/equality proved at `5f2ddf702ed9308a767b8ef14e39010323f5b207`; R01–R08 Verified, R09–R10 Queued. R09 briefing/eligibility follows.
+R09 MainStage public capability/workflow research after its assignment/runtime barriers.
