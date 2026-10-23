@@ -132,3 +132,12 @@ Thirteen exact current-turn Researcher tool-output payloads and separately hashe
 - `primary-sources/index-workflows.json` SHA256 `0641d075b620da750380b426613608da661419a47d45d45dcffa3134f4d2c4a6`.
 - `primary-sources/index-html-header-probe.json` SHA256 `985d7d018c004e70d9595a7ddf686b49403481833b8433a0ac50e4778c55711c`.
 - `primary-sources/index-html-header-followup.json` SHA256 `89ea2859be9e79bc218c289c5baca114378373f1c4f2f889982f12db2c91d942`.
+
+## Independent source reconciliation amendment
+
+The same independent read-only Researcher completed source reconciliation against catalog `9dbb7d636a4e269c2bec28aa0bccd19e3f357b2a`; actual current role/cwd/parent remain proven, CLI terminal. Exact original handoff and amendment are separate, immutable private artifacts. Amendment confirms raw release-date metadata; edition-specific compatibility/privacy; mapping/recall/deferral/hot-plug boundaries; guide disagreement and provenance distinctions. MainStage: Perform Live listing additionally names Apple M1 or later and declares linked/unlinked data categories, whereas the other listing declares Data Not Collected. Those are edition-specific vendor fields, not tested compatibility, identity equivalence or privacy/security conclusions. Writer must inspect exact sources and preserve conditional saving semantics; a brief handoff does not supersede source exceptions. No new fact is treated as product/design adoption.
+
+- `researcher-reconciliation.final.txt` SHA256 `5e123c9ecea808fc84c8f345fafbcfca83de7a2f253cdb34320e127f37166d3a`.
+- `researcher-reconciliation-runtime.json` SHA256 `d5309d5d720a5cba4bb17e72395c4581c39cbde523906cd2993fe85d8b402c36`.
+- `researcher-reconciliation-relay.jsonl` SHA256 `034aa8c63a38e3b183f2a74ebafeb4df5c941acf55ce25ec3e9abf431e238d20`.
+- `researcher-reconciliation-child.jsonl` SHA256 `30ba60bcd01ae90a6a83dd6df83742f9431c5ffae13c309e3037be34d287b29b`.
