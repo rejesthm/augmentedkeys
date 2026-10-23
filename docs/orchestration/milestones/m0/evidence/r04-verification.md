@@ -1,3 +1,7 @@
+# R04 specialist approvals — Final review pending
+
+Unchanged candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` now has fresh QA and Security APPROVE0/0/0; all3 original Important findings explicitly closed. Literal reviews and actual read-only runtime provenance are committed alongside this update in `r04-review-round1.md`. Original rejections retained. No candidate/source change after reviews. Task remains In review; fresh independent Final review and finalized-artifact/state barrier still required.
+
 # R04 verification — correction round1
 
 Candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7`; prior rejected candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`; task base `55f9a9651d100007435bb8a4d96fc6eea828ed22`. Status: pending fresh affected QA/Security then Final; not Verified. Review source `5385671e0a9a3cabb09b3755483480196b188a96`; correction T02 `181018e34dc4ce0fae543ab5caed76ca1ed602fb`; separate In-progress state `9f506847420dbd74d4927913c3aa117664dafa7f`. Same Android writer and exact two-file authority; writer handback complete. Original review/candidate evidence preserved below and in Git.
