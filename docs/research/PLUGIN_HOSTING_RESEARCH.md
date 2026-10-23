@@ -342,6 +342,9 @@ compatibility result. Access date: 2026-10-23 (Asia/Manila).
 | H4 | [AAP-JUCE README](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/README.md), `07b99…b3d4` (C18/C25) | Host/plugin, instability, porting, UI, patch, and build-toolchain statements. |
 | H5 | [AAP-JUCE GUI guide](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/docs/JUCE_GUI_SUPPORT.md), `07b99…b3d4` (C49) | Remote-view/plugin-process GUI and manifest/service example; API 29 for that stated route. |
 | H6 | [AAP-JUCE LICENSE](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/LICENSE), `07b99…b3d4` (C26) | GNU AGPLv3 license body. |
+| H7 | [AAP core library manifest](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/androidaudioplugin/src/main/AndroidManifest.xml), `682e7…3ec3` (C35) | Library manifest declarations; not protocol or product requirements. |
+| H8 | [AAP-JUCE host template manifest](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/projuce-app-template/AndroidManifest-host.xml), `07b99…b3d4` (C43) | Upstream host-template declarations; not an adopted app manifest. |
+| H9 | [AAP-JUCE plugin template manifest](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/projuce-app-template/AndroidManifest-plugin.xml), `07b99…b3d4` (C44) | Upstream plugin-template declarations; not an adopted plugin or host requirement. |
 
 Controller capture C17–C27/C48–C49 resolved the initial browser/DNS retrieval
 failure with 200 bodies, full SHAs, URLs, access times, and hashes. No archive,
@@ -356,6 +359,27 @@ clone, build, or code incorporation occurred.
 [C30 real-time document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/REALTIME_SAFETY.md)
 and [C31 lifecycle document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/AAPXS_LIFECYCLE.md)
 are pinned source texts; no displayed revision date was supplied.
+
+## Pinned upstream manifest inventory (not adoption)
+
+These are literal declarations in version-pinned library/template sources, not
+evidence that AAP protocol, this product, or any future plugin requires them.
+No merge was run and no effective product manifest is claimed.
+
+| Source | Concrete declared surface | Boundary and unresolved access-control question |
+| --- | --- | --- |
+| C35 AAP-core library [H7] | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, and `POST_NOTIFICATIONS`. | A library manifest can contribute merge inputs; its comment that plugins need them is upstream text, not a product requirement. Future selection must apply the Android target/OS/type rules and least privilege. |
+| C43 AAP-JUCE host template [H8] | Android-11 service-query intent; `allowBackup="true"`; exported launcher activity; non-exported Startup provider; `RECORD_AUDIO`; legacy read/write external storage, coarse location, `BLUETOOTH`/`BLUETOOTH_ADMIN`; multicast and Internet; required GLES 3.0. It has no FGS or notification declaration. | Query visibility grants no service access. An exported launcher activity is not an authorization design; merged component exposure, caller validation, backup scope, state/cache storage, and each permission's target/OS applicability remain R07/product questions. |
+| C44 AAP-JUCE plugin template [H9] | `RECORD_AUDIO`; FGS/media-playback declarations; `allowBackup="true"`; exported plugin-manager and JUCE activities; exported AAP plugin service with V4 intent/metadata; exported plugin-view service; non-exported Startup provider; the same legacy storage/location/Bluetooth, multicast, Internet, and GLES declarations. It has no notification declaration. | Exported services/views need an explicit future caller/authentication, intent, binder, metadata, and UI-input policy. `allowBackup` is not proof of data copied, but it makes backup/state exposure a merge-and-R07 question. |
+
+The legacy Bluetooth/location/storage declarations are upstream template text,
+not a claim of Android-12+ sufficiency or a route requirement. In particular,
+future target-31+ Bluetooth use needs action-specific runtime/manifest analysis;
+future storage, network, multicast, recording, notification, backup, FGS, and
+exported-component need must be justified separately. A future adopter must
+inspect the merged manifest for removals/overrides, request only a
+least-privilege set, establish state backup/restore and retention boundaries,
+and obtain R07 review. This report adopts none.
 
 ## Host/plugin/process boundary
 
@@ -488,6 +512,12 @@ owner-approved host/plugin/device/OS/route configuration could record:
    the callback, plus route, focus, overload, disconnect, recovery, and
    long-run observations under a declared workload and approved measurement
    budget.
+5. The Android report's proposed common-clock, known-audible-marker method:
+   declare a MIDI/touch ingress boundary and electrical/acoustic endpoint,
+   calibration/uncertainty, marker matching for audible continuity, stepped
+   overload, recovery start/end, warm-up/repetitions/duration, and raw capture
+   analysis. Silent/generated callback counters cannot substitute for this
+   audible/latency method.
 
 For study design only, a proposed 30 discovery/bind/create/destroy cycles and
 30 controlled service/route recovery cycles could be paired with one proposed

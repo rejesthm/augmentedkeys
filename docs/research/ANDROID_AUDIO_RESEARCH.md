@@ -21,10 +21,10 @@ adoption or license clearance.
 | `atsushieno/aap-core` | current `main` `682e7a6871a6c1414619dc483c1e234cb44e3ec3` (C17) | Pinned README/LICENSE/tree and Developers Guide C22–24/C48 | Exact capture does not establish a stable interface or adoption. |
 | `atsushieno/aap-juce` | current `main` `07b99087c3675b7fa41c0bae61525d8d0bc4b3d4` (C18) | Pinned README/LICENSE/tree and GUI guide C25–27/C49 | Exact capture does not establish a stable interface or adoption. |
 
-Controller independently captured 47 initial plus four reconciliation bodies
-(51 HTTP-200 responses) with URLs, SHA-256, and access times. This report cites
-and the writer inspected only the relevant subset listed here; capture alone
-does not establish review of every body. The earlier Oboe SHA
+Controller first captured 51 HTTP-200 bodies, then added three Android
+foreground-service bodies C52–C54 (54 total), with URLs, SHA-256, and access
+times. This report cites and the writer inspected only its relevant subset;
+capture alone does not establish review of every body. The earlier Oboe SHA
 `2a45aa2d9e94d209c4636eec4014dd83cda110f4` is historical (2026-08-13), not
 the observed current main; no source is adopted.
 
@@ -46,6 +46,8 @@ the observed current main; no source is adopted.
 | A12 | AAP describes its host-facing C++/Kotlin APIs as unstable/reference-oriented and documents separate processes, MIDI 2 messaging, and AAPXS extensions. | [Pinned AAP README](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/README.md) (C22) |
 | A13 | AAP-JUCE documents breaking AAP API/ABI change risk, local patches, mobile UI limits, and a simple host able to enumerate/instantiate installed AAP plugins. | [Pinned AAP-JUCE README](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/README.md) (C25) |
 | A14 | Pinned repository LICENSE bodies identify Oboe as Apache-2.0, AAP core as MIT, and AAP-JUCE as AGPLv3. | [C20](https://raw.githubusercontent.com/google/oboe/4468344c8fdfdd7df068d5abefe2d8615fd6b431/LICENSE), [C23](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/LICENSE), [C26](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/LICENSE) |
+| A15 | Foreground-service background-start, type/permission, and launch rules are separately target-SDK and runtime-OS conditioned. | [C52 Android 14 FGS types](https://developer.android.com/about/versions/14/changes/fgs-types-required), [C53 Android 12 restrictions](https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start), [C54 launch guide](https://developer.android.com/develop/background-work/services/fgs/launch) (all captured 2026-10-23) |
+| A16 | Bluetooth declarations and runtime grants differ for an app targeting Android 12/API 31+ and its legacy declarations. | [C13 Bluetooth permissions](https://developer.android.com/develop/connectivity/bluetooth/bt-permissions) (displayed revision 2026-10-16 UTC) |
 
 ## 1. Native API roles and availability
 
@@ -180,15 +182,34 @@ configuration at that time, on that stated route/device/OS.
 - Android advises requesting focus immediately before playback and checking the
   result, then stopping/pausing/ducking on loss and abandoning it after
   playback ends [A9]. Android 12/API 31+ system-manages specified focus
-  behavior; Android 15/API 35 target behavior rejects focus unless top app or
-  foreground service [A9].
-- A media playback foreground service is documented as a background-playback
-  facility; Android 14/API 34+ foreground services require declared type and
-  permission. Android 15 target restrictions include `BOOT_COMPLETED` cases
-  [A10]. Background playback is deliberately deferred and unadopted here.
-- A microphone foreground service needs `RECORD_AUDIO` granted and has
-  while-in-use/start restrictions [A10]. Recording is not in the stated
-  built-in playback scope, so no microphone permission is selected.
+  behavior; on Android 15/API 35, an app targeting 35 must be top app or a
+  foreground service for focus [A9].
+
+### Runtime-OS and target-SDK boundary ledger
+
+This is a documentary rule map, not a manifest/permission selection. “Legacy”
+means only that the cited newer rule is not the stated condition; it does not
+establish behavior for an unselected target SDK or device OS.
+
+| Rule | Device OS and target threshold | Manifest declaration | Runtime grant / start condition | Legacy distinction |
+| --- | --- | --- | --- | --- |
+| Start an FGS from background | Runtime OS: Android 12/API 31+; target SDK: 31+ [A15]. | No type declaration follows merely from this rule. | App must be visible or satisfy a documented exception; otherwise `ForegroundServiceStartNotAllowedException`. | C53/C54 frame this restriction at target 31+; no claim is made for a lower target. |
+| Promote media-playback FGS | Runtime OS: Android 14/API 34+; target SDK: 34+ [A15]. | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, and matching `android:foregroundServiceType="mediaPlayback"` are the C52 example/type requirements. | C52 lists no user runtime prerequisite; its FGS permissions are normal/default-granted, but the type must be declared before promotion and the Android-12 background-start rule still applies. | C52's type-specific target-34 enforcement is not asserted below that condition. |
+| Promote microphone FGS | Runtime OS: Android 14/API 34+; target SDK: 34+ for cited creation checks [A15]. | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MICROPHONE`, matching microphone type, and `RECORD_AUDIO` if this unselected capability is chosen. | `RECORD_AUDIO` is dangerous/user-granted; a while-in-use microphone service must be started/bound while visible unless a documented exemption applies. | On OS below Android 14, C53 says creation could succeed but later resource use could fail; no compatibility conclusion follows. |
+| Bluetooth scan/advertise/connect | Runtime OS: Android 12/API 31+; target SDK: 31+ [A16]. | Declare only action-specific `BLUETOOTH_SCAN`, `BLUETOOTH_ADVERTISE`, and/or `BLUETOOTH_CONNECT`. | Each is a runtime Nearby-devices grant; location is separately relevant only if scan results derive physical location. No FGS is implied. | For target SDK 30 or lower, C13 says `BLUETOOTH` covers classic/BLE communication, `ACCESS_FINE_LOCATION` is needed for scans and is runtime-granted, and `BLUETOOTH_ADMIN` is needed for discovery/settings. For a service that can run on Android 10/API 29 or Android 11/API 30, C13 also says `ACCESS_BACKGROUND_LOCATION` is needed to discover devices. These are documented conditions, not adoption or a universal grant claim. |
+
+`POST_NOTIFICATIONS` does not itself select an FGS, and an FGS notification
+does not remove the separate type/start conditions above. Background playback,
+recording, Bluetooth, and any service are deliberately deferred and unadopted.
+
+**`BOOT_COMPLETED` distinction:** C53 gives a general target-34+ warning that
+certain FGS types are restricted when launched from `BOOT_COMPLETED`. C07 then
+names the specific target-35+ prohibition for media playback (and, outside the
+proposed scope, data sync, media projection, and phone call). C07's microphone
+type text instead says it cannot launch from `BOOT_COMPLETED` because its
+`RECORD_AUDIO` prerequisite is while-in-use, with a few documented exceptions;
+it does not attach the target-35 threshold to that microphone statement. None
+of these conditions selects a boot receiver, service, or permission.
 
 ### Route/device-change facts and questions
 
@@ -196,9 +217,8 @@ AAudio disconnection already covers removal or default-route change [A5]. USB
 host capability is device-dependent; API support starts at Android 3.1/API 12
 and the manifest feature is not guaranteed across Android devices [A10]. USB
 communication requires user permission before connection and permission ends
-when the device disconnects [A10]. Android 12/API 31+ Bluetooth scan,
-advertise, and connect are runtime “Nearby devices” permissions for their
-respective actions [A10].
+when the device disconnects [A10]. Bluetooth details are the separate
+target-31/device-31 conditions in [A16], not an inferred audio-route rule.
 
 Neither a transport permission nor an AAudio device ID proves audio support,
 latency, usable channel layout, stable device enumeration, MIDI behavior, or
@@ -229,8 +249,9 @@ disclosure/retention policy applies. This report selects none.
 
 ### First: built-in playback/lifecycle spike
 
-The first proposed spike is one built-in generated/silent test path—no plugin
-host, no third-party plugin, no microphone, and no background claim. On each
+The first proposed spike has two built-in modes—generated/silent callback-only
+checks and a separate audible known-signal measurement—without a plugin host,
+third-party plugin, microphone feature, or background claim. On each
 owner-approved physical device category—flagship Android tablet, mainstream
 Android tablet, flagship Android phone, and mainstream Android phone in the
 device matrix—record exact model, OS, app commit, AAudio/Oboe revision if used,
@@ -238,23 +259,61 @@ API level, route, sample rate, actual format, channels, sharing/performance
 mode, capacity/size/burst, and focus result. Categories are coverage planning
 labels, not selected devices.
 
-Proposed methods, not accepted procedures:
+#### Proposed measurement method carried from R01
 
-- Measure callback interval/duration and underrun/error counters with
-  preallocated counters drained outside the callback; specify clock source,
-  warm-up, repetitions, duration, and raw-log retention before testing.
-- Exercise foreground ↔ background transition, focus loss/gain, route
-  disconnect/reconnect, stop/close/reopen, and process/lifecycle restart only
-  under an approved device procedure.
-- Capture actual pre/post-reopen properties, recovery time boundary, audible
-  continuity observation method, and every failure. Do not treat the outcome
-  as a product guarantee beyond the recorded configuration.
-- For study design only, use a proposed 30 focus/lifecycle/route recovery
-  cycles per declared configuration and one proposed 60-minute sustained run
-  after a stated warm-up. Record overload stimulus, callback/deadline and
-  underrun counters, route disconnection/reconnection, recovery transition,
-  and raw artifacts. These quantities are neither a hardware request nor an
-  approved duration, workload, test procedure, or acceptance budget.
+All of this is hypothetical, unapproved, and unperformed. It carries forward
+R01 `LOW_LATENCY_RESEARCH.md`/`MOBILE_AUDIO_ARCHITECTURE.md` boundary,
+calibration, overload, recovery, and raw-artifact rules. The proposed primary
+quantity for an audible built-in spike is **touch-trigger-to-audible output**:
+start at the common-acquisition-clock electrical edge of a repeatable actuator
+that makes the declared test touch; end at the earliest predeclared
+correlation/threshold detection of the matching known signal at the declared
+electrical line-output endpoint or calibrated microphone position. It is not
+nominal buffer duration, AAudio timestamp, callback duration, or round trip.
+
+The generated/**silent** path is restricted to callback interval/duration and
+bounded underrun/error-counter checks; it cannot establish audible continuity
+or latency. A separate proposed audible path emits a fixed, known coded burst
+or periodic marker. Capture trigger and endpoint on one synchronized
+acquisition system where feasible; otherwise predeclare and validate clock
+offset, drift correction, resolution, actuator delay, line/microphone/acoustic
+path delay, correlation threshold, and uncertainty/error budget. A
+synchronized full-duplex electrical loopback may separately measure declared
+audio round trip; it cannot substitute for touch-trigger-to-audible output.
+
+For continuity, compare each captured marker with its expected schedule and
+record missing, duplicated, late, clipped, or unmatched markers; retain the
+capture and matching analysis. Callback deadline/underrun/error counters are
+corroboration only, not audible-continuity proof. Predeclare one known-signal
+schedule and render workload, then apply controlled stepped overload escalation
+(for example event/workload rate or declared render complexity) per trial;
+record each level and stop condition, without treating any level as an accepted
+budget. Exercise foreground/background, focus, route disconnect/reconnect,
+stop/close/reopen, and lifecycle restart only under a separately approved
+device procedure. For each recovery, start timing at the recorded disruption
+or error signal and end only at the first matching post-recovery marker plus
+recorded re-queried stream properties; retain all failures.
+
+Before execution, an owner-approved manifest must state device/OS/route,
+signal, acquisition hardware, calibration before/after run, warm-up,
+repetitions, event count, duration, workload, cooldown/reset, numeric
+acceptance budgets, and retention/access controls. The current study-design
+values—30 focus/lifecycle/route recovery cycles and one 60-minute sustained
+run after a stated warm-up—are **provisional only**, not an authorized device
+action, procedure, duration, workload, or acceptance value. Retain
+content-hashed raw multichannel captures, trigger/event series, callback and
+platform counters, configuration/route manifest, calibration/error record,
+analysis source/version, exclusions, and failed/inconclusive trials.
+
+Proposed analysis outputs are a per-configuration latency distribution
+(sample count, min/median and predeclared tails), explicit outlier list/rule,
+clock/calibration uncertainty summary, marker-continuity summary
+(missing/duplicate/late/clipped/unmatched), and recovery summary from each
+declared disruption boundary to the first matching post-recovery marker. Invalid
+or censored trials (for example lost capture, failed calibration, route change,
+or incomplete recovery) must be retained, labeled with cause, excluded only by
+a predeclared rule, and reported separately rather than silently discarded. No
+numeric criterion, outlier rule, or acceptance budget is approved.
 
 ### Later: AAP hosting experiment
 
