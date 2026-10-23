@@ -45,3 +45,9 @@ The user outcome is decision-useful Android audio/lifecycle and AAP/AAP-JUCE evi
 Known gaps are the absent assignment/state barrier, unperformed runtime probe, ledger’s temporary `Not created` worktree field despite the existing task worktree, absent Android report, and wholly unperformed runtime/device/performance evidence. No owner approval is needed for this eligible documentary task. Excluded main-guard edits remain untouched and no main-readiness claim follows.
 
 **Next action:** controller commits the assignment artifact and separate In-progress barrier, then proves the Android Specialist runtime boundary before dispatching research.
+
+## T02 — Correction round1
+
+Date2026-10-23. In review → In progress, consumed only through separate state commit. Review source `5385671e0a9a3cabb09b3755483480196b188a96` in `r04-review-round0.md`; prior candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`, verification `3e571870622fdc8501df2d239a52fc8caa973753`. QA1Important (criterion8 methods); Security2Important (OS/targetSDK distinctions and concrete upstream manifest/security surface). No Critical/Minor; no waiver; Final not launched.
+
+Same configured Android writer `01a16827-4c1c-7b81-aa06-bb9acccdce41`, relay `01a16826-d04f-7732-bca3-b6101744e405`, workspace-write, same task branch/worktree/two report paths. Controller owns all Git/state/evidence. Correction1 of maximum5: define proposed latency/continuity/overload/recovery/long-run methods under R01 measurement rules without executing or approving hardware/budgets; distinguish runtime OS from target SDK, declarations/grants/background prerequisites/legacy behavior; document inspected upstream library/template permissions, backup/network/storage/exported services as facts distinct from protocol/product requirements. Preserve full Apple prefix; no architecture/dependency/permission adoption. Sources may be supplemented read-only by controller. Fresh affected QA/Security then Final required.
