@@ -320,3 +320,224 @@ APIs establish
 interfaces and the table’s metadata availability—not a selected minimum OS,
 real plugin availability, third-party behavior, desktop compatibility,
 Android equivalence, performance, legal clearance, or release approval.
+
+---
+
+# Android AAP and AAP-JUCE hosting research (R04)
+
+**Scope and preservation note:** The preceding Apple AUv3 report is preserved
+byte-for-byte as one contiguous R03 section; its earlier Android reservation is
+historical. This separately dated section records Android-only documentary
+research. It does not claim AUv3/AAP parity, adopt AAP/JUCE, select a host, or
+report any installed plugin, device, runtime, latency, callback-safety, or
+compatibility result. Access date: 2026-10-23 (Asia/Manila).
+
+## Source and status register
+
+| ID | Original source / inspected moving identity | Documentary fact or limitation |
+| --- | --- | --- |
+| H1 | [AAP core README](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/README.md), `682e7…3ec3` (C17/C22) | Active/unstable AAP, apps/services, metadata, MIDI 2 messaging, and AAPXS. |
+| H2 | [AAP Developers Guide](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/DEVELOPERS.md), `682e7…3ec3` (C48) | Full host/plugin package, service, metadata, AIDL/Binder, shared-memory, lifecycle, and hosting text. |
+| H3 | [AAP core LICENSE](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/LICENSE), `682e7…3ec3` (C23) | MIT text; README names additional component licenses. Not clearance. |
+| H4 | [AAP-JUCE README](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/README.md), `07b99…b3d4` (C18/C25) | Host/plugin, instability, porting, UI, patch, and build-toolchain statements. |
+| H5 | [AAP-JUCE GUI guide](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/docs/JUCE_GUI_SUPPORT.md), `07b99…b3d4` (C49) | Remote-view/plugin-process GUI and manifest/service example; API 29 for that stated route. |
+| H6 | [AAP-JUCE LICENSE](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/LICENSE), `07b99…b3d4` (C26) | GNU AGPLv3 license body. |
+| H7 | [AAP core library manifest](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/androidaudioplugin/src/main/AndroidManifest.xml), `682e7…3ec3` (C35) | Library manifest declarations; not protocol or product requirements. |
+| H8 | [AAP-JUCE host template manifest](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/projuce-app-template/AndroidManifest-host.xml), `07b99…b3d4` (C43) | Upstream host-template declarations; not an adopted app manifest. |
+| H9 | [AAP-JUCE plugin template manifest](https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/projuce-app-template/AndroidManifest-plugin.xml), `07b99…b3d4` (C44) | Upstream plugin-template declarations; not an adopted plugin or host requirement. |
+
+Controller capture C17–C27/C48–C49 resolved the initial browser/DNS retrieval
+failure with 200 bodies, full SHAs, URLs, access times, and hashes. No archive,
+clone, build, or code incorporation occurred.
+
+**Android controls inspected:** Controller captured on 2026-10-23
+[C09 activity lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
+(displayed 2026-10-19), [C10 app sandbox](https://source.android.com/docs/security/app-sandbox)
+(2026-09-30), [C11 bound services](https://developer.android.com/guide/components/bound-services)
+(2026-10-20), and [C12 runtime permissions](https://developer.android.com/training/permissions/requesting)
+(2026-10-16). The cited AAP-core `682e7a6871a6c1414619dc483c1e234cb44e3ec3`
+[C30 real-time document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/REALTIME_SAFETY.md)
+and [C31 lifecycle document](https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/design/AAPXS_LIFECYCLE.md)
+are pinned source texts; no displayed revision date was supplied.
+
+## Pinned upstream manifest inventory (not adoption)
+
+These are literal declarations in version-pinned library/template sources, not
+evidence that AAP protocol, this product, or any future plugin requires them.
+No merge was run and no effective product manifest is claimed.
+
+| Source | Concrete declared surface | Boundary and unresolved access-control question |
+| --- | --- | --- |
+| C35 AAP-core library [H7] | `FOREGROUND_SERVICE`, `FOREGROUND_SERVICE_MEDIA_PLAYBACK`, and `POST_NOTIFICATIONS`. | A library manifest can contribute merge inputs; its comment that plugins need them is upstream text, not a product requirement. Future selection must apply the Android target/OS/type rules and least privilege. |
+| C43 AAP-JUCE host template [H8] | Android-11 service-query intent; `allowBackup="true"`; exported launcher activity; non-exported Startup provider; `RECORD_AUDIO`; legacy read/write external storage, coarse location, `BLUETOOTH`/`BLUETOOTH_ADMIN`; multicast and Internet; required GLES 3.0. It has no FGS or notification declaration. | Query visibility grants no service access. An exported launcher activity is not an authorization design; merged component exposure, caller validation, backup scope, state/cache storage, and each permission's target/OS applicability remain R07/product questions. |
+| C44 AAP-JUCE plugin template [H9] | `RECORD_AUDIO`; FGS/media-playback declarations; `allowBackup="true"`; exported plugin-manager and JUCE activities; exported AAP plugin service with V4 intent/metadata; exported plugin-view service; non-exported Startup provider; the same legacy storage/location/Bluetooth, multicast, Internet, and GLES declarations. It has no notification declaration. | Exported services/views need an explicit future caller/authentication, intent, binder, metadata, and UI-input policy. `allowBackup` is not proof of data copied, but it makes backup/state exposure a merge-and-R07 question. |
+
+The legacy Bluetooth/location/storage declarations are upstream template text,
+not a claim of Android-12+ sufficiency or a route requirement. In particular,
+future target-31+ Bluetooth use needs action-specific runtime/manifest analysis;
+future storage, network, multicast, recording, notification, backup, FGS, and
+exported-component need must be justified separately. A future adopter must
+inspect the merged manifest for removals/overrides, request only a
+least-privilege set, establish state backup/restore and retention boundaries,
+and obtain R07 review. This report adopts none.
+
+## Host/plugin/process boundary
+
+### Facts
+
+- AAP describes plugins as Android application packages (APK/AAB) containing
+  native shared libraries. A plugin exposes an exported
+  `org.androidaudioplugin.AudioPluginService` with an AAP intent action and
+  `aap_metadata.xml`; one package can describe multiple plugins [H2].
+- Hosts discover services through `PackageManager.queryIntentServices()` and,
+  on Android 11+, the cited guide says the host needs the relevant manifest
+  `<queries>` intent declaration for service queries [H2]. Discovery metadata
+  includes developer/name/unique ID/version/category/library/entrypoint and
+  can expose parameters/extensions without instantiating the service [H2].
+- The guide says a host queries then connects with Binder. Its AIDL excerpt
+  includes create, extension/shared-memory descriptor, prepare, activate,
+  process, deactivate, and destroy methods [H2]. It says the host needs Java
+  `Context.bindService()`/JNI for service binding because there is no NDK API
+  for it, while the documented hosting API is C++ and explicitly subject to
+  change [H2].
+- AAP says host and plugin live in separate processes by Android platform
+  nature and describes MIDI 2 event messaging/AAPXS extensions. It does not
+  call this real-time safe [H1]. The Developers Guide expressly says Kotlin is
+  not real-time safe and Binder is not real-time safe [H2].
+
+### Boundary ledger for a future experiment
+
+| Boundary | Known from H1–H5 | Unknown / must be separately tested |
+| --- | --- | --- |
+| Package/identity | PackageManager finds exported services; metadata carries a plugin unique ID/version. | Authenticity, signer continuity, naming collision policy, update/revocation policy, and Play-distribution status. |
+| Process/UID | Host/client and plugin service are distinct application/process participants; Binder is used. Android's sandbox assigns each app a distinct UID and isolates files by default (C10). | Exact UID relation, SELinux/domain behavior, permissions, crash/stall containment, memory/CPU scheduling, or recovery guarantees. |
+| IPC/data | AIDL/Binder methods and `ParcelFileDescriptor` shared-memory exchange are documented. | Validation/size/lifetime/ownership of buffers, data confidentiality/integrity, backpressure, fd leakage, malformed service behavior, and deadline bounds. |
+| State | AAP supports extension/state concepts and metadata includes identity/version. | State schema/size/source trust, storage/container location, migration, encryption, retention, deletion, backup, or privacy disclosure. |
+| UI | AAP-JUCE documents a remote Android View/plugin-process editor path and says it is preliminary. | View lifecycle, accessibility, input focus, malicious/misbehaving UI, host containment, UI crash recovery, and Flutter integration. |
+| MIDI/render | AAP uses MIDI 2/UMP-related messaging and plugin processing lifecycle exists. | Controller compatibility, timestamp semantics, render timing, audible latency, event loss/ordering, and callback safety. |
+
+Android documents that a bound service is available only while clients bind,
+unless also started (C11); activity/process death and recreation remain normal
+lifecycle possibilities (C09), and runtime permissions can be revoked (C12).
+Thus future scope must identify package/UID, exported/bound/started service,
+permission grant/revocation, file/state owner and restore path. Separate
+process/Binder is not proof of safety, sandbox sufficiency, reliable recovery,
+low latency, trusted input, or compatible behavior; no AAP source establishes
+cross-app file/container access for an arbitrary host/plugin.
+
+## Lifecycle, render, and control-plane separation
+
+The AAP Developers Guide describes plugin lifecycle in this order: factory,
+instantiate with plugin ID/sample rate/extensions, prepare initial buffers,
+activate, process blocks/MIDI2 events, deactivate, terminate/destroy [H2]. It
+also says a host can use synchronous creation for already-bound services and
+asynchronous creation to dynamically bind a service [H2]. These descriptions
+do not prescribe product shutdown ordering or prove that a third-party plugin
+meets a deadline.
+
+**Recommendation:** Place package queries, manifest/metadata parsing, service
+binding, instantiation, state/UI work, file I/O, logging, route/focus work,
+and `destroy` on a non-real-time control plane. Only an evidence-backed,
+bounded, preallocated data-exchange path could later become render-visible.
+Do not invoke Binder, JNI, Kotlin, service discovery, UI, persistence, plugin
+load/unload, or arbitrary plugin control calls from the future audio callback.
+
+**Disagreement/limit:** C30 calls Binder mutex paths inevitable blockers and
+directs non-RT extension work off the audio path; C31 describes newer typed
+request/cancellation/lifecycle rules that also put control operations outside
+`process()`. They differ in mechanism and must not be reconciled by assumption.
+Together with H1–H2's unstable/reference APIs and static-generator sample,
+they reject a framework-label or process-separation safety claim but do not
+prove a future bounded host cannot be evaluated.
+
+## AAP-JUCE surface and toolchain limits
+
+AAP-JUCE describes itself as integration modules, helper scripts, and patches
+for JUCE apps in the AAP environment. It warns that AAP has breaking API/ABI
+changes, that local changes are required, and that documentation is limited
+[H4]. It identifies `aap-juce-simple-host` as able to enumerate installed AAP
+plugins and instantiate them; this is an upstream project statement, not a
+result for AugmentedKeys [H4].
+
+The README says CMake is preferred but not officially supported by upstream
+JUCE according to the document; historical Projucer support is possible but no
+longer supported/recommended and can require generated-project replacement
+[H4]. The GUI guide documents a preliminary native plugin-process GUI route,
+remote Android view, plugin service/view service, AndroidX Startup, manifest
+declarations, required patches, and API 29+ for the stated
+`SurfaceControlViewHost` route [H5]. None chooses a build tool, min SDK,
+manifest, service export, permission, UI strategy, or plugin product policy.
+
+Desktop-oriented JUCE plugin UI can fail or be unsuitable on Android according
+to the README, including mobile-unfriendly UI, unavailable Android APIs,
+global-desktop accesses, file-selection mismatch, and possible performance
+issues [H4]. This is a warning about porting risk, not an assertion that every
+JUCE plugin fails or that a universal Android plugin ecosystem exists.
+
+## License, privacy, and supply-chain characterization
+
+- The inspected AAP core root LICENSE is MIT [H3]. Its README calls out
+  additional copied/imported components and licenses, so an itemized revision
+  and transitive review remains necessary.
+- The inspected AAP-JUCE repository license is AGPLv3 [H4, H6]. The README
+  associates this with JUCE but does not resolve which future source,
+  distribution, linking, patch, generated code, or commercial arrangement
+  would apply to any proposed product.
+- Discovery can reveal package/service/metadata fields. State, preset, UI,
+  names, plugin metadata, shared-memory contents, files, diagnostics, and
+  control messages must be treated as external/untrusted data until a later
+  validated data contract exists.
+- Future R07 questions include exact source revision; notices; AGPL/MIT and
+  every transitive license; Android/Play policy; signing/signers; export and
+  query visibility; component permissions; service attack surface; storage and
+  backup; user data; vulnerability/update policy; and redistribution. No legal
+  conclusion, adoption, ledger approval, or component clearance is made here.
+
+## Proposed later hosting experiment (unperformed/unapproved)
+
+After the built-in Android lifecycle spike and R07 review, a single
+owner-approved host/plugin/device/OS/route configuration could record:
+
+1. Host and plugin package names, version/full SHA/build provenance, signer,
+   UID/process observations, manifest `queries`/services/exported flags,
+   declared/requested permissions, metadata unique ID, and service binding
+   result.
+2. Control-plane discovery/bind/create/prepare/activate/deactivate/destroy
+   durations and errors; no control-plane duration is a render deadline.
+3. Exact shared-memory/Binder/AIDL exchange dimensions, ownership/lifetime,
+   plugin state size/schema, file/container accesses, UI presence/failure, and
+   recovery behavior after controlled service/process removal where an approved
+   procedure permits it.
+4. Predeclared callback-duration/deadline/underrun/event-loss counters outside
+   the callback, plus route, focus, overload, disconnect, recovery, and
+   long-run observations under a declared workload and approved measurement
+   budget.
+5. The Android report's proposed common-clock, known-audible-marker method:
+   declare a MIDI/touch ingress boundary and electrical/acoustic endpoint,
+   calibration/uncertainty, marker matching for audible continuity, stepped
+   overload, recovery start/end, warm-up/repetitions/duration, and raw capture
+   analysis. Silent/generated callback counters cannot substitute for this
+   audible/latency method.
+
+For study design only, a proposed 30 discovery/bind/create/destroy cycles and
+30 controlled service/route recovery cycles could be paired with one proposed
+60-minute declared-workload run. Those quantities do not request hardware or
+authorize a plugin, procedure, duration, overload method, or acceptance value.
+
+The unknown acceptance budgets are latency, continuity, maximum plugin count,
+polyphony/workload, CPU/memory/thermal/battery, state size, timeout/retry,
+event loss, disconnect recovery, duration, and security/privacy criteria. No
+hardware, procedure, numeric budget, or measurement has been approved.
+
+## Android conclusion and open questions
+
+AAP has a documented Android package/service discovery and remote-instance
+surface, while AAP-JUCE documents an unstable, patch/toolchain/UI-heavy bridge
+for JUCE-related apps [H1–H5]. The evidence supports a later constrained
+hosting investigation only. It does not support selecting AAP/AAP-JUCE,
+asserting Android/AUv3 parity, claiming a broad hostable plugin ecosystem, or
+claiming real-time safety/latency/compatibility/security.
+
+The first recommended research sequence remains built-in Android
+stream/lifecycle evidence, then one component-specific hosting experiment with
+immutable source capture, R07 review, and approved physical-device procedure.
