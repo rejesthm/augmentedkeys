@@ -1,0 +1,1614 @@
+{
+  "schema_version": 1,
+  "purpose": "Reproducible source manifest for the CT02 baseline reconciliation proposal; it authorizes no import, merge, state transition, or activation.",
+  "sources": {
+    "common_ancestor": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+    "governance_source": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+    "research_source": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+    "ct01_reviewed_candidate": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+    "ct01_acceptance_evidence": "dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd",
+    "ct02_brief": "e3fc991e9ccc4a0c23b668c4b5443bc0864cb2d6"
+  },
+  "governance_only_retained": {
+    "path_count": 14,
+    "comparison_scope": "14 governance-only paths imported byte-for-byte into a candidate descending from the existing research tip; source content remains unchanged.",
+    "paths": [
+      {
+        "path": ".codex/agents/decision-steward.toml",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "17e8a315f9f9ce77e6761798ad801c8e2808bf05",
+          "sha256": "1176b0ff828a5cc7b5b38feb711039980e31a8fffecc4326febd8736ac816a85"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/decision-steward/SKILL.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "b2cc1c6c9c9641adf1d9f278cd728d1c9696dd70",
+          "sha256": "3d7b3410b9087cdd09bee8ddd7e8d7a9f70668825420b18f445567385426cf0b"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/test_validate_decision_evidence.sh",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2cec482e3c359c58bde5af2777fc2937f1026c5f",
+          "sha256": "b1de3805ef9bf5a5f633dcd06f145c2de6d0b91f1e8e7885c40da9f0ee1ba446"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/test_validate_main_integration.sh",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2efad95d953e1751cc5a8e57d3cf7a0228cb95df",
+          "sha256": "38e4b5d835472596eb12a04988469b76dcf8464995681acbe3cda1eb7b404bb8"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2ec762fc009572cb9be7cf5fa4741db2522cc3cf",
+          "sha256": "88452843d81bfc125b4f06fe3b6a7fdd85d56032c7342b53bcca0297b5970130"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "60abf268a8761e4f028ec449f27615bcdd939ef2",
+          "sha256": "78d210d1067d600b53a14385d07453c6b31ffc6eff4cdc26cb2a2374ef0baecc"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/orchestration/DECISION_POLICY.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "c87f60f23a0a93618660190d6294f554bdb7884c",
+          "sha256": "9ff5371b6d799377c0345e12217a1957c0fe37d8c67ca46fd56157728ebec8cf"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/orchestration/decisions/README.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "59836e31feb6403052773416a61d51d9cd0e924b",
+          "sha256": "9b020d608379347d5f4f039007269090ee93e0b10d47a5390c28d750ed75e340"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "aea7de804b6c0dd9372690a00527fa53af42e6c7",
+          "sha256": "c32956e785962fb1b168e8b12d0e895635b07095f92515c2e5752c0a70b935be"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/main-integration.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "810d3f60ee9f8f6fadfc16c62c32b765985186b8",
+          "sha256": "4c6fb5de3ad291740edb358f3c25939f0a1180e080d10823a6fee469a7bdab30"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-01-augmentedkeys-decision-steward.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "fcb69734df18ce82a94f909134a1ffcaea420ec7",
+          "sha256": "850d4a3e2810b52a24c0404a1292fe9d01983166df94d5ce21c0ceb075115d46"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-02-claude-agent-parity.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "70f35867c0408f18e333a701444428b8b8f90bbd",
+          "sha256": "02b4d5bf7d3a63ca3d7b2900b4a53ab1ad517d7e29bda575da1d05567b3724f8"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/superpowers/specs/2026-09-01-augmentedkeys-decision-steward-design.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "74036aee7b38763a0725c833c0c7071928c1d35b",
+          "sha256": "1bea6dba7b2db0ea5d4748f6d6e4f0bbcdbf67df7f8e39c9c0fffbe28342e2c5"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      },
+      {
+        "path": "docs/superpowers/specs/2026-09-02-claude-agent-parity-design.md",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "b6173beffe48113e6121c53eae1b8c53611477f6",
+          "sha256": "77ea6b37a72eb54da7a40c70bdc8593fe02a883b7a421ad9c379fdc779364cde"
+        },
+        "classification": "retained_governance_only_control",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import on research descendant",
+        "proposed_action": "Import exact governance-source bytes and mode into the research-descended candidate."
+      }
+    ]
+  },
+  "source_divergence": {
+    "path_count": 41,
+    "source_entry_count": 63,
+    "comparison_scope": "Paths changed from the common ancestor on the research source. Source records also show governance and ancestor blobs when those paths exist; governance-only paths are recorded separately above.",
+    "status": "Read-only proposal input; no import, merge, state transition or activation",
+    "paths": [
+      {
+        "path": ".codex/agents/conductor.toml",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "8830112da2a3f52f2e77cfe405f1ebcb73e6e67f",
+            "sha256": "7bd78170ed40676bd2c93e04c4876e7235104d0701317221e7aba85bbbbd9740"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "bf13d5dc0a7532a2e8c585c3e2f57310ccbc7642",
+            "sha256": "61e5add04a02c7e014a1f786fcf29442845dd25f24a1be6d68101ab4811d32f0"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "e4c5736838dc23e79edaaccc4954de2083d327b4",
+            "sha256": "1136fcba26551e2fa1cb4276aeb43cfadf734f206c267c73e97a8bde22b793b2"
+          }
+        },
+        "classification": "material_policy_divergence",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import",
+        "proposed_action": "Import exact governance-source bytes and mode into research-descended candidate."
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/SKILL.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "06d68d9eafb6a965ee186b94ac061f1a12bf9cd7",
+            "sha256": "154d91f5a8040dce86cce677bf85f824be6330bd0005a81b7c242d779b5de78f"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "0e057463a3fe856c2c550033b04e04ca136c2f7a",
+            "sha256": "ce5c3f06cdac72a2f2fa2ad693e500cb81826d47e2f65052721d2a7467c4d527"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "4cc0ea62f9d52654cada7e6cf6634471ae9e8fa1",
+            "sha256": "a072c9e25dc06493c1d2aa457656b958e625fc98a2f1e350904966aa279a0bbf"
+          }
+        },
+        "classification": "material_policy_divergence",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import",
+        "proposed_action": "Import exact governance-source bytes and mode into research-descended candidate."
+      },
+      {
+        "path": ".loop/progress.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "714a5362113783ad1a4d5ca4ae122d1c0ec9a743",
+            "sha256": "2bacf13cbbb8a0f0229e82942d810ea3ac8f79b2cd7e1c0bb4c6c14214ad7099"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "5c43ab687427d03e0cf968e504ce02ce236c4a8c",
+            "sha256": "88c09587278d9252bd4b9f07114c9ee21c7cfcffbede1f6fc55bc6a927037391"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f78e1ea75c5a1201b28938846f4aad2ec8abc60e",
+            "sha256": "db056780d69865ddef4c24b6df8dbf9003e4f579ab4e0193ff7225aea15dc404"
+          }
+        },
+        "classification": "stale_snapshot_requiring_synthesis",
+        "proposed_target": "synthesized paused reconciliation candidate",
+        "phase": "CT03 synthesis",
+        "proposed_action": "Synthesize both recorded histories; combined candidate paused, historical research-line activation preserved; R01/R02 Verified."
+      },
+      {
+        "path": "AGENTS.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "81fadcd6897525b888b8cdeee6b73878d336d967",
+            "sha256": "3182784ac6e941c6609d53d6959d65218d4fe277c11905a98547012f0fb09bd6"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "696d5ad63da3aa1ab351f894dfc34bbc485a5566",
+            "sha256": "435fbeaa15ecfc9859c739e7502c0442abbcbc59b3264f8550d249f70831fa18"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "b6b763b7e3c8b4edbba25c3c306d5b043e5591a5",
+            "sha256": "4c44fb3520cce376a93d37f5a6c6de6e7a1918eecad215dc80b126df4c50d8c1"
+          }
+        },
+        "classification": "material_policy_divergence_with_ct01_overlay",
+        "proposed_target": "retain CT01 reviewed-candidate blob",
+        "phase": "CT03 exact import",
+        "proposed_action": "Import accepted CT01 overlay bytes and mode; ROADMAP remains paused in combined candidate."
+      },
+      {
+        "path": "ROADMAP.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "dcb7471acfd72526914f7d70b012a8eb4d75e3b2",
+            "sha256": "2245fa3d0eafeb6765c2014f4ec1142d910be16e7e35b430f9c4813b9032e2ab"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "09642a58e74a5d5a169b521997667e37153a19a6",
+            "sha256": "485a8d62b65915ef4e18a31b424d63c5df4293303c4c40f9f73aef93f296365c"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "00f23caca25be2f071bd1f9850b79a2a91d6f6db",
+            "sha256": "79733ea3dceb058a19db9b28a5d54a772b4afa3923a06e9d29a1e4734fb3732d"
+          }
+        },
+        "classification": "stale_snapshot_with_ct01_product_overlay",
+        "proposed_target": "retain CT01 reviewed-candidate blob during factual phase",
+        "phase": "CT03 exact import",
+        "proposed_action": "Import accepted CT01 overlay bytes and mode; ROADMAP remains paused in combined candidate."
+      },
+      {
+        "path": "STATE.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "040a304e267e7abd8e2d0eb831e594a013dfe8e5",
+            "sha256": "558b8480fd50c7b891c2d3476ec294cc74978474ed690e9b46ee66dfaae9d68e"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "462f8ca203f6d73254169d2fe386ac89e2938227",
+            "sha256": "e935367c7856008b831841c4e1749f271f55c0894353f5a274f42c644d6b4b37"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f4eb28de95df3a484a86d6d32e1a9a5013769c59",
+            "sha256": "2ba24ebba5e7fda78bbd2cb3679de7894eeea2710321bc7ddc30a633a51618c0"
+          }
+        },
+        "classification": "stale_snapshot_requiring_synthesis",
+        "proposed_target": "synthesized paused reconciliation candidate",
+        "phase": "CT03 synthesis",
+        "proposed_action": "Synthesize both recorded histories; combined candidate paused, historical research-line activation preserved; R01/R02 Verified."
+      },
+      {
+        "path": "docs/orchestration/milestones/M0_CONTRACT.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "411944af151d61b2fdf42e68241e318a259df275",
+            "sha256": "89f6de855b0d7f61d8668bce42bf3b34c2b21cef3b77720117b48fcd08394812"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "3d54bef59220c7497d1862efa15e1f43c2b1959e",
+            "sha256": "8509b2508623a0fead20b6de0f008b64f511280384996217078a6800a21f59ae"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "da618a131903439a9572ef20d188b814d8be7eef",
+            "sha256": "8ed5fb8036b1dbb36dc5ff774751633694da6e0197e3a2b75e098b70f23ec9cc"
+          }
+        },
+        "classification": "material_policy_divergence",
+        "proposed_target": "retain governance-source blob unchanged",
+        "phase": "CT03 exact import",
+        "proposed_action": "Import exact governance-source bytes and mode into research-descended candidate."
+      },
+      {
+        "path": "docs/orchestration/milestones/M0_LEDGER.md",
+        "category": "both histories changed; explicit reconciliation review required",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "ea7d1f1d45491f25018752bbd3b0696a1d8e5959",
+            "sha256": "ce7cb18cd83454b3c75e740a6d84e7ffc2a066c5d62bafdda5757f97f88d96c2"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "54b8d2503419a34e86aa33f31063676f21e0fa71",
+            "sha256": "cd687fc0623b4d2b4e626d3fccbf1041096bb94d2d7737ff6b051554207871ff"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "bb6f4e0f4739242423f29834a7e5bae03626729a",
+            "sha256": "b872e2dde145c91fe4dcc4e2e49d30634dd1d209c5c1246a3975fd4dc7685544"
+          }
+        },
+        "classification": "chronology_and_policy_synthesis",
+        "proposed_target": "synthesized paused reconciliation ledger",
+        "phase": "CT03 synthesis",
+        "proposed_action": "Synthesize both recorded histories; combined candidate paused, historical research-line activation preserved; R01/R02 Verified."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/g01-role-isolated-review.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "b7848e2383c6549ab5fe01722dbf0dcedd5a0de2",
+            "sha256": "d64eb2611ffcafd52b591f272cf25019ebd15521202a050c5bee028d1b088ee3"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/g01-role-isolated-validation.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f50fb066e7bf765a2e92b249e468ac32c008e11c",
+            "sha256": "2a374cb95af2f886fecb813accb603f6262a680f50aef576d71801223b73f407"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/owner-decisions.md",
+        "category": "only research changed since common ancestor; verify content and chronology",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "401423a238ef56a6bea4645eadbf23804592dd76",
+            "sha256": "0ed1089cd5d4ccc0989dabb6f5536cba87b1b4ca2f9236bfd65a62f9b6b79f04"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "592ac2a05cc204cb916a1685e0b1e85356a35408",
+            "sha256": "ea0b379a3717caabd6067a8547d44f6621ac180b49b31ad6afe61c0f0aa6d817"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "401423a238ef56a6bea4645eadbf23804592dd76",
+            "sha256": "0ed1089cd5d4ccc0989dabb6f5536cba87b1b4ca2f9236bfd65a62f9b6b79f04"
+          }
+        },
+        "classification": "chronology_extension",
+        "proposed_target": "research-source blob after exact superset check",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-correction-round2-provenance.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "ee24db66ab1a52d02d4ab5be2b846ce2790ea71d",
+            "sha256": "abe1b40ecec642c4e3b87a81aca0914173d7ea0c0dd6fbabf82ca8c4083801ba"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-correction-round3-provenance.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "3015092b54cc2d0b01ff83f7809e4c3ef6be4ac5",
+            "sha256": "a4ed1d2a0641295e6aafea7cb6b552900c17b69fdaeb5802ce5cf89f32b1438a"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-final-review-round2.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f2e43f029506eaf21b3095c9ebf663de80b9437f",
+            "sha256": "c63976c254b7dcf49e868162850d06798e425333b835efa136c476a12364a812"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-final-review-round3.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "e4877ea2789f0bed868fb6ceb12f1f8737713152",
+            "sha256": "a4122c1115edcaa3aa7369563f3c92dc93d1a64a58ffdc9f8705af35ad53bab0"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-researcher-correction-round1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "46d2feebe1a4cc3ed3a7bcabcdf0b812275fd3e3",
+            "sha256": "a807aba91f577536124f8ba86bdfbc86d4102a6fd8d39bf17b0b069b1250075e"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-researcher-pass1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "a5ed1df697f5b77a19d296463107d33c898d5e66",
+            "sha256": "d0bcbfb18ac66167b2f3f1cf745649e59d4c07f300c43e6f4841e5276150f463"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-review-correction-round1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "2869e442fa96fe385999bdb50c900686e2e128ae",
+            "sha256": "ed1fd70faa6594fe1615d1f2156587a8ecaf0a136b9e564622a89ab5e0df5dff"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-review-correction-round2.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "792db84cbb17ec1d9fa1456369d4f26c9427d4c0",
+            "sha256": "1b9812449dad4e249adbdf62f61ac1e950d0e319c5df5f69a498d2a948e438b2"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-review-correction-round3.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "c194565c466526bdfc85b0c72ec61951e9c3dcc5",
+            "sha256": "ab591dc982edf1a13c99f9d04536b6505b1a8aa35210a9b57a0592916026e42a"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-review-round1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "e9eaff934af0866b24740b4217f92ef299880006",
+            "sha256": "3e7d189fe56950875c7549e8a906fe1e1ccc2712398ca203be7465db85e6b9ea"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-transitions.md",
+        "category": "only research changed since common ancestor; verify content and chronology",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "1349a6a8d4834ffad1585e5c5f16caeedccd85c1",
+            "sha256": "61df1f13d4fc15ac87a90a2be6e9ff38da86ee75dd2870f27bd0527c0990fd06"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f899bc83adc6e0c763c79ec3c910a509d6514eed",
+            "sha256": "7e7fd95ef6144e433c093b95470f00cdf613fcc7a35ca333cb60034b0f02c630"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "1349a6a8d4834ffad1585e5c5f16caeedccd85c1",
+            "sha256": "61df1f13d4fc15ac87a90a2be6e9ff38da86ee75dd2870f27bd0527c0990fd06"
+          }
+        },
+        "classification": "chronology_extension",
+        "proposed_target": "research-source blob after exact superset check",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-verification-round1-raw.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "8c44136e4e250696d0c4edf8c42838b875d236ba",
+            "sha256": "62daa6d2f3175cf97a41f59de754b9354a0d892b3fe39cafce53cb5e755205bc"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-verification-round2-raw.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "255148f4590bc4f1ea2efdc09d420998a8bcc3e4",
+            "sha256": "e3d606d047b18620b1e89742857100767dbf98883ab94343e60f50c658b8f3c6"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-verification-round3-raw.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "5b5f9e04f1e1e1a3911210f4f9a82f94e3f516a2",
+            "sha256": "df2eddd17b08a97e06c0abe4b2581160a4d76549cc1182a4c512b9da52fb72b1"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r01-verification.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "ed3f526ddd55b6a0c0c205df0105a07f6c1f033d",
+            "sha256": "9c087117a424f491d39513438e8f5ee7e785184f6c2b9f618ef67457a5ccbb4d"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-conductor-pass1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "1491d0ac952043bcbc3b647601575c4ba696541c",
+            "sha256": "b64a1fbcca13f7e219ad75503a5d3def6271da04c60712cb084bb9abde8f55d8"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-correction-round1-provenance.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "c6e10a73520118199353a6d27cb0ed8d0af6446c",
+            "sha256": "275a762d01473fdbdba34cf89031f7b203bff4ad2f61dc74aabd124b3dee56f2"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-final-review-round1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "12401a30382478d855fac6a5b37ce640fac1dd19",
+            "sha256": "ccab4b5821f114f5cf8f34736b17cb26535976c5a54d408c4b1974c7c52c7b13"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-publication.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "3ffe83a407c4e01f570d90e72cfff5bf5d624616",
+            "sha256": "3d56a17436e2ba52da2b9571937c82e456546528ec976368d6ef8c049fef200f"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-researcher-pass1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "c44c3ce16d3baa1721c55f305b46b695320ce420",
+            "sha256": "55c22c576a163aafb5367872915a80c717c4bdfaa1a3cdd96549c8cbcbba7a7f"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-review-round0.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f563d207a9f2ee191844a802c144c26360d4673b",
+            "sha256": "1ada3bfdbd561e156d863ed69de4fd2000a489b52946a721c7c1b388e0856869"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-review-round1.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "abfd17bc9910789ae12028f2f7b704f97953ae33",
+            "sha256": "5ac16eaa6a120f4f0939950387a28b83b256b6baa3309edad14317c365b8befe"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-transitions.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "8c53665b989ae46530a3a35502aa809cfb498615",
+            "sha256": "1e07cba49be29fd71354db121e7e53b6d645169f7b37d276309fc385d136318f"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/r02-verification.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "9d5efd3d90025ba5f8c596c0fe35d5d2c1ef0255",
+            "sha256": "10881e5b54ad47715e3b10ad33e0cae36a93830167445eda19db94f7de69ffe3"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/tasks/g01-role-isolated-correction.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "1029b0196081020e934a93ffcae0055687aac5e5",
+            "sha256": "d5cb425bf016870d6fb9f079845f928d8acf678a751a3d161ad7c5589033c271"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/tasks/r02-brief.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "1bdcf0c5dba77f12bd166403df4c4274e7281206",
+            "sha256": "497901ac98c6da5b6192069fd4a2a762c62998769b941f33f4a4557ed8c64a17"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/research/LOW_LATENCY_RESEARCH.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "ec7ce79398f2d635020f478daa34705af9904933",
+            "sha256": "bf7ede0c45db30d5cd6efd99b88b9908d40c61efebae04a14505838ffd9e2216"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/research/MOBILE_AUDIO_ARCHITECTURE.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "3ced27e20d64bd303b519eeb3ff86e9ae2ca2449",
+            "sha256": "55fcb9ba3f4e2256b6df4b5aab74f42f3536d624dc62f68dcabb5d0959640fd4"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/research/RESEARCH_INDEX.md",
+        "category": "only research changed since common ancestor; verify content and chronology",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "5f9f49eb75cc23f31ef3c4057088422ee4609cd0",
+            "sha256": "2708515f5acac4ccd0a1cd4d892c3e75f545c032fe7c8980fa574a3106af8c4d"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "b2281e68b329bbdac8d86f512a34674ec6e2244a",
+            "sha256": "04bd02f973b44c9b221cf71ee9ad550170077202858524e48d7ff858d56c50ba"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "5f9f49eb75cc23f31ef3c4057088422ee4609cd0",
+            "sha256": "2708515f5acac4ccd0a1cd4d892c3e75f545c032fe7c8980fa574a3106af8c4d"
+          }
+        },
+        "classification": "chronology_extension",
+        "proposed_target": "research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      },
+      {
+        "path": "docs/research/UAPMD_EVALUATION.md",
+        "category": "additive source artifact; exact-copy candidate after authorized review",
+        "sources": {
+          "governance": null,
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "8e54dab85fd72a25cd54d0cbe378bab5aff4995f",
+            "sha256": "67e0686309f45859657eb10de538e07155b673a100aab9bd0b22cfa0f9168496"
+          },
+          "ancestor": null
+        },
+        "classification": "additive_research_evidence",
+        "proposed_target": "exact research-source blob",
+        "phase": "no CT03 edit",
+        "proposed_action": "Retain research-source bytes and mode unchanged in place; preserve all failures and exact research evidence."
+      }
+    ]
+  },
+  "ct01_overlay": {
+    "base": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+    "candidate": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+    "path_count": 8,
+    "treatment": "Preserve as a separately reviewed overlay. It supplies accepted product planning and decision-team context but does not change M0 execution state.",
+    "paths": [
+      {
+        "path": "AGENTS.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "38117b28d58fca9eb479006cba8615c223ffc303",
+        "sha256": "e0a9f2385b9d90792c9e5ca2380f82fb19de7206c51910aaeb745a00faf53de6"
+      },
+      {
+        "path": "APP_SPEC.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "0aa1d3251a050eb0cdaa6937283c55bd4965d432",
+        "sha256": "0d9cead8aef6a9a8c2e4ebf0efc1bec9364f7538787ae6fc6ae61ccae7fc56f1"
+      },
+      {
+        "path": "ROADMAP.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "2824afff39af4c86c92ddfee8bf2241b60db16fb",
+        "sha256": "dac4caa05f124c213078e9817060c37432e44fd026d63d7d77163b085e928298"
+      },
+      {
+        "path": "docs/orchestration/APP_CONTEXT.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "9a46725a5a3374da841b283c937505ef4f3b457e",
+        "sha256": "639cbf127bb34dc9ee68255ff475c4c222e830152669caddb4ddd28cba1d19db"
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_CHARTER.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "f4ce7892f7b714bd0110baddd73ed5f9c1bb212a",
+        "sha256": "d69d2d1842d2dd9a60f4551668564dfc08c5a3da378bab3d5d926db2cb39bbf5"
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_SETUP_BRIEF.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "286fdd8b295f6eeecee1bee6689d0196b54ff1a6",
+        "sha256": "9ff5c983a4f0785dd1c81c3d49917f7c5ee8456765f70115e836f43ad61df05e"
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_SETUP_EVIDENCE.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "306d3530256e466b219087ee0c911b469c990c62",
+        "sha256": "3f13cb5f3385660a745e5f1cfbde10886d5085d22c7d9f772aac43bb160850f9"
+      },
+      {
+        "path": "docs/superpowers/specs/2026-10-23-worship-patch-builder-design.md",
+        "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "b99754f1b33ab1769026d808a5c5dfc91f9a2e20",
+        "sha256": "9be35b88aeac3428f551e6907cf0233caba39551b9230427ff4f46b401b772f5"
+      }
+    ]
+  },
+  "ct01_acceptance_overlay": {
+    "base": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+    "commit": "dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd",
+    "path_count": 1,
+    "treatment": "Retain the final CT01 evidence artifact with literal independent reviews and provenance.",
+    "paths": [
+      {
+        "path": "docs/orchestration/CONTINUATION_SETUP_EVIDENCE.md",
+        "commit": "dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "1c6c91ace4cc9de80d2777ddb64e27a75c77ee7e",
+        "sha256": "e4b48c227ad6b94089f0da241689fbc081f22df6498c758627ea3fa151d058c7"
+      }
+    ]
+  },
+  "ct02_brief_overlay": {
+    "base": "dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd",
+    "commit": "e3fc991e9ccc4a0c23b668c4b5443bc0864cb2d6",
+    "path_count": 1,
+    "treatment": "Authority for the proposal and manifest only; not authority to execute reconciliation.",
+    "paths": [
+      {
+        "path": "docs/orchestration/BASELINE_RECONCILIATION_BRIEF.md",
+        "commit": "e3fc991e9ccc4a0c23b668c4b5443bc0864cb2d6",
+        "mode": "100644",
+        "type": "blob",
+        "blob": "24f95ad9f5dacc1c4d6cd85a7fcfb6b24b9603e4",
+        "sha256": "ee9bd9213c564de0805999f58acfbbe61e835e473d07703436fb49575c08483b"
+      }
+    ]
+  },
+  "execution_proposal": {
+    "status": "Proposal only; independent review and exact CT03 brief required",
+    "candidate_parent": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+    "candidate_branch": "task/ct03-baseline-reconciliation",
+    "preserved_destination_branch": "milestone/m0-research",
+    "preserved_destination_base": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+    "observed_local_main": "b1b0c1edd5e42d3ea791f665c22954834e962d05",
+    "remote_tracking_main_is_not_live_remote_proof": true,
+    "content_path_count": 28,
+    "content_paths": [
+      {
+        "path": ".codex/agents/conductor.toml",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "8830112da2a3f52f2e77cfe405f1ebcb73e6e67f",
+          "sha256": "7bd78170ed40676bd2c93e04c4876e7235104d0701317221e7aba85bbbbd9740"
+        }
+      },
+      {
+        "path": ".codex/agents/decision-steward.toml",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "17e8a315f9f9ce77e6761798ad801c8e2808bf05",
+          "sha256": "1176b0ff828a5cc7b5b38feb711039980e31a8fffecc4326febd8736ac816a85"
+        }
+      },
+      {
+        "path": ".codex/skills/decision-steward/SKILL.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "b2cc1c6c9c9641adf1d9f278cd728d1c9696dd70",
+          "sha256": "3d7b3410b9087cdd09bee8ddd7e8d7a9f70668825420b18f445567385426cf0b"
+        }
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/SKILL.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "06d68d9eafb6a965ee186b94ac061f1a12bf9cd7",
+          "sha256": "154d91f5a8040dce86cce677bf85f824be6330bd0005a81b7c242d779b5de78f"
+        }
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/test_validate_decision_evidence.sh",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2cec482e3c359c58bde5af2777fc2937f1026c5f",
+          "sha256": "b1de3805ef9bf5a5f633dcd06f145c2de6d0b91f1e8e7885c40da9f0ee1ba446"
+        }
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/test_validate_main_integration.sh",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2efad95d953e1751cc5a8e57d3cf7a0228cb95df",
+          "sha256": "38e4b5d835472596eb12a04988469b76dcf8464995681acbe3cda1eb7b404bb8"
+        }
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "2ec762fc009572cb9be7cf5fa4741db2522cc3cf",
+          "sha256": "88452843d81bfc125b4f06fe3b6a7fdd85d56032c7342b53bcca0297b5970130"
+        }
+      },
+      {
+        "path": ".codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100755",
+          "type": "blob",
+          "blob": "60abf268a8761e4f028ec449f27615bcdd939ef2",
+          "sha256": "78d210d1067d600b53a14385d07453c6b31ffc6eff4cdc26cb2a2374ef0baecc"
+        }
+      },
+      {
+        "path": ".loop/progress.md",
+        "action": "synthesize",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "714a5362113783ad1a4d5ca4ae122d1c0ec9a743",
+            "sha256": "2bacf13cbbb8a0f0229e82942d810ea3ac8f79b2cd7e1c0bb4c6c14214ad7099"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "5c43ab687427d03e0cf968e504ce02ce236c4a8c",
+            "sha256": "88c09587278d9252bd4b9f07114c9ee21c7cfcffbede1f6fc55bc6a927037391"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f78e1ea75c5a1201b28938846f4aad2ec8abc60e",
+            "sha256": "db056780d69865ddef4c24b6df8dbf9003e4f579ab4e0193ff7225aea15dc404"
+          }
+        }
+      },
+      {
+        "path": "AGENTS.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "38117b28d58fca9eb479006cba8615c223ffc303",
+          "sha256": "e0a9f2385b9d90792c9e5ca2380f82fb19de7206c51910aaeb745a00faf53de6"
+        }
+      },
+      {
+        "path": "APP_SPEC.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "0aa1d3251a050eb0cdaa6937283c55bd4965d432",
+          "sha256": "0d9cead8aef6a9a8c2e4ebf0efc1bec9364f7538787ae6fc6ae61ccae7fc56f1"
+        }
+      },
+      {
+        "path": "ROADMAP.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "2824afff39af4c86c92ddfee8bf2241b60db16fb",
+          "sha256": "dac4caa05f124c213078e9817060c37432e44fd026d63d7d77163b085e928298"
+        }
+      },
+      {
+        "path": "STATE.md",
+        "action": "synthesize",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "040a304e267e7abd8e2d0eb831e594a013dfe8e5",
+            "sha256": "558b8480fd50c7b891c2d3476ec294cc74978474ed690e9b46ee66dfaae9d68e"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "462f8ca203f6d73254169d2fe386ac89e2938227",
+            "sha256": "e935367c7856008b831841c4e1749f271f55c0894353f5a274f42c644d6b4b37"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "f4eb28de95df3a484a86d6d32e1a9a5013769c59",
+            "sha256": "2ba24ebba5e7fda78bbd2cb3679de7894eeea2710321bc7ddc30a633a51618c0"
+          }
+        }
+      },
+      {
+        "path": "docs/orchestration/APP_CONTEXT.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "9a46725a5a3374da841b283c937505ef4f3b457e",
+          "sha256": "639cbf127bb34dc9ee68255ff475c4c222e830152669caddb4ddd28cba1d19db"
+        }
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_CHARTER.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "f4ce7892f7b714bd0110baddd73ed5f9c1bb212a",
+          "sha256": "d69d2d1842d2dd9a60f4551668564dfc08c5a3da378bab3d5d926db2cb39bbf5"
+        }
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_SETUP_BRIEF.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "286fdd8b295f6eeecee1bee6689d0196b54ff1a6",
+          "sha256": "9ff5c983a4f0785dd1c81c3d49917f7c5ee8456765f70115e836f43ad61df05e"
+        }
+      },
+      {
+        "path": "docs/orchestration/CONTINUATION_SETUP_EVIDENCE.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "1c6c91ace4cc9de80d2777ddb64e27a75c77ee7e",
+          "sha256": "e4b48c227ad6b94089f0da241689fbc081f22df6498c758627ea3fa151d058c7"
+        }
+      },
+      {
+        "path": "docs/orchestration/DECISION_POLICY.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "c87f60f23a0a93618660190d6294f554bdb7884c",
+          "sha256": "9ff5371b6d799377c0345e12217a1957c0fe37d8c67ca46fd56157728ebec8cf"
+        }
+      },
+      {
+        "path": "docs/orchestration/decisions/README.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "59836e31feb6403052773416a61d51d9cd0e924b",
+          "sha256": "9b020d608379347d5f4f039007269090ee93e0b10d47a5390c28d750ed75e340"
+        }
+      },
+      {
+        "path": "docs/orchestration/milestones/M0_CONTRACT.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "411944af151d61b2fdf42e68241e318a259df275",
+          "sha256": "89f6de855b0d7f61d8668bce42bf3b34c2b21cef3b77720117b48fcd08394812"
+        }
+      },
+      {
+        "path": "docs/orchestration/milestones/M0_LEDGER.md",
+        "action": "synthesize",
+        "sources": {
+          "governance": {
+            "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "ea7d1f1d45491f25018752bbd3b0696a1d8e5959",
+            "sha256": "ce7cb18cd83454b3c75e740a6d84e7ffc2a066c5d62bafdda5757f97f88d96c2"
+          },
+          "research": {
+            "commit": "8fdb7444ed80675269f38f90f84b362f90c9af23",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "54b8d2503419a34e86aa33f31063676f21e0fa71",
+            "sha256": "cd687fc0623b4d2b4e626d3fccbf1041096bb94d2d7737ff6b051554207871ff"
+          },
+          "ancestor": {
+            "commit": "80843d3d0cbbdf8031aaa6406cf71b4d21ab5cac",
+            "mode": "100644",
+            "type": "blob",
+            "blob": "bb6f4e0f4739242423f29834a7e5bae03626729a",
+            "sha256": "b872e2dde145c91fe4dcc4e2e49d30634dd1d209c5c1246a3975fd4dc7685544"
+          }
+        }
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "aea7de804b6c0dd9372690a00527fa53af42e6c7",
+          "sha256": "c32956e785962fb1b168e8b12d0e895635b07095f92515c2e5752c0a70b935be"
+        }
+      },
+      {
+        "path": "docs/orchestration/milestones/m0/evidence/main-integration.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "810d3f60ee9f8f6fadfc16c62c32b765985186b8",
+          "sha256": "4c6fb5de3ad291740edb358f3c25939f0a1180e080d10823a6fee469a7bdab30"
+        }
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-01-augmentedkeys-decision-steward.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "fcb69734df18ce82a94f909134a1ffcaea420ec7",
+          "sha256": "850d4a3e2810b52a24c0404a1292fe9d01983166df94d5ce21c0ceb075115d46"
+        }
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-02-claude-agent-parity.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "70f35867c0408f18e333a701444428b8b8f90bbd",
+          "sha256": "02b4d5bf7d3a63ca3d7b2900b4a53ab1ad517d7e29bda575da1d05567b3724f8"
+        }
+      },
+      {
+        "path": "docs/superpowers/specs/2026-09-01-augmentedkeys-decision-steward-design.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "74036aee7b38763a0725c833c0c7071928c1d35b",
+          "sha256": "1bea6dba7b2db0ea5d4748f6d6e4f0bbcdbf67df7f8e39c9c0fffbe28342e2c5"
+        }
+      },
+      {
+        "path": "docs/superpowers/specs/2026-09-02-claude-agent-parity-design.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "b6173beffe48113e6121c53eae1b8c53611477f6",
+          "sha256": "77ea6b37a72eb54da7a40c70bdc8593fe02a883b7a421ad9c379fdc779364cde"
+        }
+      },
+      {
+        "path": "docs/superpowers/specs/2026-10-23-worship-patch-builder-design.md",
+        "action": "exact_import",
+        "source": {
+          "commit": "53bb29d4a5f2ca9172b1a2d9f726459badbe9d95",
+          "mode": "100644",
+          "type": "blob",
+          "blob": "b99754f1b33ab1769026d808a5c5dfc91f9a2e20",
+          "sha256": "9be35b88aeac3428f551e6907cf0233caba39551b9230427ff4f46b401b772f5"
+        }
+      }
+    ],
+    "controller_artifacts": [
+      "docs/orchestration/BASELINE_RECONCILIATION_BRIEF.md",
+      "docs/orchestration/BASELINE_RECONCILIATION.md",
+      "docs/orchestration/BASELINE_SOURCE_MANIFEST.json",
+      "docs/orchestration/BASELINE_RECONCILIATION_EVIDENCE.md",
+      "docs/orchestration/BASELINE_CONSTRUCTION_BRIEF.md",
+      "docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md"
+    ],
+    "activation": "All current contract entry conditions plus exact owner reactivation binding foundation, candidate, contract and guarded integration must pass. No branch mutation authorized by CT02/CT03 proposal."
+  }
+}

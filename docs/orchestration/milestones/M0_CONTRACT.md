@@ -1,6 +1,6 @@
 # M0 Roadmap Orchestrator Authorization Contract
 
-Status: `Paused for owner decision`
+Status: `Paused for owner decision`; this superseding governance text does not reactivate M0
 Contract version: 2
 
 ## Binding inputs
@@ -8,19 +8,12 @@ Contract version: 2
 - Operating constitution: `AGENTS.md`
 - Roadmap: `ROADMAP.md`
 - Orchestrator skill: `.codex/skills/roadmap-orchestrator/SKILL.md`
+- Decision Steward policy: `.codex/skills/decision-steward/SKILL.md` and `docs/orchestration/DECISION_POLICY.md`
 - Queue: `docs/research/RESEARCH_INDEX.md`
 - Ledger: `docs/orchestration/milestones/M0_LEDGER.md`
 - Gate controls: `gate.yaml` and `loop-budget.md`
-- Previously accepted contract source: `0d86705ca130fcc3bdb73a9acf3f21fd803912dd` (version 1)
-- Narrow correction authority: OD-004 at `82dc35ac2042ab4697b322dabd1fb03c61a5ae5a`
 
 The controller must display and record the exact accepted `main` commit and the latest commit returned by `git log -1 --format=%H -- docs/orchestration/milestones/M0_CONTRACT.md` before requesting activation. Owner approval binds only to those displayed commits.
-
-## Version 2 dispatch correction
-
-OD-004 authorizes only replacement of the failed nested mixed-permission launch topology. For each role selected by the Conductor, the Roadmap Orchestrator controller launches one separate project-rooted top-level relay whose effective permission class matches its exactly one configured child. Relays perform no task work. The Conductor returns exact dispatch requests to the controller and must not directly spawn specialists. No read-only role may be nested below a workspace-write session, and no write-capable role may be nested below a read-only session.
-
-This correction does not reactivate M0 or R01 by itself. M0 remains `Paused for owner decision` and R01 remains `Blocked` until committed runtime evidence proves the configured Conductor and all required read-only roles have their contracted model, reasoning effort, and effective sandbox; a fresh independent reviewer reports no Critical or Important finding; and the controller commits the separate reactivation decision and state barriers required by OD-004. The correction changes no research authority, milestone outcome, queue, dependency, output, definition of done, safety gate, publication authority, or non-goal.
 
 ## Objective
 
@@ -35,9 +28,7 @@ Produce verified, evidence-backed answers for the ten contracted M0 research que
 5. The owner sends the exact M0 activation statement in response to those displayed commits.
 6. No Roadmap Orchestrator Goal or write task is active.
 7. The branch `milestone/m0-research` is absent, or it is an exact clean resumable branch recorded in the ledger.
-8. For reactivation after G01, the role-isolated correction is committed under OD-004 and the controller has committed source-backed runtime proof for the configured Conductor, Researcher, QA/Performance Verifier, Licensing/Security Reviewer, and Final Code Reviewer.
-9. A fresh independent read-only review of the exact correction and runtime provenance reports no Critical or Important finding.
-10. A separate committed reactivation decision artifact binds the corrected contract and validation/review commits before the milestone and R01 state-transition barriers run; no research executes between those commits.
+8. Reactivation after G01 additionally requires successful runtime evidence for the permission-isolated top-level role handoffs, all required independent setup reviews with no unresolved Critical or Important finding, and a committed owner decision that resolves the recorded pause.
 
 ## Definition of done
 
@@ -46,16 +37,23 @@ Produce verified, evidence-backed answers for the ten contracted M0 research que
 3. Research separates fact, inference, recommendation, disagreement, missing evidence, and owner decision.
 4. No research conclusion is represented as architecture adoption, dependency approval, product implementation, or measured device performance.
 5. The milestone completion package required by the orchestrator skill is complete and the milestone branch's local and remote hashes match.
+6. The exact completed milestone candidate and all required review artifacts are ready for an independent Decision Steward verdict. Completion alone does not authorize acceptance, `main` integration, or M1 activation.
 
 A blocked or deferred task remains part of the definition of done. Removing or waiving it requires an owner-approved contract change; otherwise the milestone pauses for owner decision.
 
 ## Branches and canonical artifacts
 
 - Milestone branch: `milestone/m0-research`
+- Decision-evidence branch: `governance/decision-evidence`; dedicated isolated controller-owned worktree; append-only; not created or published by this contract update
+- Decision-evidence governance base: recorded in `docs/orchestration/milestones/M0_LEDGER.md` before branch creation and repeated in immutable `docs/orchestration/decisions/governance-base.md` by the direct-child creation commit
+- Canonical governance-evidence root: `docs/orchestration/decisions/m0/` on `governance/decision-evidence`
+- Evidence schema and recovery protocol: `docs/orchestration/decisions/README.md`
 - State ledger: `docs/orchestration/milestones/M0_LEDGER.md`
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
 - Milestone transition evidence: `docs/orchestration/milestones/m0/evidence/milestone-transitions.md`
 - Completion package: `docs/orchestration/milestones/m0/evidence/completion-package.md`
+- Decision Steward status index: `docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md`; canonical runtime packages, verdicts, and bindings live on the decision-evidence branch
+- Main integration status index: `docs/orchestration/milestones/m0/evidence/main-integration.md`; canonical runtime attempts, results, and bindings live on the decision-evidence branch
 
 The exact branch, brief, and verification-artifact paths for every task are fixed in the queue table below; the Goal may not generate a substitute path.
 
@@ -88,7 +86,9 @@ The Goal may change only:
 - `docs/orchestration/milestones/m0/evidence/*.md`;
 - `docs/research/RESEARCH_INDEX.md` status fields;
 - the exact contracted research outputs listed in the queue table;
-- the leading `Status:` sentence in the M0 section of `ROADMAP.md`, only to mirror a permitted milestone transition to `Active`, `Paused for owner decision`, `Ready for owner review`, or owner-decision-backed `Accepted` in the second commit of the transition barrier. `Accepted` requires the exact committed owner acceptance decision; it authorizes no other roadmap change.
+- the leading `Status:` sentence in the M0 section of `ROADMAP.md`, only to mirror a permitted milestone transition to `Active`, `Paused for owner decision`, `Ready for decision`, or Decision-Steward-backed `Accepted` in the second commit of the transition barrier. `Accepted` requires an exact committed `APPROVE_MILESTONE` verdict and authorizes no other roadmap change by itself.
+
+Separately, only the program controller may append canonical packages, verdicts, results, and bindings under `docs/orchestration/decisions/**` while its dedicated isolated worktree is checked out on `governance/decision-evidence`. That authority is limited by the deterministic evidence-publication guard and does not expand the milestone branch allowlist.
 
 `ROADMAP.md` is the only protected path explicitly in scope, and only for the exact M0 status sentence. The contract, skill, operating constitution, product specification, architecture file, ADRs, gate, budget, manifests, lockfile, product code, native hosts, agent configuration, and manual Loop skill are outside the allowlist.
 
@@ -112,17 +112,23 @@ The Goal may change only:
 
 ## Publication authority
 
-The only pre-authorized external action is asking the deterministic guard to push the exact `refs/heads/milestone/m0-research:refs/heads/milestone/m0-research` refspec after it validates the clean checked-out local ref, exact SHA, accepted-foundation ancestry, and contracted branch. The guard performs the push and must prove the remote hash equals the authorized local hash. No separate raw `git push` is permitted.
+Before milestone acceptance, the only pre-authorized external action is asking the existing deterministic milestone guard to push the exact `refs/heads/milestone/m0-research:refs/heads/milestone/m0-research` refspec after it validates the clean checked-out local ref, exact SHA, accepted-foundation ancestry, and contracted branch. That guard remains milestone-only.
 
-The Goal may not publish task branches, push or merge `main`, open a pull request, auto-merge, force-push, release, deploy, sign, submit to a store, delete material work, or take another external action.
+The controller may publish `governance/decision-evidence` only from its dedicated clean isolated worktree through `.codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh authorize|push|verify <candidate-tip> <recorded-governance-base>`. The first commit must be the recorded base's direct child and add only the immutable canonical `100644 blob` base anchor. The guard may create that exact remote branch once and thereafter may only fast-forward it with the exact `refs/heads/governance/decision-evidence:refs/heads/governance/decision-evidence` refspec. Every later commit has one parent and every decision is a complete exact single-path package→verdict→binding sequence; a result uses an exact result→binding pair. Co-committed or incomplete evidence is invalid. After the anchor, every changed path at every new commit must be a canonical `100644 blob` Markdown file under the milestone's `packages`, `verdicts`, `results`, and `bindings` directories; a later correction cannot sanitize an invalid historical mode or type. Packages, verdicts, and results are add-only, bindings are add/update-only, and deletion is forbidden throughout history. A failed push refuses only when the remote is proved unchanged/absent and otherwise returns `PARTIAL`. No direct push, merge, rewrite, force, rebase, tag, signing, product work, or other writer is authorized.
+
+After the current local/remote-equal evidence binding proves an exact `APPROVE_MILESTONE` verdict and the milestone becomes `Accepted` through its separate state barrier, a separate current package/verdict/binding sequence may authorize `.codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh authorize|integrate|verify <milestone-branch> <accepted-tip> <recorded-main-base> <evidence-binding-commit>` to perform one clean fast-forward from the unchanged recorded `main` base to its exact accepted M0 tip. Only that guard may merge and push the explicit `refs/heads/main:refs/heads/main` refspec, and it must prove or safely classify the result. Confirmed rejection restores local `main`; proved equality succeeds; ambiguity or external movement becomes non-replayable `PARTIAL` and requires `PAUSE_HUMAN`. No separate raw merge or `git push` is permitted.
+
+The Goal may not publish task branches, open a pull request, auto-merge, force-push, rebase, resolve conflicts, release, deploy, sign, create or publish tags, submit to a store, delete material work, or take another external action. Main integration does not authorize M1 activation.
 
 ## Stop conditions
 
 Pause for the owner when any mandatory gate in `AGENTS.md` or the orchestrator skill applies; an entry condition fails; a path is outside the allowlist; evidence is missing or unsupported; a Critical or Important finding remains; five correction rounds fail; a blocker prevents the definition of done; local/remote state is inconsistent; or the objective, queue, dependencies, definition of done, safety controls, or contract would change.
 
-When every task satisfies the definition of done, set the milestone to `Ready for owner review` and stop. Do not integrate `main` or begin M1.
+When every task satisfies the definition of done, set the milestone to `Ready for decision` through the two-commit barrier and request an independent Decision Steward verdict. Do not accept M0, integrate `main`, or begin M1 unless each action has its own exact committed approval and the required barrier or guard succeeds.
 
-At owner review, one committed owner decision may return `Ready for owner review` to `Active` for exact corrections already inside this contract and may reopen named `Verified` tasks to `In progress`; every reopened task requires fresh verification and independent review. A correction outside this contract requires a new approved design and contract change. `Accepted` is terminal.
+At milestone decision, one committed `CORRECT` verdict may return `Ready for decision` to `Active` for exact corrections already inside this contract and may reopen named `Verified` tasks to `In progress`; every reopened task requires fresh verification and independent review. A changed bound SHA requires affected fresh verification, independent review, and a fresh Decision Steward verdict. Missing, conflicting, ambiguous, unreadable, internally inconsistent, or unverifiable evidence requires `PAUSE_HUMAN`. A correction outside this contract requires a new approved design and contract change. `Accepted` is terminal as the M0 state.
+
+M1 remains inactive until its exact contract is committed, independently reviewed with no unresolved Critical or Important finding, every entry condition passes, and a separate `APPROVE_NEXT_MILESTONE` verdict is committed and consumed through its activation barrier. The current M0 `Paused for owner decision` state remains binding until the redesigned permission-isolated setup has successful runtime evidence, required independent reviews, and a valid reactivation decision.
 
 ## Activation statement
 

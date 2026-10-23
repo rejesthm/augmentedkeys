@@ -2,13 +2,13 @@
 
 ## Milestone
 
-- State: `Active`
-- Goal: Codex task `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; milestone execution active under verified OD-005 reactivation
+- State: `Paused for owner decision`
+- Goal: Continuation setup controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; candidate construction only, no active M0 research task. Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224` was observed blocked in CT02; recheck before activation.
 - Milestone branch: `milestone/m0-research`
 - Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`
 - Accepted foundation commit: `b1b0c1edd5e42d3ea791f665c22954834e962d05`
-- Contract source commit: `13b864f09ca083d10910bcffa4432b81c040bda9`
-- Accepted contract commit: `13b864f09ca083d10910bcffa4432b81c040bda9`
+- Contract source commit: `b0122f7030331d3e86af28a779075349fc9e74ff`; exact retained governance content; new import commit resolved in construction evidence.
+- Accepted contract commit: Not accepted for combined candidate; historical research acceptance remains `13b864f09ca083d10910bcffa4432b81c040bda9` under OD-005.
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
 - Owner-decision commit: `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` (OD-001)
 - Recovery-only owner decision: `4a8349000864b2f06dbe62a287c5a4378e0bd278` (OD-002); no milestone/task state transition, G01 unresolved
@@ -23,6 +23,48 @@
 - Milestone-transition evidence commit: `998fb53884f986154e1238ea3d76539adc565b70` (MT-001)
 - Completion package: `docs/orchestration/milestones/m0/evidence/completion-package.md`
 - Completion-package commit: Not created
+
+
+- Decision-evidence branch: `governance/decision-evidence`
+- Decision-evidence worktree: Not created
+- Decision-evidence writer: Program controller only; Decision Steward and reviewers are read-only
+- Decision-evidence governance base: Not yet recorded
+- Local decision-evidence tip: Not created
+- Remote decision-evidence tip: Not created
+- Current decision-evidence binding: Not yet decided
+- Decision Steward status index: `docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md`
+- Canonical Decision Steward evidence root: `docs/orchestration/decisions/m0/` on `governance/decision-evidence`
+- Milestone acceptance package commit: Not yet decided
+- Milestone acceptance verdict commit: Not yet decided
+- Milestone acceptance binding commit: Not yet decided
+- Steward decision commit: Not yet decided
+- Accepted milestone tip: Not yet decided
+- Original `main` base: Not yet decided
+- Main integration status index: `docs/orchestration/milestones/m0/evidence/main-integration.md`
+- Main integration package commit: Not yet decided
+- Main integration verdict commit: Not yet decided
+- Main integration binding commit: Not yet decided
+- Main integration decision commit: Not yet decided
+- Main integration status: Not yet integrated
+- Main integration result commit: Not yet integrated
+- Main integration result binding commit: Not yet integrated
+- Main integration recovery state: Not required; no attempt exists
+- Integrated local `main` SHA: Not yet integrated
+- Integrated remote `main` SHA: Not yet integrated
+- Successor contract commit: Not yet decided
+- Successor decision package commit: Not yet decided
+- Successor decision verdict commit: Not yet decided
+- Successor decision binding commit: Not yet decided
+- Successor decision commit: Not yet decided
+- Successor activation result: Not yet decided
+- Candidate branch: `task/ct03-baseline-reconciliation`
+- Candidate worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/ct03-baseline-reconciliation`
+- Candidate parent: `8fdb7444ed80675269f38f90f84b362f90c9af23`
+- CT03 brief commit: `efdf3bbfee15d93e7b84fee867ae3d5429ca143d`
+- CT02 reviewed proposal: `b996cd066da941181d5cf13ef4c7c01b2abe7d77`; acceptance evidence `b414edb4cb2bb5fde6a8d730ba008d156b98b96d`
+- CT03 verification/review artifact: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`
+
+This header describes the paused combined candidate, not a state change to the preserved research branch. Original OD-001 through OD-005 and every task/milestone transition below are historical source records. No CT03 owner decision, M0 transition, task activation, Steward verdict, integration or publication is invented here. All governance-only fields above remain as in the retained source.
 
 ## Tasks
 
@@ -67,7 +109,7 @@
 | 2026-09-02 | R02 | `In progress` | `In review` | Roadmap Orchestrator | `c4f4b2869c907355f5baf35ea09ca90d02884036` | `docs/orchestration/milestones/m0/evidence/r02-verification.md`; T04 `891a48686f7f24a5dc32ffa94f8e104dbdb124ab` | Corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` addresses QA I2; controller verification addresses I1/M1; exact package awaits fresh affected specialist review |
 | 2026-09-02 | R02 | `In review` | `Verified` | Roadmap Orchestrator | `c7952ea12d19a6c42abc3d19425a694448256b76` | `docs/orchestration/milestones/m0/evidence/r02-verification.md` | Exact corrected candidate passed fresh QA/Performance, Licensing/Security and Final Code Review with zero Critical, Important or Minor findings; spec compliance and evidence honesty pass |
 
-M0 is Active under OD-005 and corrected contract version 2. R01 and R02 are Verified and integrated; R02 publication is recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922`. R03–R10 remain Queued and R03 briefing is next. No completion package exists.
+Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is Active under OD-005 and corrected contract version 2. R01 and R02 are Verified and integrated; R02 publication is recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922`. R03–R10 remain Queued and R03 briefing is next. No completion package exists. The combined CT03 candidate instead remains paused; no R03 briefing or execution is authorized until its exact activation conditions pass.
 
 ## Task integration log
 
@@ -75,3 +117,9 @@ M0 is Active under OD-005 and corrected contract version 2. R01 and R02 are Veri
 |---|---|---|---|---|---|---|
 | 2026-09-02 | R01 | `09266fdc17e137db44495d85c6b42cf296efb89c` | `1c3d4618b1cbf2c583f2c4950800edaab58ee185` | `63081f5f50b03c9337f9f10032a94373f214aaa0` | Non-fast-forward merge because controller evidence and task-report history diverged after common base `b8d245683170a3f4961ca89e9cbf3a2d1d4cdfdb` | Exact two reviewed reports integrated without conflict; guarded publication verified at later state tip `6eabee4dd99c3761b68e52fe81a9e8e8738b600c` |
 | 2026-09-02 | R02 | `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` | `c7952ea12d19a6c42abc3d19425a694448256b76` | `f7e2670ee7c9d12d47467e13139420a347b8cc29` | Non-fast-forward merge because controller evidence and task-report history diverged after common base `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05` | Exact reviewed report integrated without conflict; guarded publication of following state tip `14004c5059a772943fc6949034d656c1d357b0e8` verified and recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922` |
+
+## CT03 preparation boundary
+
+CT03 imports exact approved control/context blobs and reconciles factual history only. R01/R02 remain Verified; R03-R10 remain Queued; no task or milestone is Accepted. No source branch has moved. Fresh baseline reviews and then the exact activation package are required. Re-resolve the imported contract's latest content-changing commit before presenting activation; its source-content hash does not itself confer owner acceptance.
+
+Before activation, prove all retained entry conditions, including no active Roadmap Orchestrator Goal or write task, accepted foundation equality with local/live remote main, exact resumable milestone base, current role isolation and independent reviews, and committed owner approval of the displayed candidate/contract/actions. The original checkout's unreviewed main-guard recovery edits remain outside this candidate and require a separate bounded review before main-integration readiness. No product, device or performance capability is claimed.
