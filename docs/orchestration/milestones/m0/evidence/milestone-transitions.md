@@ -35,3 +35,9 @@ No core/UI/native work, package/asset adoption, architecture decision, hardware,
 ### State barrier
 
 Commit this exact artifact first and resolve its SHA. The immediately following scoped commit must reference that SHA and set the M0 ledger, STATE, progress, and only ROADMAP's leading M0 Status sentence to Paused for owner decision. No task execution, integration, later transition or recovery attempt may occur between these commits.
+
+## MT-002 — research complete; pause for governance correction
+
+Trigger: all R01–R10 research tasks Verified and last guarded publication `a68e294b88c0157cd02ee2e9c5a3b66b66ef79fd`, but independent Final protocol assessment found0Critical/2Important defects preventing exact-candidate milestone-review recording and main integration sequencing. These controls are outside the current M0 allowlist. No eligible research task remains; do not reinterpret task approvals or continue into out-of-scope correction.
+
+The completion package, full assessment and bounded owner correction proposal accompany this transition evidence. A separate state commit must set M0 to Paused for owner decision and record this exact evidence commit and the governance-base SHA before creating an evidence branch. No acceptance, main integration or successor activation occurs. Preserve main, all owner edits, sources, failed checks, rejected candidates and worktrees. Request independent Steward PAUSE_HUMAN on the immutable package; only the owner may authorize the proposed governance task.
