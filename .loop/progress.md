@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R07 independent Researcher and sole Conductor ledger writer assigned by T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4`; runtime/path proof passed; source evidence reconciled; sole Conductor synthesis next. Prior roles idle; controller alone Git/state/evidence.
+Controller owns Git/state. R07 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
 
 # Research Questions
 
-R01–R06 Verified; R07 In progress; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R06 Verified; R07 In review; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,11 +20,11 @@ R01–R06 Verified. R07 In progress after exact brief/assignment barriers; R08�
 
 # In Progress
 
-R07 T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4` assigns the exact isolated one-ledger scope. Runtime/path proof passed; independent Researcher handoffs and five-index source catalog complete. Sole Conductor ledger synthesis next.
+R07 In review: candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df`, verification `d101b1e646a6784be4f687e951e1a37769dcd3bc`. Separate state barrier consumes the committed artifact; no integration before Verified.
 
 # Verification Needed
 
-Actual runtime metadata, correct cwd/base and unchanged original ledger prefix plus exact probe marker; then source research and independent reviews.
+Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. All retained source bodies hashed; no runtime/device/adoption claim.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R07 sole-writer ledger synthesis from reconciled source evidence, then freeze and independently review the exact candidate.
+Complete independent R07 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
