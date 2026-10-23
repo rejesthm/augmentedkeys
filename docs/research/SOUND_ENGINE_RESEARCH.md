@@ -48,8 +48,8 @@ All URLs below were captured on 2026-10-23; full body hashes remain in the canon
 | C11 | S39 https://www.sfz.tools/sfizz/development/status/ | coverage table | Reported SFZ v1/v2/ARIA coverage is 96%/44%/45%, so universal SFZ support is unsupported. |
 | C12 | S44 https://raw.githubusercontent.com/sfztools/sfizz/4e70dc0bef53b41f2853ed46e26f5911114c92d0/cmake/SfizzDeps.cmake and S45 https://raw.githubusercontent.com/sfztools/sfizz/4e70dc0bef53b41f2853ed46e26f5911114c92d0/cmake/SfizzConfig.cmake | dependency declarations; C++14 and build-option summary | Toolchain and optional dependency surface; not a selected build graph. |
 | C13 | S37 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/tsf.h | lines 1–150, 421–630, 760–850, 1005–1338, 1510–1660, 1915–2030 | MIT/SFZero notice, format subset, loaders, render precision, zones, loops, envelopes, filter, voices, sustain, and reset behavior. |
-| C14 | S35 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/LICENSE and S36 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/README.md | complete license; README contribution policy | MIT root text and a separate no-LLM upstream contribution policy. |
-| C15 | S29 https://raw.githubusercontent.com/sfztools/sfizz/4e70dc0bef53b41f2853ed46e26f5911114c92d0/LICENSE and pinned S30–S31/S44–S45 build bodies | complete license and build options | BSD 2-Clause root text and a material configurable dependency/tool surface. |
+| C14 | S35 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/LICENSE; S36 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/README.md; S37 https://raw.githubusercontent.com/schellingb/TinySoundFont/853a0a171759f1ddba0de1442133a75912bbeffa/tsf.h; S16 https://api.github.com/repos/schellingb/TinySoundFont/git/trees/853a0a171759f1ddba0de1442133a75912bbeffa?recursive=1 | complete license and header notices; README contribution policy and example statement; tree paths | Root/header notices differ in date range; example assets and upstream contribution policy require separate treatment. |
+| C15 | S29 https://raw.githubusercontent.com/sfztools/sfizz/4e70dc0bef53b41f2853ed46e26f5911114c92d0/LICENSE; S30 https://raw.githubusercontent.com/sfztools/sfizz/4e70dc0bef53b41f2853ed46e26f5911114c92d0/README.md; pinned S31/S44–S45 build bodies | complete root license; dependency-license list; configurable build options | BSD 2-Clause root text does not clear the material configurable dependency/tool surface. |
 | C16 | S46–S50 https://sfzformat.com/opcodes/ and named opcode pages | opcode index; modulation tutorial; loop_mode, lokey, lovel | Community descriptions for regions, key/velocity zones, loops, envelopes, filters, modulation, and switching controls. |
 
 ## Format and authoring facts
@@ -150,10 +150,10 @@ FluidSynth's pinned Android README documents Oboe and OpenSL ES output choices, 
 
 | Item | Inspected fact | R07 or owner gap |
 | --- | --- | --- |
-| FluidSynth | S20 contains LGPL-2.1 text; S21 identifies LGPL; S26 is an upstream layperson FAQ that disclaims legal advice | exact static/dynamic link and distribution obligations, enabled components, notices, App Store implications, patents/trademarks |
-| sfizz | S29 contains BSD 2-Clause | exact selected dependency graph, versions, licenses/notices, archived-project maintenance handling |
-| TinySoundFont | S35 contains MIT; S37 repeats MIT and SFZero attribution | notice/provenance review and exact incorporation plan |
-| TinySoundFont contributions | S36 states a no-LLM contribution policy | separate from MIT; no contribution or adoption is authorized |
+| FluidSynth | S20 contains LGPL-2.1 text. S26 is explicitly lay guidance, not legal advice; it says users must be able to replace or upgrade the FluidSynth portion and that changes to FluidSynth must be made available under LGPL terms. Its iOS section derives relinking and modified-source conditions from a 2011 discussion. Its VST3 statement describes a 2017 dual-license situation and says a FluidSynth binary built with GPLv3 components would be GPLv3 rather than LGPL. | exact current SDK, enabled components, link/replacement method, source and notice duties, distribution channel, App Store position, patents/trademarks, and legal interpretation |
+| sfizz | S29 contains BSD 2-Clause. S30 says the default `dr_libs` path is MIT-0 while optional `libsndfile` is LGPL-2.1. Its listed component families include Apache-2.0, MIT, BSD-2-Clause, BSD-3-Clause, WTFPL-2.0, STK 4.3 with a permissive LGPL variant, Boost-1.0, and others. S31/S44/S45 show configurable build branches. | exact selected build graph, options, versions, licenses/notices, source obligations, and archived-project maintenance handling; the root BSD license does not clear transitives |
+| TinySoundFont | S35's root MIT notice says 2017–2023; S37's embedded MIT notice says 2017–2025. Both attribute SFZero copyright 2012. S36 says examples include a sample SoundFont; S16 names `examples/florestan-subset.sf2` and `examples/venture.mid`. No asset bytes were downloaded or inspected. | reconcile notices; the example assets' rights and provenance are unknown, excluded from the MIT-code inference, and excluded from any future fixture |
+| TinySoundFont contributions | S36 states a no-LLM upstream contribution policy | separate from the MIT code license; no contribution is authorized |
 | S42 | historical mirror includes limited specification-copying language and rights disclaimers | no legal conclusion, current authority, or content clearance |
 | SF2/SFZ assets | no content was downloaded or inspected | piano/pad/synth source, recording and performer rights, preset metadata, trademarks, redistribution and commercial terms |
 
@@ -167,7 +167,7 @@ A root code license never clears sample content. Public readability does not est
 - mutable definitions, state, and configuration crossing threads;
 - logs or artifacts containing filenames, device data, or proprietary content.
 
-No vulnerability is asserted. A later security review must bind the exact version, build graph, input policy, limits, and fixtures.
+S26's dated App Store and VST3 passages are historical risk flags rather than current platform, SDK, distribution, or legal conclusions. S30's positive dependency-license list is not exhaustive clearance of any future sfizz binary because the selected configuration and resolved transitives remain unknown. No vulnerability is asserted. A later security review must bind the exact version, build graph, input policy, limits, and fixtures. R07 and the owner retain all legal and distribution decisions.
 
 ## Smallest later comparison experiment
 
@@ -208,7 +208,24 @@ Use the same declared musical fixture and equivalent documented settings where c
 
 ### Measurements and boundaries
 
-Measure cold and warm parse/load time outside rendering. Measure decoded/preloaded asset memory, peak and resident process memory, file reads, bytes, failures, and worker lifetime. Record voice-cap preparation and peak active voices. For every callback record start, duration, deadline, miss/underrun, queue occupancy, overflow disposition, allocation/lock observations where feasible, engine errors, and recovery markers. Separate controller physical trigger, application receipt, validated event, render consumption, digital output onset, and audible onset. Use one capture clock when approved. Otherwise insert known common markers before and after each run and estimate offset, drift, calibration residual, detector uncertainty, and censored trials. Do not merge software event-to-render timing with physical input-to-audible latency. For audible controls and quality, retain level-matched raw captures and the exact signal/listening rubric. Do not infer quality from feature count.
+Measure load-call start to API return separately from load-call start to declared render-ready. A render-ready marker requires observable evidence that the declared mode's required parse and preload work is complete, its permitted background streaming work and outstanding file I/O are enumerated, and a fixed probe render can begin under the stated callback rules. A candidate that cannot expose enough state to support that marker yields unknown readiness and an inconclusive interval; API return is never substituted for readiness.
+
+For every load, assign a request ID and correlate it with worker IDs, file-I/O operation IDs, timestamps, completion/error records, and the render-ready marker. Declare whether each candidate is in full-preload or streaming mode and which background work is allowed to continue after readiness. Retain unresolved workers, incomplete I/O, failed loads, timeouts, and non-recovering cases rather than discarding them.
+
+Define reset conditions before collection:
+
+- cold process: a newly started process and engine with the fixture not loaded by the application;
+- warm process: the same process after a completed trial, with retained process state listed;
+- cold engine: a newly created engine under the recorded process condition;
+- warm engine: the same process and engine after the declared unload/reload sequence, with retained caches listed;
+- cold cache: only a named application or engine cache that the procedure observably clears; warm cache: the same named cache retained after a completed trial;
+- cold fixture: no prior application-level access to the exact hashed file after the declared process/engine reset; warm fixture: repeated access after one recorded successful load, with cache treatment unchanged and listed.
+
+Only call an OS-file-cache condition cold when an approved method controls or proves it. Otherwise record OS cache state as unknown and report the observed process, engine, and fixture state without a fabricated cold-cache label.
+
+Measure failed-load, unload, and restart trigger to a declared safe-state marker separately from each trigger to the first conforming rendered marker and to the first conforming audible marker. Define safe state through observable host/engine state, bounded active voices and sustain state, worker/I/O disposition, and instrumented traces showing whether forbidden callback work occurred; do not infer it from an unobservable internal flag. Keep incomplete and unrecovering intervals as censored or failed outcomes.
+
+Measure decoded/preloaded asset memory, peak and resident process memory, file reads, bytes, failures, and worker lifetime. Record voice-cap preparation and peak active voices. For every callback record start, duration, deadline, miss/underrun, queue occupancy, overflow disposition, allocation/lock observations where feasible, engine errors, and recovery markers. Separate controller physical trigger, application receipt, validated event, render consumption, digital output onset, and audible onset. Use one capture clock when approved. Otherwise insert known common markers before and after each run and estimate offset, drift, calibration residual, detector uncertainty, and censored trials. Do not merge software event-to-render timing with physical input-to-audible latency. For audible controls and quality, retain level-matched raw captures and the exact signal/listening rubric. Do not infer quality from feature count.
 
 ### Provisional execution
 
@@ -222,7 +239,8 @@ Retain:
 - raw audio and synchronization markers;
 - raw event sequence and queue traces;
 - callback, deadline, underrun, voice, CPU, memory, I/O, thermal, and recovery counters;
-- load/unload and lifecycle logs outside the callback;
+- load request, worker, file-I/O, API-return, render-ready, safe-state, rendered-marker, audible-marker, unload, restart, and lifecycle logs outside the callback;
+- process, engine, fixture, candidate-cache, and observed OS-cache reset conditions;
 - calibration inputs and outputs;
 - deterministic analysis scripts and versions;
 - every exclusion and failure reason;
@@ -277,6 +295,7 @@ No candidate can be ranked before the approved experiment is executed and indepe
 - Independent licensing review and any legal determination.
 - Builds, simulators, devices, controllers, audio captures, measurements, or quality review.
 - CPU, memory, I/O, thermal, deadline, latency, continuity, recovery, and soak results.
+- Observable render-readiness and safe-state evidence for each candidate and load mode.
 - Selected architecture, engine, format, native boundary, minimum OS, voice policy, effects, persistence, or numeric budgets.
 
 ### Owner decisions
@@ -301,9 +320,9 @@ The owner retains decisions on:
 | 3. Embedding and portability | Caller render, drivers, precision, sizing, events, toolchains, and unperformed mobile verification. |
 | 4. Real-time, memory, lifecycle | Load/decode/parse boundaries, preload/streaming, voices/stealing, effects, locks, ownership, and unresolved callback risks. |
 | 5. Product fit | MIDI basics, recovery, layers, controls, content, patch/snapshot/tail/persistence gaps, and no adoption. |
-| 6. Licensing and security | Exact root licenses, build options, content separation, input/path/resource risks, and R07 questions. |
+| 6. Licensing and security | Root and embedded notices, source-qualified configurable license branches, example-asset separation, input/path/resource risks, and R07 questions. |
 | 7. Traceable evidence | Claim IDs, exact URLs, pins, anchors, access date, authority limits, and canonical full-hash register. |
-| 8. Later experiment | Exact prior-method anchors, equalized workload, calibration, trials, performance/resource evidence, recovery, soak, and artifacts. |
+| 8. Later experiment | Exact prior-method anchors, equalized workload, distinct API-return/render-ready and recovery markers, reset/cache conditions, correlated I/O/workers, calibration, trials, resources, soak, and retained failures. |
 
 ## Conclusion
 
