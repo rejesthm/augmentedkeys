@@ -1,3 +1,15 @@
+# Finalized R07 verification — correction round1
+
+Exact candidate `a1805e40b765d19f10e248186e147c1c27de68f2`, base `a8b8f78c52d40ab03728073c2692ca6edb9a8d20`. QA/Performance and Licensing/Security APPROVE0/0/0 at `f27668eb724073e59b5b1e8070e5d957cfee109b` in r07-review-round1.md. Fresh independent Final APPROVE0/0/0 with Spec Compliance PASS and Evidence Honesty PASS accompanies this artifact in r07-final-review.md. All3 original Important findings closed; rejected candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df` and rejection `f94ee4a3f45d72b5d1d351415c4c5f16eccd767b` remain preserved. No R07 unresolved finding.
+
+Fresh controller checks at `2026-10-23T13:38:46.894433+00:00`: exact clean task/candidate, committed-range whitespace exit0, only LICENSE_LEDGER.md differs, SHA256 `0771d273bda6fcc7a6f45761ab8c9bb5b95c9e1544c6d1320790ef73118a34bf` unchanged after reviews. Required reviews freshly rehashed79public/59local/25reused bodies and recomputed23package metadata/license comparisons. Six public indexes80requests include one preserved P75HTTP403; three local indexes59bodies. No archive/cache-content/font-binary authentication, selected shipping graph, account acceptance, legal conclusion, adoption or content clearance. All items remain Not approved. No build/device/audio/MIDI/performance claim. All8 brief criteria pass.
+
+This decisive artifact precedes a separate In review→Verified state commit. It does not accept M0, authorize main/successor, or select architecture/dependencies/assets/content/license branches. After the barrier integrate only the exact reviewed candidate and use the milestone-only publication guard. Writers/reviewers completed and idle; R08 remains Queued until its own brief/barriers.
+
+---
+
+## Preserved verification stages
+
 # R07 correction1 specialist approvals — Final pending
 
 Exact unchanged candidate `a1805e40b765d19f10e248186e147c1c27de68f2` has QA and Licensing/Security APPROVE0/0/0 with all three original Important findings closed. Complete outputs and runtime evidence accompany this update in r07-review-round1.md. Remains In review; fresh independent Final and finalized-verification/Verified barrier still required. No integration, adoption, build/device/performance or legal claim.
