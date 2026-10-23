@@ -12,19 +12,19 @@ Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publica
 
 # Research Questions
 
-R01–R03 are Verified; R04–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
+R01–R03 are Verified; R04 Eligible; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
 
 # Ready Tasks
 
-R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is next after its own bounded brief and eligibility/assignment barriers.
+R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3` is committed and Eligible; Conductor intake and assignment barrier are next.
 
 # In Progress
 
-R04 brief preparation; R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
+R04 eligibility recorded; Conductor intake pending. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
-Before integration, pin candidate/finalized evidence and clean branches; compare both merged report blobs to reviewed candidate. Publish only milestone/m0-research through its existing guard and prove local/remote equality. R04 requires fresh current primary sources and independent reviews.
+R04 requires fresh current primary sources, Apple text preservation, exact output-scope checks and independent QA/Security/Final reviews. R03 integration/publication checks passed.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Brief R04 Android audio/AAP research under the unchanged M0 contract. No architecture/adoption, main integration or M1 activation.
+Assign Eligible R04 Android audio/AAP research through Conductor and the separate assignment/state barrier. No architecture/adoption, main integration or M1 activation.
