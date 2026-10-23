@@ -1,3 +1,9 @@
+# R10 specialist approvals — Final pending
+
+Exact unchanged candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051` has independent QA and Licensing/Security APPROVE0/0/0, no findings. Complete outputs/runtime accompany this update in r10-review-round1.md. Remains In review until fresh Final and finalized-verification/Verified barrier. No integration, adoption or runtime claim.
+
+---
+
 # R10 correction round1 — fresh candidate
 
 Exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, original base `98bfda76a41f6773c54473bbdeb878f21db0282e`, rejected predecessor `6e310401726928501b4b6afc863c7a0a1de6205f`. Rejection `aa7775a99a6a3fac14324b5ada95c1c7e5ce88ff` preserves shared Important I1; T02 `e43637326a9cefd43e5be0977333c2101fe5eecb` and separate state `8e44383a956770386b2a87f6637493fdb04dff1a` authorized only report correction. Same sole Conductor completed and relinquished writing. Fresh QA/Security then Final pending; no closure, integration or acceptance claimed yet.
