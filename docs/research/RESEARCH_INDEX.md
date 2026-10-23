@@ -92,8 +92,8 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party product documentation, published support material, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `SUNDAY_KEYS_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original workflow requirements and explicit differentiation opportunities.
-- **Status:** `In review` — candidate `d1979355eabf5214f9b3a79eda4323e55164248a`; verification `5da8b083625535ad871a95668b3695256d4f38f8`; independent reviews pending
-- **Findings:** No findings recorded
+- **Status:** `Verified` — candidate `d1979355eabf5214f9b3a79eda4323e55164248a`; finalized verification `4a8a696e3ad116dc69309fc4451d931ecbb9203f`; allrequiredreviews0/0/0,no findings
+- **Findings:** Public first-party Sunday Keys workflows and edition/date/tier distinctions documented; original mobile questions and future scenarios remain unadopted/unperformed. No runtime, content, legal or distribution clearance.
 
 ## 9. MainStage public capability/workflow analysis
 
