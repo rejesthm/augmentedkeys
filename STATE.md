@@ -4,9 +4,9 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Active`
+Milestone state: `Paused for owner decision`
 
-Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`. This separate state transition activates the exact reviewed combined baseline. Publication and task eligibility still require their documented checks.
+Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`. That historical transition activated the reviewed combined baseline. MT-002 now pauses progression for the recorded governance correction; all ten research tasks are Verified.
 
 ## Milestone orchestration
 

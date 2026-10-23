@@ -1,10 +1,10 @@
 # Current Milestone
 
-M0 — Research & Architecture (Active under OD-006).
+M0 — Research & Architecture (Paused for owner decision under MT-002).
 
 # Current Objective
 
-Complete unchanged R01–R10 research with independent reviews under accepted contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Full working-app objective remains unfinished; M0 is the only active execution milestone.
+Complete unchanged R01–R10 research with independent reviews under accepted contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Full working-app objective remains unfinished; M0 is the sole contracted execution milestone and is currently paused.
 
 # Active Agents
 
