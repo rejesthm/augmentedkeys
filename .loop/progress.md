@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R10 independent Researcher read-only source research next; sole Conductor writer idle with pending marker. Actual role/path proof passed. Controller owns Git/state/evidence.
+R10 writer and Researcher completed handoffs and are idle; controller owns all Git/state. Required reviewers operate independently read-only.
 
 # Research Questions
 
-R01–R09 Verified; R10 In progress. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R09 Verified; R10 In review. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R09 Verified; R10 In progress.
+R01–R09 Verified; R10 In review; none Accepted.
 
 # In Progress
 
-R10 brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`, assignment `3a48477ff96be24ac34fd66e6b9663f1843172cb`, runtime proof `0769d38e42d4f6efd61b557c50874b01a2ee9292`. Documentary research and one-report synthesis only.
+R10 In review: exact candidate `6e310401726928501b4b6afc863c7a0a1de6205f`, evidence `fa3e06cda25bc186a22443c26207315469aecff8`.
 
 # Verification Needed
 
-Capture/reconcile first-party source bodies and hashes, sole report synthesis, scope verification and independent QA/Security/Final review.
+independent QA/Performance and Licensing/Security, then Final; no integration before Verified. No app/device/audio/performance or adoption evidence.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R10 runtime/path probes, public source research and sole-writer workflow synthesis.
+independent QA/Performance and Licensing/Security, then Final; no integration before Verified.
