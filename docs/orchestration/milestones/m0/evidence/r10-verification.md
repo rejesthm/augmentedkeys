@@ -1,3 +1,11 @@
+# Finalized R10 verification
+
+Exact unchanged candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`, base `98bfda76a41f6773c54473bbdeb878f21db0282e`. QA/Performance and Licensing/Security APPROVE0/0/0 recorded at `7807c97895f5d0a84d8ac0156e3c46938bce3a64` in r10-review-round1.md; fresh independent Final APPROVE0/0/0 and SpecCompliance/EvidenceHonesty PASS recorded with this artifact in r10-final-review.md. One correction round closed shared paraphrase-limit I1; no blocking finding remains. Fresh controller checks UTC `2026-10-23T15:57:59.831026+00:00` prove clean exact task, report SHA `fd73368329bf6fc962969f2d8fb4cdb46ad4cf657fdfa09d9a986d203c9a7329` unchanged, whitespace passes, only contracted report differs; all62sourcefiles rehashed. All8criteria pass. Source/runtime/tool failures and limitations preserved below. No app/build/device/performance/rights/architecture/content/design adoption claim.
+
+This decisive artifact precedes separate In review→Verified. It permits only exactcandidateintegration/guardedmilestonepublication after barrier. All10taskreports will then be Verified, but M0 completionpackage/freshwholemilestone reviews/Steward decision remain separate. No main/successor authority.
+
+---
+
 # R10 specialist approvals — Final pending
 
 Exact unchanged candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051` has independent QA and Licensing/Security APPROVE0/0/0, no findings. Complete outputs/runtime accompany this update in r10-review-round1.md. Remains In review until fresh Final and finalized-verification/Verified barrier. No integration, adoption or runtime claim.
