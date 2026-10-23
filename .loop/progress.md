@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R10 Researcher and sole Conductor assigned; independent runtime/path probes only before body. Controller alone Git/state/evidence.
+R10 independent Researcher read-only source research next; sole Conductor writer idle with pending marker. Actual role/path proof passed. Controller owns Git/state/evidence.
 
 # Research Questions
 
-R01–R09 Verified; R10 Eligible. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R09 Verified; R10 In progress. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,11 +20,11 @@ R01–R09 Verified; R10 In progress.
 
 # In Progress
 
-R10 exact brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`, T01 `3a48477ff96be24ac34fd66e6b9663f1843172cb`; no research body until actual runtime/path proof.
+R10 brief `4e5601142e8a60f4db9f19625c7f4cacb04867e3`, assignment `3a48477ff96be24ac34fd66e6b9663f1843172cb`, runtime proof `0769d38e42d4f6efd61b557c50874b01a2ee9292`. Documentary research and one-report synthesis only.
 
 # Verification Needed
 
-Verify Researcher read-only and Conductor workspace-write current runtime/parent/cwd and assigned report path; then public documentary research.
+Capture/reconcile first-party source bodies and hashes, sole report synthesis, scope verification and independent QA/Security/Final review.
 
 # Completed
 
