@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R09 Researcher and sole Conductor assigned; independent runtime/path probes only before body. Controller alone Git/state/evidence.
+R09 independent Researcher read-only source research next; sole Conductor writer idle with pending marker. Actual role/path proof passed. Controller owns Git/state/evidence.
 
 # Research Questions
 
@@ -20,11 +20,11 @@ R01–R08 Verified; R09 In progress; R10 Queued.
 
 # In Progress
 
-R09 exact brief `ddf797af496c0175e4712ea6dd6b8c56ca8dc166`, T01 `63aba23718d75757d684d3ead92bdf08f7d22110`; no research body until actual runtime/path proof.
+R09 brief `ddf797af496c0175e4712ea6dd6b8c56ca8dc166`, assignment `63aba23718d75757d684d3ead92bdf08f7d22110`, runtime proof `c2614997b732f5c033886e0a7b24a95233acb4f4`. Documentary research and one-report synthesis only.
 
 # Verification Needed
 
-Verify Researcher read-only and Conductor workspace-write current runtime/parent/cwd and assigned report path; then public documentary research.
+Capture/reconcile first-party source bodies and hashes, sole report synthesis, scope verification and independent QA/Security/Final review.
 
 # Completed
 

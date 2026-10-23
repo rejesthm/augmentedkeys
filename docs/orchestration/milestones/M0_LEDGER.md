@@ -200,6 +200,6 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05`, contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, reviewed baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` and acceptance evidence `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Fresh entry evidence is recorded in that owner decision. R01–R08 are Verified; R09 In progress; R10 Queued. No task/milestone is Accepted.
 
-Next: R09 assigned runtime/path probes, then independent Researcher and sole Conductor synthesis.
+Next: R09 independent Researcher source handoff, capture/reconciliation, then sole Conductor synthesis; runtime proof `c2614997b732f5c033886e0a7b24a95233acb4f4`.
 
 The excluded original-checkout main-guard edits were rejected by advisory QA/Security and remain unchanged. They cannot be adopted or used for main integration without correction and fresh review; the independent M0 research/publication procedure remains authorized. No product, device or performance capability is claimed.
