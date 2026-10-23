@@ -16,11 +16,11 @@ R01–R03 are Verified; R04–R10 Queued. No research task or milestone is Accep
 
 # Ready Tasks
 
-R03 exact verified candidate is integrated; guarded publication is next. R04 is next after its own bounded brief and eligibility/assignment barriers.
+R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is next after its own bounded brief and eligibility/assignment barriers.
 
 # In Progress
 
-R03 Verified publication bookkeeping only. No manual L1 Loop or product implementation.
+R04 brief preparation; R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Publish exact Verified R03 integration, then brief R04 Android audio/AAP research under the unchanged M0 contract. No architecture/adoption, main integration or M1 activation.
+Brief R04 Android audio/AAP research under the unchanged M0 contract. No architecture/adoption, main integration or M1 activation.
