@@ -8,19 +8,19 @@ Complete unchanged R01–R10 documentary research with independent reviews under
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. No active output writer. Permission-isolated roles and one-writer/three-specialist limits remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 Android writer assigned; runtime probe pending before body. Permission-isolated roles and one-writer/three-specialist limits remain binding.
 
 # Research Questions
 
-R01–R03 are Verified; R04 Eligible; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
+R01–R03 are Verified; R04 In progress; R05–R10 Queued. No research task or milestone is Accepted. R03 exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae` passed QA/Security/Final with0Critical/0Important/0Minor through finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`. Round0 rejection and source-retrieval/harness failures are preserved; round1 closed all findings.
 
 # Ready Tasks
 
-R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3` is committed and Eligible; Conductor intake and assignment barrier are next.
+R03 exact verified candidate is integrated; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3` is committed; assignment T01 `d342ce41a2b874f3dea19c2c0866f7c816a15247` precedes this separate In-progress barrier.
 
 # In Progress
 
-R04 eligibility recorded; Conductor intake pending. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
+R04 assigned; runtime probe pending before body. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Assign Eligible R04 Android audio/AAP research through Conductor and the separate assignment/state barrier. No architecture/adoption, main integration or M1 activation.
+Prove configured Android runtime and execute assigned R04 research. No architecture/adoption, main integration or M1 activation.

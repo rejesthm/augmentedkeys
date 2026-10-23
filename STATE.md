@@ -26,12 +26,12 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 1. R01 is `Verified`: exact candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`, integration `63081f5f50b03c9337f9f10032a94373f214aaa0`. Retain its nonblocking provenance-label Minor for milestone triage.
 2. R02 is `Verified`: exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`, verification `c7952ea12d19a6c42abc3d19425a694448256b76`, integration `f7e2670ee7c9d12d47467e13139420a347b8cc29`, publication evidence `22bf9f15b503bc11a3238638b1f4aacea26df922`.
-3. R03 is `Verified`: exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`, QA/Security/Final approvals0/0/0. Integrated at `c8a2151d996455b84b9f1b4b462cc4a635194c84`; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is `Eligible` under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`; R05–R10 remain `Queued`.
+3. R03 is `Verified`: exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`, QA/Security/Final approvals0/0/0. Integrated at `c8a2151d996455b84b9f1b4b462cc4a635194c84`; guarded publication proved at `576fb7cc78a9b1213ad9ba8af25f91ed5b9ded70`. R04 is `In progress` under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`; R05–R10 remain `Queued`.
 4. G01 was resolved for the historically validated role-isolated topology through validation `ec4e76345519973d09a4dbeff6d043e6477e67bc`, correction `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db` and independent approval `88fe4ece13bfedd8b67eaa8882c5adf020654418`. All earlier nested-permission failures and rollback remain in the unchanged evidence artifacts. Do not retry mixed-permission nesting.
 
 ## Current gates and next action
 
-Activation and R03 publication are proved in their canonical evidence. R04 is Eligible under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`. Next: bounded Conductor intake, assignment artifact and separate In-progress state commit. No specialist writer is active.
+Activation and R03 publication are proved in their canonical evidence. R04 is In progress under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`. T01 `d342ce41a2b874f3dea19c2c0866f7c816a15247` assigns the sole Android Specialist; runtime probe must pass before body. No research body has run.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 

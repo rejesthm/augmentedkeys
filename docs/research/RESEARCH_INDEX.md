@@ -52,7 +52,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current Android and Android NDK documentation, Oboe/AAudio documentation and original repositories, AAP/AAP-JUCE maintainer material, relevant specifications, and reproducible physical-device experiments where required.
 - **Expected output:** `ANDROID_AUDIO_RESEARCH.md` and `PLUGIN_HOSTING_RESEARCH.md`.
 - **Decision it unlocks:** Approval to scope Android-specific audio and plugin-hosting spikes and later ADRs.
-- **Status:** `Eligible` — brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`; assignment pending
+- **Status:** `In progress` — brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`; Android writer assigned; runtime probe before body
 - **Findings:** No findings recorded
 
 ## 5. MIDI 1.0/2.0, Core MIDI, Android MIDI, MPE
