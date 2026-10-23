@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller owns Git/state. R07 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
+Same sole Conductor assigned R07 correction1; all reviewers idle. Controller alone Git/state/evidence.
 
 # Research Questions
 
-R01–R06 Verified; R07 In review; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R06 Verified; R07 In progress; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,11 +20,11 @@ R01–R06 Verified. R07 In progress after exact brief/assignment barriers; R08�
 
 # In Progress
 
-R07 In review: candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df`, verification `d101b1e646a6784be4f687e951e1a37769dcd3bc`. Separate state barrier consumes the committed artifact; no integration before Verified.
+R07 correction1 under T02 `28852c771f7234532d9e3d9067d79b88c6abea81`; three Important findings open; rejected candidate preserved.
 
 # Verification Needed
 
-Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. All retained source bodies hashed; no runtime/device/adoption claim.
+Correct SDK/use inventory, vector_math composite license and known JUCE SPDX branches. Fresh exact-candidate provenance/scope checks, QA/Security then Final.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete independent R07 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
+Complete R07 correction1 and fresh required reviews before exact Verified integration/publication.
