@@ -92,7 +92,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party product documentation, published support material, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `SUNDAY_KEYS_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original workflow requirements and explicit differentiation opportunities.
-- **Status:** `In progress` — brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`; T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; runtime/path proofs before body
+- **Status:** `In progress` — brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`; T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; runtime/path proof passed; public first-party source research active
 - **Findings:** No findings recorded
 
 ## 9. MainStage public capability/workflow analysis

@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R08 Researcher and sole Conductor assigned; independent runtime/path probes only before body. Controller alone Git/state/evidence.
+R08 independent Researcher terra/high/read-only is collecting public first-party workflow evidence; Conductor sol/high/workspace-write idle after exact-path probe. Controller alone Git/state/evidence.
 
 # Research Questions
 
@@ -20,11 +20,11 @@ R01–R07 Verified; R08 In progress; R09–R10 Queued.
 
 # In Progress
 
-R08 exact brief `b97672196693657c0c34caea0d90c3cfb9bb1f67`, T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; no research body until actual runtime/path proof.
+R08 runtime/path proof committed at `5559bae08646698060fb118da9e8f93acbb47c31`. Initial Researcher wrong-parent/test-command attempts preserved, exact task-path correction passed. Public research active; report contains only179-byte pending marker.
 
 # Verification Needed
 
-Verify Researcher read-only and Conductor workspace-write current runtime/parent/cwd and assigned report path; then public documentary research.
+Capture/hash original primary-source bodies after Researcher handoff, reconcile claims/edition/date gaps, then sole-writer synthesis and exact candidate reviews.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R08 runtime/path probes, public source research and sole-writer workflow synthesis.
+Complete R08 source research, capture/reconciliation and sole Conductor workflow analysis.

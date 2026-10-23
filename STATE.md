@@ -45,4 +45,4 @@ The app remains the Flutter shell. Audio/MIDI, playable instruments, patch editi
 
 The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` and research `8fdb7444ed80675269f38f90f84b362f90c9af23`. OD-001 through OD-005, MT-001, every R01/R02 transition/rejection/correction, and both integration logs remain preserved in their exact source artifacts and the reconciled ledger. CT03 preparation created no activation; OD-006 separately authorizes the current reactivation.
 
-R08 In progress under brief `b97672196693657c0c34caea0d90c3cfb9bb1f67` and T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; independent Researcher and sole Conductor assigned. Runtime/path proofs precede body.
+R08 In progress under brief `b97672196693657c0c34caea0d90c3cfb9bb1f67` and T01 `25443e7900ef94cae8cec1ef9d5e5948d146afbe`; independent Researcher and sole Conductor assigned. Runtime/path proofs passed under `5559bae08646698060fb118da9e8f93acbb47c31`; independent Researcher public-source work active, Conductor waits for handoff.
