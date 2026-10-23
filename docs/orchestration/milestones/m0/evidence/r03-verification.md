@@ -1,3 +1,7 @@
+# Specialist review update — Final review pending
+
+Current candidate remains `b3eb533c41993c7b236d47a8d347329e9dca6fae`. Independent QA and Licensing/Security each APPROVE with0Critical/0Important/0Minor. Both explicitly close all four round0 findings. Literal replies and actual independent read-only runtime provenance are committed alongside this update in `r03-review-round1.md`; prior rejections remain preserved. No candidate/source change occurred after those reviews. R03 remains In review pending fresh Final Code Review; not yet Verified or integrated.
+
 # Current R03 verification — correction round1
 
 Candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`; prior rejected candidate `8a0b2825ff5e8509ad73c1f8f74492d44b22cb5a`; task base `c66cd8650c601709c84c9bf58ec783b5dcbcda29`. Status: pending fresh affected QA/Security then Final; not Verified. Correction transition `2b79688d257cb5d10a21b0e7104efe967bee4140`, separate state `41ea088fa8133a5cec2a551fa35cf2c948839223`; round0 reviews `863310d70eadbc5459c851fb2a39525646dbc9fc`. Same Apple writer/relay and two-file ownership; handback complete before controller commit. Brief/contract/owner authority unchanged.
