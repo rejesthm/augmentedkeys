@@ -54,3 +54,14 @@ Evidence root (local raw originals, not copied into repository): `/Users/jesther
 - `researcher-research-runtime.json` SHA256 `1db7b3b8a93f875141cd58f3d0b37789ea913db2877511480573518f03b5e2fe`.
 - `researcher-research-relay.jsonl` SHA256 `a16f146837d99fbbaa5fd6623d8435bce2f3ffdceee877910b365c59ff30e7cc`.
 - `researcher-research-child.jsonl` SHA256 `c82a6b9962fd720dd1b34a9b7ccc4dfbe237ed17f272407cf2acc7e7048cff0d`.
+
+## Reconciliation handoff and writer boundaries
+
+Independent Researcher amendment completed; it corrects the preliminary date, blanket format entitlement and expiry claims against captured originals. Same read-only terra/high child/parent/cwd runtime verified, no source fetch or mutation. The initial handoff and amendment are both retained; the amendment supersedes only the identified preliminary claims.
+
+- `researcher-reconciliation.final.txt` SHA256 `74470e90bff9613840d87adc60b9de7fed8731dc74912f4aba60f13fdd844c19`.
+- `researcher-reconciliation-runtime.json` SHA256 `be4b6092e9bddce04aea94f8120c62da584e593af4e5652de8e39a519efa6127`.
+- `researcher-reconciliation-relay.jsonl` SHA256 `3ea14a697e8eb5407bf10a0d6b83b8384c99df745d38a14f33f07d00d5608f7f`.
+- `researcher-reconciliation-child.jsonl` SHA256 `2c38c0ac6edecec4ea4213bc1a63eefcdff8d101254ce760ac426144c79d6a01`.
+
+Controller precision notes: an active-license requirement is not evidence that every advanced feature requires a continuous internet connection. Explicit AI online generation/cloud/shared-link/download operations must be distinguished from entitlement checking and local plugin/output behavior whose network requirements are unproved. K01 later release notes extend older support descriptions: version2.2 adds optional Tonic snapshot control;2.4 changes audio-effect slots/content migration;2.3 adds sound reorder. Do not present an older support list as the exhaustive current snapshot/effects schema or import vendor performance claims. K13 immediate snapshot wording and K14 configurable transitions need source-qualified descriptions without an inferred timing guarantee. Detailed design review/adoption remains outside R08; original workflow questions do not select new requirements.

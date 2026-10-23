@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R08 independent Researcher terra/high/read-only is collecting public first-party workflow evidence; Conductor sol/high/workspace-write idle after exact-path probe. Controller alone Git/state/evidence.
+R08 Researcher handoff/amendment complete and idle. Sole Conductor synthesis next; controller alone Git/state/evidence.
 
 # Research Questions
 
@@ -20,11 +20,11 @@ R01–R07 Verified; R08 In progress; R09–R10 Queued.
 
 # In Progress
 
-R08 runtime/path proof committed at `5559bae08646698060fb118da9e8f93acbb47c31`. Initial Researcher wrong-parent/test-command attempts preserved, exact task-path correction passed. Public research active; report contains only179-byte pending marker.
+R08 In progress;26public HTML bodies across2indexes captured/hashed/reconciled; report still179-byte pending marker.
 
 # Verification Needed
 
-Capture/hash original primary-source bodies after Researcher handoff, reconcile claims/edition/date gaps, then sole-writer synthesis and exact candidate reviews.
+Sole-writer source-qualified report, exact candidate scope/hash checks, QA/Security then Final. No hands-on/product/adoption claim.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete R08 source research, capture/reconciliation and sole Conductor workflow analysis.
+Complete R08 workflow analysis synthesis and required independent reviews.
