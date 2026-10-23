@@ -1,3 +1,9 @@
+# R07 correction1 specialist approvals — Final pending
+
+Exact unchanged candidate `a1805e40b765d19f10e248186e147c1c27de68f2` has QA and Licensing/Security APPROVE0/0/0 with all three original Important findings closed. Complete outputs and runtime evidence accompany this update in r07-review-round1.md. Remains In review; fresh independent Final and finalized-verification/Verified barrier still required. No integration, adoption, build/device/performance or legal claim.
+
+---
+
 # R07 verification — correction round1
 
 Exact candidate `a1805e40b765d19f10e248186e147c1c27de68f2`, task base `a8b8f78c52d40ab03728073c2692ca6edb9a8d20`, brief `2580cd495ef218c94f488f1622263e4cd61ff6ae`, T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4`, In-progress `d522a2a1a015956046c7a0cc15daa16d0c07e613`, runtime `bed49b3bf54840ae94da192838a762da50e55b21`. Sources `f6eeb1edda840a2ca01ecf59809bb3462a89a81b` reconciled at `fe4c937535677e69bec8922e149698dfdc9306bb` and supplemented at `d0d9e35e1345e5afb58c60d4d2f27b95870ec9a7`. Rejected candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df`, rejection `f94ee4a3f45d72b5d1d351415c4c5f16eccd767b`, T02 `28852c771f7234532d9e3d9067d79b88c6abea81`, correction state `accdb917f8eee638a624858df51c322d1b6c6eeb`. Sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
