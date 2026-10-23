@@ -2,7 +2,7 @@
 
 ## Status and decision boundary
 
-This is the R05 documentary report under brief `f30f02a5c76d5f08e07c45627b023819d811e289`. Sources were accessed on 2026-10-23. The source capture records 70 requests: 68 HTTP 200 bodies and two retained failures. The app remains a Flutter shell; it has no implemented or verified MIDI behavior. This report does not choose an architecture, protocol, minimum OS, target SDK, package, asset, permission policy, transport, or panic policy. It does not establish conformance, certification, controller compatibility, latency, reliability, or physical-device behavior. No account, terms acceptance, SDK/package installation, build, simulator, device, controller, or hardware action occurred.
+This is the R05 documentary report under brief `f30f02a5c76d5f08e07c45627b023819d811e289`. Sources were accessed on 2026-10-23. The source capture records 71 requests: 69 HTTP 200 bodies and two retained failures. The app remains a Flutter shell; it has no implemented or verified MIDI behavior. This report does not choose an architecture, protocol, minimum OS, target SDK, package, asset, permission policy, transport, or panic policy. It does not establish conformance, certification, controller compatibility, latency, reliability, or physical-device behavior. No account, terms acceptance, SDK/package installation, build, simulator, device, controller, or hardware action occurred.
 
 The intended user outcome is reliable offline playing of the future built-in worship instrument from a supported wired controller. Basic MIDI 1 note, velocity, sustain, connection state, recovery, and a visible Stop Sound action come first. MIDI 2, UMP breadth, MIDI-CI, MPE, BLE, network MIDI, virtual endpoints, and plug-in hosting remain later work.
 
@@ -93,14 +93,14 @@ M44 and M46 state that their contents are all rights reserved. Public readabilit
 
 **Fact:** M53 identifies CC64 as Damper Pedal/Sustain: 0–63 off and 64–127 on. This does not choose sustain-state ownership or recovery policy.
 
-The public tables distinguish:
+M17's incomplete public summary distinguishes these MIDI 1 channel-mode effects:
 
-- CC120: All Sound Off.
-- CC121: Reset All Controllers.
-- CC123: All Notes Off.
-- CC124–127: channel-mode controls with mode effects.
+- CC120, All Sound Off, directs the receiver to terminate its oscillators and bring their volume envelopes to zero as soon as possible.
+- CC121, Reset All Controllers, returns controller values to their defaults. M17 directs readers to the relevant Recommended Practices for the defaults and says the message value is zero unless a specific Recommended Practice allows another value.
+- CC123, All Notes Off, directs the receiver to turn off all oscillators. M17 qualifies that statement by referring to the actual mode-command text.
+- CC124–127 select Omni Off, Omni On, Mono On, or Poly On respectively; M17 says each also causes All Notes Off, and describes the Mono value in terms of the channel count and Omni state.
 
-These commands are not interchangeable. M44 says Reset All Controllers does not reset MIDI 2 per-note controllers or per-note pitch bend. Android warns that flush can discard Note Off events and recommends All Notes Off afterward. That supports a recovery test, not a universal panic recipe.
+These commands are not interchangeable, and M17 is not the unseen full MIDI 1 normative text. Sustain, release envelopes, receiver implementation, and channel mode can affect the audible result. M44 says Reset All Controllers does not reset MIDI 2 per-note controllers or per-note pitch bend. Android warns that flush can discard Note Off events and recommends All Notes Off afterward. Those facts support bounded recovery tests; they do not establish universal silence or adopt a panic ordering.
 
 Historical MPE v1.0 defines a Released Note as a note that received Note Off but may continue because of an envelope, sustain, or sostenuto. Therefore CC123 or Note Off cannot be equated with immediate audible silence for every receiver and state. Stop Sound must later verify bounded internal state and captured audible silence.
 
@@ -202,8 +202,9 @@ The Core MIDI dock/MFi reference does not establish USB hardware parity across a
 | M08–M10 `https://developer.android.com/reference/android/media/midi/MidiDevice`, `https://developer.android.com/reference/android/media/midi/MidiInputPort`, `https://developer.android.com/reference/android/media/midi/MidiOutputPort` | 23 | Async-opened device ports, device-perspective direction, close/connect/disconnect surfaces. |
 | `TRANSPORT_MIDI_BYTE_STREAM` | 33 | MIDI 1 byte-stream class; most common; not UMP by default. |
 | `TRANSPORT_UNIVERSAL_MIDI_PACKETS` | 33 | UMP class; data multiples of four bytes. |
-| M11 `https://developer.android.com/reference/android/media/midi/MidiDeviceService` | 23 | Virtual byte-stream service with manifest declaration. |
-| M12 `https://developer.android.com/reference/android/media/midi/MidiUmpDeviceService` | 35 | Virtual UMP service; complete UMPs, equal input/output counts, manifest declaration. |
+| M11 `https://developer.android.com/reference/android/media/midi/MidiDeviceService` | 23 | Virtual byte-stream service; M04's manifest form uses the MIDI service binding guard and `exported="true"`. |
+| M12 `https://developer.android.com/reference/android/media/midi/MidiUmpDeviceService` | 35 | Virtual UMP service; complete UMPs, equal input/output counts; M04's manifest form uses the same binding guard and exported form. |
+| M71 `https://developer.android.com/reference/android/Manifest.permission#BIND_MIDI_DEVICE_SERVICE` | 23; accessed 2026-10-23 | `BIND_MIDI_DEVICE_SERVICE` is signature-protected and documented so only the system may bind. |
 | M33 `https://developer.android.com/ndk/reference/group/midi` | Current reference | Native timestamped send/receive; no NDK adoption. |
 
 API 35 for `MidiUmpDeviceService` is not a baseline for ordinary controller input. It is one virtual UMP service’s introduction level. API 33 metadata does not prove a device implements MIDI 2. `PROTOCOL_UNKNOWN` is explicitly not an error. `PROTOCOL_UMP_USE_MIDI_CI` is not successful-negotiation evidence.
@@ -214,7 +215,9 @@ API 35 for `MidiUmpDeviceService` is not a baseline for ordinary controller inpu
 
 **Inference:** selection state must not rely on a mutable display name alone. A future design must re-resolve identity without assuming IDs, names, serials, or USB objects survive reconnect or process recreation. No identity policy is selected.
 
-M11/M12 are Android `Service` subclasses for virtual endpoints; their existence does not select a service or prove app/process survival. No source proves hot-unplug recovery, process-death recovery, background delivery, OEM consistency, or long-run USB stability. Package-level USB support is not parity across devices, controllers, hubs, cables, or power topologies.
+M11/M12 are Android `Service` subclasses for virtual endpoints. M04 documents both virtual byte-stream and virtual UMP service manifest forms with `android.permission.BIND_MIDI_DEVICE_SERVICE` as the service permission guard and `android:exported="true"`. M71 records that the binding permission was added in API 23, has signature protection, and permits only the system to bind. The exported form therefore does not make a guarded service unrestricted for public binding. This system component-binding restriction is distinct from user-granted Nearby Devices runtime permissions for applicable Bluetooth operations.
+
+These are platform requirements for an app that chooses to provide such a virtual service. They do not select virtual MIDI or adopt a product manifest, permission, target SDK, or platform policy. The services' existence does not prove app/process survival. No source proves hot-unplug recovery, process-death recovery, background delivery, OEM consistency, or long-run USB stability. Package-level USB support is not parity across devices, controllers, hubs, cables, or power topologies.
 
 ### Android byte ownership and clocks
 
@@ -312,7 +315,7 @@ Captured credentials, names, serials, properties, or streams should not enter lo
 | MPE | Historical v1.0 and current v1.1 identity documented. | Current v1.1 text, mapping/zone policy, devices. |
 | BLE | Both platforms have surfaces. | Permission scope, pairing/reconnect, devices. |
 | Network MIDI | Apple surface; no Android parity evidence. | Platform scope, permissions, trust, lifecycle, tests. |
-| Virtual MIDI | Both platforms expose concepts. | Product need, lifecycle/security/manifest policy. |
+| Virtual MIDI | Both platforms expose concepts; Android documents guarded exported service forms, and M71 limits binding to the system through a signature permission. | Product need, lifecycle/security design, manifest adoption, enforcement tests. |
 | Timing/latency | Clock domains identified. | Approved method/budget, synchronization, captures, physical runs. |
 
 ## Decisions deliberately left open
@@ -440,6 +443,7 @@ No result can pass until a later task approves numeric budgets, device/controlle
 - MIDI 1 byte stream, MIDI 1 over UMP, MIDI 2 over UMP, MIDI-CI, and MPE are distinct.
 - Apple and Android APIs have material symbol/API-level differences.
 - Android basic MIDI is API 23; transport-specific UMP management is API 33; virtual UMP service is API 35.
+- Android's documented virtual byte-stream and UMP service forms are exported and guarded by `BIND_MIDI_DEVICE_SERVICE`; M71 identifies that API 23 permission as signature-protected and system-only for binding.
 - Captured protocol-aware functions M25, M68, and M70 have iOS/iPadOS 14.0+ metadata; exact M50 `MIDIEventList` and M51 `MIDIProtocolID` introduction dates remain unknown from their blank fields.
 - MIDI callbacks have ownership/timing rules distinct from audio rendering.
 - Note/sustain recovery needs more evidence than one All Notes Off.
@@ -473,7 +477,8 @@ No result can pass until a later task approves numeric budgets, device/controlle
 - Original current MPE v1.1 text.
 - Universal panic/reset ordering and other semantics absent from inspected originals.
 - Apple blank availability and explicit replacement/deprecation evidence for ranged symbols.
-- Wired permission/user-consent behavior for each selected route and target.
+- Wired permission/user-consent behavior for each selected route and target; the known virtual-service binding guard does not resolve those route-specific questions.
+- Product adoption, manifest configuration, lifecycle behavior, and enforcement tests for any Android virtual service.
 - Background, process-death, route-loss, hot-unplug, and reconnect evidence.
 - Parser, queue, clock conversion, render, and lifecycle implementation evidence.
 - Controller, adapter, device, OS, latency, loss, overload, and soak results.
