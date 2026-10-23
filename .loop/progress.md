@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R06 writer/Researcher/QA/Security/Final completed and are idle. Controller prepares R07 brief and dependency checks; no R07 writer assigned yet.
+R06 roles completed and idle. R07 is Eligible under committed brief; Conductor intake follows isolated worktree creation. No R07 writer assigned yet.
 
 # Research Questions
 
-R01–R06 Verified; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R06 Verified; R07 Eligible; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R01–R06 Verified and integrated. R07 formal dependencies R02/R03/R04/R06 pass; canonical brief and separate eligibility still required. R07–R10 Queued.
+R07 Eligible; exact brief `2580cd495ef218c94f488f1622263e4cd61ff6ae` precedes this separate state. R02/R03/R04/R06 formal dependencies Verified/integrated; R08–R10 Queued.
 
 # In Progress
 
-No active writer. R06 candidate `446493053c94e5be336036bab212ca85ba61cc9c` integrated at `0b547feb602c0484f2bef0f436d31cdfe6103340` and guarded publication/equality proved at `24f667d2cd4dcb3ea6edc8c3c83b2c91a841ce24`.
+No R07 task body or writer yet. Create task/m0-r07-licensing isolated worktree, then intake/assignment/runtime barriers.
 
 # Verification Needed
 
-R07 exact committed brief and dependency/source/path checks, then separate eligibility/assignment/runtime barriers before body. Preserve R01/R05 nonblocking Minors; R06 has zero remaining findings.
+Conductor bounded role selection, assignment artifact, separate In-progress state, actual runtime/path proof before licensing research body.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Prepare bounded R07 licensing-risk ledger research; no adoption or legal conclusion.
+R07 licensing-risk ledger research intake; no adoption/legal conclusion.
