@@ -106,3 +106,5 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 After R08 integration/publication, prepare R09 MainStage public capability/workflow brief.
 
 R08 exact report integrated at `781d9b53ce6202785460753fe4af7ed87944b333`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
+
+R08 guarded milestone publication/equality proved at `5f2ddf702ed9308a767b8ef14e39010323f5b207`; R01–R08 Verified, R09–R10 Queued. R09 briefing/eligibility follows.

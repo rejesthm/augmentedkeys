@@ -89,3 +89,7 @@ Known limitations remain explicit: no hands-on app, device, account, purchase, c
 I relinquish sole ownership of `docs/research/SUNDAY_KEYS_ANALYSIS.md` and am idle.
 
 **Exactly one next action:** the controller should freeze this report as the R08 candidate and dispatch independent top-level read-only QA/Performance and Licensing/Security reviews, followed by fresh Final Code Review if both pass.
+
+## Guarded publication record
+
+Exact reviewed candidate `d1979355eabf5214f9b3a79eda4323e55164248a` integrated at `781d9b53ce6202785460753fe4af7ed87944b333`. Guard authorize/push/verify each exited0 for exact clean milestone tip `5f2ddf702ed9308a767b8ef14e39010323f5b207`; fresh local and live remote milestone hashes equal. Local and live remote main remain accepted foundation; excluded original-checkout owner files retain recorded hashes. Private publication.json SHA256 `d896d653bee927e3169864cddec7a7af4001f01beb17e8a8513fa64da0696412`. No main integration, task-branch publication, or task/milestone acceptance. This bookkeeping commit follows the published tip.
