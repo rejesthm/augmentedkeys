@@ -2,19 +2,19 @@
 
 ## Milestone
 
-- State: `Paused for owner decision`
-- Goal: Continuation setup controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; candidate construction only, no active M0 research task. Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224` was observed blocked in CT02; recheck before activation.
+- State: `Active`
+- Goal: Full-app continuation controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; M0 is its sole authorized execution milestone under OD-006. Historical M0 Goal remains blocked; no competing research writer.
 - Milestone branch: `milestone/m0-research`
 - Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`
 - Accepted foundation commit: `b1b0c1edd5e42d3ea791f665c22954834e962d05`
 - Contract source commit: `b0122f7030331d3e86af28a779075349fc9e74ff`; exact retained governance content; new import commit resolved in construction evidence.
-- Accepted contract commit: Not accepted for combined candidate; historical research acceptance remains `13b864f09ca083d10910bcffa4432b81c040bda9` under OD-005.
+- Accepted contract commit: `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a` under OD-006; historical contract/OD-005 remain preserved.
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
-- Owner-decision commit: `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c` (OD-001)
+- Owner-decision commit: `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` (OD-006); original activation OD-001 remains `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`.
 - Recovery-only owner decision: `4a8349000864b2f06dbe62a287c5a4378e0bd278` (OD-002); no milestone/task state transition, G01 unresolved
 - Setup-correction owner decision: `3fff1f4869a28900956cae0857d5834a13576606` (OD-003); correction/validation only, no milestone/task state transition
 - Role-isolated correction owner decision: `82dc35ac2042ab4697b322dabd1fb03c61a5ae5a` (OD-004); correction and conditional reactivation authority
-- Reactivation owner decision: `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` (OD-005); G01 verified and M0 reactivated under contract version 2
+- Reactivation owner decision: `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` (OD-006); combined baseline approved under current imported contract. Historical G01/OD-005 reactivation remains `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`.
 - G01 runtime validation: `ec4e76345519973d09a4dbeff6d043e6477e67bc`, corrected evidence at `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`; `docs/orchestration/milestones/m0/evidence/g01-role-isolated-validation.md`
 - G01 independent review: `88fe4ece13bfedd8b67eaa8882c5adf020654418`; `docs/orchestration/milestones/m0/evidence/g01-role-isolated-review.md`; APPROVE, zero findings
 - Recovery diagnostic evidence: `39fa64bfe4fc34e99207148fd6d1465cf0eb98ee`, `docs/orchestration/milestones/m0/evidence/g01-launch-recovery.md`; three nested mixed-permission designs failed G01
@@ -64,7 +64,7 @@
 - CT02 reviewed proposal: `b996cd066da941181d5cf13ef4c7c01b2abe7d77`; acceptance evidence `b414edb4cb2bb5fde6a8d730ba008d156b98b96d`
 - CT03 verification/review artifact: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`
 
-This header describes the paused combined candidate, not a state change to the preserved research branch. Original OD-001 through OD-005 and every task/milestone transition below are historical source records. No CT03 owner decision, M0 transition, task activation, Steward verdict, integration or publication is invented here. All governance-only fields above remain as in the retained source.
+This header records OD-006 reactivation after accepted baseline `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. The separate owner-decision commit `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` precedes this state transition. Historical decisions and transitions remain unchanged. Guarded milestone publication must be proved before research; R03–R10 remain Queued.
 
 ## Tasks
 
@@ -108,8 +108,9 @@ This header describes the paused combined candidate, not a state change to the p
 | 2026-09-02 | R02 | `In review` | `In progress` | Roadmap Orchestrator | `037361c9a7f68f664631cd376841f634acaf9d44` | `docs/orchestration/milestones/m0/evidence/r02-review-round0.md`; T03 `e6df25db3e049eaf0f258bdb069291f982feb67f` | QA/Performance rejected with two Important and one Minor finding; Licensing/Security approved with zero findings; same-writer report and controller-evidence correction round 1 required before fresh review |
 | 2026-09-02 | R02 | `In progress` | `In review` | Roadmap Orchestrator | `c4f4b2869c907355f5baf35ea09ca90d02884036` | `docs/orchestration/milestones/m0/evidence/r02-verification.md`; T04 `891a48686f7f24a5dc32ffa94f8e104dbdb124ab` | Corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` addresses QA I2; controller verification addresses I1/M1; exact package awaits fresh affected specialist review |
 | 2026-09-02 | R02 | `In review` | `Verified` | Roadmap Orchestrator | `c7952ea12d19a6c42abc3d19425a694448256b76` | `docs/orchestration/milestones/m0/evidence/r02-verification.md` | Exact corrected candidate passed fresh QA/Performance, Licensing/Security and Final Code Review with zero Critical, Important or Minor findings; spec compliance and evidence honesty pass |
+| 2026-10-23 | M0 | `Paused for owner decision` | `Active` | Owner; recorded by Roadmap Orchestrator | `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` | `docs/orchestration/milestones/m0/evidence/owner-decisions.md` (OD-006) | Owner approved exact displayed foundation/contract/baseline and bounded activation; separate state barrier; no task work between commits |
 
-Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is Active under OD-005 and corrected contract version 2. R01 and R02 are Verified and integrated; R02 publication is recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922`. R03–R10 remain Queued and R03 briefing is next. No completion package exists. The combined CT03 candidate instead remains paused; no R03 briefing or execution is authorized until its exact activation conditions pass.
+Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is Active under OD-005 and corrected contract version 2. R01 and R02 are Verified and integrated; R02 publication is recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922`. R03–R10 remain Queued and R03 briefing is next. No completion package exists. That source-boundary description is historical. OD-006 now activates the reviewed combined baseline; guarded milestone publication remains the next prerequisite to R03 briefing.
 
 ## Task integration log
 
@@ -118,8 +119,10 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 | 2026-09-02 | R01 | `09266fdc17e137db44495d85c6b42cf296efb89c` | `1c3d4618b1cbf2c583f2c4950800edaab58ee185` | `63081f5f50b03c9337f9f10032a94373f214aaa0` | Non-fast-forward merge because controller evidence and task-report history diverged after common base `b8d245683170a3f4961ca89e9cbf3a2d1d4cdfdb` | Exact two reviewed reports integrated without conflict; guarded publication verified at later state tip `6eabee4dd99c3761b68e52fe81a9e8e8738b600c` |
 | 2026-09-02 | R02 | `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` | `c7952ea12d19a6c42abc3d19425a694448256b76` | `f7e2670ee7c9d12d47467e13139420a347b8cc29` | Non-fast-forward merge because controller evidence and task-report history diverged after common base `2c263e8b71acd26fa4d8e115fe87e7f166bc4b05` | Exact reviewed report integrated without conflict; guarded publication of following state tip `14004c5059a772943fc6949034d656c1d357b0e8` verified and recorded at `22bf9f15b503bc11a3238638b1f4aacea26df922` |
 
-## CT03 preparation boundary
+## Current activation boundary
 
-CT03 imports exact approved control/context blobs and reconciles factual history only. R01/R02 remain Verified; R03-R10 remain Queued; no task or milestone is Accepted. No source branch has moved. Fresh baseline reviews and then the exact activation package are required. Re-resolve the imported contract's latest content-changing commit before presenting activation; its source-content hash does not itself confer owner acceptance.
+OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05`, contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, reviewed baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` and acceptance evidence `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Fresh entry evidence is recorded in that owner decision. R01/R02 remain Verified and R03–R10 Queued. No task/milestone is Accepted.
 
-Before activation, prove all retained entry conditions, including no active Roadmap Orchestrator Goal or write task, accepted foundation equality with local/live remote main, exact resumable milestone base, current role isolation and independent reviews, and committed owner approval of the displayed candidate/contract/actions. The original checkout's unreviewed main-guard recovery edits remain outside this candidate and require a separate bounded review before main-integration readiness. No product, device or performance capability is claimed.
+Next: validate this two-commit activation descendant, fast-forward only the clean recorded milestone base, then use the existing milestone guard authorize/push/verify and prove equality before R03. The contract's paused heading describes its pre-activation proposal; this ledger and committed owner decision control current execution state without changing contract bytes.
+
+The excluded original-checkout main-guard edits were rejected by advisory QA/Security and remain unchanged. They cannot be adopted or used for main integration without correction and fresh review; the independent M0 research/publication procedure remains authorized. No product, device or performance capability is claimed.

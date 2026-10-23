@@ -25,7 +25,7 @@ One explicit owner approval may activate the first long-running Roadmap Orchestr
 
 ## M0  Research & Architecture
 
-Status: Paused for owner decision. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope and accepted `docs/orchestration/milestones/M0_CONTRACT.md`. Evidence gate: every contracted M0 task is verified and the Decision Steward evaluates the immutable completion package. Excluded work: product-core implementation, architecture selection or adoption, dependencies, scheduled or heartbeat automation, and deployment. The owner-approved governance redesign and main-integration guard do not reactivate M0: successful permission-isolated runtime evidence, required reviews, and an explicit valid reactivation decision remain required.
+Status: Active. Objective: establish evidence-backed requirements, research controls, measurement methods, licensing review, and architecture decision process. Entry condition: approved foundation scope and accepted `docs/orchestration/milestones/M0_CONTRACT.md`. Evidence gate: every contracted M0 task is verified and the Decision Steward evaluates the immutable completion package. Excluded work: product-core implementation, architecture selection or adoption, dependencies, scheduled or heartbeat automation, and deployment. The owner-approved governance redesign and main-integration guard do not reactivate M0: successful permission-isolated runtime evidence, required reviews, and an explicit valid reactivation decision remain required.
 
 ## M1  Audio/MIDI Foundation
 

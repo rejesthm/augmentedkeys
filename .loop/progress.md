@@ -1,53 +1,42 @@
 # Current Milestone
 
-M0 — Research & Architecture (Paused for owner decision)
+M0 — Research & Architecture (Active)
 
 # Current Objective
 
-Construct and independently verify the combined CT03 baseline under brief `efdf3bbfee15d93e7b84fee867ae3d5429ca143d`. This candidate is not activated. The original research branch and its historical OD-005 state remain unchanged.
+Execute the unchanged R01–R10 contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a` through required evidence and independent review. OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts the reviewed combined baseline and authorizes this separate activation transition. The full working-app objective remains unfinished.
 
 # Active Agents
 
-The program controller owns CT03 candidate construction and shared state. There is no active M0 research writer. Independent baseline reviewers are dispatched only against an exact committed candidate; their current evidence is recorded in `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns activation/shared state. No specialist research writer is assigned yet. Independent configured roles retain permission-isolated handoffs; at most three specialists and one writer.
 
 # Research Questions
 
-R01 is Verified in correction round 3; R02 is Verified in correction round 1; R03-R10 remain Queued. No research task or milestone is Accepted. Exact research outputs, source reviews and transition artifacts remain unchanged from `8fdb7444ed80675269f38f90f84b362f90c9af23`.
+R01 is Verified in correction round3; R02 in round1. R03–R10 remain Queued. No task or milestone is Accepted. All earlier reports, reviews and failures remain preserved.
 
 # Ready Tasks
 
-No M0 research task is eligible for execution on this combined candidate until its exact reactivation requirements pass. R03 remains the next ordered question after activation and its own committed brief/eligibility barrier.
+R03 is next, after exact milestone publication and its committed brief/eligibility/assignment barriers.
 
 # In Progress
 
-CT03 baseline preparation, verification and review only. No manual L1 Loop or product work is running.
+OD-006 state transition and bounded publication preparation only; no manual L1 Loop or product work.
 
 # Verification Needed
 
-- Exact imported blobs/modes and unchanged research, complete historical transition retention, synchronized paused candidate state, source ancestry, allowlist, links and commit references.
-- Fresh committed evidence/main guard fixture tests, with their scope and unreviewed original-checkout guard edits stated accurately.
-- Independent exact-candidate QA, Security and Final review; then a concrete owner activation package with fresh Goal/ref checks and all retained contract entry conditions.
-- Main-integration recovery edits retained in the original checkout require separate bounded review before any main-integration readiness claim.
+Verify only the two authorized commits follow acceptance tip `a775b71b105a4b3945308a5ee99e1b654f75f8dd`; then exact clean-base fast-forward and guarded milestone publication/equality. Research requires fresh source and review evidence per task.
 
 # Completed
 
-- Foundation scaffold, truthful Flutter shell, constrained manual L1 report-only configuration and original setup checks remain historical evidence below; none is device or audio performance proof.
-- Nine project roles are configured. Runtime evidence is limited to sessions actually observed, recorded in G01 and CT01/CT02 artifacts; configuration alone proves no runtime boundary.
-- G01 role-isolated correction was independently verified and historically reactivated through OD-005 `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea` under research contract `13b864f09ca083d10910bcffa4432b81c040bda9`.
-- R01 verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185` and R02 verification `c7952ea12d19a6c42abc3d19425a694448256b76` remain valid documentary records, with R01's nonblocking provenance-label Minor retained.
-- CT01 decision-team and written app design passed independent review at `53bb29d4a5f2ca9172b1a2d9f726459badbe9d95`, accepted in `dbecf073ef6ef078e20c62d2e64a1ecaef9c6fdd`.
-- CT02 reconciliation proposal passed independent review at `b996cd066da941181d5cf13ef4c7c01b2abe7d77`, accepted in `b414edb4cb2bb5fde6a8d730ba008d156b98b96d`.
-- The governance-source Decision Steward, append-only evidence protocol and deterministic guards are retained unchanged. This is control preservation, not milestone acceptance, integration readiness or activation.
+CT01 team/context, CT02 reconciliation proposal and CT03 baseline passed their independent reviews. Exact CT03 candidate `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` received QA/Security/Final approvals with zero findings, recorded at `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. OD-006 records the actual owner approval and fresh entry checks. R01/R02 remain Verified; G01 historical failures and successful role-isolated evidence are retained.
 
 # Blockers and boundaries
 
-- The combined baseline has no owner activation binding. CT03 reviews and a fully resolved activation package remain required; no new owner decision is invented here.
-- The historical M0 Goal was observed blocked through read-only API evidence in CT02; fresh proof is required at activation. This continuation Goal coordinates setup only until valid activation.
-- Product-core, architecture/adoption, package/asset, required hardware, public release and other owner-only boundaries remain as defined in the retained controls. The app remains a shell, without new audio/MIDI, persistence, setlist or performance evidence.
+The separate original-checkout main-guard recovery edits were rejected by advisory QA/Security and remain unchanged/unadopted. Their data-loss findings must be corrected and independently reviewed before main-integration readiness; this does not block independent authorized M0 research. Product implementation, architecture/adoption, packages/assets, hardware, credentials/signing and release remain outside M0.
 
 # Source-history note
 
-The following evidence log and architectural history are preserved verbatim from research tip `8fdb7444ed80675269f38f90f84b362f90c9af23`. Their historical wording, including earlier pending or active labels, does not describe this unactivated CT03 candidate. Governance source `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` remains available unchanged; its additional Steward/evidence/integration fields are retained in the ledger.
+The following evidence log and failure/architecture history are preserved from research tip `8fdb7444ed80675269f38f90f84b362f90c9af23`; old active/pending labels are historical. Current state is controlled by OD-006 and the ledger. No historical rejection is rewritten as approval.
 
 # Evidence Log
 
@@ -114,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Finish CT03 independent review and prepare the exact activation package. Do not begin R03, alter the M0 queue, activate M1 or perform main integration from this candidate.
+Prove guarded publication of the OD-006 activation tip, then commit the R03 brief and separate eligibility/assignment barriers. Do not alter the M0 queue, activate M1 or perform main integration.

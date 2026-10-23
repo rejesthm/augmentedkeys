@@ -4,25 +4,23 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Paused for owner decision`
+Milestone state: `Active`
 
-This is the unactivated combined CT03 candidate. The preserved research branch still records its historical OD-005 activation at source tip `8fdb7444ed80675269f38f90f84b362f90c9af23`; no source branch, owner decision or recorded transition has been changed. Documentary reconciliation does not activate this new contract binding.
+Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`. This separate state transition activates the exact reviewed combined baseline. Publication and task eligibility still require their documented checks.
 
 ## Milestone orchestration
 
-- Candidate branch: `task/ct03-baseline-reconciliation`.
-- Candidate worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/ct03-baseline-reconciliation`.
-- Milestone branch preserved at the research source: `milestone/m0-research`.
-- Historical milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`.
-- Accepted historical foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`; activation requires fresh local/live-remote equality proof.
-- Retained contract content source: `b0122f7030331d3e86af28a779075349fc9e74ff`; the imported contract is not yet owner-accepted for this combined candidate. Resolve its new content-changing commit from Git and the construction evidence before any activation request.
-- Historical research contract: `13b864f09ca083d10910bcffa4432b81c040bda9`, accepted through OD-005 `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`. That decision is preserved as history and is not transferred to the new contract.
-- Historical M0 Goal: `01a04c45-76d8-7ef0-9cb4-101dbe82a224`; observed `blocked` on 2026-10-23 through read-only API evidence retained in CT02. Recheck authoritative state before activation.
-- Continuation setup controller: `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; constructs this baseline only, with no active M0 research task.
-- Canonical candidate ledger: `docs/orchestration/milestones/M0_LEDGER.md`.
-- Construction brief: `docs/orchestration/BASELINE_CONSTRUCTION_BRIEF.md` at `efdf3bbfee15d93e7b84fee867ae3d5429ca143d`; current verification and review state follows in `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`.
-- Decision Steward status index: `docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md`; canonical runtime evidence belongs under `docs/orchestration/decisions/m0/` on `governance/decision-evidence`. No branch, package, verdict or binding was created by this task.
-- Main integration status index: `docs/orchestration/milestones/m0/evidence/main-integration.md`; no integration attempt/result or successor activation exists in this candidate.
+- Sole controller: `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; full-app objective retained, only M0 execution authorized.
+- Milestone branch: `milestone/m0-research`; worktree `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`.
+- Activation preparation branch/worktree: `task/ct03-baseline-reconciliation`, `.worktrees/ct03-baseline-reconciliation`.
+- Accepted foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`.
+- Accepted contract: `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`; retained source `b0122f7030331d3e86af28a779075349fc9e74ff`.
+- Reviewed baseline: `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d`; acceptance/package `a775b71b105a4b3945308a5ee99e1b654f75f8dd`.
+- Historical research contract/activation: `13b864f09ca083d10910bcffa4432b81c040bda9` / OD-005 `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`, preserved unchanged.
+- Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224`: freshly observed blocked and not loaded at activation preflight.
+- Canonical ledger: `docs/orchestration/milestones/M0_LEDGER.md`.
+- CT03 review evidence: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`; three independent approvals with zero findings for the exact reviewed baseline.
+- Decision-evidence branch remains absent. No Steward verdict, main integration attempt/result or successor activation exists.
 
 ## Research preserved
 
@@ -33,16 +31,16 @@ This is the unactivated combined CT03 candidate. The preserved research branch s
 
 ## Current gates and next action
 
-Complete CT03 verification and independent QA, Security and Final review before preparing the exact activation package. Preserve all contract entry conditions: no active Roadmap Orchestrator Goal or write task at entry, exact accepted foundation/local/live-remote equality, a clean resumable milestone branch, runtime isolation evidence, and the required committed owner decision. The package must bind the new candidate, current contract-changing commit and exact permitted branch/integration/state-barrier actions. No status-only activation.
+Validate the exact two-commit OD-006/state descendant of the accepted package, fast-forward only the clean recorded milestone base, and run the milestone publication guard authorize/push/verify. Prove local/remote equality before briefing R03. No research ran between the decision and state commits.
 
-The original checkout contains separate uncommitted main-guard recovery edits, retained and observed in CT02 evidence. They are outside this candidate and need a bounded independent review before main-integration readiness can be claimed. The imported committed guard tests do not approve those edits. No main integration is authorized by CT03.
+The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
-At a future complete M0 package, use the independent read-only Decision Steward and append-only package/verdict/binding protocol. Main integration and successor activation require their own exact current decisions and guards. Missing/conflicting evidence, unresolved Critical/Important findings, credentials, spending, legal decisions, architecture/adoption, required hardware, destructive actions and public release remain gated. No task-branch publication or PR is authorized.
+At a complete M0 package, request the independent Decision Steward verdict. Main integration and successor activation require separate exact decisions and all gates. Architecture/adoption, credentials/signing, spending/legal decisions, required hardware, destructive action and public release remain owner-only. No task publication or PR is authorized.
 
 ## Product status
 
-The approved playable-first direction is planning context. The app remains the Flutter shell: no audio/MIDI engine, playable instruments, patch editor, persistence, variations or setlist behavior has been implemented or verified. There is no new device, latency, workload or long-run evidence. No dependency or asset is adopted or license cleared by this baseline construction.
+The app remains the Flutter shell. Audio/MIDI, playable instruments, patch editing, persistence, variations and setlists are not implemented or verified. No new device, latency, workload or long-run evidence exists; no dependency or asset is adopted.
 
 ## Preserved source history
 
-The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` and research `8fdb7444ed80675269f38f90f84b362f90c9af23`. OD-001 through OD-005, MT-001, every R01/R02 transition/rejection/correction, and both integration logs remain preserved in their exact source artifacts and the reconciled ledger. CT03 creates no replacement owner decision or milestone transition.
+The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` and research `8fdb7444ed80675269f38f90f84b362f90c9af23`. OD-001 through OD-005, MT-001, every R01/R02 transition/rejection/correction, and both integration logs remain preserved in their exact source artifacts and the reconciled ledger. CT03 preparation created no activation; OD-006 separately authorizes the current reactivation.
