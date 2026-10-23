@@ -1,3 +1,9 @@
+# R05 specialist approvals — Final review pending
+
+Unchanged candidate `5b7390d91fd074479d1144d76233320999f3161e` has fresh independent QA and Licensing/Security APPROVE0/0/0. Literal reports and actual read-only runtime provenance are recorded alongside this update in `r05-review-round0.md`. Source hashes and candidate remained unchanged. Task remains In review until fresh independent Final passes and finalized verification precedes the separate Verified state barrier.
+
+---
+
 # R05 verification — candidate for independent review
 
 Candidate `5b7390d91fd074479d1144d76233320999f3161e`; task base `22afbe4c38e2f46a758cce7e744b4819e116c6ad`; brief `f30f02a5c76d5f08e07c45627b023819d811e289`; assignment `c433ba2b0260afd8319e10e56f151ce8980239ba`; separate In-progress state `8cd9c18c4b32bf00873b96a185ffc81ad41ada57`. OD006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`; contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Correction round0. Pending independent QA/Performance and Licensing/Security followed by fresh independent Final review; not Verified.
