@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R06 sole writer, Researcher and all3 independent reviewers completed and are idle. Controller alone integrates and publishes exact Verified candidate.
+R06 writer/Researcher/QA/Security/Final completed and are idle. Controller prepares R07 brief and dependency checks; no R07 writer assigned yet.
 
 # Research Questions
 
@@ -16,15 +16,15 @@ R01–R06 Verified; R07–R10 Queued. R05 carries one shared nonblocking index-c
 
 # Ready Tasks
 
-R01–R06 Verified; R07–R10 Queued. R07 formal dependencies are Verified; its brief and state barriers follow R06 integration/publication.
+R01–R06 Verified and integrated. R07 formal dependencies R02/R03/R04/R06 pass; canonical brief and separate eligibility still required. R07–R10 Queued.
 
 # In Progress
 
-No active task writer. R06 exact candidate `446493053c94e5be336036bab212ca85ba61cc9c` is Verified under `ef499f19643bcee06060198a98a8cfa40e442841`; all3 original Important findings closed, allreviews0/0/0.
+No active writer. R06 candidate `446493053c94e5be336036bab212ca85ba61cc9c` integrated at `0b547feb602c0484f2bef0f436d31cdfe6103340` and guarded publication/equality proved at `24f667d2cd4dcb3ea6edc8c3c83b2c91a841ce24`.
 
 # Verification Needed
 
-Integrate only exact Verified R06 candidate, compare reviewed blob, then guarded milestone publication and local/remote equality proof. No main integration or product adoption.
+R07 exact committed brief and dependency/source/path checks, then separate eligibility/assignment/runtime barriers before body. Preserve R01/R05 nonblocking Minors; R06 has zero remaining findings.
 
 # Completed
 
@@ -103,6 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-After R06 integration/publication, prepare R07 licensing-risk brief with all four formal dependencies Verified.
-
-R06 exact report integrated at `0b547feb602c0484f2bef0f436d31cdfe6103340`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
+Prepare bounded R07 licensing-risk ledger research; no adoption or legal conclusion.

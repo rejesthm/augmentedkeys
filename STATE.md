@@ -31,7 +31,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 ## Current gates and next action
 
-R01–R06 are Verified; R07–R10 remain Queued. R05 guarded publication proved at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`; its shared nonblocking index-count wording Minor and R01 provenance-label Minor remain preserved. R06 exact candidate `446493053c94e5be336036bab212ca85ba61cc9c` is Verified under finalized verification `ef499f19643bcee06060198a98a8cfa40e442841`; QA/Security/Final allapprove0/0/0, all3 original Important findings closed. Exact report integrated at `0b547feb602c0484f2bef0f436d31cdfe6103340`; reviewed blob unchanged. Guarded milestone publication is next.
+R01–R06 are Verified; R07–R10 remain Queued. R05 guarded publication proved at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`; its shared nonblocking index-count wording Minor and R01 provenance-label Minor remain preserved. R06 exact candidate `446493053c94e5be336036bab212ca85ba61cc9c` is Verified under finalized verification `ef499f19643bcee06060198a98a8cfa40e442841`; QA/Security/Final allapprove0/0/0, all3 original Important findings closed. Exact report integrated at `0b547feb602c0484f2bef0f436d31cdfe6103340`; reviewed blob unchanged. Guarded milestone publication and local/remote equality proved at `24f667d2cd4dcb3ea6edc8c3c83b2c91a841ce24`; R07 licensing-risk brief is next.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
