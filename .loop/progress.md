@@ -8,11 +8,11 @@ Execute the unchanged R01–R10 contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns activation/shared state. A configured Apple Specialist is assigned; runtime identity must be verified before body work. Independent configured roles retain permission-isolated handoffs; at most three specialists and one writer.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns activation/shared state. Apple writer handed back candidate; independent QA/Security then Final reviews are next. Independent configured roles retain permission-isolated handoffs; at most three specialists and one writer.
 
 # Research Questions
 
-R01 is Verified in correction round3; R02 in round1. R03 is In progress; R04–R10 remain Queued. No task or milestone is Accepted. All earlier reports, reviews and failures remain preserved.
+R01 is Verified in correction round3; R02 in round1. R03 is In review; R04–R10 remain Queued. No task or milestone is Accepted. All earlier reports, reviews and failures remain preserved.
 
 # Ready Tasks
 
@@ -20,7 +20,7 @@ R03 brief `95cc3b9c273b544ecae1b47582d3c97273148b38` is committed and Eligible a
 
 # In Progress
 
-R03 assigned documentary research; no manual L1 Loop or product work.
+R03 independent review; no active writer, manual L1 Loop or product work.
 
 # Verification Needed
 

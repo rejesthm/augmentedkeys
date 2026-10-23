@@ -26,12 +26,12 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 1. R01 is `Verified`: exact candidate `09266fdc17e137db44495d85c6b42cf296efb89c`, finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`, integration `63081f5f50b03c9337f9f10032a94373f214aaa0`. Retain its nonblocking provenance-label Minor for milestone triage.
 2. R02 is `Verified`: exact candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec`, verification `c7952ea12d19a6c42abc3d19425a694448256b76`, integration `f7e2670ee7c9d12d47467e13139420a347b8cc29`, publication evidence `22bf9f15b503bc11a3238638b1f4aacea26df922`.
-3. R03 is `In progress` through brief `95cc3b9c273b544ecae1b47582d3c97273148b38`; R04–R10 remain `Queued`. One configured Apple Specialist owns only the two contracted outputs; controller owns commits.
+3. R03 is `In review` through brief `95cc3b9c273b544ecae1b47582d3c97273148b38`; R04–R10 remain `Queued`. Apple Specialist handed back both reports; independent reviews are pending.
 4. G01 was resolved for the historically validated role-isolated topology through validation `ec4e76345519973d09a4dbeff6d043e6477e67bc`, correction `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db` and independent approval `88fe4ece13bfedd8b67eaa8882c5adf020654418`. All earlier nested-permission failures and rollback remain in the unchanged evidence artifacts. Do not retry mixed-permission nesting.
 
 ## Current gates and next action
 
-Activation publication is proved at `dc59f822924b96330ef0184866067aef9c8f7352`, recorded in `docs/orchestration/milestones/m0/evidence/od006-publication.md` at `00896f07726ba2bfc52949348892539d4c412d77`. R03 brief `95cc3b9c273b544ecae1b47582d3c97273148b38` is assigned through T01 `09ff21bdb47215415f894e53766649004af85750` and this separate state barrier. Next: verify the Apple writer runtime, then research/write the two reports in the isolated task worktree. No task body ran between assignment and state commits.
+Activation publication is proved at `dc59f822924b96330ef0184866067aef9c8f7352`, recorded in `docs/orchestration/milestones/m0/evidence/od006-publication.md` at `00896f07726ba2bfc52949348892539d4c412d77`. R03 candidate `8a0b2825ff5e8509ad73c1f8f74492d44b22cb5a` is In review through verification `cc98614d449b6a326ae248b1f934d3dca46c016e`. Independent QA/Security and then Final review must approve before verification/integration. The Apple writer remains available for corrections; no active output writer remains.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
