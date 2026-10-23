@@ -8,11 +8,11 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Controller owns Git/state. R06 sole Conductor writer and Researcher completed handoffs and are idle. Independent QA/Performance and Licensing/Security will review the frozen candidate, then Final; read-only sessions only.
+R06 QA and Security completed independent reviews; three Important findings remain open. Same sole Conductor owns the narrow correction; controller alone owns Git/state/evidence.
 
 # Research Questions
 
-R01–R05 Verified; R06 In review; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R05 Verified; R06 In progress; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,11 +20,11 @@ R01–R05 are Verified and integrated; R05 guarded publication proved at `ba19ff
 
 # In Progress
 
-R06 In review: candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`, verification `0d200280fc4df9294fbd718aa8ee48c974b78b9a`. Separate state barrier consumes the committed artifact; no integration before Verified.
+R06 correction round1 under T02 `cc435d60cc23fe46abe2d14fbe9bf6aeecc4e905`; rejected candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da`. Fix three documented Important findings, then fresh affected verification and reviews.
 
 # Verification Needed
 
-Independent exact-candidate QA/Performance and Licensing/Security, then fresh Final. Fifty source bodies hashed; no runtime/device/adoption claim.
+After writer handback freeze corrected report, fresh provenance/scope checks, verification/In-review barrier, independent QA/Security then Final. No integration while any blocking finding remains.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Complete independent R06 review, resolve any blocking findings through the formal correction barrier, then integrate only the exact Verified candidate.
+Same-writer R06 correction round1, preserving rejected candidate and literal evidence.
