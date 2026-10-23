@@ -8,23 +8,23 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-R06 roles completed and idle. R07 is Eligible under committed brief; Conductor intake follows isolated worktree creation. No R07 writer assigned yet.
+R07 independent Researcher and sole Conductor ledger writer assigned by T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4`; runtime/path probes before body. Prior roles idle; controller alone Git/state/evidence.
 
 # Research Questions
 
-R01–R06 Verified; R07 Eligible; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R06 Verified; R07 In progress; R08–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
-R07 Eligible; exact brief `2580cd495ef218c94f488f1622263e4cd61ff6ae` precedes this separate state. R02/R03/R04/R06 formal dependencies Verified/integrated; R08–R10 Queued.
+R01–R06 Verified. R07 In progress after exact brief/assignment barriers; R08–R10 Queued.
 
 # In Progress
 
-No R07 task body or writer yet. Create task/m0-r07-licensing isolated worktree, then intake/assignment/runtime barriers.
+R07 T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4` assigns the exact isolated one-ledger scope. Only runtime/path probes next; no body until controller proof.
 
 # Verification Needed
 
-Conductor bounded role selection, assignment artifact, separate In-progress state, actual runtime/path proof before licensing research body.
+Actual runtime metadata, correct cwd/base and unchanged original ledger prefix plus exact probe marker; then source research and independent reviews.
 
 # Completed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-R07 licensing-risk ledger research intake; no adoption/legal conclusion.
+Prove R07 assigned runtime/path boundaries, then licensing evidence research and synthesis.
