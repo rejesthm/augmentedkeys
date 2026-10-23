@@ -112,5 +112,5 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current first-party product and support documentation, public store information, documented platform requirements, and attributed observations; third-party reports may identify questions but cannot alone establish technical facts.
 - **Expected output:** `COMPETITOR_MATRIX.md`.
 - **Decision it unlocks:** Prioritization of original product workflows, differentiation questions, and research gaps.
-- **Status:** `In review` — candidate `6e310401726928501b4b6afc863c7a0a1de6205f`; evidence `fa3e06cda25bc186a22443c26207315469aecff8`; independent QA/Performance and Licensing/Security, then Final; no integration before Verified
+- **Status:** `In progress` — candidate `6e310401726928501b4b6afc863c7a0a1de6205f`; evidence `e43637326a9cefd43e5be0977333c2101fe5eecb`; correct shared I1 within sole report, preserve all eight criteria, then freeze and independently review a new candidate
 - **Findings:** No findings recorded
