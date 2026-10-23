@@ -74,3 +74,7 @@ Known gaps include mutable store/support pages, potentially sparse Android first
 No research, source fetch, file edit, Git mutation, dispatch, or external action occurred. I am idle.
 
 **Next action:** the controller should commit the exact R10 T01 assignment artifact naming the independent Researcher and sole Conductor writer with these permission and file boundaries.
+
+## T02 — correction round1 authorization
+
+Preceding exact rejection `aa7775a99a6a3fac14324b5ada95c1c7e5ce88ff` rejects candidate `6e310401726928501b4b6afc863c7a0a1de6205f`. One shared Important I1: cumulative C2/A2 paraphrase exceeds150words per source; no other blocking finding. After a separate In review→In progress state consumes this artifact, resume same Conductor as sole writer of COMPETITOR_MATRIX.md in the preserved task worktree. No other path, source acquisition, Git mutation, dependency, architecture or scope change. Consolidate facts once, reference them without repeated factual paraphrase, provide conservative per-source counts across the whole report; retain all8criteria and source/currentness/platform/privacy/recovery limitations. QA/Security and then Final must freshly review the changed exact candidate. Round1 of maximum5; rejection/history remains immutable.
