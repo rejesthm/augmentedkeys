@@ -42,7 +42,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current Apple developer documentation and API references, applicable specifications, official sample code, original project documentation, and reproducible iPhone/iPad experiments where required.
 - **Expected output:** `IOS_AUDIO_RESEARCH.md` and `PLUGIN_HOSTING_RESEARCH.md`.
 - **Decision it unlocks:** Approval to scope Apple-specific audio and AUv3 technical spikes and later ADRs.
-- **Status:** `Eligible`
+- **Status:** `In progress`
 - **Findings:** No findings recorded
 
 ## 4. Android audio, Oboe/AAudio, AAP/AAP-JUCE
