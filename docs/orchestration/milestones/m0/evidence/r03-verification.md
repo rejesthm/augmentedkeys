@@ -1,3 +1,15 @@
+# Finalized R03 verification — correction round1
+
+Exact candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, base `c66cd8650c601709c84c9bf58ec783b5dcbcda29`. Required QA/Performance, Licensing/Security and fresh independent Final Code Review all APPROVE this same candidate with0Critical/0Important/0Minor. QA/Security literal closures are at `f173e41cc821a096bced4fd0d2a4358c54f7505b` in `r03-review-round1.md`; Final literal approval and source-backed runtime are in `r03-final-review.md`, committed with this finalized artifact. All original rejected candidates/reports remain intact.
+
+Spec compliance PASS; evidence honesty PASS. All8 criteria have independent coverage. Current source catalog `ba9ff7d41af7df6c8a1bc8f4a7187bdb1342c10b` binds27 captured primary bodies and explicit historical/current scope; no unsupported device/runtime, legal, architecture or adoption claim. Fresh final controller committed-range whitespace check returned0 and task worktree remained clean. Candidate/source bodies are unchanged since reviews. Exact two-file addition leaves product/native/manifests/permissions/ADRs/configuration unaffected.
+
+This artifact is the decisive source for the separate R03 In review→Verified state commit. Verification does not accept M0, authorize main integration, start M1, adopt an engine/dependency/asset/entitlement or prove audio/MIDI/performance. After that separate state barrier, controller may integrate only the exact reviewed candidate into the active M0 branch and publish via the unchanged milestone guard. R04 follows its own brief/barriers. No specialist writer remains active; same Apple session remains available if later correction is authorized.
+
+---
+
+## Preserved prior verification stages
+
 # Specialist review update — Final review pending
 
 Current candidate remains `b3eb533c41993c7b236d47a8d347329e9dca6fae`. Independent QA and Licensing/Security each APPROVE with0Critical/0Important/0Minor. Both explicitly close all four round0 findings. Literal replies and actual independent read-only runtime provenance are committed alongside this update in `r03-review-round1.md`; prior rejections remain preserved. No candidate/source change occurred after those reviews. R03 remains In review pending fresh Final Code Review; not yet Verified or integrated.
