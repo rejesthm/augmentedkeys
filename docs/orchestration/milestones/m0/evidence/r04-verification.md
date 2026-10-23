@@ -1,3 +1,79 @@
+# R04 verification — correction round1
+
+Candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7`; prior rejected candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`; task base `55f9a9651d100007435bb8a4d96fc6eea828ed22`. Status: pending fresh affected QA/Security then Final; not Verified. Review source `5385671e0a9a3cabb09b3755483480196b188a96`; correction T02 `181018e34dc4ce0fae543ab5caed76ca1ed602fb`; separate In-progress state `9f506847420dbd74d4927913c3aa117664dafa7f`. Same Android writer and exact two-file authority; writer handback complete. Original review/candidate evidence preserved below and in Git.
+
+Fresh controller checks at `2026-10-23T10:16:32.702260+00:00` UTC, same macOS26.6.2(25G83)/arm64/Git2.54.0/CodexCLI0.154.0-alpha.6.2 environment:
+
+```text
+git diff --check 55f9a9651d100007435bb8a4d96fc6eea828ed22 26b6c2702d21704481969dc99fa51ee504aa9bb7
+exit0; no output
+git diff --name-only 55f9a9651d100007435bb8a4d96fc6eea828ed22 26b6c2702d21704481969dc99fa51ee504aa9bb7
+docs/research/ANDROID_AUDIO_RESEARCH.md
+docs/research/PLUGIN_HOSTING_RESEARCH.md
+git status --porcelain
+exit0; empty
+```
+
+Exact two-report scope, entire24,521-byte Apple prefix unchanged once, SHA256 `2ebdfae97d82850928a00ac983a358014a1e84cefe2e12a994099ea77ee89c5f`. All54 raw source bodies rehashed against indexes:54matches/0mismatches, allHTTP200. Source catalog `8ae8c090f27d9cf9d27861cd1eeb1e4c246b320d` includes newC52–C54 official FGS rule bodies; original51 unchanged. No product/native/protected path, dependency/asset/permission/adoption change. No Flutter/build/device/runtime/performance command or result. Main preservation evidence remains the earlier baseline timestamp, not newly remeasured here.
+
+## Finding-to-correction locations
+
+- QA I1: Android section6 defines a proposed touch-trigger-to-audible quantity; exact trigger/endpoint boundaries; silent versus known audible signal; synchronized capture/clock calibration and uncertainty; marker continuity/glitch analysis; stepped workload/overload; disruption-to-recovered-marker timing; provisional repetitions/duration; raw capture/configuration/calibration/analysis/failure retention and proposed distributions/tails/outliers/censored trials. Hosting procedure explicitly carries the same method forward. All hypothetical/unperformed/unapproved, no numeric accepted budget or hardware action.
+- Security I1: Android section4 separates runtimeOS/targetSDK, declarations/grants/FGS/while-in-use conditions, legacy Bluetooth and BOOT_COMPLETED details using C07/C13/C52–C54. No permissions adopted.
+- Security I2: Android hosting appendix inventories pinned C35 core-library and C43/C44 host/plugin-template declarations, recording/FGS/notification/storage/location/Bluetooth/network/backup/exported-component surface and merge/access-control questions; explicitly not protocol/product requirements or R07 clearance.
+
+This mapping is not closure; independent reviewers decide whether all findings close. Same writer completed alignment before this candidate commit. Required source references, exact pinned identities and Apple text remain preserved.
+
+- `docs/research/ANDROID_AUDIO_RESEARCH.md` SHA256 `36442c988fc36fc5b18378e92afadac4135f28978d6d825780b1ed5b87c1eed3`.
+- `docs/research/PLUGIN_HOSTING_RESEARCH.md` SHA256 `83bb1eb831dfa33baa4215b30d8cea86a4de1b08bc5a81200b1e34774bf82bc5`.
+
+- `candidate-verification-round1.json` SHA256 `46933d3efd686811c19a40015d4e2b1b0cdad8d405c683aba0cfc47c4413e822`.
+
+## Round1 writer handbacks
+
+Formal correction round 1 complete; writer ownership returned.
+
+Changed only:
+
+- `docs/research/ANDROID_AUDIO_RESEARCH.md`
+- Android section of `docs/research/PLUGIN_HOSTING_RESEARCH.md`
+
+Finding mapping:
+
+- QA I1: added an explicitly hypothetical measurement method: touch-trigger-to-audible boundaries; known audible marker distinct from generated/silent callback checks; common-clock electrical/acoustic capture or calibrated clock alignment; uncertainty, marker-based continuity/glitch analysis, stepped overload, recovery boundaries, warm-up/repetition/duration, and retained raw artifacts. The 30-cycle/60-minute values remain provisional.
+- Security I1: added runtime-OS versus target-SDK ledger for FGS background start, media playback, microphone/while-in-use, and Bluetooth, including manifest, runtime-grant, and legacy conditions.
+- Security I2: added C35/C43/C44 pinned-manifest inventory covering FGS/media/notifications, recording, legacy storage/location/Bluetooth, multicast/network, backup, exported activities/services/view service, merge/access-control, least-privilege, and R07 gaps.
+
+Sources inspected include C52 [`FGS types`](https://developer.android.com/about/versions/14/changes/fgs-types-required), C53 [`background restrictions`](https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start), C54 [`FGS launch`](https://developer.android.com/develop/background-work/services/fgs/launch), C13, and pinned AAP core `682e7a…e3ec3` C35 / AAP-JUCE `07b990…4b3d4` C43–C44.
+
+Verification passed:
+
+- `git diff --check` against `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`
+- Exactly the two owned files changed.
+- Apple prefix preserved contiguous; SHA-256 remains `2ebdfae97d82850928a00ac983a358014a1e84cefe2e12a994099ea77ee89c5f`.
+
+No Git/staging/commit/state/evidence/ledger action, device action, permission change, code adoption, or external retrieval occurred. Historic DNS failure remains only historical. Remaining gaps are unperformed runtime/device/measurement results and R07/legal/product decisions.
+
+Round-1 alignment refinements complete; writer ownership returned.
+
+- Legacy Bluetooth: C13 now records target-SDK ≤30 conditions—`BLUETOOTH` for classic/BLE communication, runtime `ACCESS_FINE_LOCATION` for scans, `BLUETOOTH_ADMIN` for discovery/settings, and `ACCESS_BACKGROUND_LOCATION` for discovery by a service that can run on Android 10/11. It explicitly avoids adoption or universal-grant claims.
+- `BOOT_COMPLETED`: retained C53’s target-34 general warning; C07’s specific target-35 prohibition for media playback (also data sync/media projection/phone call); and C07’s separate while-in-use microphone restriction without incorrectly assigning it target 35.
+- QA raw analysis: added proposed latency distribution/tail/outlier/uncertainty outputs, continuity and recovery summaries, plus retention and separate reporting of invalid/censored trials. All remain hypothetical, unapproved, and unperformed.
+
+Sources used: [C13 Bluetooth permissions](https://developer.android.com/develop/connectivity/bluetooth/bt-permissions), [C07 FGS types](https://developer.android.com/develop/background-work/services/fgs/service-types), [C52 FGS types required](https://developer.android.com/about/versions/14/changes/fgs-types-required), [C53 restrictions](https://developer.android.com/develop/background-work/services/fgs/restrictions-bg-start).
+
+Verification passed:
+
+- `git diff --check` against `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`
+- Exactly the two owned reports changed.
+- Apple prefix remains contiguous with SHA-256 `2ebdfae97d82850928a00ac983a358014a1e84cefe2e12a994099ea77ee89c5f`.
+
+No Git/staging/commit/shared-state/evidence/ledger, device, permission, dependency, adoption, or external action. Remaining gaps: no runtime/device measurement or R07/product/legal decision.
+
+---
+
+## Historical round0 verification
+
 # R04 verification — candidate for independent review
 
 Candidate `85fd1ae90b37ecf03032bc6c6028c560c8a36ade`; task base `55f9a9651d100007435bb8a4d96fc6eea828ed22`; brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`; assignment `d342ce41a2b874f3dea19c2c0866f7c816a15247`; separate In-progress state `fb27f43dedf8e14c94a97ad8a92e4b4d93c6e5da`. OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`; contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Status pending independent QA/Performance, Licensing/Security then fresh Final review; not Verified. Correction round0.
