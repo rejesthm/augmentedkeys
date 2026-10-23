@@ -48,3 +48,23 @@ No runtime/audio/MIDI/device behavior was exercised. Measurement counts in the r
 - `primary-sources/index.json` SHA-256 `3fa47c39f1d9cc606147096b31caa0c3ddddff2a22bf2c1405e9cd508569401e`.
 - `apple-research-completed-snapshot.jsonl` SHA-256 `15ad5f093a42cb0ec0c677a032be87f80b35edbb3773c60c6545ca3e569cd245`.
 - `relay-research-completed-snapshot.jsonl` SHA-256 `5456b042c5db5794f32767b6c13a20f21469029075038c87c21a86431c695752`.
+
+
+## Round1 additional source capture and revision clarification
+
+The initial23-body catalog above remains preserved as the original observation. QA identified one historical route-guide claim that had only a search excerpt and no explicit report URL; its exact full body is now source24. The writer added generic Apple sandbox/app-group/extension references25–27; those are now independently captured too. These are documentary sources, not an AUv3 entitlement, cross-team sharing permission, code adoption or runtime guarantee. App-group source26 explicitly limits app groups to apps developed by the same team; generic containing-app/extension relationships must not be substituted for unrelated third-party AUv3 host relationships.
+
+| ID | Exact retrieved source | HTTP | Bytes / lines | SHA-256 | Scope |
+|---|---|---|---|---|---|
+| 24 | [https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioHardwareRouteChanges/HandlingAudioHardwareRouteChanges.html](https://developer.apple.com/library/archive/documentation/Audio/Conceptual/AudioSessionProgrammingGuide/HandlingAudioHardwareRouteChanges/HandlingAudioHardwareRouteChanges.html) | 200 | 21060 / 204 | `6f3e4654cbc5807c205f5b54f2bcfc406eca52a6770871bc0260d1765d530f14` | Historical route guide; body updated2017-09-19 |
+| 25 | [https://developer.apple.com/documentation/technologyoverviews/shared-data.md](https://developer.apple.com/documentation/technologyoverviews/shared-data.md) | 200 | 9993 / 151 | `549fab74ca88086f54ca3cd7ff8df0529615dd377518adbf3ee8585f520293da` | Current generic shared-data overview; sandbox/container boundaries |
+| 26 | [https://developer.apple.com/documentation/xcode/configuring-app-groups.md](https://developer.apple.com/documentation/xcode/configuring-app-groups.md) | 200 | 5193 / 89 | `5bb1dab2c49723e9a3a0b275cb4e5c9550d698447c5d0e291adada713db21541` | Current app-groups guide; same-team sharing and entitlement context |
+| 27 | [https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html) | 200 | 57150 / 818 | `ece63524ffbfef71915744d85bc2ec051c862a702ede8a6535f61d8fc220c991` | Historical containing-app/extension container guide; no unrelated AUv3 host permission implied |
+
+Source22 (App Review Guidelines) has no API-availability metadata, but its captured HTML body explicitly identifies **Last Updated: October16,2026**. The original source22 SHA/access identity remains unchanged. This known body revision is now recorded, addressing the Security provenance note without treating policy retrieval as legal clearance.
+
+Round1 retrieval method: writer used official web search/open, with JavaScript shells and a failed shell curl DNS attempt. Controller direct Python urllib retrieval subsequently returned HTTP200 for24–27 and preserved response bytes/hash/time. The failed writer attempt remains a failure; the later controller retrieval is distinct passing evidence. No sample project/archive was downloaded and no code adopted; documentation bodies contain instructional snippets, as clarified in the corrected report.
+
+Raw new-source location: common Git `decision-team-continuation/2026-10-23/r03/primary-sources-round1/`; index records access times/URLs/hash/method. All old raw files/hashes are unchanged. Sources24–27 support corrected S9 and P11–P13. Independent affected review still must decide whether the candidate closes each finding.
+
+Round1 index SHA-256: `a301c81ecd613ec14fcf7f1ae53f98bcd9050c68c3fb45d458ea6ec4b2800c35`.
