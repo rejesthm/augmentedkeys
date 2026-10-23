@@ -60,3 +60,21 @@ Repository observations: Oboe main `4468344c8fdfdd7df068d5abefe2d8615fd6b431` (2
 - `index-repositories.json` SHA256 `34944cf2cf4c3a6f12be7d53d5febfa053914237b7c5a610867e2f5347c902a0`.
 - `index-repository-detail.json` SHA256 `fec8444a5dfce25e876739d8f2f9ca97d7de3821d31ad72fb1522f038d17174d`.
 - `derived-index.json` SHA256 `e7db4b4cee96fa9cbb3af15e4a812ab143d3fe8a71ff389be8c4c12877c034bc`.
+
+## Writer-source reconciliation capture
+
+Four additional HTTP200 bodies captured before review; initial51 total successful bodies. The first writer draft439acf5 used moving AAP pages and an August Oboe commit mistaken for current main. Its read-only Git remote lookups failed DNS within the restricted writer session. Both failure and draft are preserved; controller full-body capture supplies pinned identities and sources for the same writer to reconcile before candidate review. No permission change. Initial body captures retain their original bytes/hashes.
+
+| ID | Primary URL | Body SHA256 | Bytes | Identity |
+|---|---|---|---:|---|
+| C48 | https://raw.githubusercontent.com/atsushieno/aap-core/682e7a6871a6c1414619dc483c1e234cb44e3ec3/docs/DEVELOPERS.md | `b7f661f011a75cc53423d59ee91a99aad50b40b690ff4dc77e9cf4e29d0b9c19` | 21206 | Exact pinned source or API observation |
+| C49 | https://raw.githubusercontent.com/atsushieno/aap-juce/07b99087c3675b7fa41c0bae61525d8d0bc4b3d4/docs/JUCE_GUI_SUPPORT.md | `69979b99eb2db7e26142ab4239cc909946148158acdeed78c47398375557edaa` | 16930 | Exact pinned source or API observation |
+| C50 | https://developer.android.com/games/sdk/oboe | `9efe2945b4d84bdb2bfe66dc5410ad4ce3293dca0e8412bab611e1d0ddfc1991` | 357910 | Exact pinned source or API observation |
+| C51 | https://api.github.com/repos/google/oboe/commits/2a45aa2d9e94d209c4636eec4014dd83cda110f4 | `bad899219a55c80e5221533d9f7408ef20a004c9beca3ba6dd14c41ef3340c8b` | 34805 | Exact pinned source or API observation |
+
+C51 confirms Oboe `2a45aa2d9e94d209c4636eec4014dd83cda110f4` has committer date2026-08-13; it is historical, while C15 current main resolved `4468344c8fdfdd7df068d5abefe2d8615fd6b431`. A page/history selection is not proof of current head. No source contradiction is silently replaced.
+
+- `primary-sources/index-writer-sources.json` SHA256 `9680310c8728ae8e963d213103916856c42b69ea9935a5dd898090be855d50bd`.
+- `android-research-runtime.json` SHA256 `5838dfbbd6c1671a56b94157ea948add4e0d6d7e8657da77bbda5048603d3f61`.
+- `android-research.final.txt` SHA256 `04b8ccefe6a72046e2516cf54197c3fea619c6f9a13f125b99676bfce3aaa9e1`.
+- `android-refine.prompt.txt` SHA256 `1e3784d72f41b66ebee787b5f31705b79aa3839d72cc7756c02b53ed5a6308fd`.
