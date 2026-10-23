@@ -1,3 +1,15 @@
+# Finalized R09 verification — initial review
+
+Exact candidate `266f263849c737adb1a9759b39967042cd69212b`, base `dd22f119c372b0344c2ecdc42533a628d8c25ddc`. QA/Performance and Licensing/Security APPROVE0/0/0 at `8f8f496237eb8f23bead1721dc03a75ff7b0c9ba` in r09-review-round0.md. Fresh independent Final APPROVE0/0/0 with Spec Compliance PASS and Evidence Honesty PASS accompanies this artifact in r09-final-review.md. No R09 finding or correction round; all required reviews agree on this unchanged candidate.
+
+Fresh controller checks at `2026-10-23T15:05:21.071917+00:00`: exact clean task/candidate, committed-range whitespace exit0, only MAINSTAGE_ANALYSIS.md differs, SHA256 `3bd171c1342cc53935873538963101672982f7b624fd82c50236a2cbdd86f0fa` unchanged after reviews. Controller source verifier freshly rehashes five raw HTML bodies,32 web-tool outputs (26excerpts/six errors),13 Researcher payloads/13 aids andfive HTML reading aids. Raw37request history preserves30HTTP404/twoDNS failures. Rendered excerpts are not original HTTP bodies, full-page captures or HTTP200 proofs; independent reviews verify claim support and provenance limits. Vendor sources remain documentary observations with explicit edition/date/compatibility/privacy/saving/switching conflicts and limits. No hands-on, offline, continuity, security, legal, content or adoption conclusion. Writer invalid patch and preliminary checker failures remain preserved below; corrected checks passed without prohibited execution or bypass. No build/device/audio/MIDI/performance claim. All8 brief criteria pass.
+
+This decisive artifact precedes a separate In review→Verified state commit. It does not accept M0, authorize main/successor, or select architecture/dependencies/assets/content/license branches. After the barrier integrate only the exact reviewed candidate and use the milestone-only publication guard. Writers/reviewers completed and idle; R10 remains Queued until its own brief/barriers.
+
+---
+
+## Preserved verification stages
+
 # R09 specialist approvals — Final pending
 
 Exact unchanged candidate `266f263849c737adb1a9759b39967042cd69212b` has independent QA and Licensing/Security APPROVE0/0/0, no findings. Complete outputs/runtime accompany this update in r09-review-round0.md. Remains In review until fresh Final and finalized-verification/Verified barrier. No integration, adoption or runtime claim.
