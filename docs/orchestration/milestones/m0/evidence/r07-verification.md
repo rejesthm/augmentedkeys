@@ -1,3 +1,9 @@
+# R07 rejected round0 — correction required
+
+Candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df` has QA REJECT0/1/0 and Licensing/Security REJECT0/2/0. Full outputs/runtime are in r07-review-round0.md. No Final or integration. Three Important findings require same-writer correction and fresh independent review. Preserved verification follows.
+
+---
+
 # R07 verification — review candidate
 
 Exact candidate `73622d81785f40c2cd46a42bddc4e2bf5286a8df`, task base `a8b8f78c52d40ab03728073c2692ca6edb9a8d20`, brief `2580cd495ef218c94f488f1622263e4cd61ff6ae`, T01 `08fbaf1f9078989813d32dcf17a940b142a5a3e4`, In-progress `d522a2a1a015956046c7a0cc15daa16d0c07e613`, runtime `bed49b3bf54840ae94da192838a762da50e55b21`. Sources `f6eeb1edda840a2ca01ecf59809bb3462a89a81b` reconciled at `fe4c937535677e69bec8922e149698dfdc9306bb`. Sole assigned Conductor completed synthesis and relinquished writing; controller alone froze the candidate. Required independent QA/Performance, Licensing/Security and Final reviews are pending; this is not Verified or Accepted.
