@@ -44,3 +44,14 @@ Concurrency peaks at two read-only reviewers; one report writer remains exclusiv
 **Known gaps:** no report, candidate, verification artifact, assignment artifact, runtime probe, or `In progress` barrier exists. Publicly unavailable standards must remain explicit gaps. No device, timing, compatibility, certification, or conformance evidence is authorized. Excluded root main-guard edits remain rejected and untouched.
 
 **Next action:** the controller should commit the R05 assignment artifact, then the separate `In progress` barrier, prove each selected session’s actual sandbox and workspace boundary, and launch the read-only Researcher first.
+
+
+## T02 — formal correction round1 assignment (2026-10-23)
+
+Source review `664aec80035ef44fad5d88d409d28f2bb8597805` records exact rejected candidate `5b7390d91fd074479d1144d76233320999f3161e`: Final0Critical/2Important/0Minor, spec complianceFAIL/evidence honestyPASS. Prior QA/Security approvals `68ab17c2e22168d41b2116e329986699cfb35816` and all raw/candidate evidence remain preserved.
+
+Assign the same configured Conductor child `01a1672e-2573-7cf2-990e-310ef956eca3` / workspace-write relay `01a1672d-f816-7f62-87e3-5f289ed7cdbf` as sole writer of `docs/research/MIDI_RESEARCH.md` on `task/m0-r05-midi`, worktree `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r05-midi`, starting rejected HEAD `5b7390d91fd074479d1144d76233320999f3161e`, original base `22afbe4c38e2f46a758cce7e744b4819e116c6ad`. Controller alone owns all Git metadata/commits/shared state/evidence; no other writer active.
+
+Bounded corrections: (I1) add source-qualified positive effects of CC120/121/123 from M17 while retaining release/sustain/mode/receiver caveats and leaving panic ordering/policy unselected; (I2) document M04/M11/M12 bind-permission guard and exported virtual-service form, distinguish component/system bind restriction from user-granted runtime permission, retain no product adoption. Update only affected summary/matrix consistency. Additional original Android permission reference may be read/captured to resolve classification. Existing sources unchanged; no package/manifest/permission/code/hardware action.
+
+This artifact must precede the separate In review→In progress state commit. No writer work between those commits. Then same writer correction, complete affected static/source checks, new exact candidate and verification, separate In-review barrier, fresh affected QA/Security then Final review. Maximum5 correction rounds; this is1. Neither Important finding is waived, and no integration is permitted until closure.
