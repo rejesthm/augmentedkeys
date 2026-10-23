@@ -12,15 +12,15 @@ Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns activation/shared state. 
 
 # Research Questions
 
-R01 is Verified in correction round3; R02 in round1. R03–R10 remain Queued. No task or milestone is Accepted. All earlier reports, reviews and failures remain preserved.
+R01 is Verified in correction round3; R02 in round1. R03 is Eligible; R04–R10 remain Queued. No task or milestone is Accepted. All earlier reports, reviews and failures remain preserved.
 
 # Ready Tasks
 
-R03 is next, after exact milestone publication and its committed brief/eligibility/assignment barriers.
+R03 brief `95cc3b9c273b544ecae1b47582d3c97273148b38` is committed and Eligible after proved publication. Conductor intake and writer-assignment barrier are next.
 
 # In Progress
 
-OD-006 state transition and bounded publication preparation only; no manual L1 Loop or product work.
+R03 intake preparation; no research writer, manual L1 Loop or product work.
 
 # Verification Needed
 
