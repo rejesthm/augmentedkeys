@@ -1,3 +1,9 @@
+# R05 Final rejection — correction required
+
+Exact candidate `5b7390d91fd074479d1144d76233320999f3161e` has Final REJECT0Critical/2Important/0Minor (CC120/121/123 positive semantics; Android virtual-service bind/exported requirements). Spec compliance FAIL; evidence honesty PASS. Literal report and actual read-only runtime accompany this update in `r05-final-review-round0.md`. Earlier QA/Security approvals are preserved and insufficient for verification. Task remains In review until the correction transition artifact and separate In-progress barrier.
+
+---
+
 # R05 specialist approvals — Final review pending
 
 Unchanged candidate `5b7390d91fd074479d1144d76233320999f3161e` has fresh independent QA and Licensing/Security APPROVE0/0/0. Literal reports and actual read-only runtime provenance are recorded alongside this update in `r05-review-round0.md`. Source hashes and candidate remained unchanged. Task remains In review until fresh independent Final passes and finalized verification precedes the separate Verified state barrier.
