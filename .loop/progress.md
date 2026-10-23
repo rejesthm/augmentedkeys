@@ -8,7 +8,7 @@ Complete unchanged R01–R10 documentary research with independent reviews under
 
 # Active Agents
 
-Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 Android writer assigned; runtime probe pending before body. Permission-isolated roles and one-writer/three-specialist limits remain binding.
+Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publication. R03 Apple writer and independent reviewers completed their assignments and are idle. R04 Android writer `01a16827-4c1c-7b81-aa06-bb9acccdce41` active after runtime proof `d62c0ea95ed1bb107cfbba5a4667b2695911dd8b`. Permission-isolated roles and one-writer/three-specialist limits remain binding.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R03 exact verified candidate is integrated; guarded publication proved at `576fb
 
 # In Progress
 
-R04 assigned; runtime probe pending before body. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
+R04 research body active; source evidence capture in progress. R03 verification/integration/publication complete. No manual L1 Loop or product implementation.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Prove configured Android runtime and execute assigned R04 research. No architecture/adoption, main integration or M1 activation.
+Complete R04 research and verify exact candidate before QA/Security/Final reviews. No architecture/adoption, main integration or M1 activation.

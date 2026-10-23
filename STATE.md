@@ -31,7 +31,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 ## Current gates and next action
 
-Activation and R03 publication are proved in their canonical evidence. R04 is In progress under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`. T01 `d342ce41a2b874f3dea19c2c0866f7c816a15247` assigns the sole Android Specialist; runtime probe must pass before body. No research body has run.
+Activation and R03 publication are proved in their canonical evidence. R04 is In progress under brief `3f2eb3e9640de11104af4982ce94a695b4ccf4a3`. T01 `d342ce41a2b874f3dea19c2c0866f7c816a15247` assigns the sole Android Specialist; runtime verified at `d62c0ea95ed1bb107cfbba5a4667b2695911dd8b`; research body active in the assigned isolated worktree.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
