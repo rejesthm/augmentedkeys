@@ -104,3 +104,5 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 # Next Highest Priority Task
 
 After R08 integration/publication, prepare R09 MainStage public capability/workflow brief.
+
+R08 exact report integrated at `781d9b53ce6202785460753fe4af7ed87944b333`; reviewed blob unchanged, clean merge and whitespace checks passed. Guarded milestone publication follows.
