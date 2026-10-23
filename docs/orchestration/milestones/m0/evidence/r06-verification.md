@@ -1,3 +1,15 @@
+# Finalized R06 verification — correction round1
+
+Exact candidate `446493053c94e5be336036bab212ca85ba61cc9c`, base `131fff075db2b89cd35abf714b3590e0c8b22029`. QA/Performance and Licensing/Security approvals0/0/0 are recorded at `9d4465f1e6c84223421926d6ec30965bb25d857e` in r06-review-round1.md. Fresh independent Final APPROVE0/0/0 with Spec Compliance PASS and Evidence Honesty PASS accompanies this artifact in r06-final-review.md. All3 original Important findings closed; rejected candidate `8a7145825db8588ee4a4dd8cf4e87e584f6a54da` and rejection `da24bca4d1f3ea17c26c4dcdb53289c7f87779a2` remain preserved. No R06 unresolved finding.
+
+Fresh controller checks at `2026-10-23T12:32:17.339143+00:00`: exact candidate and clean task, committed-range whitespace exit0, only SOUND_ENGINE_RESEARCH.md differs, SHA256 `6526deba5037529cd277059fe75fb3059da8c002885c4c7792ed2520df2ecd19` unchanged after reviews. All50 captured bodies/four indexes were freshly rehashed by required reviewers. Documentary scope only; no build/device/audio/MIDI/performance, legal or adoption claim. Historical SF2 mirror, community SFZ authority and unresolved build/callback/content/device gaps remain explicit. All8 brief criteria pass.
+
+This finalized artifact is decisive evidence for a separate In review→Verified state commit. It does not accept M0, authorize main/successor, or select architecture/dependencies/assets/content. After the barrier, integrate only the reviewed candidate and publish only milestone through the existing guard. All writers/reviewers completed and idle; R07 remains Queued until its own brief/barriers.
+
+---
+
+## Preserved verification stages
+
 # R06 correction1 specialist approvals — Final pending
 
 Exact unchanged candidate `446493053c94e5be336036bab212ca85ba61cc9c` has QA and Licensing/Security APPROVE0/0/0 with all three original Important findings closed. Complete outputs and runtime evidence accompany this update in r06-review-round1.md. Remains In review; fresh independent Final and finalized-verification/Verified barrier still required. No integration, adoption, build/device/performance or legal claim.
