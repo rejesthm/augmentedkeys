@@ -12,7 +12,7 @@ Controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845` owns state/integration/publica
 
 # Research Questions
 
-R01–R05 Verified; R06 Eligible; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R05 Verified; R06 In progress; R07–R10 Queued. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
 
 # Ready Tasks
 
@@ -20,7 +20,7 @@ R04 exact candidate integrated at `ed966a7ff7952377109c810a7a8c901c5e4fdbf2`; gu
 
 # In Progress
 
-R05 exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` is Verified under `96a82baa49cb561084585115cde4e4658498307b`. Exact report integrated at `a3ea90b189b5b7fd23639455b92b4f9c1ae894fb` and published/equal at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. R06 is Eligible after its committed brief; isolated worktree and Conductor intake next, no writer assigned.
+R05 exact candidate `00952ed4bd563446ef450ce375cb5ec89edb43de` is Verified under `96a82baa49cb561084585115cde4e4658498307b`. Exact report integrated at `a3ea90b189b5b7fd23639455b92b4f9c1ae894fb` and published/equal at `ba19ffdc714ab2b753b5fec00fb1cbed11ac97fe`. R06 T01 `48c929b69f1cbaaacb24a002af6cd981992d73e6` assigns one Conductor report writer and independent Researcher before this separate In-progress state; runtime/path probes next.
 
 # Verification Needed
 
@@ -103,4 +103,4 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Create isolated R06 task worktree and request Conductor intake/role selection; R01 dependency and R05 publication are proved. No architecture/adoption, main integration or M1 activation.
+Prove assigned R06 runtime/path boundaries, then independent Researcher and sole Conductor documentary synthesis; no engine/format/content adoption. No architecture/adoption, main integration or M1 activation.
