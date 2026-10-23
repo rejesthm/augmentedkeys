@@ -1,3 +1,70 @@
+# R05 verification — correction round1
+
+New candidate `00952ed4bd563446ef450ce375cb5ec89edb43de`, rejected prior candidate `5b7390d91fd074479d1144d76233320999f3161e`, original base `22afbe4c38e2f46a758cce7e744b4819e116c6ad`. Final rejection `664aec80035ef44fad5d88d409d28f2bb8597805`; correction T02 `59ee0ed5677261ad57a3ed4140593ed774577e88`; separate In-progress state `34f2917f0abe4bf7e7a5272cae2ca87eabd19715`. Same sole Conductor writer completed handback; actual final runtime snapshot remains independent workspace-write, gpt-5.6-sol/high, exact R05 cwd. No other writer or Git mutation by the role. Original candidate/review evidence retained below and in Git.
+
+Status: pending fresh affected QA/Performance, Licensing/Security, then Final review. No finding is marked closed by controller mapping. Earlier approvals apply only to the rejected prior candidate. Writer's next-action suggestion does not waive the required specialist re-reviews.
+
+## Fresh checks
+
+At `2026-10-23T11:29:39.832132+00:00` UTC, ProductName:		macOS; ProductVersion:		26.6.2; BuildVersion:		25G83, arm64, git version 2.54.0 (Apple Git-157). Controller committed-range whitespace passed; task worktree clean at exact new candidate; only `docs/research/MIDI_RESEARCH.md` changed from base. 489lines, SHA256 `034ad9cc008dbc836ca73301de26f725046f754c9b6e526b708a518e2c93b078`. Correction diff from rejected candidate:17 insertions/12 deletions in the same report. No product/native/manifest/permission/ADR/protected-path change.
+
+All69 successful bodies across four indexes rehashed without mismatch;71 requests total,2 preserved failures. Original68 bodies unchanged; M71 permission reference was added under source catalog update `c652fb606583062b101030b44ef52d56fd6f0481`. Local and live remote main equal `b1b0c1edd5e42d3ea791f665c22954834e962d05`; root excluded guard edit hashes unchanged. Documentary/static checks only; no Flutter/build/device/audio/MIDI/runtime/performance or adoption evidence.
+
+```text
+git diff --check 22afbe4c38e2f46a758cce7e744b4819e116c6ad 00952ed4bd563446ef450ce375cb5ec89edb43de
+exit0; no output
+git diff --name-only 22afbe4c38e2f46a758cce7e744b4819e116c6ad 00952ed4bd563446ef450ce375cb5ec89edb43de
+docs/research/MIDI_RESEARCH.md
+git status --porcelain
+exit0; empty
+```
+
+## Finding-to-change map (not closure)
+
+- Final I1: message section now records M17-qualified CC120/121/123 positive effects and mode/default qualifications, retaining incomplete-summary, sustain/release/receiver, MIDI2 per-note reset and unselected panic-ordering limits.
+- Final I2: Android matrix/lifecycle and capability/fact/gap summaries record M04's guarded exported byte/UMP service forms and M71's API23 signature/system-only binding restriction, distinct from Bluetooth runtime grants; product/manifest adoption remains open.
+- Source totals and exact M71 URL/access identity updated consistently; unrelated report scope unchanged.
+
+- `candidate-verification-round1.json` SHA256 `118d9143bd83c46247d2852b27d3c1103eea5d9719f98f299b7e37bf5b504532`.
+- `conductor-correction1-runtime.json` SHA256 `7855e53472c042843454af2bf362f92acb3c0ab610cb27d232e10dbb6d8d1467`.
+- `conductor-correction1.final.txt` SHA256 `2efed86e9c65a3db4a6dda1a3db440e886034d8268cf38d5a199fa8307462d89`.
+
+## Literal writer handback
+
+Configured Conductor `gpt-5.6-sol`/high/workspace-write, UUID `01a1672e-2573-7cf2-990e-310ef956eca3`.
+
+Edited only [MIDI_RESEARCH.md](/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-r05-midi/docs/research/MIDI_RESEARCH.md).
+
+- **I1:** Added M17-qualified effects for CC120, CC121, CC123, and CC124–127. Preserved sustain, release, receiver, mode, incomplete-summary, MIDI 2 per-note reset, silence, and unselected panic-order limitations.
+- **I2:** Added M04/M11/M12 virtual byte/UMP service requirements and M71’s API 23 signature-protected, system-only binding restriction. Distinguished this guard from Nearby Devices grants and left manifest/product adoption unselected.
+- Added M71’s exact URL and 2026-10-23 access date.
+- Corrected totals to 71 requests, 69 HTTP 200 bodies, and two failures.
+- Updated the capability matrix, fact summary, and missing-evidence list consistently.
+
+Sources inspected: M17, M04, M11, M12, M71, `index-correction1.json`, and canonical `r05-sources.md` at source commit `c652fb606583062b101030b44ef52d56fd6f0481`. Governing versions were rejected candidate `5b7390d91fd074479d1144d76233320999f3161e`, Final rejection `664aec80035ef44fad5d88d409d28f2bb8597805`, T02 `59ee0ed5677261ad57a3ed4140593ed774577e88`, and In-progress state `34f2917f0abe4bf7e7a5272cae2ca87eabd19715`.
+
+Validation passed:
+
+- `git diff --check`
+- Required-content and obsolete-content assertions
+- UTF-8, final newline, CR, and trailing-whitespace checks
+- Scope: exactly one modified path
+- Staging: empty
+- 489 lines; 42,838 bytes
+- SHA-256: `034ad9cc008dbc836ca73301de26f725046f754c9b6e526b708a518e2c93b078`
+- Diff: 17 insertions, 12 deletions
+- HEAD remained `5b7390d91fd074479d1144d76233320999f3161e`; no Git write or staging command was run.
+
+The user outcome remains reliable offline basic wired MIDI 1 control of the future built-in instrument. This correction makes documentary findings only; normative MIDI 1/MIDI-CI/MPE gaps, physical-device evidence, and product-policy decisions remain open.
+
+I relinquish sole ownership of the report.
+
+**Next action:** Controller should create the bounded single-file correction commit and dispatch a fresh independent top-level read-only Final Code Review against its exact SHA.
+
+---
+
+## Preserved earlier verification and findings
+
 # R05 Final rejection — correction required
 
 Exact candidate `5b7390d91fd074479d1144d76233320999f3161e` has Final REJECT0Critical/2Important/0Minor (CC120/121/123 positive semantics; Android virtual-service bind/exported requirements). Spec compliance FAIL; evidence honesty PASS. Literal report and actual read-only runtime accompany this update in `r05-final-review-round0.md`. Earlier QA/Security approvals are preserved and insufficient for verification. Task remains In review until the correction transition artifact and separate In-progress barrier.
