@@ -1,3 +1,17 @@
+# R05 sources — correction round1 update
+
+Current total:71 requests,69 HTTP200 bodies,2 retained failures. Original70-request capture and all prior hashes below remain unchanged. Under T02 `59ee0ed5677261ad57a3ed4140593ed774577e88` and separate correction state `34f2917f0abe4bf7e7a5272cae2ca87eabd19715`, controller read one additional original Android API reference to characterize the documented virtual-service binding restriction; no permission/manifest/product adoption.
+
+| ID | URL | Access UTC | Result/body | SHA256 |
+|---|---|---|---|---|
+| M71 | https://developer.android.com/reference/android/Manifest.permission#BIND_MIDI_DEVICE_SERVICE | 2026-10-23T11:26:25.104160+00:00 | HTTP200; `M71.txt`; 2777568 bytes | `1b2f8939b7f3e0df1e3ba8ec1df2baa6cabf9d5c14dafea7a9790309b3503bf4` |
+
+`index-correction1.json` SHA256 `d08e4a2c69a082e31acd4233d89babb28d749bc71b73ddbf12c134454ca52eec`. Complete raw body retained with original sources. Target section explicitly records API23, signature protection and restriction to system binding. M04 independently documents required guard and exported=true form for both byte-stream and UMP virtual services. This source clarification supports correction of Final finding2; it is not closure or a legal/security adoption verdict. No new account, package, SDK, code, asset or device action.
+
+---
+
+## Preserved original source evidence
+
 # R05 public primary-source evidence
 
 Controller documentary capture on 2026-10-23 UTC under exact R05 brief `f30f02a5c76d5f08e07c45627b023819d811e289`, assignment `c433ba2b0260afd8319e10e56f151ce8980239ba`, and In-progress state `8cd9c18c4b32bf00873b96a185ffc81ad41ada57`. No task transition or review verdict. Actual role isolation is recorded at `0fb4ae5ebc702965ddbd8e59a8618622a66e64d0`.
