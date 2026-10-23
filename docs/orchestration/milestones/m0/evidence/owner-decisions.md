@@ -181,3 +181,46 @@ No research or task-body execution may occur between these barrier commits. R01 
 ### Limits
 
 This decision reactivates only M0 and resolves only G01. It does not accept any research task, start M1, adopt architecture or an ADR, add a dependency or asset, authorize hardware, credentials, signing, release, automation, task-branch publication, main integration/publication, cleanup, or any product, latency, smoothness, reliability, compatibility, audio/MIDI, simulator/emulator, or physical-device claim. Existing contract gates, evidence requirements, task order/dependencies, one-writer rule, three-specialist limit, correction limit, and guarded milestone-branch-only publication authority remain unchanged.
+
+
+## OD-006 — Owner-approved combined baseline and M0 reactivation
+
+- Decision date: 2026-10-23, Asia/Manila.
+- Decision owner: repository owner, responding directly in controller conversation `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`.
+- Responsible recorder: program controller / Roadmap Orchestrator (`/root`).
+- Actual owner reply at `2026-10-23T08:35:22.010Z`: **approved**.
+- Approval context: direct response to the request to approve the prepared M0 activation package at `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`, section “Owner review package: M0 reactivation.” This records the owner's actual short reply; it does not invent a longer statement.
+- Accepted foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`.
+- Accepted current contract-changing commit: `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, `docs/orchestration/milestones/M0_CONTRACT.md`, version 2.
+- Independently reviewed combined baseline: `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d`.
+- Exact displayed acceptance-evidence / owner-request tip: `a775b71b105a4b3945308a5ee99e1b654f75f8dd`.
+- Unchanged starting milestone: `milestone/m0-research` at `8fdb7444ed80675269f38f90f84b362f90c9af23`.
+- Authorized active execution milestone: M0 only, coordinated by this continuation controller; the full working-app objective remains intact and unfinished.
+
+### Decision and entry evidence
+
+The owner accepts the displayed foundation, combined baseline, exact contract and bounded reactivation procedure. This resolves the combined candidate's human-only activation pause. R01/R02 remain Verified; R03–R10 remain in the unchanged contracted queue. No completed task is repeated or waived. The full M0 definition of done remains all ten tasks Verified or Accepted with canonical briefs, evidence, independent reviews, consistent state, a complete reviewed milestone package and equal local/remote milestone hashes.
+
+Fresh read-only checks at `2026-10-23T08:36:32.566137+00:00` proved local main, tracking main and live remote main equal the accepted foundation; the milestone worktree and live remote equal the exact starting milestone; candidate and milestone worktrees clean; candidate descended from that base; the current contract-changing commit equals the displayed binding; the acceptance commit changes only its evidence file; origin has one identical fetch/push endpoint; and the decision-evidence branch is absent locally/remotely. The historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224` was freshly observed blocked and not loaded at `2026-10-23T08:36:28Z`. This continuation Goal was blocked awaiting this reply, with no active M0 research writer. Existing specialist review sessions ended; only this controller owns the activation files.
+
+CT03 QA, Licensing/Security and Final Code Review each approved exact baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` with zero findings; their complete records and role-isolation provenance are bound in the accepted evidence package. Historical G01 failure/rollback evidence remains preserved. Current runtime evidence confirms the configured independent Conductor writer and independent read-only review sessions; no mixed-permission nesting is permitted.
+
+The original checkout's separate uncommitted main-guard recovery edits remain byte-for-byte unchanged and excluded. Subsequent advisory QA/Security review rejected those edits; 34 existing fixture scenarios passed, but two additional disposable-fixture reproductions exposed ignored-file data loss and backup deletion. These findings remain unresolved and prohibit adopting those edits or claiming main-integration readiness. They do not authorize or affect this independent research-only activation and milestone-publication guard. No finding is waived by this approval.
+
+### Exact authorized sequence
+
+1. Commit only this owner-decision artifact and resolve its SHA.
+2. In a separate commit, bind that SHA and synchronize `M0_LEDGER.md`, `STATE.md`, `.loop/progress.md`, and only ROADMAP's leading M0 status sentence to Active. Keep every research task state unchanged. No research, task execution or integration occurs between these commits.
+3. Verify those are the only two commits and allowed paths after exact acceptance tip `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Recheck the clean milestone at its displayed base, then perform only its bounded hook-disabled fast-forward to the verified activation tip.
+4. From the clean checked-out milestone branch, use only `validate_branch_action.sh authorize`, `push`, and `verify` with the same activation tip, `milestone/m0-research`, and accepted foundation. Require actual local/remote equality before research.
+5. Continue R03–R10 through committed briefs and separate eligibility/assignment barriers, bounded Conductor handoffs, permission-isolated specialists, one writer and independent reviews. The controller owns local commits and shared Git metadata; writers own only their assigned output files. Do not broaden sandbox permissions after a Git metadata denial.
+
+### Limits and provenance
+
+The accepted package's recovery protocol and exclusions apply unchanged. This decision does not activate M1, adopt architecture/ADRs or dependencies/assets, authorize hardware, credentials/signing, spending/legal commitments, product implementation, public release, main integration, raw pushes, task publication, destructive cleanup, or unsupported device/performance claims. Any failed or ambiguous guard action stops with evidence preserved.
+
+Fresh raw checks and the actual owner-response event are retained under the common Git directory `decision-team-continuation/2026-10-23/`. Their hashes follow; this record also states the observed results so the repository does not depend on local-only evidence for the decision's meaning.
+
+- `od006-owner-response.json` SHA-256: `b46487ef14418d4140b0bf8f29c82c5da2ad29cead20f7731f8fe0952838aff4`.
+- `od006-entry-preflight.json` SHA-256: `139dedbd699ae766ecf9d3306a57fc36f269955644d6d3107cbb421115a946b1`.
+- `od006-prior-goal.json` SHA-256: `d2a7e97baa2a0e2e05e6a2894433bf32db18245c28595a683bcc7b5b090b663d`.
