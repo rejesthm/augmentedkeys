@@ -1,3 +1,15 @@
+# Finalized R08 verification — initial review
+
+Exact candidate `d1979355eabf5214f9b3a79eda4323e55164248a`, base `949c29da2e68e72bd896f74f40717cb0edac5da2`. QA/Performance and Licensing/Security APPROVE0/0/0 at `cb88591ca4fe1aee86d943ab83e2476a3ea76d1f` in r08-review-round0.md. Fresh independent Final APPROVE0/0/0 with Spec Compliance PASS and Evidence Honesty PASS accompanies this artifact in r08-final-review.md. No R08 finding or correction round; all required reviews agree on this unchanged candidate.
+
+Fresh controller checks at `2026-10-23T14:24:21.181569+00:00`: exact clean task/candidate, committed-range whitespace exit0, only SUNDAY_KEYS_ANALYSIS.md differs, SHA256 `e65af25eb06f5857bd9a736c0323b6f7dbeb6ed3ed71d931d366334262f72aec` unchanged after reviews. Required reviews freshly rehashed all26 public HTML bodies across two indexes;26HTTP200 responses,zero failures. Vendor sources remain documentary observations with explicit edition/date/tier/technical conflicts and limits. No hands-on, offline, continuity, security, legal, content or adoption conclusion. Writer tool failures remain preserved below; safer checks passed without prohibited execution or bypass. No build/device/audio/MIDI/performance claim. All8 brief criteria pass.
+
+This decisive artifact precedes a separate In review→Verified state commit. It does not accept M0, authorize main/successor, or select architecture/dependencies/assets/content/license branches. After the barrier integrate only the exact reviewed candidate and use the milestone-only publication guard. Writers/reviewers completed and idle; R09 remains Queued until its own brief/barriers.
+
+---
+
+## Preserved verification stages
+
 # R08 specialist approvals — Final pending
 
 Exact unchanged candidate `d1979355eabf5214f9b3a79eda4323e55164248a` has independent QA and Licensing/Security APPROVE0/0/0, no findings. Complete outputs/runtime accompany this update in r08-review-round0.md. Remains In review until fresh Final and finalized-verification/Verified barrier. No integration, adoption or runtime claim.
