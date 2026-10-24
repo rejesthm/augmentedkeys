@@ -110,3 +110,5 @@ Evidence publication authorize refused67; local binding `0db258d158f1d212497ccfd
 CT04 authorization/archive evidence `fd52158b1e10629843cc60c5f18e18a7519d27e5`: wrong-base history preserved under archive/m0-decision-evidence-base-error-20261024; corrected base recorded before replacement creation. M0 pause unchanged.
 
 CT04 In review, candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5`, verification `59464ede90cbb6db21523b74d8372fc90ec58ec4`. QA/Security independently assigned; Conductor idle; no repository writer active. M0 remains paused.
+
+CT04 correction round1 In progress under assignment `d4e36ffe968df4561c23706eededd70c36be38da` and separate execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`. Source rejection `0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e`; candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` remains rejected with five Important groups. Same Conductor temporary-proposal role; controller sole repository writer. QA/Security idle; Final not launched. M0 pause remains unchanged.
