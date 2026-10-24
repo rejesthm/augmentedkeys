@@ -224,3 +224,40 @@ Fresh raw checks and the actual owner-response event are retained under the comm
 - `od006-owner-response.json` SHA-256: `b46487ef14418d4140b0bf8f29c82c5da2ad29cead20f7731f8fe0952838aff4`.
 - `od006-entry-preflight.json` SHA-256: `139dedbd699ae766ecf9d3306a57fc36f269955644d6d3107cbb421115a946b1`.
 - `od006-prior-goal.json` SHA-256: `d2a7e97baa2a0e2e05e6a2894433bf32db18245c28595a683bcc7b5b090b663d`.
+
+
+## OD-007 — Repaired foundation and superseding M0 contract accepted
+
+- Decision date: 2026-10-24, Asia/Manila.
+- Decision owner: repository owner in controller conversation `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`.
+- Responsible recorder: program controller / Roadmap Orchestrator (`/root`).
+- Actual owner reply: **approved**. This records the actual short response, not an invented activation phrase.
+- Approval context: direct response to the request to accept repaired foundation `552413198ae9ed488f70b3d3db656469292b89a4` and the superseding M0 contract at that same exact reviewed snapshot, then resume M0 through its gates.
+- Accepted repaired foundation: `552413198ae9ed488f70b3d3db656469292b89a4`.
+- Accepted contract snapshot: `552413198ae9ed488f70b3d3db656469292b89a4:docs/orchestration/milestones/M0_CONTRACT.md`. Its latest content-changing ancestor is `6d143f53ebb7a553c0d17db8386251ee23704380`; the bytes at these two commits are identical. The approval binds the displayed snapshot and does not claim the contract was edited in C5.
+- Original accepted repository/main foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`, unchanged locally, in tracking state and on the live remote. Accepting the repaired foundation does not move main.
+- Prior milestone tip: `b6ce6e73faa96664847056453cc19bf4c09f54fa`; latest published milestone tip at preflight: `708aaa5968d557a09d3b9f9b207ff3fd77ffd315`.
+- Isolated preparation: `task/m0-od007-adoption`, `.worktrees/m0-od007-adoption`; controller is sole writer.
+- Reviewed controls integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`, with exact parents equal to the prior milestone and accepted repaired foundation. Merge tree `2da2982cec6533492437da7a9add01ef2da76992` matches the preflight merge result. All fourteen candidate paths match C5; unrelated milestone research/evidence/state remains unchanged.
+
+### Resolved gate and evidence
+
+This owner decision resolves the repaired-foundation/contract adoption gate in the actual independent Steward HUMAN_GATE decision. Published binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8`, package `d2b0e788a93e8a30831a68054e44d5483b2d9060`, and verbatim verdict `615478aee5de4f245357a27949eb5110cc0fbbd4` remain immutable. The Steward's PAUSE_HUMAN is not relabeled as approval or consumed as milestone acceptance.
+
+CT04 is Verified through finalized artifact `a15dba413a221e70a02f1a3f9e57a966c2974213` and separate state commit `b6ce6e73faa96664847056453cc19bf4c09f54fa`. Fresh exact-C5 QA/Performance, Licensing/Security and Final Code Review each approved with zero Critical, Important and Minor findings. Canonical review commits are respectively `0b2352271465909a023257c5c4eac01f8f441cec`, `2e7f1900d5503f367d2eed8e2f8f90ad25df67c9`, and `dc12e6b86d5c22fb4d2725779beebd61d288c578`. Controller verification passed 125 evidence-publication scenarios and 118 main-integration scenarios; character/block dynamic coverage remains explicitly unavailable. These existing results are not new runs or product/device evidence.
+
+Historical G01 runtime validation `ec4e76345519973d09a4dbeff6d043e6477e67bc`, correction `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db` and independent approval `88fe4ece13bfedd8b67eaa8882c5adf020654418` remain preserved, along with all failed nested-permission attempts. Current CT04 runtime records establish independent read-only review/Steward sessions and the separate writer handoff; no mixed-permission nesting is authorized. No research writer is active. The existing full-app continuation Goal coordinates M0 only; this reactivation neither creates a second Goal nor repeats initial branch creation.
+
+### Authorized sequence and limits
+
+Commit this owner decision first. Its separate next state commit must bind this decision SHA and synchronize M0 to Active in the ledger, STATE, progress, ROADMAP's leading M0 status sentence and verify the research-index statuses remain unchanged. Preserve all R01–R10 Verified states, exact research artifacts and nonblocking R01/R05 limitations; none is Accepted. No task execution or integration may occur between the two barrier commits. Verify the exact prepared descendant before fast-forwarding the existing milestone branch, then use only the milestone guard authorize/push/verify with the accepted repaired-foundation ancestry and identical candidate arguments.
+
+Continue by preparing the complete M0 package, freezing its candidate and obtaining fresh independent reviews and a separate Steward milestone decision. Main integration and successor activation each still require their own exact evidence and guarded authority. No architecture/ADR, dependency/asset, hardware, credentials/signing, spending/legal commitment, product implementation, release/deployment, raw push, task publication, destructive action or safety-gate waiver is authorized by this decision. The app remains a Flutter shell.
+
+The two original owner-edited root guard files remain excluded and unchanged. The erroneous evidence history remains preserved at `0db258d158f1d212497ccfdf07675ec399e6f870` on its archive branch; it is unpublished and unconsumed. Canonical evidence is local/live-remote equal at the binding above. No prior failure is erased or represented as approval.
+
+### Reactivation audit
+
+Independent Researcher `01a1672e-07ef-7650-af24-1a51ffc6d6c0` through same-permission relay `01a1672d-d7a4-7ca1-aee0-7262d495a5f9` audited exact ancestry, path scope, source preservation and barrier ordering read-only. It confirmed a clean non-fast-forward combination and owner-decision then separate reactivation state barrier; research-index states must remain unchanged. Controller performs the combination on the isolated preparation branch before the milestone fast-forward. Actual runtime is gpt-5.6-terra/high/read-only; full raw audit SHA-256 `57f835433dc1e6610623818551f89200c932b0f7c362822de8c0679af4403bc1`, retained under `.git/decision-team-continuation/2026-10-23/governance-correction/od007-researcher.final.txt`. This audit does not substitute for later exact completed-candidate reviews.
+
+Fresh preflight records are in `.git/decision-team-continuation/2026-10-23/od007-adoption/entry-preflight.json`, SHA-256 `275ac34067fb98c71b87e5a66896dd2ab15a096bfc25bec8078216557e05a677`. Initial main/foundation equality and initial one-Goal/branch-creation conditions were satisfied under OD-001; this is reactivation of that existing milestone, with the owner-approved repaired control foundation and unchanged original main, not a new initial activation. No main movement is claimed or authorized.
