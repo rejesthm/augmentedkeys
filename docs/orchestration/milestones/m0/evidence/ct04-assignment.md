@@ -1,0 +1,9 @@
+# CT04 assignment
+
+Source brief/authority: 8be352c653084d47929ffecdf6e3dca0c5cb5c3e. Conductor intake ACCEPT; exact output SHA256 a24dac074a88fb369ab26a8f7a5a7540001ca4485d57b4ba185acb596ba669c4. Sole implementation writer is existing configured Conductor 01a1672e-2573-7cf2-990e-310ef956eca3 through workspace-write relay01a1672d-f816-7f62-87e3-5f289ed7cdbf. Actual latest contexts prove sol/high, workspace-write and exact CT04 cwd. Runtime sandbox also permits standard temporary directories; this is not a claim of a worktree-only OS sandbox. Assigned repository edits are only the ten exact implementation files enumerated in the brief. Controller owns all Git, state and evidence. No nested specialists.
+
+Branch task/ct04-governance-correction, isolated .worktrees/ct04-governance-correction. Correction round0. Fresh baselines passed17 evidence and28 integration scenarios; full outputs are private governance-correction/baseline-*.txt, results baseline-results.json. Baselines are old fixture coverage, not proof new requirements pass.
+
+Owner-authorized archive preservation completed separately: fd52158b1e10629843cc60c5f18e18a7519d27e5; corrected-base ledger/state98228b3e0ecde1e46393f5475ccd22e4b4c38b26. Old local evidence branch renamed to archive/m0-decision-evidence-base-error-20261024 at unchanged0db258d158f1d212497ccfdf07675ec399e6f870. Replacement absent; M0 paused. Do not require old canonical local evidence ref to remain present or recreate it yourself.
+
+Verification/review: tests first with preserved red/green commands and outputs; full final suites; pressure scenarios; independent QA and Security, then Final after their approvals, all bound to exact candidate. No staging/commits by writer. No original owner-edit adoption. No live project integration/push. Stop for out-of-scope authority or changed protected state. Return changed paths, behavior, exact test evidence locations/results, remaining limits and uncommitted handoff.
