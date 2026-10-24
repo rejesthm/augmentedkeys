@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Conductor assigned round4 temporary corrections; controller sole repository writer. QA/Security/Final idle after preserved Final rejection. Steward idle; old evidence remains archived and unconsumed.
+Conductor idle after round4 handoff; no implementation writer active. Independent read-only QA/Security reviews are next; Final waits for their exact-candidate approval. Controller owns canonical evidence/state. Old Steward evidence remains archived and unconsumed.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
 
 # In Progress
 
-State: `In progress`; correction round4. Transition CT04 In review → In progress, 2026-10-24T07:41:49.355582+00:00, program controller. Final rejection `e3dce902c15929d0f4a5170ed85112732059d665` for candidate `88aa7f8eea852cf955963acc069ce9e0bc843d42` has 0 Critical/2 Important, Spec Compliance FAIL and Evidence Honesty PASS. Prior QA/Security approval is preserved, not substituted for Final. Assignment `a068ce58b887679efdf412aa88ab2c35368735b5` and separate execution barrier `91b66192530cfc65ffe9eda3417c41fae35d9c03` precede body work. Conductor temporary author; controller sole repository writer; all reviewers idle. Resolve canonical action-path parity and exact prerequisite review commit/path validation. M0 remains paused; R01–R10 Verified/none Accepted; no adoption, evidence recreation/publication, main integration, reactivation or successor action.
+State: `In review`; correction round4. Transition: CT04 In progress → In review, 2026-10-24T08:48:21.871856+00:00, program controller. Source verification `3bd1571d797d5d06588e8205ebc4b634684c954d` at docs/orchestration/milestones/m0/evidence/ct04-verification.md was committed before this state barrier. Exact frozen candidate `d3815c0a79dbc64a59ba6b2763d5d01415bf1311`; authority brief `8be352c653084d47929ffecdf6e3dca0c5cb5c3e`; branch task/ct04-governance-correction; worktree /Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/ct04-governance-correction. Conductor relinquished temporary authorship and is idle; controller owns repository/evidence/state writes; no implementation writer active. Independent QA/Security reviews are next, followed by Final only if both approve this unchanged candidate. Reviewed integration tip: Not verified. Round3 rejection `e3dce902c15929d0f4a5170ed85112732059d665` and all earlier failures remain preserved. Earlier task-branch ct04-status.md is the historical execution barrier; this ledger is current task state. No finding is waived by passing tests. M0 remains paused; R01–R10 Verified, none Accepted; no evidence recreation/publication, main integration, reactivation or successor authority.
 
 # Verification Needed
 
