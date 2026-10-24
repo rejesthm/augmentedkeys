@@ -70,6 +70,39 @@ literal_stats_from_blob() {
   printf '%s\t%s\n' "$hash" "$bytes"
 }
 
+review_attestation_from_blob() {
+  local commit="$1" path="$2" encoded
+  encoded="$(encoded_payload_from_blob "$commit" "$path" '--- BEGIN REVIEW OUTPUT ---' '--- END REVIEW OUTPUT ---')" || return 1
+  printf '%s' "$encoded" | decode_base64 | awk '
+    NR==1 {if($0!="AUGMENTEDKEYS REVIEW ATTESTATION v1") exit 42; begin++ ; next}
+    NR==2 {if(index($0,"Reviewed candidate: ")!=1) exit 42; candidate=substr($0,21); next}
+    NR==3 {if(index($0,"Reviewer role: ")!=1) exit 42; role=substr($0,16); next}
+    NR==4 {if(index($0,"Reviewer session: ")!=1) exit 42; session=substr($0,19); next}
+    NR==5 {if(index($0,"Verification evidence commit: ")!=1) exit 42; verification=substr($0,31); next}
+    NR==6 {if(index($0,"Verdict: ")!=1) exit 42; verdict=substr($0,10); next}
+    NR==7 {if(index($0,"Critical findings: ")!=1) exit 42; critical=substr($0,20); next}
+    NR==8 {if(index($0,"Important findings: ")!=1) exit 42; important=substr($0,21); next}
+    NR==9 {if(index($0,"Minor findings: ")!=1) exit 42; minor=substr($0,17); next}
+    NR==10 {if($0!="END AUGMENTEDKEYS REVIEW ATTESTATION v1") exit 42; end++; next}
+    NR==11 {if($0!="") exit 42; framed=1; next}
+    NR>11 {
+      if(dupstate==0) {if($0=="AUGMENTEDKEYS REVIEW ATTESTATION v1") dupstate=1; next}
+      if(dupstate==1) {dupstate=(index($0,"Reviewed candidate: ")==1)?2:0; next}
+      if(dupstate==2) {dupstate=(index($0,"Reviewer role: ")==1)?3:0; next}
+      if(dupstate==3) {dupstate=(index($0,"Reviewer session: ")==1)?4:0; next}
+      if(dupstate==4) {dupstate=(index($0,"Verification evidence commit: ")==1)?5:0; next}
+      if(dupstate==5) {dupstate=(index($0,"Verdict: ")==1)?6:0; next}
+      if(dupstate==6) {dupstate=(index($0,"Critical findings: ")==1)?7:0; next}
+      if(dupstate==7) {dupstate=(index($0,"Important findings: ")==1)?8:0; next}
+      if(dupstate==8) {dupstate=(index($0,"Minor findings: ")==1)?9:0; next}
+      if(dupstate==9) {if($0=="END AUGMENTEDKEYS REVIEW ATTESTATION v1") duplicate=1; dupstate=0; next}
+    }
+    END {
+      if(!framed || begin!=1 || end!=1 || duplicate || candidate=="" || role=="" || session=="" || verification=="" || verdict=="" || critical=="" || important=="" || minor=="") exit 42
+      printf "%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n",candidate,role,session,verification,verdict,critical,important,minor
+    }'
+}
+
 valid_utc_timestamp() {
   local value="$1" year month day hour minute second max_day
   [[ "$value" =~ ^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})Z$ ]] || return 1
@@ -89,6 +122,11 @@ require_regular_blob() {
   entry="$(git ls-tree "$commit" -- "$path" 2>/dev/null)"
   [[ "$entry" == 100644\ blob\ *$'\t'"$path" ]] || refuse "$label is not a regular file" 74
 }
+require_executable_blob() {
+  local commit="$1" path="$2" label="$3" entry
+  entry="$(git ls-tree "$commit" -- "$path" 2>/dev/null)"
+  [[ "$entry" == 100755\ blob\ *$'\t'"$path" ]] || refuse "$label is not an executable file" 74
+}
 
 require_exact_single_change() {
   local commit="$1" expected="$2" label="$3" count=0 status= path= actual_status= actual_path=
@@ -100,7 +138,7 @@ require_exact_single_change() {
 
 validate_review() {
   local review_commit="$1" review_path="$2" expected_role="$3" expected_candidate="$4" expected_verdict="${5:-APPROVE}"
-  local text header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats
+  local text header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats attestation att_candidate att_role att_session att_verification att_verdict att_critical att_important att_minor
   resolve_exact_commit "$review_commit" 'review commit'
   [[ "$review_path" =~ ^docs/orchestration/decisions/m[0-9]+/reviews/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'review path is not canonical' 74
   require_exact_single_change "$review_commit" "$review_path" 'review'
@@ -132,6 +170,9 @@ validate_review() {
   IFS=$'\t' read -r computed_output_hash computed_output_length <<< "$stats"
   [[ "$computed_output_length" == "$output_length" ]] || refuse 'review output byte length differs from decoded bytes' 74
   [[ "$computed_output_hash" == "$output_hash" ]] || refuse 'review full output hash differs from literal bytes' 74
+  attestation="$(review_attestation_from_blob "$review_commit" "$review_path")" || refuse 'review attestation is invalid' 74
+  IFS=$'\t' read -r att_candidate att_role att_session att_verification att_verdict att_critical att_important att_minor <<< "$attestation"
+  [[ "$att_candidate" == "$candidate" && "$att_role" == "$role" && "$att_session" == "$session" && "$att_verification" == "$verification" && "$att_verdict" == "$verdict" && "$att_critical" == "$critical" && "$att_important" == "$important" && "$att_minor" == "$minor" ]] || refuse 'review attestation differs from recorder metadata' 74
   resolve_exact_commit "$candidate" 'reviewed candidate'
   resolve_exact_commit "$verification" 'verification evidence commit'
   [[ "$candidate" == "$expected_candidate" ]] || refuse 'review candidate differs from package candidate' 74
@@ -162,12 +203,15 @@ validate_package_reviews() {
   [[ "$package_contract_path" == docs/orchestration/milestones/M0_CONTRACT.md ]] || refuse 'package contract path is not canonical' 74
   disposition="$(field_from_text "$text" 'Decision disposition')" || refuse 'package is missing decision disposition' 74
   reviewed="$(field_from_text "$text" 'Reviewed candidate')" || refuse 'package is missing reviewed candidate' 74
+  resolve_exact_commit "$reviewed" 'package reviewed candidate'
   sequence_candidate="$reviewed"
   sequence_disposition="$disposition"
   sequence_critical="$(field_from_text "$text" 'Critical findings')" || refuse 'package is missing finding counts' 74
   sequence_important="$(field_from_text "$text" 'Important findings')" || refuse 'package is missing finding counts' 74
   sequence_package_kind="$package_kind"
+  sequence_resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse "$package_kind package is missing resulting state" 74
   if [[ "$disposition" == NEGATIVE ]]; then
+    [[ "$sequence_resulting_state" == 'Paused for owner decision' ]] || refuse 'negative package resulting state is invalid' 74
     blocking_status="$(field_from_text "$text" 'Blocking evidence status')" || refuse 'negative package is missing blocking evidence status' 74
     sequence_blocking_status="$blocking_status"
     case "$blocking_status" in
@@ -219,6 +263,8 @@ validate_package_reviews() {
   package_entry_commit= package_entry_path=
   case "$package_kind" in
     milestone-acceptance)
+      package_accepted_tip="$(field_from_text "$text" 'Accepted milestone tip')" || refuse 'milestone-acceptance package is missing accepted milestone tip' 74
+      [[ "$sequence_resulting_state" == Accepted && "$package_accepted_tip" == "$reviewed" ]] || refuse 'milestone-acceptance package state or accepted tip is invalid' 74
       package_completion_commit="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance package is missing completion evidence' 74
       package_completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'milestone-acceptance package is missing completion evidence' 74
       [[ "$package_completion_path" =~ ^docs/orchestration/milestones/m[0-9]+/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'milestone-acceptance completion path is not canonical' 74
@@ -228,8 +274,11 @@ validate_package_reviews() {
       git merge-base --is-ancestor "$package_completion_commit" "$reviewed" || refuse 'completion evidence is outside milestone candidate history' 74
       ;;
     main-integration)
+      package_integration_state="$(field_from_text "$text" 'Integration state')" || refuse 'main-integration package is missing integration state' 74
+      [[ "$sequence_resulting_state" == Accepted && "$package_integration_state" == Pending ]] || refuse 'main-integration package state is invalid' 74
       package_acceptance_candidate="$(field_from_text "$text" 'Acceptance candidate')" || refuse 'main-integration package is missing acceptance candidate' 74
       package_integration_candidate="$(field_from_text "$text" 'Integration candidate')" || refuse 'main-integration package is missing integration candidate' 74
+      package_milestone_branch="$(field_from_text "$text" 'Milestone branch')" || refuse 'main-integration package is missing milestone branch' 74
       package_completion_commit="$(field_from_text "$text" 'Completion package commit')" || refuse 'main-integration package is missing completion evidence' 74
       package_completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'main-integration package is missing completion evidence' 74
       package_acceptance_binding_commit="$(field_from_text "$text" 'Milestone acceptance binding commit')" || refuse 'main-integration package is missing acceptance binding' 74
@@ -237,7 +286,11 @@ validate_package_reviews() {
       delta_paths="$(field_from_text "$text" 'Administrative delta paths')" || refuse 'main-integration package is missing administrative delta' 74
       delta_hash="$(field_from_text "$text" 'Administrative delta SHA-256')" || refuse 'main-integration package is missing administrative delta' 74
       transition_date="$(field_from_text "$text" 'Administrative transition date')" || refuse 'main-integration package is missing administrative transition date' 74
+      package_guard_commit="$(field_from_text "$text" 'Reviewed guard commit')" || refuse 'main-integration package is missing reviewed guard provenance' 74
+      package_guard_path="$(field_from_text "$text" 'Reviewed guard path')" || refuse 'main-integration package is missing reviewed guard provenance' 74
+      package_guard_hash="$(field_from_text "$text" 'Reviewed guard SHA-256')" || refuse 'main-integration package is missing reviewed guard provenance' 74
       [[ "$package_integration_candidate" == "$reviewed" && "$package_acceptance_candidate" != "$package_integration_candidate" ]] || refuse 'main-integration candidate bounds are invalid' 74
+      [[ "$package_milestone_branch" =~ ^milestone/m[0-9]+-[a-z0-9][a-z0-9-]*$ ]] || refuse 'main-integration milestone branch is invalid' 74
       resolve_exact_commit "$package_acceptance_candidate" 'accepted milestone candidate'
       resolve_exact_commit "$package_integration_candidate" 'integration candidate'
       git merge-base --is-ancestor "$package_acceptance_candidate" "$package_integration_candidate" || refuse 'integration candidate does not descend from accepted milestone candidate' 74
@@ -246,6 +299,10 @@ validate_package_reviews() {
       actual_delta_hash="$(git diff --binary "$package_acceptance_candidate..$package_integration_candidate" | shasum -a 256 | awk '{print $1}')"
       [[ -n "$actual_delta_paths" && "$delta_paths" == "$actual_delta_paths" && "$delta_hash" == "$actual_delta_hash" ]] || refuse 'main-integration administrative delta differs from candidate history' 74
       valid_utc_timestamp "${transition_date}T00:00:00Z" || refuse 'main-integration administrative transition date is invalid' 74
+      resolve_exact_commit "$package_guard_commit" 'reviewed main guard commit'
+      [[ "$package_guard_path" == .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh && "$package_guard_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'main-integration reviewed guard provenance is invalid' 74
+      require_executable_blob "$package_guard_commit" "$package_guard_path" 'reviewed main guard'
+      [[ "$(git show "$package_guard_commit:$package_guard_path" | shasum -a 256 | awk '{print $1}')" == "$package_guard_hash" ]] || refuse 'main-integration reviewed guard hash differs from artifact' 74
       [[ "$package_completion_path" =~ ^docs/orchestration/milestones/m[0-9]+/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'main-integration completion path is not canonical' 74
       [[ "$package_acceptance_binding_path" =~ ^docs/orchestration/decisions/m[0-9]+/bindings/milestone-acceptance\.md$ ]] || refuse 'main-integration acceptance binding path is not canonical' 74
       resolve_exact_commit "$package_completion_commit" 'completion package commit'
@@ -260,6 +317,8 @@ validate_package_reviews() {
       [[ "$(field_from_text "$acceptance_text" 'Binding status')" == Current && "$(field_from_text "$acceptance_text" 'Decision kind')" == APPROVE_MILESTONE && "$(field_from_text "$acceptance_text" 'Reviewed candidate')" == "$package_acceptance_candidate" && "$(field_from_text "$acceptance_text" 'Authorization')" == GRANTED && "$(field_from_text "$acceptance_text" 'Critical findings')" == 0 && "$(field_from_text "$acceptance_text" 'Important findings')" == 0 ]] || refuse 'main-integration acceptance binding does not authorize the accepted milestone candidate' 74
       ;;
     next-milestone)
+      package_successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone package is missing successor state' 74
+      [[ "$sequence_resulting_state" == Accepted && "$package_successor_state" == 'Approved for activation' ]] || refuse 'next-milestone package state is invalid' 74
       package_successor_commit="$(field_from_text "$text" 'Successor contract commit')" || refuse 'next-milestone package is missing successor contract evidence' 74
       package_successor_path="$(field_from_text "$text" 'Successor contract path')" || refuse 'next-milestone package is missing successor contract evidence' 74
       package_entry_commit="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone package is missing entry-condition evidence' 74
@@ -278,7 +337,7 @@ validate_package_reviews() {
 
 validate_verdict_artifact() {
   local commit="$1" path="$2" text controller role session timestamp package package_path verdict milestone contract candidate target critical important decision
-  local completion acceptance integration acceptance_binding successor entry
+  local completion acceptance integration acceptance_binding successor entry resulting_state accepted_tip integration_state successor_state blocking_status verdict_delta_paths verdict_delta_hash verdict_transition_date verdict_guard_commit verdict_guard_path verdict_guard_hash verdict_milestone_branch
   text="$(git show "$commit:$path")" || refuse 'verdict artifact is unreadable' 74
   controller="$(field_from_text "$text" 'Controller recorder')" || refuse 'verdict provenance is invalid' 74
   role="$(field_from_text "$text" 'Steward role')" || refuse 'verdict provenance is invalid' 74
@@ -294,33 +353,47 @@ validate_verdict_artifact() {
   critical="$(field_from_text "$text" 'Critical findings')" || refuse 'verdict is missing finding counts' 74
   important="$(field_from_text "$text" 'Important findings')" || refuse 'verdict is missing finding counts' 74
   decision="$(field_from_text "$text" 'Decision')" || refuse 'verdict is missing decision text' 74
+  resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse 'verdict is missing resulting state' 74
   [[ "$controller" == program-controller && "$role" == decision_steward && "$session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] || refuse 'verdict provenance is invalid' 74
   valid_utc_timestamp "$timestamp" || refuse 'verdict provenance is invalid' 74
   [[ "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$candidate" == "$sequence_candidate" ]] || refuse 'verdict does not bind package candidate' 74
   [[ "$milestone" == "$package_milestone" && "$contract" == "$package_contract" && "$target" == "$package_target" ]] || refuse 'verdict bounds differ from package' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'verdict findings differ from package' 74
+  [[ "$resulting_state" == "$sequence_resulting_state" ]] || refuse 'verdict resulting state differs from package' 74
   if [[ "$sequence_disposition" == APPROVAL ]]; then
     case "$sequence_package_kind:$verdict" in milestone-acceptance:APPROVE_MILESTONE|main-integration:APPROVE_MAIN_INTEGRATION|next-milestone:APPROVE_NEXT_MILESTONE) ;; *) refuse 'approval package kind and verdict conflict' 74;; esac
     case "$sequence_package_kind" in
       milestone-acceptance)
+        accepted_tip="$(field_from_text "$text" 'Accepted milestone tip')" || refuse 'milestone-acceptance verdict is missing accepted milestone tip' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance verdict is missing completion evidence' 74
-        [[ "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance verdict completion evidence differs from package' 74
+        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance verdict bounds differ from package' 74
         ;;
       main-integration)
+        integration_state="$(field_from_text "$text" 'Integration state')" || refuse 'main-integration verdict is missing integration state' 74
+        verdict_milestone_branch="$(field_from_text "$text" 'Milestone branch')" || refuse 'main-integration verdict is missing milestone branch' 74
+        verdict_delta_paths="$(field_from_text "$text" 'Administrative delta paths')" || refuse 'main-integration verdict is missing administrative delta' 74
+        verdict_delta_hash="$(field_from_text "$text" 'Administrative delta SHA-256')" || refuse 'main-integration verdict is missing administrative delta' 74
+        verdict_transition_date="$(field_from_text "$text" 'Administrative transition date')" || refuse 'main-integration verdict is missing administrative transition date' 74
+        verdict_guard_commit="$(field_from_text "$text" 'Reviewed guard commit')" || refuse 'main-integration verdict is missing reviewed guard provenance' 74
+        verdict_guard_path="$(field_from_text "$text" 'Reviewed guard path')" || refuse 'main-integration verdict is missing reviewed guard provenance' 74
+        verdict_guard_hash="$(field_from_text "$text" 'Reviewed guard SHA-256')" || refuse 'main-integration verdict is missing reviewed guard provenance' 74
         acceptance="$(field_from_text "$text" 'Acceptance candidate')" || refuse 'main-integration verdict is missing candidate bounds' 74
         integration="$(field_from_text "$text" 'Integration candidate')" || refuse 'main-integration verdict is missing candidate bounds' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'main-integration verdict is missing completion evidence' 74
         acceptance_binding="$(field_from_text "$text" 'Milestone acceptance binding commit')" || refuse 'main-integration verdict is missing acceptance binding' 74
-        [[ "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration verdict bounds differ from package' 74
+        [[ "$integration_state" == "$package_integration_state" && "$verdict_milestone_branch" == "$package_milestone_branch" && "$verdict_delta_paths" == "$delta_paths" && "$verdict_delta_hash" == "$delta_hash" && "$verdict_transition_date" == "$transition_date" && "$verdict_guard_commit" == "$package_guard_commit" && "$verdict_guard_path" == "$package_guard_path" && "$verdict_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration verdict bounds differ from package' 74
         ;;
       next-milestone)
+        successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone verdict is missing successor state' 74
         successor="$(field_from_text "$text" 'Successor contract commit')" || refuse 'next-milestone verdict is missing successor contract' 74
         entry="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone verdict is missing entry-condition evidence' 74
-        [[ "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone verdict bounds differ from package' 74
+        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone verdict bounds differ from package' 74
         ;;
     esac
     sequence_authorization=GRANTED
   else
+    blocking_status="$(field_from_text "$text" 'Blocking evidence status')" || refuse 'negative verdict is missing blocking evidence status' 74
+    [[ "$blocking_status" == "$sequence_blocking_status" ]] || refuse 'negative verdict blocking status differs from package' 74
     if [[ "$sequence_blocking_status" == HUMAN_GATE ]]; then
       [[ "$verdict" == PAUSE_HUMAN ]] || refuse 'human-gate package must pause for the owner' 74
     else
@@ -333,7 +406,7 @@ validate_verdict_artifact() {
 
 validate_binding_artifact() {
   local commit="$1" path="$2" text status milestone contract package package_path verdict verdict_path kind candidate target authorization critical important
-  local completion acceptance integration acceptance_binding successor entry
+  local completion acceptance integration acceptance_binding successor entry resulting_state accepted_tip integration_state successor_state blocking_status binding_delta_paths binding_delta_hash binding_transition_date binding_guard_commit binding_guard_path binding_guard_hash binding_milestone_branch
   text="$(git show "$commit:$path")" || refuse 'binding artifact is unreadable' 74
   status="$(field_from_text "$text" 'Binding status')" || refuse 'binding is missing status' 74
   milestone="$(field_from_text "$text" 'Milestone')" || refuse 'binding is missing milestone' 74
@@ -348,33 +421,48 @@ validate_binding_artifact() {
   authorization="$(field_from_text "$text" 'Authorization')" || refuse 'binding is missing authorization' 74
   critical="$(field_from_text "$text" 'Critical findings')" || refuse 'binding is missing finding counts' 74
   important="$(field_from_text "$text" 'Important findings')" || refuse 'binding is missing finding counts' 74
+  resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse 'binding is missing resulting state' 74
   [[ "$status" == Current && "$milestone" == "$package_milestone" && "$contract" == "$sequence_contract" && "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$verdict" == "$sequence_verdict_commit" && "$verdict_path" == "$sequence_verdict_path" ]] || refuse 'binding does not bind current package and verdict' 74
   [[ "$kind" == "$sequence_verdict" && "$candidate" == "$sequence_candidate" && "$target" == "$sequence_target" && "$authorization" == "$sequence_authorization" ]] || refuse 'binding decision fields conflict with verdict' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'binding findings differ from verdict' 74
+  [[ "$resulting_state" == "$sequence_resulting_state" ]] || refuse 'binding resulting state differs from verdict' 74
   if [[ "$sequence_authorization" == GRANTED ]]; then
     case "$sequence_package_kind" in
       milestone-acceptance)
+        accepted_tip="$(field_from_text "$text" 'Accepted milestone tip')" || refuse 'milestone-acceptance binding is missing accepted milestone tip' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance binding is missing completion evidence' 74
-        [[ "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance binding completion evidence differs from verdict' 74
+        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance binding bounds differ from verdict' 74
         ;;
       main-integration)
+        integration_state="$(field_from_text "$text" 'Integration state')" || refuse 'main-integration binding is missing integration state' 74
+        binding_milestone_branch="$(field_from_text "$text" 'Milestone branch')" || refuse 'main-integration binding is missing milestone branch' 74
+        binding_delta_paths="$(field_from_text "$text" 'Administrative delta paths')" || refuse 'main-integration binding is missing administrative delta' 74
+        binding_delta_hash="$(field_from_text "$text" 'Administrative delta SHA-256')" || refuse 'main-integration binding is missing administrative delta' 74
+        binding_transition_date="$(field_from_text "$text" 'Administrative transition date')" || refuse 'main-integration binding is missing administrative transition date' 74
+        binding_guard_commit="$(field_from_text "$text" 'Reviewed guard commit')" || refuse 'main-integration binding is missing reviewed guard provenance' 74
+        binding_guard_path="$(field_from_text "$text" 'Reviewed guard path')" || refuse 'main-integration binding is missing reviewed guard provenance' 74
+        binding_guard_hash="$(field_from_text "$text" 'Reviewed guard SHA-256')" || refuse 'main-integration binding is missing reviewed guard provenance' 74
         acceptance="$(field_from_text "$text" 'Acceptance candidate')" || refuse 'main-integration binding is missing candidate bounds' 74
         integration="$(field_from_text "$text" 'Integration candidate')" || refuse 'main-integration binding is missing candidate bounds' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'main-integration binding is missing completion evidence' 74
         acceptance_binding="$(field_from_text "$text" 'Milestone acceptance binding commit')" || refuse 'main-integration binding is missing acceptance binding' 74
-        [[ "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration binding bounds differ from verdict' 74
+        [[ "$integration_state" == "$package_integration_state" && "$binding_milestone_branch" == "$package_milestone_branch" && "$binding_delta_paths" == "$delta_paths" && "$binding_delta_hash" == "$delta_hash" && "$binding_transition_date" == "$transition_date" && "$binding_guard_commit" == "$package_guard_commit" && "$binding_guard_path" == "$package_guard_path" && "$binding_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration binding bounds differ from verdict' 74
         ;;
       next-milestone)
+        successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone binding is missing successor state' 74
         successor="$(field_from_text "$text" 'Successor contract commit')" || refuse 'next-milestone binding is missing successor contract' 74
         entry="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone binding is missing entry-condition evidence' 74
-        [[ "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone binding bounds differ from verdict' 74
+        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone binding bounds differ from verdict' 74
         ;;
     esac
+  else
+    blocking_status="$(field_from_text "$text" 'Blocking evidence status')" || refuse 'negative binding is missing blocking evidence status' 74
+    [[ "$blocking_status" == "$sequence_blocking_status" ]] || refuse 'negative binding blocking status differs from verdict' 74
   fi
 }
 
 validate_result_artifact() {
-  local commit="$1" path="$2" text header controller timestamp status approval approval_path approval_text approval_status approval_kind approval_candidate approval_target approval_auth approval_critical approval_important candidate target command output_encoding output_length output_hash computed computed_length stats pre_local pre_remote post_local post_remote pre_evidence post_evidence recovery snapshot replay
+  local commit="$1" path="$2" text header controller timestamp status approval approval_path approval_text approval_status approval_kind approval_candidate approval_target approval_auth approval_critical approval_important approval_branch approval_guard_commit approval_guard_path approval_guard_hash candidate target milestone_branch guard_argv guard_commit guard_path guard_hash environment limitations interruption output_encoding output_length output_hash computed computed_length stats pre_local pre_remote post_local post_remote pre_evidence post_evidence recovery snapshot replay expected_argv
   text="$(git show "$commit:$path")" || refuse 'result artifact is unreadable' 74
   header="$(metadata_before_marker "$text" '--- BEGIN GUARD OUTPUT ---')" || refuse 'result guard output framing is invalid' 74
   controller="$(field_from_text "$header" 'Controller recorder')" || refuse 'result provenance is invalid' 74
@@ -382,9 +470,16 @@ validate_result_artifact() {
   status="$(field_from_text "$header" 'Result status')" || refuse 'result is missing status' 74
   approval="$(field_from_text "$header" 'Consumed approval commit')" || refuse 'result is missing consumed approval' 74
   approval_path="$(field_from_text "$header" 'Consumed approval path')" || refuse 'result is missing consumed approval' 74
+  milestone_branch="$(field_from_text "$header" 'Milestone branch')" || refuse 'result is missing milestone branch' 74
   candidate="$(field_from_text "$header" 'Integration candidate')" || refuse 'result is missing integration candidate' 74
   target="$(field_from_text "$header" 'Target main commit')" || refuse 'result is missing target main' 74
-  command="$(field_from_text "$header" 'Guard command')" || refuse 'result is missing guard command' 74
+  guard_argv="$(field_from_text "$header" 'Guard argv')" || refuse 'result is missing guard invocation' 74
+  guard_commit="$(field_from_text "$header" 'Reviewed guard commit')" || refuse 'result is missing reviewed guard provenance' 74
+  guard_path="$(field_from_text "$header" 'Reviewed guard path')" || refuse 'result is missing reviewed guard provenance' 74
+  guard_hash="$(field_from_text "$header" 'Reviewed guard SHA-256')" || refuse 'result is missing reviewed guard provenance' 74
+  environment="$(field_from_text "$header" 'Execution environment')" || refuse 'result is missing execution environment' 74
+  limitations="$(field_from_text "$header" 'Limitations')" || refuse 'result is missing limitations' 74
+  interruption="$(field_from_text "$header" 'Interruption point')" || refuse 'result is missing interruption point' 74
   output_encoding="$(field_from_text "$header" 'Guard output encoding')" || refuse 'result is missing guard output encoding' 74
   output_length="$(field_from_text "$header" 'Guard output byte length')" || refuse 'result is missing guard output byte length' 74
   output_hash="$(field_from_text "$header" 'Full guard output SHA-256')" || refuse 'result is missing guard output hash' 74
@@ -413,11 +508,22 @@ validate_result_artifact() {
   approval_auth="$(field_from_text "$approval_text" 'Authorization')" || refuse 'consumed approval schema is invalid' 74
   approval_critical="$(field_from_text "$approval_text" 'Critical findings')" || refuse 'consumed approval schema is invalid' 74
   approval_important="$(field_from_text "$approval_text" 'Important findings')" || refuse 'consumed approval schema is invalid' 74
+  approval_branch="$(field_from_text "$approval_text" 'Milestone branch')" || refuse 'consumed approval schema is invalid' 74
+  approval_guard_commit="$(field_from_text "$approval_text" 'Reviewed guard commit')" || refuse 'consumed approval schema is invalid' 74
+  approval_guard_path="$(field_from_text "$approval_text" 'Reviewed guard path')" || refuse 'consumed approval schema is invalid' 74
+  approval_guard_hash="$(field_from_text "$approval_text" 'Reviewed guard SHA-256')" || refuse 'consumed approval schema is invalid' 74
   [[ "$approval_status" == Current && "$approval_kind" == APPROVE_MAIN_INTEGRATION && "$approval_auth" == GRANTED && "$approval_critical" == 0 && "$approval_important" == 0 ]] || refuse 'result does not consume a current main-integration approval' 74
   [[ "$candidate" == "$approval_candidate" && "$target" == "$approval_target" ]] || refuse 'result candidate or target differs from consumed approval' 74
+  [[ "$milestone_branch" == "$approval_branch" && "$guard_commit" == "$approval_guard_commit" && "$guard_path" == "$approval_guard_path" && "$guard_hash" == "$approval_guard_hash" ]] || refuse 'result invocation provenance differs from consumed approval' 74
   resolve_exact_commit "$candidate" 'result integration candidate'
   resolve_exact_commit "$target" 'result target main'
-  [[ "$command" == *validate_main_integration.sh*integrate* && "$output_encoding" == base64 && "$output_length" =~ ^(0|[1-9][0-9]*)$ && "$output_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'result guard evidence is invalid' 74
+  resolve_exact_commit "$guard_commit" 'result reviewed guard commit'
+  [[ "$milestone_branch" =~ ^milestone/m[0-9]+-[a-z0-9][a-z0-9-]*$ && "$guard_path" == .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh && "$guard_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'result reviewed guard provenance is invalid' 74
+  require_executable_blob "$guard_commit" "$guard_path" 'result reviewed guard'
+  [[ "$(git show "$guard_commit:$guard_path" | shasum -a 256 | awk '{print $1}')" == "$guard_hash" ]] || refuse 'result reviewed guard hash differs from artifact' 74
+  expected_argv="validate_main_integration.sh|integrate|$milestone_branch|$candidate|$target|$approval"
+  [[ "$guard_argv" == "$expected_argv" ]] || refuse 'result guard invocation is invalid' 74
+  [[ "$output_encoding" == base64 && "$output_length" =~ ^(0|[1-9][0-9]*)$ && "$output_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'result guard evidence is invalid' 74
   [[ "$(grep -Fc -- '--- BEGIN GUARD OUTPUT ---' <<< "$text")" == 1 && "$(grep -Fc -- '--- END GUARD OUTPUT ---' <<< "$text")" == 1 ]] || refuse 'result guard output markers are invalid' 74
   stats="$(literal_stats_from_blob "$commit" "$path" '--- BEGIN GUARD OUTPUT ---' '--- END GUARD OUTPUT ---')" || refuse 'result guard output is invalid' 74
   IFS=$'\t' read -r computed computed_length <<< "$stats"
@@ -434,21 +540,39 @@ validate_result_artifact() {
       ;;
     *) refuse 'result status is invalid' 74 ;;
   esac
-  sequence_result_commit="$commit"; sequence_result_path="$path"; sequence_result_status="$status"; sequence_result_approval="$approval"; sequence_result_candidate="$candidate"; sequence_result_target="$target"; sequence_result_replay="$replay"
+  sequence_result_commit="$commit"; sequence_result_path="$path"; sequence_result_status="$status"; sequence_result_approval="$approval"; sequence_result_approval_path="$approval_path"; sequence_result_branch="$milestone_branch"; sequence_result_candidate="$candidate"; sequence_result_target="$target"; sequence_result_argv="$guard_argv"; sequence_result_guard_commit="$guard_commit"; sequence_result_guard_path="$guard_path"; sequence_result_guard_hash="$guard_hash"; sequence_result_environment="$environment"; sequence_result_limitations="$limitations"; sequence_result_interruption="$interruption"; sequence_result_output_hash="$output_hash"; sequence_result_pre_local="$pre_local"; sequence_result_pre_remote="$pre_remote"; sequence_result_post_local="$post_local"; sequence_result_post_remote="$post_remote"; sequence_result_pre_evidence="$pre_evidence"; sequence_result_post_evidence="$post_evidence"; sequence_result_recovery="$recovery"; sequence_result_snapshot="$snapshot"; sequence_result_replay="$replay"
 }
 
 validate_result_binding_artifact() {
-  local commit="$1" path="$2" text status result result_path result_status approval candidate target replay
+  local commit="$1" path="$2" text status result result_path result_status approval approval_path milestone_branch candidate target guard_argv guard_commit guard_path guard_hash environment limitations interruption output_hash pre_local pre_remote post_local post_remote pre_evidence post_evidence recovery snapshot replay
   text="$(git show "$commit:$path")" || refuse 'result binding is unreadable' 74
   status="$(field_from_text "$text" 'Binding status')" || refuse 'result binding is missing status' 74
   result="$(field_from_text "$text" 'Result commit')" || refuse 'result binding is missing result' 74
   result_path="$(field_from_text "$text" 'Result path')" || refuse 'result binding is missing result' 74
   result_status="$(field_from_text "$text" 'Result status')" || refuse 'result binding is missing status' 74
   approval="$(field_from_text "$text" 'Consumed approval commit')" || refuse 'result binding is missing approval' 74
+  approval_path="$(field_from_text "$text" 'Consumed approval path')" || refuse 'result binding is missing approval' 74
+  milestone_branch="$(field_from_text "$text" 'Milestone branch')" || refuse 'result binding is missing milestone branch' 74
   candidate="$(field_from_text "$text" 'Integration candidate')" || refuse 'result binding is missing candidate' 74
   target="$(field_from_text "$text" 'Target main commit')" || refuse 'result binding is missing target main' 74
+  guard_argv="$(field_from_text "$text" 'Guard argv')" || refuse 'result binding is missing guard invocation' 74
+  guard_commit="$(field_from_text "$text" 'Reviewed guard commit')" || refuse 'result binding is missing reviewed guard provenance' 74
+  guard_path="$(field_from_text "$text" 'Reviewed guard path')" || refuse 'result binding is missing reviewed guard provenance' 74
+  guard_hash="$(field_from_text "$text" 'Reviewed guard SHA-256')" || refuse 'result binding is missing reviewed guard provenance' 74
+  environment="$(field_from_text "$text" 'Execution environment')" || refuse 'result binding is missing execution environment' 74
+  limitations="$(field_from_text "$text" 'Limitations')" || refuse 'result binding is missing limitations' 74
+  interruption="$(field_from_text "$text" 'Interruption point')" || refuse 'result binding is missing interruption point' 74
+  output_hash="$(field_from_text "$text" 'Full guard output SHA-256')" || refuse 'result binding is missing guard output hash' 74
+  pre_local="$(field_from_text "$text" 'Pre local main')" || refuse 'result binding is missing refs' 74
+  pre_remote="$(field_from_text "$text" 'Pre remote main')" || refuse 'result binding is missing refs' 74
+  post_local="$(field_from_text "$text" 'Post local main')" || refuse 'result binding is missing refs' 74
+  post_remote="$(field_from_text "$text" 'Post remote main')" || refuse 'result binding is missing refs' 74
+  pre_evidence="$(field_from_text "$text" 'Pre evidence tip')" || refuse 'result binding is missing refs' 74
+  post_evidence="$(field_from_text "$text" 'Post evidence tip')" || refuse 'result binding is missing refs' 74
+  recovery="$(field_from_text "$text" 'Recovery state')" || refuse 'result binding is missing recovery state' 74
+  snapshot="$(field_from_text "$text" 'Recovery snapshot path')" || refuse 'result binding is missing recovery snapshot path' 74
   replay="$(field_from_text "$text" 'Replay status')" || refuse 'result binding is missing replay status' 74
-  [[ "$status" == Current && "$result" == "$sequence_result_commit" && "$result_path" == "$sequence_result_path" && "$result_status" == "$sequence_result_status" && "$approval" == "$sequence_result_approval" && "$candidate" == "$sequence_result_candidate" && "$target" == "$sequence_result_target" && "$replay" == "$sequence_result_replay" ]] || refuse 'result binding conflicts with result' 74
+  [[ "$status" == Current && "$result" == "$sequence_result_commit" && "$result_path" == "$sequence_result_path" && "$result_status" == "$sequence_result_status" && "$approval" == "$sequence_result_approval" && "$approval_path" == "$sequence_result_approval_path" && "$milestone_branch" == "$sequence_result_branch" && "$candidate" == "$sequence_result_candidate" && "$target" == "$sequence_result_target" && "$guard_argv" == "$sequence_result_argv" && "$guard_commit" == "$sequence_result_guard_commit" && "$guard_path" == "$sequence_result_guard_path" && "$guard_hash" == "$sequence_result_guard_hash" && "$environment" == "$sequence_result_environment" && "$limitations" == "$sequence_result_limitations" && "$interruption" == "$sequence_result_interruption" && "$output_hash" == "$sequence_result_output_hash" && "$pre_local" == "$sequence_result_pre_local" && "$pre_remote" == "$sequence_result_pre_remote" && "$post_local" == "$sequence_result_post_local" && "$post_remote" == "$sequence_result_post_remote" && "$pre_evidence" == "$sequence_result_pre_evidence" && "$post_evidence" == "$sequence_result_post_evidence" && "$recovery" == "$sequence_result_recovery" && "$snapshot" == "$sequence_result_snapshot" && "$replay" == "$sequence_result_replay" ]] || refuse 'result binding conflicts with result' 74
 }
 
 if [[ $# -ne 3 ]]; then
