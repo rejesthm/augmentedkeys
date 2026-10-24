@@ -4,7 +4,7 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Ready for decision`
+Milestone state: `Accepted`
 
 Owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaired foundation and contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4` and resolves the MT-002 adoption pause. This separate state commit follows the owner-decision artifact.
 

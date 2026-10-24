@@ -22,7 +22,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current official Apple, Android, Flutter, and candidate-project documentation; relevant platform specifications; original repositories and maintainer material; reproducible technical spikes and physical-device measurements where required.
 - **Expected output:** `MOBILE_AUDIO_ARCHITECTURE.md` and `LOW_LATENCY_RESEARCH.md`.
 - **Decision it unlocks:** Approval to define and benchmark a narrow audio-architecture spike; it does not select an engine by itself.
-- **Status:** `Verified` — correction round 3
+- **Status:** `Accepted` — correction round 3
 - **Findings:** Candidate `09266fdc17e137db44495d85c6b42cf296efb89c` passed QA/Performance, Licensing/Security, and Final Code Review with zero Critical/Important through finalized verification `1c3d4618b1cbf2c583f2c4950800edaab58ee185`; integrated at milestone tip `63081f5f50b03c9337f9f10032a94373f214aaa0`. One nonblocking provenance-label Minor is deferred for milestone triage. Documentary result only; not an architecture or dependency adoption.
 
 ## 2. UAPMD objective evaluation
@@ -32,7 +32,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** The original UAPMD repository and documentation, maintainer material, relevant specifications, issue history where material, and reproducible spikes or measurements against predeclared criteria.
 - **Expected output:** `UAPMD_EVALUATION.md`.
 - **Decision it unlocks:** Evidence-backed inclusion or exclusion of UAPMD in a later architecture ADR.
-- **Status:** `Verified` — correction round 1
+- **Status:** `Accepted` — correction round 1
 - **Findings:** Corrected candidate `8b39e5572f481af21d5fba598c1abf0fe8dc5dec` passed fresh QA/Performance, Licensing/Security and Final Code Review with zero findings through finalized verification `c7952ea12d19a6c42abc3d19425a694448256b76`; integrated at milestone tip `f7e2670ee7c9d12d47467e13139420a347b8cc29`. Disposition remains `retain for later spike comparison`; no adoption, build, benchmark, device, architecture or licensing-clearance authority exists.
 
 ## 3. iOS/iPadOS audio and AUv3 hosting
@@ -42,7 +42,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current Apple developer documentation and API references, applicable specifications, official sample code, original project documentation, and reproducible iPhone/iPad experiments where required.
 - **Expected output:** `IOS_AUDIO_RESEARCH.md` and `PLUGIN_HOSTING_RESEARCH.md`.
 - **Decision it unlocks:** Approval to scope Apple-specific audio and AUv3 technical spikes and later ADRs.
-- **Status:** `Verified` — correction round 1; candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`; required reviews approve with zero findings
+- **Status:** `Accepted` — correction round 1; candidate `b3eb533c41993c7b236d47a8d347329e9dca6fae`, finalized verification `1e0a5ff7562b71c6306a4459e154f49e5cc41986`; required reviews approve with zero findings
 - **Findings:** No findings recorded
 
 ## 4. Android audio, Oboe/AAudio, AAP/AAP-JUCE
@@ -52,7 +52,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current Android and Android NDK documentation, Oboe/AAudio documentation and original repositories, AAP/AAP-JUCE maintainer material, relevant specifications, and reproducible physical-device experiments where required.
 - **Expected output:** `ANDROID_AUDIO_RESEARCH.md` and `PLUGIN_HOSTING_RESEARCH.md`.
 - **Decision it unlocks:** Approval to scope Android-specific audio and plugin-hosting spikes and later ADRs.
-- **Status:** `Verified` — correction1; candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7`; finalized verification `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; all required reviews approve0/0/0
+- **Status:** `Accepted` — correction1; candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7`; finalized verification `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`; all required reviews approve0/0/0
 - **Findings:** All3 original Important findings closed in independent round1 reviews; rejection retained at `5385671e0a9a3cabb09b3755483480196b188a96`.
 
 ## 5. MIDI 1.0/2.0, Core MIDI, Android MIDI, MPE
@@ -62,7 +62,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Published MIDI specifications available for legitimate use, current Apple Core MIDI and Android MIDI documentation, official platform samples, original library documentation, and reproducible controller/device tests where required.
 - **Expected output:** `MIDI_RESEARCH.md`.
 - **Decision it unlocks:** An evidence-backed MIDI scope, compatibility matrix, spike plan, and later architecture ADR.
-- **Status:** `Verified` — correction1; candidate `00952ed4bd563446ef450ce375cb5ec89edb43de`; finalized verification `96a82baa49cb561084585115cde4e4658498307b`; required approvals0/0/1, both Important findings closed; shared index-count wording Minor carried
+- **Status:** `Accepted` — correction1; candidate `00952ed4bd563446ef450ce375cb5ec89edb43de`; finalized verification `96a82baa49cb561084585115cde4e4658498307b`; required approvals0/0/1, both Important findings closed; shared index-count wording Minor carried
 - **Findings:** No findings recorded
 
 ## 6. Built-in sampler/synth engine and SF2/SFZ options
@@ -72,7 +72,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Format specifications, official or original engine documentation and repositories, maintainer material, license evidence, reproducible spikes, and measured physical-device behavior where required.
 - **Expected output:** `SOUND_ENGINE_RESEARCH.md`.
 - **Decision it unlocks:** Approval to compare narrowly scoped engine/format candidates in spikes and a later ADR.
-- **Status:** `Verified` — candidate `446493053c94e5be336036bab212ca85ba61cc9c`; finalized verification `ef499f19643bcee06060198a98a8cfa40e442841`; allrequiredreviews0/0/0 and all3 original Important closed
+- **Status:** `Accepted` — candidate `446493053c94e5be336036bab212ca85ba61cc9c`; finalized verification `ef499f19643bcee06060198a98a8cfa40e442841`; allrequiredreviews0/0/0 and all3 original Important closed
 - **Findings:** No findings recorded
 
 ## 7. Licensing risks for engines, plugins, samples, fonts, icons, and DSP
@@ -82,7 +82,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Authoritative license texts, rights-holder or publisher terms, official distribution terms, source provenance, version-specific notices, and qualified legal review when required.
 - **Expected output:** `LICENSE_LEDGER.md`.
 - **Decision it unlocks:** Item-by-item approval or rejection before adoption or distribution; technical suitability remains a separate decision.
-- **Status:** `Verified` — candidate `a1805e40b765d19f10e248186e147c1c27de68f2`; finalized verification `609231c5ab3e9c82717f269398158e6cb3ec7a21`; allrequiredreviews0/0/0,three original Important closed
+- **Status:** `Accepted` — candidate `a1805e40b765d19f10e248186e147c1c27de68f2`; finalized verification `609231c5ab3e9c82717f269398158e6cb3ec7a21`; allrequiredreviews0/0/0,three original Important closed
 - **Findings:** Existing foundation and candidate rights evidence documented; current package/engine identities, composite licenses and optional branches reconciled. All items remain Not approved; no content, legal or distribution clearance.
 
 ## 8. Sunday Keys public capability/workflow analysis
@@ -92,7 +92,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party product documentation, published support material, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `SUNDAY_KEYS_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original workflow requirements and explicit differentiation opportunities.
-- **Status:** `Verified` — candidate `d1979355eabf5214f9b3a79eda4323e55164248a`; finalized verification `4a8a696e3ad116dc69309fc4451d931ecbb9203f`; allrequiredreviews0/0/0,no findings
+- **Status:** `Accepted` — candidate `d1979355eabf5214f9b3a79eda4323e55164248a`; finalized verification `4a8a696e3ad116dc69309fc4451d931ecbb9203f`; allrequiredreviews0/0/0,no findings
 - **Findings:** Public first-party Sunday Keys workflows and edition/date/tier distinctions documented; original mobile questions and future scenarios remain unadopted/unperformed. No runtime, content, legal or distribution clearance.
 
 ## 9. MainStage public capability/workflow analysis
@@ -102,7 +102,7 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Public first-party Apple documentation, published user guides, public demonstrations, and clearly attributed observations separated from inference.
 - **Expected output:** `MAINSTAGE_ANALYSIS.md`.
 - **Decision it unlocks:** Review of original mobile workflow requirements and deliberate non-goals.
-- **Status:** `Verified` — candidate `266f263849c737adb1a9759b39967042cd69212b`; finalized verification `324c06e5302a9009753a884cedbe650a83bb5b13`; allrequiredreviews0/0/0,no findings
+- **Status:** `Accepted` — candidate `266f263849c737adb1a9759b39967042cd69212b`; finalized verification `324c06e5302a9009753a884cedbe650a83bb5b13`; allrequiredreviews0/0/0,no findings
 - **Findings:** Public first-party MainStage workflows and edition/date/compatibility/privacy distinctions documented; original mobile questions and future scenarios remain unadopted/unperformed. No runtime, content, legal or distribution clearance.
 
 ## 10. Competing mobile live-performance workflows
@@ -112,5 +112,5 @@ Changing a status requires a dated transition in `docs/orchestration/milestones/
 - **Required source quality:** Current first-party product and support documentation, public store information, documented platform requirements, and attributed observations; third-party reports may identify questions but cannot alone establish technical facts.
 - **Expected output:** `COMPETITOR_MATRIX.md`.
 - **Decision it unlocks:** Prioritization of original product workflows, differentiation questions, and research gaps.
-- **Status:** `Verified` — candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`; evidence `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d`; integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews
+- **Status:** `Accepted` — candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`; evidence `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d`; integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews
 - **Findings:** No findings recorded

@@ -1,6 +1,6 @@
 # Current Milestone
 
-M0 — Research & Architecture (Ready for decision).
+M0 — Research & Architecture (Accepted).
 
 # Current Objective
 
