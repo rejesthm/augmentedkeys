@@ -1,10 +1,10 @@
 # Current Milestone
 
-M0 — Research & Architecture (Active).
+M0 — Research & Architecture (Ready for decision).
 
 # Current Objective
 
-Complete M0 milestone closure under accepted repaired foundation/contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4` and owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1`. The full working-app objective remains unfinished.
+Obtain fresh whole-milestone reviews and the independent Decision Steward verdict for the frozen completed M0 candidate. The full working-app objective remains unfinished.
 
 # Active Agents
 
@@ -20,11 +20,11 @@ No remaining eligible M0 research task. Do not repeat verified research.
 
 # In Progress
 
-OD-007 adoption and separate M0 reactivation barrier. CT04 is Verified at exact candidate `552413198ae9ed488f70b3d3db656469292b89a4`, finalized evidence `a15dba413a221e70a02f1a3f9e57a966c2974213`; all three reviews approve with zero findings. Exact controls integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`.
+No task body is in progress. Completion package `bf8559f22d09ab40dc75de4b0611ae37df7e8f12` is the decisive artifact for this separate Active → Ready for decision transition. R01–R10 and CT04 remain Verified.
 
 # Verification Needed
 
-Verify the activation state, guarded milestone publication and current completion package. Then freeze the completed candidate for fresh independent whole-milestone reviews and a separate Steward decision. CT04 suites125/118 are retained prior evidence, not new runs. Character/block dynamic coverage remains unavailable.
+Guard-publish the frozen completed candidate, prove local/remote equality, then record three fresh independent whole-milestone reviews and a separate Steward decision. CT04 suites125/118 are retained prior evidence, not new runs. Character/block dynamic coverage remains unavailable.
 
 # Completed
 
@@ -36,7 +36,7 @@ Original owner-edited root scripts are excluded and preserved; adopted controls 
 
 # Next Highest Priority Task
 
-Verify and publish the activation tip through the milestone guard, then prepare the current M0 completion package and independent decision.
+Publish the frozen completed candidate through the milestone guard, then obtain the fresh whole-milestone reviews and independent decision.
 
 # Source-history note
 

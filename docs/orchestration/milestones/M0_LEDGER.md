@@ -2,7 +2,7 @@
 
 ## Milestone
 
-- State: `Active`
+- State: `Ready for decision`
 - Goal: Full-app continuation controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; M0 is its sole execution milestone under OD-007; no competing research writer.
 - Milestone branch: `milestone/m0-research`
 - Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`
@@ -22,7 +22,7 @@
 - Milestone transition evidence: `docs/orchestration/milestones/m0/evidence/milestone-transitions.md`
 - Milestone-transition evidence commit: `8138cf965531ffd34a9dd967b1724c837409a1c8` (MT-002); historical MT-001 retained
 - Completion package: `docs/orchestration/milestones/m0/evidence/completion-package.md`
-- Completion-package commit: `8138cf965531ffd34a9dd967b1724c837409a1c8` — research tasks complete; milestone closure blocked
+- Completion-package commit: `bf8559f22d09ab40dc75de4b0611ae37df7e8f12` — current completion evidence; exact completed candidate freezes in the following state barrier
 
 
 - Decision-evidence branch: `governance/decision-evidence`
@@ -196,6 +196,8 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 | 2026-10-24 | M0 | `Paused for owner decision` | `Active` | Roadmap Orchestrator | `55727088b8a1a51abe754186c5ef0334e246d4b1` | `docs/orchestration/milestones/m0/evidence/owner-decisions.md` (OD-007) | Owner accepted exact repaired foundation/contract; separate barrier preserves all research task states |
 
+| 2026-10-24 | M0 | `Active` | `Ready for decision` | Roadmap Orchestrator | `bf8559f22d09ab40dc75de4b0611ae37df7e8f12` | `docs/orchestration/milestones/m0/evidence/completion-package.md` | All ten contracted tasks and CT04 are Verified; freeze exact completed candidate for fresh whole-milestone review and Steward decision |
+
 ## Task integration log
 
 | Date | Task | Reviewed candidate | Verification | Milestone integration tip | Method | Result |
@@ -242,8 +244,12 @@ Historical state: `In review`; round0. Source verification `59464ede90cbb6db2152
 
 CT04 correction round1 In progress under assignment `d4e36ffe968df4561c23706eededd70c36be38da` and separate execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`. Source rejection `0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e`; candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` remains rejected with five Important groups. Same Conductor temporary-proposal role; controller sole repository writer. QA/Security idle; Final not launched. M0 pause remains unchanged.
 
-## Current OD-007 activation boundary
+## OD-007 activation boundary
 
 Owner decision `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaired foundation/contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4`. Reviewed CT04 controls were combined without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`; all source identities and milestone research/evidence are preserved. R01–R10 remain Verified; CT04 remains Verified. No task body was repeated, no research status changed and no milestone was Accepted.
 
 This is the separate Paused for owner decision → Active barrier after the owner artifact. Next verify preparation, fast-forward milestone, prove guarded publication, prepare current completion evidence and fresh independent milestone reviews. Earlier absence/pending/rejection statements above are historical checkpoints, not current controls. Main and original root owner edits remain unchanged.
+
+## Current completion boundary
+
+M0 is `Ready for decision`. Current completion package `bf8559f22d09ab40dc75de4b0611ae37df7e8f12` records R01–R10 and CT04 as Verified, the accepted repaired controls, the successful activation publication, retained limitations, unchanged main, and the required acceptance/integration recovery sequence. This separate state barrier freezes the exact completed candidate for guarded publication and fresh whole-milestone QA/Performance, Licensing/Security and Final Code Review. No task or milestone is Accepted; no main or successor action is authorized.

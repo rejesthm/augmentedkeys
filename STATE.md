@@ -4,7 +4,7 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Active`
+Milestone state: `Ready for decision`
 
 Owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaired foundation and contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4` and resolves the MT-002 adoption pause. This separate state commit follows the owner-decision artifact.
 
@@ -30,9 +30,9 @@ Owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaire
 
 ## Current gates and next action
 
-R01–R10 remain Verified, with R01/R05 nonblocking Minors retained. CT04 is Verified: finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213`, exact reviewed candidate `552413198ae9ed488f70b3d3db656469292b89a4`, three independent approvals with zero findings. Reviewed controls were integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`. Original owner-edited root scripts remain excluded and unchanged; their rejected versions are not the adopted controls.
+R01–R10 remain Verified, with R01/R05 nonblocking Minors retained. CT04 is Verified: finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213`, exact reviewed candidate `552413198ae9ed488f70b3d3db656469292b89a4`, three independent approvals with zero findings. Reviewed controls were integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`. Original owner-edited root scripts remain excluded and unchanged; their rejected versions are not the adopted controls. The current completion package is committed at `bf8559f22d09ab40dc75de4b0611ae37df7e8f12`.
 
-Next verify the isolated activation barrier, fast-forward the milestone and prove guarded milestone publication. Then replace the historical blocked completion package with current completion evidence, freeze the completed candidate, and obtain fresh whole-milestone QA, Security and Final reviews followed by the independent Decision Steward. Existing task/CT04 approvals do not substitute for these reviews. No task or milestone is yet Accepted.
+The completed candidate is frozen by this separate Ready-for-decision barrier. Guard-publish it, then obtain fresh whole-milestone QA, Security and Final reviews and an independent Decision Steward verdict. Existing task, CT04 and activation approvals do not substitute for these reviews. No task or milestone is yet Accepted.
 
 Main integration and successor activation each require separate exact decisions. Architecture/ADR, dependencies/assets, hardware, credentials/signing, spending/legal decisions, destructive action and public release remain owner-only. No task publication or PR is authorized. The preserved historical whole-range whitespace observation remains disclosed for review; no historical review has been rewritten or relabeled.
 
