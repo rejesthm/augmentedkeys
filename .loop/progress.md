@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Conductor idle after round4 handoff; no implementation writer active. Independent read-only QA/Security reviews are next; Final waits for their exact-candidate approval. Controller owns canonical evidence/state. Old Steward evidence remains archived and unconsumed.
+Conductor assigned round5 temporary corrections; controller sole repository writer. QA/Security/Final idle after preserved Independent rejections. Steward idle; old evidence remains archived and unconsumed.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
 
 # In Progress
 
-State: `In review`; correction round4. Transition: CT04 In progress → In review, 2026-10-24T08:48:21.871856+00:00, program controller. Source verification `3bd1571d797d5d06588e8205ebc4b634684c954d` at docs/orchestration/milestones/m0/evidence/ct04-verification.md was committed before this state barrier. Exact frozen candidate `d3815c0a79dbc64a59ba6b2763d5d01415bf1311`; authority brief `8be352c653084d47929ffecdf6e3dca0c5cb5c3e`; branch task/ct04-governance-correction; worktree /Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/ct04-governance-correction. Conductor relinquished temporary authorship and is idle; controller owns repository/evidence/state writes; no implementation writer active. Independent QA/Security reviews are next, followed by Final only if both approve this unchanged candidate. Reviewed integration tip: Not verified. Round3 rejection `e3dce902c15929d0f4a5170ed85112732059d665` and all earlier failures remain preserved. Earlier task-branch ct04-status.md is the historical execution barrier; this ledger is current task state. No finding is waived by passing tests. M0 remains paused; R01–R10 Verified, none Accepted; no evidence recreation/publication, main integration, reactivation or successor authority.
+State: `In progress`; correction round5. Transition CT04 In review → In progress, 2026-10-24T08:58:45.426931+00:00, program controller. Independent rejections `640f1021a2541febd50f509bcd26d4e383348349` for candidate `d3815c0a79dbc64a59ba6b2763d5d01415bf1311` has each 0 Critical/1 Important, Spec Compliance FAIL; QA Honesty FAIL (verification overstatement), Security Honesty PASS. Preserve both reports verbatim. Assignment `681a107e76028330b6b7181d3f313fdb58c53131` and separate execution barrier `49b50a8d5d9ff340074c5d2b38e5ca36a044d4e0` precede body work. Conductor temporary author; controller sole repository writer; all reviewers idle. Resolve complete cross-artifact milestone identity consistency. M0 remains paused; R01–R10 Verified/none Accepted; no adoption, evidence recreation/publication, main integration, reactivation or successor action.
 
 # Verification Needed
 
