@@ -232,7 +232,7 @@ CT04 owner authorization and archive preservation recorded at `fd52158b1e1062984
 
 ## CT04 current correction state
 
-State: `In progress`; correction round1 pre-review continuation. Source assignment `d4e36ffe968df4561c23706eededd70c36be38da`, execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`, rejection `0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e`, interim verification `39c58dc3737803f4b9bfa138674c3953838fea98`. First round1 handoff preserved; controller checks27/45 pass but known issues remain. No round1 candidate materialized, independently reviewed or adopted. Conductor temporary author; controller sole repository writer; QA/Security/Final idle. This is a same-state clarification, not a milestone/task acceptance or new authority. M0 remains paused.
+State: `In review`; correction round1. Exact frozen candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1`; source verification `7315510930f7be142627e9c64be59e06d1ea0085` committed before this state barrier. Task branch task/ct04-governance-correction is clean and frozen. Controller final fixture/prose assignment `a293320d0e605854a5073d187c30272c8b115e3b` and execution checkpoint `b2ea1ce498d92d4d135e4215704d8623e8162cb4` are preserved. Fresh default suites39/50 pass, including socket; separate raw-review runs3/3 and real-document run1 pass. Those focused cases overlap default cases and are not additive distinct totals. Independent QA/Performance and Licensing/Security are assigned; Final waits for both approvals of this unchanged candidate. Conductor idle; no implementation writer active. No adoption, evidence recreation/publication, M0 acceptance/reactivation, main integration or successor action is authorized by this review state.
 
 ### Preserved round0 checkpoint
 

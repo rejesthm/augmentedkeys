@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Conductor is continuing CT04 correction round1 through temporary proposals under the approved assignment; controller is sole repository writer. QA/Security/Final are idle until a final exact candidate is frozen. The old Steward binding remains archived, unpublished and unconsumed.
+Independent QA/Performance and Licensing/Security are assigned to exact CT04 candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1`; Final waits for both approvals. Conductor idle, controller owns evidence/state, no implementation writer active. Old Steward evidence remains archived and unconsumed.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
 
 # In Progress
 
-No eligible research task remains. CT04 governance correction round1 is in progress outside the paused research queue. Interim controller verification `39c58dc3737803f4b9bfa138674c3953838fea98` preserves27/45 passing fixture checks and the remaining issues; it is not final candidate verification. M0 remains Paused for owner decision; all10tasks Verified, none Accepted. Full working-app Goal unfinished.
+CT04 correction round1 is In review under source verification `7315510930f7be142627e9c64be59e06d1ea0085`; candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1` is frozen. M0 research remains Paused for owner decision, R01–R10 Verified, none Accepted; no eligible research task remains. Full-app Goal unfinished.
 
 # Verification Needed
 
