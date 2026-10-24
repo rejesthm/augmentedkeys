@@ -86,7 +86,8 @@ review_attestation_from_blob() {
     NR==10 {if($0!="END AUGMENTEDKEYS REVIEW ATTESTATION v1") exit 42; end++; next}
     NR==11 {if($0!="") exit 42; framed=1; next}
     NR>11 {
-      if(dupstate==0) {if($0=="AUGMENTEDKEYS REVIEW ATTESTATION v1") dupstate=1; next}
+      if($0=="AUGMENTEDKEYS REVIEW ATTESTATION v1") {dupstate=1; next}
+      if(dupstate==0) next
       if(dupstate==1) {dupstate=(index($0,"Reviewed candidate: ")==1)?2:0; next}
       if(dupstate==2) {dupstate=(index($0,"Reviewer role: ")==1)?3:0; next}
       if(dupstate==3) {dupstate=(index($0,"Reviewer session: ")==1)?4:0; next}
@@ -201,6 +202,7 @@ validate_package_reviews() {
   resolve_exact_commit "$package_contract" 'package contract commit'
   resolve_exact_commit "$package_target" 'package target main'
   [[ "$package_contract_path" == docs/orchestration/milestones/M0_CONTRACT.md ]] || refuse 'package contract path is not canonical' 74
+  require_regular_blob "$package_contract" "$package_contract_path" 'contract artifact'
   disposition="$(field_from_text "$text" 'Decision disposition')" || refuse 'package is missing decision disposition' 74
   reviewed="$(field_from_text "$text" 'Reviewed candidate')" || refuse 'package is missing reviewed candidate' 74
   resolve_exact_commit "$reviewed" 'package reviewed candidate'
@@ -336,8 +338,8 @@ validate_package_reviews() {
 }
 
 validate_verdict_artifact() {
-  local commit="$1" path="$2" text controller role session timestamp package package_path verdict milestone contract candidate target critical important decision
-  local completion acceptance integration acceptance_binding successor entry resulting_state accepted_tip integration_state successor_state blocking_status verdict_delta_paths verdict_delta_hash verdict_transition_date verdict_guard_commit verdict_guard_path verdict_guard_hash verdict_milestone_branch
+  local commit="$1" path="$2" text controller role session timestamp package package_path verdict milestone contract contract_path candidate target critical important decision
+  local completion completion_path acceptance integration acceptance_binding acceptance_binding_path successor successor_path entry entry_path resulting_state accepted_tip integration_state successor_state blocking_status verdict_delta_paths verdict_delta_hash verdict_transition_date verdict_guard_commit verdict_guard_path verdict_guard_hash verdict_milestone_branch
   text="$(git show "$commit:$path")" || refuse 'verdict artifact is unreadable' 74
   controller="$(field_from_text "$text" 'Controller recorder')" || refuse 'verdict provenance is invalid' 74
   role="$(field_from_text "$text" 'Steward role')" || refuse 'verdict provenance is invalid' 74
@@ -348,6 +350,7 @@ validate_verdict_artifact() {
   verdict="$(field_from_text "$text" 'Verdict')" || refuse 'verdict is missing decision' 74
   milestone="$(field_from_text "$text" 'Milestone')" || refuse 'verdict is missing milestone' 74
   contract="$(field_from_text "$text" 'Contract commit')" || refuse 'verdict is missing contract' 74
+  contract_path="$(field_from_text "$text" 'Contract path')" || refuse 'verdict is missing contract path' 74
   candidate="$(field_from_text "$text" 'Reviewed candidate')" || refuse 'verdict is missing candidate' 74
   target="$(field_from_text "$text" 'Target main commit')" || refuse 'verdict is missing target main' 74
   critical="$(field_from_text "$text" 'Critical findings')" || refuse 'verdict is missing finding counts' 74
@@ -357,7 +360,7 @@ validate_verdict_artifact() {
   [[ "$controller" == program-controller && "$role" == decision_steward && "$session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] || refuse 'verdict provenance is invalid' 74
   valid_utc_timestamp "$timestamp" || refuse 'verdict provenance is invalid' 74
   [[ "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$candidate" == "$sequence_candidate" ]] || refuse 'verdict does not bind package candidate' 74
-  [[ "$milestone" == "$package_milestone" && "$contract" == "$package_contract" && "$target" == "$package_target" ]] || refuse 'verdict bounds differ from package' 74
+  [[ "$milestone" == "$package_milestone" && "$contract" == "$package_contract" && "$contract_path" == "$package_contract_path" && "$target" == "$package_target" ]] || refuse 'verdict bounds differ from package' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'verdict findings differ from package' 74
   [[ "$resulting_state" == "$sequence_resulting_state" ]] || refuse 'verdict resulting state differs from package' 74
   if [[ "$sequence_disposition" == APPROVAL ]]; then
@@ -366,7 +369,8 @@ validate_verdict_artifact() {
       milestone-acceptance)
         accepted_tip="$(field_from_text "$text" 'Accepted milestone tip')" || refuse 'milestone-acceptance verdict is missing accepted milestone tip' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance verdict is missing completion evidence' 74
-        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance verdict bounds differ from package' 74
+        completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'milestone-acceptance verdict is missing completion evidence path' 74
+        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" && "$completion_path" == "$package_completion_path" ]] || refuse 'milestone-acceptance verdict bounds differ from package' 74
         ;;
       main-integration)
         integration_state="$(field_from_text "$text" 'Integration state')" || refuse 'main-integration verdict is missing integration state' 74
@@ -380,14 +384,18 @@ validate_verdict_artifact() {
         acceptance="$(field_from_text "$text" 'Acceptance candidate')" || refuse 'main-integration verdict is missing candidate bounds' 74
         integration="$(field_from_text "$text" 'Integration candidate')" || refuse 'main-integration verdict is missing candidate bounds' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'main-integration verdict is missing completion evidence' 74
+        completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'main-integration verdict is missing completion evidence path' 74
         acceptance_binding="$(field_from_text "$text" 'Milestone acceptance binding commit')" || refuse 'main-integration verdict is missing acceptance binding' 74
-        [[ "$integration_state" == "$package_integration_state" && "$verdict_milestone_branch" == "$package_milestone_branch" && "$verdict_delta_paths" == "$delta_paths" && "$verdict_delta_hash" == "$delta_hash" && "$verdict_transition_date" == "$transition_date" && "$verdict_guard_commit" == "$package_guard_commit" && "$verdict_guard_path" == "$package_guard_path" && "$verdict_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration verdict bounds differ from package' 74
+        acceptance_binding_path="$(field_from_text "$text" 'Milestone acceptance binding path')" || refuse 'main-integration verdict is missing acceptance binding path' 74
+        [[ "$integration_state" == "$package_integration_state" && "$verdict_milestone_branch" == "$package_milestone_branch" && "$verdict_delta_paths" == "$delta_paths" && "$verdict_delta_hash" == "$delta_hash" && "$verdict_transition_date" == "$transition_date" && "$verdict_guard_commit" == "$package_guard_commit" && "$verdict_guard_path" == "$package_guard_path" && "$verdict_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$completion_path" == "$package_completion_path" && "$acceptance_binding" == "$package_acceptance_binding_commit" && "$acceptance_binding_path" == "$package_acceptance_binding_path" ]] || refuse 'main-integration verdict bounds differ from package' 74
         ;;
       next-milestone)
         successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone verdict is missing successor state' 74
         successor="$(field_from_text "$text" 'Successor contract commit')" || refuse 'next-milestone verdict is missing successor contract' 74
+        successor_path="$(field_from_text "$text" 'Successor contract path')" || refuse 'next-milestone verdict is missing successor contract path' 74
         entry="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone verdict is missing entry-condition evidence' 74
-        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone verdict bounds differ from package' 74
+        entry_path="$(field_from_text "$text" 'Entry conditions evidence path')" || refuse 'next-milestone verdict is missing entry-condition evidence path' 74
+        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$successor_path" == "$package_successor_path" && "$entry" == "$package_entry_commit" && "$entry_path" == "$package_entry_path" ]] || refuse 'next-milestone verdict bounds differ from package' 74
         ;;
     esac
     sequence_authorization=GRANTED
@@ -405,12 +413,13 @@ validate_verdict_artifact() {
 }
 
 validate_binding_artifact() {
-  local commit="$1" path="$2" text status milestone contract package package_path verdict verdict_path kind candidate target authorization critical important
-  local completion acceptance integration acceptance_binding successor entry resulting_state accepted_tip integration_state successor_state blocking_status binding_delta_paths binding_delta_hash binding_transition_date binding_guard_commit binding_guard_path binding_guard_hash binding_milestone_branch
+  local commit="$1" path="$2" text status milestone contract contract_path package package_path verdict verdict_path kind candidate target authorization critical important
+  local completion completion_path acceptance integration acceptance_binding acceptance_binding_path successor successor_path entry entry_path resulting_state accepted_tip integration_state successor_state blocking_status binding_delta_paths binding_delta_hash binding_transition_date binding_guard_commit binding_guard_path binding_guard_hash binding_milestone_branch
   text="$(git show "$commit:$path")" || refuse 'binding artifact is unreadable' 74
   status="$(field_from_text "$text" 'Binding status')" || refuse 'binding is missing status' 74
   milestone="$(field_from_text "$text" 'Milestone')" || refuse 'binding is missing milestone' 74
   contract="$(field_from_text "$text" 'Contract commit')" || refuse 'binding is missing contract' 74
+  contract_path="$(field_from_text "$text" 'Contract path')" || refuse 'binding is missing contract path' 74
   package="$(field_from_text "$text" 'Package commit')" || refuse 'binding is missing package' 74
   package_path="$(field_from_text "$text" 'Package path')" || refuse 'binding is missing package' 74
   verdict="$(field_from_text "$text" 'Verdict commit')" || refuse 'binding is missing verdict' 74
@@ -422,7 +431,7 @@ validate_binding_artifact() {
   critical="$(field_from_text "$text" 'Critical findings')" || refuse 'binding is missing finding counts' 74
   important="$(field_from_text "$text" 'Important findings')" || refuse 'binding is missing finding counts' 74
   resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse 'binding is missing resulting state' 74
-  [[ "$status" == Current && "$milestone" == "$package_milestone" && "$contract" == "$sequence_contract" && "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$verdict" == "$sequence_verdict_commit" && "$verdict_path" == "$sequence_verdict_path" ]] || refuse 'binding does not bind current package and verdict' 74
+  [[ "$status" == Current && "$milestone" == "$package_milestone" && "$contract" == "$sequence_contract" && "$contract_path" == "$package_contract_path" && "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$verdict" == "$sequence_verdict_commit" && "$verdict_path" == "$sequence_verdict_path" ]] || refuse 'binding does not bind current package and verdict' 74
   [[ "$kind" == "$sequence_verdict" && "$candidate" == "$sequence_candidate" && "$target" == "$sequence_target" && "$authorization" == "$sequence_authorization" ]] || refuse 'binding decision fields conflict with verdict' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'binding findings differ from verdict' 74
   [[ "$resulting_state" == "$sequence_resulting_state" ]] || refuse 'binding resulting state differs from verdict' 74
@@ -431,7 +440,8 @@ validate_binding_artifact() {
       milestone-acceptance)
         accepted_tip="$(field_from_text "$text" 'Accepted milestone tip')" || refuse 'milestone-acceptance binding is missing accepted milestone tip' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance binding is missing completion evidence' 74
-        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" ]] || refuse 'milestone-acceptance binding bounds differ from verdict' 74
+        completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'milestone-acceptance binding is missing completion evidence path' 74
+        [[ "$accepted_tip" == "$package_accepted_tip" && "$completion" == "$package_completion_commit" && "$completion_path" == "$package_completion_path" ]] || refuse 'milestone-acceptance binding bounds differ from verdict' 74
         ;;
       main-integration)
         integration_state="$(field_from_text "$text" 'Integration state')" || refuse 'main-integration binding is missing integration state' 74
@@ -445,14 +455,18 @@ validate_binding_artifact() {
         acceptance="$(field_from_text "$text" 'Acceptance candidate')" || refuse 'main-integration binding is missing candidate bounds' 74
         integration="$(field_from_text "$text" 'Integration candidate')" || refuse 'main-integration binding is missing candidate bounds' 74
         completion="$(field_from_text "$text" 'Completion package commit')" || refuse 'main-integration binding is missing completion evidence' 74
+        completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'main-integration binding is missing completion evidence path' 74
         acceptance_binding="$(field_from_text "$text" 'Milestone acceptance binding commit')" || refuse 'main-integration binding is missing acceptance binding' 74
-        [[ "$integration_state" == "$package_integration_state" && "$binding_milestone_branch" == "$package_milestone_branch" && "$binding_delta_paths" == "$delta_paths" && "$binding_delta_hash" == "$delta_hash" && "$binding_transition_date" == "$transition_date" && "$binding_guard_commit" == "$package_guard_commit" && "$binding_guard_path" == "$package_guard_path" && "$binding_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$acceptance_binding" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration binding bounds differ from verdict' 74
+        acceptance_binding_path="$(field_from_text "$text" 'Milestone acceptance binding path')" || refuse 'main-integration binding is missing acceptance binding path' 74
+        [[ "$integration_state" == "$package_integration_state" && "$binding_milestone_branch" == "$package_milestone_branch" && "$binding_delta_paths" == "$delta_paths" && "$binding_delta_hash" == "$delta_hash" && "$binding_transition_date" == "$transition_date" && "$binding_guard_commit" == "$package_guard_commit" && "$binding_guard_path" == "$package_guard_path" && "$binding_guard_hash" == "$package_guard_hash" && "$acceptance" == "$package_acceptance_candidate" && "$integration" == "$package_integration_candidate" && "$completion" == "$package_completion_commit" && "$completion_path" == "$package_completion_path" && "$acceptance_binding" == "$package_acceptance_binding_commit" && "$acceptance_binding_path" == "$package_acceptance_binding_path" ]] || refuse 'main-integration binding bounds differ from verdict' 74
         ;;
       next-milestone)
         successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone binding is missing successor state' 74
         successor="$(field_from_text "$text" 'Successor contract commit')" || refuse 'next-milestone binding is missing successor contract' 74
+        successor_path="$(field_from_text "$text" 'Successor contract path')" || refuse 'next-milestone binding is missing successor contract path' 74
         entry="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone binding is missing entry-condition evidence' 74
-        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$entry" == "$package_entry_commit" ]] || refuse 'next-milestone binding bounds differ from verdict' 74
+        entry_path="$(field_from_text "$text" 'Entry conditions evidence path')" || refuse 'next-milestone binding is missing entry-condition evidence path' 74
+        [[ "$successor_state" == "$package_successor_state" && "$successor" == "$package_successor_commit" && "$successor_path" == "$package_successor_path" && "$entry" == "$package_entry_commit" && "$entry_path" == "$package_entry_path" ]] || refuse 'next-milestone binding bounds differ from verdict' 74
         ;;
     esac
   else
@@ -540,11 +554,11 @@ validate_result_artifact() {
       ;;
     *) refuse 'result status is invalid' 74 ;;
   esac
-  sequence_result_commit="$commit"; sequence_result_path="$path"; sequence_result_status="$status"; sequence_result_approval="$approval"; sequence_result_approval_path="$approval_path"; sequence_result_branch="$milestone_branch"; sequence_result_candidate="$candidate"; sequence_result_target="$target"; sequence_result_argv="$guard_argv"; sequence_result_guard_commit="$guard_commit"; sequence_result_guard_path="$guard_path"; sequence_result_guard_hash="$guard_hash"; sequence_result_environment="$environment"; sequence_result_limitations="$limitations"; sequence_result_interruption="$interruption"; sequence_result_output_hash="$output_hash"; sequence_result_pre_local="$pre_local"; sequence_result_pre_remote="$pre_remote"; sequence_result_post_local="$post_local"; sequence_result_post_remote="$post_remote"; sequence_result_pre_evidence="$pre_evidence"; sequence_result_post_evidence="$post_evidence"; sequence_result_recovery="$recovery"; sequence_result_snapshot="$snapshot"; sequence_result_replay="$replay"
+  sequence_result_commit="$commit"; sequence_result_path="$path"; sequence_result_status="$status"; sequence_result_approval="$approval"; sequence_result_approval_path="$approval_path"; sequence_result_branch="$milestone_branch"; sequence_result_candidate="$candidate"; sequence_result_target="$target"; sequence_result_argv="$guard_argv"; sequence_result_guard_commit="$guard_commit"; sequence_result_guard_path="$guard_path"; sequence_result_guard_hash="$guard_hash"; sequence_result_environment="$environment"; sequence_result_limitations="$limitations"; sequence_result_interruption="$interruption"; sequence_result_output_encoding="$output_encoding"; sequence_result_output_length="$output_length"; sequence_result_output_hash="$output_hash"; sequence_result_pre_local="$pre_local"; sequence_result_pre_remote="$pre_remote"; sequence_result_post_local="$post_local"; sequence_result_post_remote="$post_remote"; sequence_result_pre_evidence="$pre_evidence"; sequence_result_post_evidence="$post_evidence"; sequence_result_recovery="$recovery"; sequence_result_snapshot="$snapshot"; sequence_result_replay="$replay"
 }
 
 validate_result_binding_artifact() {
-  local commit="$1" path="$2" text status result result_path result_status approval approval_path milestone_branch candidate target guard_argv guard_commit guard_path guard_hash environment limitations interruption output_hash pre_local pre_remote post_local post_remote pre_evidence post_evidence recovery snapshot replay
+  local commit="$1" path="$2" text status result result_path result_status approval approval_path milestone_branch candidate target guard_argv guard_commit guard_path guard_hash environment limitations interruption output_encoding output_length output_hash pre_local pre_remote post_local post_remote pre_evidence post_evidence recovery snapshot replay
   text="$(git show "$commit:$path")" || refuse 'result binding is unreadable' 74
   status="$(field_from_text "$text" 'Binding status')" || refuse 'result binding is missing status' 74
   result="$(field_from_text "$text" 'Result commit')" || refuse 'result binding is missing result' 74
@@ -562,6 +576,8 @@ validate_result_binding_artifact() {
   environment="$(field_from_text "$text" 'Execution environment')" || refuse 'result binding is missing execution environment' 74
   limitations="$(field_from_text "$text" 'Limitations')" || refuse 'result binding is missing limitations' 74
   interruption="$(field_from_text "$text" 'Interruption point')" || refuse 'result binding is missing interruption point' 74
+  output_encoding="$(field_from_text "$text" 'Guard output encoding')" || refuse 'result binding is missing output encoding' 74
+  output_length="$(field_from_text "$text" 'Guard output byte length')" || refuse 'result binding is missing output byte length' 74
   output_hash="$(field_from_text "$text" 'Full guard output SHA-256')" || refuse 'result binding is missing guard output hash' 74
   pre_local="$(field_from_text "$text" 'Pre local main')" || refuse 'result binding is missing refs' 74
   pre_remote="$(field_from_text "$text" 'Pre remote main')" || refuse 'result binding is missing refs' 74
@@ -572,7 +588,7 @@ validate_result_binding_artifact() {
   recovery="$(field_from_text "$text" 'Recovery state')" || refuse 'result binding is missing recovery state' 74
   snapshot="$(field_from_text "$text" 'Recovery snapshot path')" || refuse 'result binding is missing recovery snapshot path' 74
   replay="$(field_from_text "$text" 'Replay status')" || refuse 'result binding is missing replay status' 74
-  [[ "$status" == Current && "$result" == "$sequence_result_commit" && "$result_path" == "$sequence_result_path" && "$result_status" == "$sequence_result_status" && "$approval" == "$sequence_result_approval" && "$approval_path" == "$sequence_result_approval_path" && "$milestone_branch" == "$sequence_result_branch" && "$candidate" == "$sequence_result_candidate" && "$target" == "$sequence_result_target" && "$guard_argv" == "$sequence_result_argv" && "$guard_commit" == "$sequence_result_guard_commit" && "$guard_path" == "$sequence_result_guard_path" && "$guard_hash" == "$sequence_result_guard_hash" && "$environment" == "$sequence_result_environment" && "$limitations" == "$sequence_result_limitations" && "$interruption" == "$sequence_result_interruption" && "$output_hash" == "$sequence_result_output_hash" && "$pre_local" == "$sequence_result_pre_local" && "$pre_remote" == "$sequence_result_pre_remote" && "$post_local" == "$sequence_result_post_local" && "$post_remote" == "$sequence_result_post_remote" && "$pre_evidence" == "$sequence_result_pre_evidence" && "$post_evidence" == "$sequence_result_post_evidence" && "$recovery" == "$sequence_result_recovery" && "$snapshot" == "$sequence_result_snapshot" && "$replay" == "$sequence_result_replay" ]] || refuse 'result binding conflicts with result' 74
+  [[ "$status" == Current && "$result" == "$sequence_result_commit" && "$result_path" == "$sequence_result_path" && "$result_status" == "$sequence_result_status" && "$approval" == "$sequence_result_approval" && "$approval_path" == "$sequence_result_approval_path" && "$milestone_branch" == "$sequence_result_branch" && "$candidate" == "$sequence_result_candidate" && "$target" == "$sequence_result_target" && "$guard_argv" == "$sequence_result_argv" && "$guard_commit" == "$sequence_result_guard_commit" && "$guard_path" == "$sequence_result_guard_path" && "$guard_hash" == "$sequence_result_guard_hash" && "$environment" == "$sequence_result_environment" && "$limitations" == "$sequence_result_limitations" && "$interruption" == "$sequence_result_interruption" && "$output_encoding" == "$sequence_result_output_encoding" && "$output_length" == "$sequence_result_output_length" && "$output_hash" == "$sequence_result_output_hash" && "$pre_local" == "$sequence_result_pre_local" && "$pre_remote" == "$sequence_result_pre_remote" && "$post_local" == "$sequence_result_post_local" && "$post_remote" == "$sequence_result_post_remote" && "$pre_evidence" == "$sequence_result_pre_evidence" && "$post_evidence" == "$sequence_result_post_evidence" && "$recovery" == "$sequence_result_recovery" && "$snapshot" == "$sequence_result_snapshot" && "$replay" == "$sequence_result_replay" ]] || refuse 'result binding conflicts with result' 74
 }
 
 if [[ $# -ne 3 ]]; then

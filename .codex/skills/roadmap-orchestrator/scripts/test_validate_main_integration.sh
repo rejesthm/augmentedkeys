@@ -40,8 +40,22 @@ prepare_review_payload() {
     printf 'AUGMENTEDKEYS REVIEW ATTESTATION v1\nReviewed candidate: %s\nReviewer role: %s\nReviewer session: %s\nVerification evidence commit: %s\nVerdict: %s\nCritical findings: %s\nImportant findings: %s\nMinor findings: %s\nEND AUGMENTEDKEYS REVIEW ATTESTATION v1\n\n' \
       "${ATTESTATION_CANDIDATE_OVERRIDE:-$candidate}" "${ATTESTATION_ROLE_OVERRIDE:-$role}" "${ATTESTATION_SESSION_OVERRIDE:-$session}" "${ATTESTATION_VERIFICATION_OVERRIDE:-$verification}" "${ATTESTATION_VERDICT_OVERRIDE:-$verdict}" "${ATTESTATION_CRITICAL_OVERRIDE:-$critical}" "${ATTESTATION_IMPORTANT_OVERRIDE:-$important}" "${ATTESTATION_MINOR_OVERRIDE:-$minor}"
     if [[ -n "${REVIEW_RAW_FILE:-}" ]]; then cat "$REVIEW_RAW_FILE"; else printf '%s\n' "$body_text"; fi
+    if [[ "${ATTESTATION_DUPLICATE_PREFIX:-no}" == yes ]]; then printf 'AUGMENTEDKEYS REVIEW ATTESTATION v1\n'; fi
+    if [[ "${ATTESTATION_DUPLICATE:-no}" == yes ]]; then
+      printf 'AUGMENTEDKEYS REVIEW ATTESTATION v1\nReviewed candidate: %s\nReviewer role: %s\nReviewer session: %s\nVerification evidence commit: %s\nVerdict: %s\nCritical findings: %s\nImportant findings: %s\nMinor findings: %s\nEND AUGMENTEDKEYS REVIEW ATTESTATION v1\n' "${DUPLICATE_CANDIDATE_OVERRIDE:-$candidate}" "${DUPLICATE_ROLE_OVERRIDE:-$role}" "${DUPLICATE_SESSION_OVERRIDE:-$session}" "${DUPLICATE_VERIFICATION_OVERRIDE:-$verification}" "${DUPLICATE_VERDICT_OVERRIDE:-$verdict}" "${DUPLICATE_CRITICAL_OVERRIDE:-$critical}" "${DUPLICATE_IMPORTANT_OVERRIDE:-$important}" "${DUPLICATE_MINOR_OVERRIDE:-$minor}"
+    fi
   } > "$destination"
 }
+mutate_named_field() {
+  local file="$1" omit="$2" override="$3" value="$4" next=
+  if [[ -n "$omit" ]]; then sed -i '' "/^${omit}: /d" "$file"; fi
+  if [[ -n "$override" ]]; then
+    next="$file.next"
+    awk -v prefix="$override: " -v value="$value" 'index($0,prefix)==1 {print prefix value; changed++; next} {print} END {if(changed>1) exit 42}' "$file" > "$next"
+    mv "$next" "$file"
+  fi
+}
+
 insert_acceptance_rows() {
   local ledger="$1" binding="$2" accepted="$3" date="$4" next="$1.next"
   awk -v binding="$binding" -v accepted="$accepted" -v date="$date" -v binding_path="$acceptance_binding_path" '
@@ -140,11 +154,17 @@ append_acceptance_sequence() {
   acceptance_package_path="docs/orchestration/decisions/m0/packages/milestone-acceptance-$sequence.md"
   acceptance_verdict_path="docs/orchestration/decisions/m0/verdicts/milestone-acceptance-$sequence.md"
   append_review_set "acceptance-$sequence" "$acceptance_package_candidate"
-  write_acceptance_package && git add "$acceptance_package_path" && git commit --quiet -m "acceptance-package-$sequence"
+  write_acceptance_package
+  mutate_named_field "$acceptance_package_path" "${ACCEPTANCE_PACKAGE_OMIT_FIELD:-}" "${ACCEPTANCE_PACKAGE_OVERRIDE_FIELD:-}" "${ACCEPTANCE_PACKAGE_OVERRIDE_VALUE:-}"
+  git add "$acceptance_package_path" && git commit --quiet -m "acceptance-package-$sequence"
   acceptance_package_sha="$(git rev-parse HEAD)"
-  write_acceptance_verdict && git add "$acceptance_verdict_path" && git commit --quiet -m "acceptance-verdict-$sequence"
+  write_acceptance_verdict
+  mutate_named_field "$acceptance_verdict_path" "${ACCEPTANCE_VERDICT_OMIT_FIELD:-}" "${ACCEPTANCE_VERDICT_OVERRIDE_FIELD:-}" "${ACCEPTANCE_VERDICT_OVERRIDE_VALUE:-}"
+  git add "$acceptance_verdict_path" && git commit --quiet -m "acceptance-verdict-$sequence"
   acceptance_verdict_sha="$(git rev-parse HEAD)"
-  write_acceptance_binding && git add "$acceptance_binding_path" && git commit --quiet -m "acceptance-binding-$sequence"
+  write_acceptance_binding
+  mutate_named_field "$acceptance_binding_path" "${ACCEPTANCE_BINDING_OMIT_FIELD:-}" "${ACCEPTANCE_BINDING_OVERRIDE_FIELD:-}" "${ACCEPTANCE_BINDING_OVERRIDE_VALUE:-}"
+  git add "$acceptance_binding_path" && git commit --quiet -m "acceptance-binding-$sequence"
   acceptance_binding_sha="$(git rev-parse HEAD)"
 }
 
@@ -157,8 +177,8 @@ write_acceptance_verdict() {
     }
     printf 'Evidence package commit: %s\nEvidence package path: %s\n' "$acceptance_package_sha" "$acceptance_package_path"
     printf 'Verdict: APPROVE_MILESTONE\nMilestone: M0\n'
-    printf 'Contract commit: %s\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\n' "$base_sha" "$acceptance_package_candidate" "$acceptance_package_candidate"
-    printf 'Completion package commit: %s\nTarget main commit: %s\n' "$acceptance_package_candidate" "$base_sha"
+    printf 'Contract commit: %s\nContract path: %s\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\n' "${ACCEPTANCE_VERDICT_CONTRACT_COMMIT_OVERRIDE:-$base_sha}" "${ACCEPTANCE_VERDICT_CONTRACT_PATH_OVERRIDE:-$contract_path}" "$acceptance_package_candidate" "$acceptance_package_candidate"
+    printf 'Completion package commit: %s\nCompletion package path: %s\nTarget main commit: %s\n' "${ACCEPTANCE_VERDICT_COMPLETION_COMMIT_OVERRIDE:-$acceptance_package_candidate}" "${ACCEPTANCE_VERDICT_COMPLETION_PATH_OVERRIDE:-$completion_path}" "$base_sha"
     printf 'Successor contract commit: Not applicable\nCritical findings: 0\nImportant findings: 0\n'
     printf 'Decision: Accept the exact reviewed milestone.\n'
   } > "$acceptance_verdict_path"
@@ -167,9 +187,11 @@ write_acceptance_verdict() {
 write_acceptance_binding() {
   mkdir -p "$(dirname "$acceptance_binding_path")"
   {
-    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nDecision kind: APPROVE_MILESTONE\nReviewed candidate: %s\nAuthorization: GRANTED\nResulting milestone state: Accepted\n' "$base_sha" "$acceptance_package_candidate"
+    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nContract path: %s\nDecision kind: %s\nReviewed candidate: %s\n' "${ACCEPTANCE_BINDING_CONTRACT_COMMIT_OVERRIDE:-$base_sha}" "${ACCEPTANCE_BINDING_CONTRACT_PATH_OVERRIDE:-$contract_path}" "${ACCEPTANCE_BINDING_KIND_OVERRIDE:-APPROVE_MILESTONE}" "${ACCEPTANCE_BINDING_REVIEWED_OVERRIDE:-$acceptance_package_candidate}"
+    [[ "${ACCEPTANCE_BINDING_OMIT_AUTHORIZATION:-no}" == yes ]] || printf 'Authorization: %s\n' "${ACCEPTANCE_BINDING_AUTHORIZATION_OVERRIDE:-GRANTED}"
+    printf 'Resulting milestone state: Accepted\n'
     printf 'Package commit: %s\nPackage path: %s\n' "$acceptance_package_sha" "$acceptance_package_path"
-    printf 'Accepted milestone tip: %s\nCompletion package commit: %s\nTarget main commit: %s\n' "$acceptance_package_candidate" "$acceptance_package_candidate" "$base_sha"
+    printf 'Accepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: %s\nTarget main commit: %s\n' "$acceptance_package_candidate" "${ACCEPTANCE_BINDING_COMPLETION_COMMIT_OVERRIDE:-$acceptance_package_candidate}" "${ACCEPTANCE_BINDING_COMPLETION_PATH_OVERRIDE:-$completion_path}" "$base_sha"
     printf 'Verdict commit: %s\nVerdict path: %s\n' "$acceptance_verdict_sha" "$acceptance_verdict_path"
     printf 'Critical findings: 0\nImportant findings: 0\n'
   } > "$acceptance_binding_path"
@@ -206,6 +228,7 @@ append_main_sequence() {
     printf 'Target main commit: %s\nCritical findings: 0\nImportant findings: 0\n' "$package_target"
     printf 'Limitations: Temporary repository fixture only.\nRecovery: Stop without replay when state is uncertain.\n'
   } > "$package_path"
+  mutate_named_field "$package_path" "${MAIN_PACKAGE_OMIT_FIELD:-}" "${MAIN_PACKAGE_OVERRIDE_FIELD:-}" "${MAIN_PACKAGE_OVERRIDE_VALUE:-}"
   git add "$package_path" && git commit --quiet -m "package-$sequence"
   package_sha="$(git rev-parse HEAD)"
   mkdir -p "$(dirname "$verdict_path")"
@@ -215,8 +238,8 @@ append_main_sequence() {
       printf 'Steward session: main-session-%s\nRecorded timestamp: %s\n' "$sequence" "$verdict_timestamp"
     }
     printf 'Evidence package commit: %s\nEvidence package path: %s\n' "$package_sha" "$package_path"
-    printf 'Verdict: %s\nMilestone: M0\nContract commit: %s\n' "$verdict_kind" "$base_sha"
-    printf 'Resulting milestone state: Accepted\nIntegration state: Pending\nAcceptance candidate: %s\nIntegration candidate: %s\nReviewed candidate: %s\nCompletion package commit: %s\nMilestone acceptance binding commit: %s\n' "$package_acceptance_candidate" "$verdict_candidate" "$verdict_candidate" "$package_acceptance_candidate" "$acceptance_binding_sha"
+    printf 'Verdict: %s\nMilestone: M0\nContract commit: %s\nContract path: %s\n' "$verdict_kind" "$base_sha" "$contract_path"
+    printf 'Resulting milestone state: Accepted\nIntegration state: Pending\nAcceptance candidate: %s\nIntegration candidate: %s\nReviewed candidate: %s\nCompletion package commit: %s\nCompletion package path: %s\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\n' "$package_acceptance_candidate" "$verdict_candidate" "$verdict_candidate" "$package_acceptance_candidate" "$completion_path" "$acceptance_binding_sha" "$package_acceptance_path"
     printf 'Milestone branch: milestone/m0-research\n'
     printf 'Administrative delta paths: .loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md,docs/research/RESEARCH_INDEX.md\nAdministrative delta SHA-256: %s\nAdministrative transition date: %s\n' "$delta_hash" "${package_transition_date:-2026-10-24}"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\n' "$control_sha" "$(hash_file "$guard")"
@@ -224,18 +247,20 @@ append_main_sequence() {
     printf 'Successor contract commit: Not applicable\nCritical findings: 0\nImportant findings: 0\n'
     printf 'Decision: Decide the exact guarded integration.\n'
   } > "$verdict_path"
+  mutate_named_field "$verdict_path" "${MAIN_VERDICT_OMIT_FIELD:-}" "${MAIN_VERDICT_OVERRIDE_FIELD:-}" "${MAIN_VERDICT_OVERRIDE_VALUE:-}"
   git add "$verdict_path" && git commit --quiet -m "verdict-$sequence"
   decision_sha="$(git rev-parse HEAD)"
   mkdir -p "$(dirname "$binding_path")"
   {
-    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nDecision kind: APPROVE_MAIN_INTEGRATION\nReviewed candidate: %s\nAuthorization: GRANTED\nResulting milestone state: Accepted\nIntegration state: %s\n' "$base_sha" "$binding_candidate" "$binding_state"
+    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nContract path: %s\nDecision kind: APPROVE_MAIN_INTEGRATION\nReviewed candidate: %s\nAuthorization: GRANTED\nResulting milestone state: Accepted\nIntegration state: %s\n' "$base_sha" "$contract_path" "$binding_candidate" "$binding_state"
     printf 'Package commit: %s\nPackage path: %s\nVerdict commit: %s\nVerdict path: %s\n' "$package_sha" "$package_path" "$decision_sha" "$verdict_path"
-    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nCompletion package commit: %s\nMilestone acceptance binding commit: %s\nTarget main commit: %s\n' "$package_acceptance_candidate" "$binding_candidate" "$package_acceptance_candidate" "$acceptance_binding_sha" "$binding_target"
+    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nCompletion package commit: %s\nCompletion package path: %s\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\nTarget main commit: %s\n' "$package_acceptance_candidate" "$binding_candidate" "$package_acceptance_candidate" "$completion_path" "$acceptance_binding_sha" "$package_acceptance_path" "$binding_target"
     printf 'Milestone branch: milestone/m0-research\n'
     printf 'Administrative delta paths: .loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md,docs/research/RESEARCH_INDEX.md\nAdministrative delta SHA-256: %s\nAdministrative transition date: %s\n' "$delta_hash" "${package_transition_date:-2026-10-24}"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\n' "$control_sha" "$(hash_file "$guard")"
     printf 'Critical findings: 0\nImportant findings: 0\n'
   } > "$binding_path"
+  mutate_named_field "$binding_path" "${MAIN_BINDING_OMIT_FIELD:-}" "${MAIN_BINDING_OVERRIDE_FIELD:-}" "${MAIN_BINDING_OVERRIDE_VALUE:-}"
   git add "$binding_path"
   if [[ "$binding_extra_decision" == yes ]]; then
     printf 'Verdict: PAUSE_HUMAN\n' > "docs/orchestration/decisions/m0/verdicts/co-committed-pause-$sequence.md"
@@ -923,7 +948,7 @@ test_end_to_end_both_guards() {
     printf 'Binding status: Current\nResult commit: %s\nResult path: %s\nResult status: SUCCEEDED\nConsumed approval commit: %s\nConsumed approval path: %s\nMilestone branch: milestone/m0-research\n' "$result_commit" "$result_path" "$approval_tip" "$binding_path"
     printf 'Integration candidate: %s\nTarget main commit: %s\nGuard argv: validate_main_integration.sh|integrate|milestone/m0-research|%s|%s|%s\n' "$candidate_sha" "$base_sha" "$candidate_sha" "$base_sha" "$approval_tip"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\nExecution environment: Disposable local bare-remote fixture; no credentials.\nLimitations: Synthetic end-to-end fixture only.\nInterruption point: None observed.\n' "$control_sha" "$(hash_file "$guard")"
-    printf 'Full guard output SHA-256: %s\nPre local main: %s\nPre remote main: %s\nPost local main: %s\nPost remote main: %s\nPre evidence tip: %s\nPost evidence tip: %s\nRecovery state: Not required\nRecovery snapshot path: None\nReplay status: Consumed\n' "$output_hash" "$base_sha" "$base_sha" "$candidate_sha" "$candidate_sha" "$approval_tip" "$approval_tip"
+    printf 'Guard output encoding: base64\nGuard output byte length: %s\nFull guard output SHA-256: %s\nPre local main: %s\nPre remote main: %s\nPost local main: %s\nPost remote main: %s\nPre evidence tip: %s\nPost evidence tip: %s\nRecovery state: Not required\nRecovery snapshot path: None\nReplay status: Consumed\n' "$output_length" "$output_hash" "$base_sha" "$base_sha" "$candidate_sha" "$candidate_sha" "$approval_tip" "$approval_tip"
   } > "$work_repo/$result_binding_path"
   git -C "$work_repo" add "$result_binding_path" && git -C "$work_repo" commit --quiet -m e2e-result-binding
   result_tip="$(git -C "$work_repo" rev-parse HEAD)"
@@ -942,12 +967,155 @@ test_actual_state_shapes_through_guard() {
   tests_run=$((tests_run + 1))
 }
 
+test_round3_main_path_matrix() {
+  local layer spec field wrong missing mismatch prefix var field_var value_var
+  for layer in package verdict binding; do
+    case "$layer" in
+      package) prefix=MAIN_PACKAGE ;;
+      verdict) prefix=MAIN_VERDICT ;;
+      binding) prefix=MAIN_BINDING ;;
+    esac
+    for spec in       'Contract path|docs/orchestration/milestones/WRONG.md'       'Completion package path|docs/orchestration/milestones/m0/evidence/WRONG.md'       'Milestone acceptance binding path|docs/orchestration/decisions/m0/bindings/WRONG.md'; do
+      IFS='|' read -r field wrong <<< "$spec"
+      case "$layer:$field" in
+        package:*) missing='integration package is missing required fields'; mismatch='binding contract identity differs from package' ;;
+        verdict:*) missing='verdict is missing required approval fields'; mismatch='verdict package fields conflict' ;;
+        binding:*) missing='binding is missing required fields'; mismatch='binding contract identity differs from package' ;;
+      esac
+      [[ "$field" == 'Completion package path' && "$layer" == package ]] && mismatch='binding completion identity differs from package'
+      [[ "$field" == 'Milestone acceptance binding path' ]] && {
+        case "$layer" in
+          package) mismatch='binding acceptance identity differs from package' ;;
+          verdict) mismatch='verdict package fields conflict' ;;
+          binding) mismatch='binding acceptance identity differs from package' ;;
+        esac
+      }
+      [[ "$field" == 'Completion package path' && "$layer" == binding ]] && mismatch='binding completion identity differs from package'
+      var="${prefix}_OMIT_FIELD"; printf -v "$var" '%s' "$field"
+      setup_fixture "round3-main-$layer-missing-${field// /-}"
+      unset "$var"
+      assert_refusal_without_mutation "$missing" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+      field_var="${prefix}_OVERRIDE_FIELD"; value_var="${prefix}_OVERRIDE_VALUE"
+      printf -v "$field_var" '%s' "$field"; printf -v "$value_var" '%s' "$wrong"
+      setup_fixture "round3-main-$layer-wrong-${field// /-}"
+      unset "$field_var" "$value_var"
+      assert_refusal_without_mutation "$mismatch" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+    done
+  done
+}
+
+test_round3_acceptance_path_matrix() {
+  local layer spec field wrong missing mismatch prefix var field_var value_var
+  for layer in package verdict binding; do
+    case "$layer" in
+      package) prefix=ACCEPTANCE_PACKAGE ;;
+      verdict) prefix=ACCEPTANCE_VERDICT ;;
+      binding) prefix=ACCEPTANCE_BINDING ;;
+    esac
+    for spec in       'Contract path|docs/orchestration/milestones/WRONG.md'       'Completion package path|docs/orchestration/milestones/m0/evidence/WRONG.md'; do
+      IFS='|' read -r field wrong <<< "$spec"
+      case "$layer" in
+        package) missing='milestone acceptance package is missing required fields'; mismatch='milestone acceptance package conflicts with contract or completion evidence' ;;
+        verdict) missing='milestone acceptance verdict is missing fields'; mismatch='milestone acceptance verdict conflicts with contract or completion evidence' ;;
+        binding) missing='milestone acceptance binding is missing fields'; mismatch='milestone acceptance binding conflicts with contract or completion evidence' ;;
+      esac
+      var="${prefix}_OMIT_FIELD"; printf -v "$var" '%s' "$field"
+      setup_fixture "round3-acceptance-$layer-missing-${field// /-}"
+      unset "$var"
+      assert_refusal_without_mutation "$missing" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+      field_var="${prefix}_OVERRIDE_FIELD"; value_var="${prefix}_OVERRIDE_VALUE"
+      printf -v "$field_var" '%s' "$field"; printf -v "$value_var" '%s' "$wrong"
+      setup_fixture "round3-acceptance-$layer-wrong-${field// /-}"
+      unset "$field_var" "$value_var"
+      assert_refusal_without_mutation "$mismatch" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+    done
+  done
+}
+
+test_round3_regressions() {
+  local raw
+  if [[ "${CT04_ROUND3_CASE:-all}" != acceptance ]]; then
+    ATTESTATION_DUPLICATE_PREFIX=yes ATTESTATION_DUPLICATE=yes setup_fixture round3-overlapping-attestation
+    assert_refusal_without_mutation 'review attestation is invalid' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+    ATTESTATION_DUPLICATE=yes DUPLICATE_CANDIDATE_OVERRIDE=1111111111111111111111111111111111111111 DUPLICATE_ROLE_OVERRIDE=licensing_security_reviewer DUPLICATE_VERDICT_OVERRIDE=REJECT DUPLICATE_IMPORTANT_OVERRIDE=3 setup_fixture round3-contradictory-duplicate
+    assert_refusal_without_mutation 'review attestation is invalid' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+    raw="$fixture_root/marker-like-body.txt"
+    printf 'AUGMENTEDKEYS REVIEW ATTESTATION v1\nexplanatory marker-like prose\nEND AUGMENTEDKEYS REVIEW ATTESTATION v1\n' > "$raw"
+    REVIEW_RAW_FILE="$raw" setup_fixture round3-marker-like-body
+    run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >/dev/null
+    tests_run=$((tests_run + 1))
+    [[ "${CT04_ROUND3_CASE:-all}" == duplicate ]] && return
+  fi
+
+  ACCEPTANCE_BINDING_OMIT_AUTHORIZATION=yes setup_fixture round3-incomplete-acceptance-binding
+  assert_refusal_without_mutation 'milestone acceptance binding is missing fields' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_AUTHORIZATION_OVERRIDE=DENIED setup_fixture round3-denied-acceptance-binding
+  assert_refusal_without_mutation 'milestone acceptance binding does not accept package candidate' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_KIND_OVERRIDE=CORRECT setup_fixture round3-wrong-kind-acceptance-binding
+  assert_refusal_without_mutation 'milestone acceptance binding does not accept package candidate' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_REVIEWED_OVERRIDE=1111111111111111111111111111111111111111 setup_fixture round3-wrong-candidate-acceptance-binding
+  assert_refusal_without_mutation 'milestone acceptance binding does not accept package candidate' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_CONTRACT_COMMIT_OVERRIDE=1111111111111111111111111111111111111111 setup_fixture round3-wrong-contract-commit
+  assert_refusal_without_mutation 'milestone acceptance binding conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_CONTRACT_PATH_OVERRIDE=docs/orchestration/milestones/WRONG.md setup_fixture round3-wrong-contract-path
+  assert_refusal_without_mutation 'milestone acceptance binding conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_COMPLETION_COMMIT_OVERRIDE=1111111111111111111111111111111111111111 setup_fixture round3-wrong-completion-commit
+  assert_refusal_without_mutation 'milestone acceptance binding conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_BINDING_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m0/evidence/wrong.md setup_fixture round3-wrong-completion-path
+  assert_refusal_without_mutation 'milestone acceptance binding conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_VERDICT_CONTRACT_PATH_OVERRIDE=docs/orchestration/milestones/WRONG.md setup_fixture round3-verdict-contract-path
+  assert_refusal_without_mutation 'milestone acceptance verdict conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  ACCEPTANCE_VERDICT_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m0/evidence/wrong.md setup_fixture round3-verdict-completion-path
+  assert_refusal_without_mutation 'milestone acceptance verdict conflicts with contract or completion evidence' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  test_round3_acceptance_path_matrix
+  test_round3_main_path_matrix
+}
+
+test_verdict_decision_text_required() {
+  local stage prefix missing omit_var field_var value_var
+  for stage in acceptance main; do
+    case "$stage" in
+      acceptance) prefix=ACCEPTANCE_VERDICT; missing='milestone acceptance verdict is missing fields' ;;
+      main) prefix=MAIN_VERDICT; missing='verdict is missing required approval fields' ;;
+    esac
+    omit_var="${prefix}_OMIT_FIELD"; printf -v "$omit_var" '%s' Decision
+    setup_fixture "controller-$stage-verdict-missing-decision"
+    unset "$omit_var"
+    assert_refusal_without_mutation "$missing" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+    field_var="${prefix}_OVERRIDE_FIELD"; value_var="${prefix}_OVERRIDE_VALUE"
+    printf -v "$field_var" '%s' Decision; printf -v "$value_var" '%s' ''
+    setup_fixture "controller-$stage-verdict-empty-decision"
+    unset "$field_var" "$value_var"
+    assert_refusal_without_mutation "$missing" authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  done
+}
+
+if [[ "${CT04_FOCUSED_TEST:-}" == controller-schema ]]; then
+  test_verdict_decision_text_required
+  printf 'PASS: %d controller verdict-decision scenarios\n' "$tests_run"
+  exit 0
+fi
+
+if [[ "${CT04_FOCUSED_TEST:-}" == round3 ]]; then
+  test_round3_regressions
+  printf 'PASS: %d focused round3 main-integration scenarios\n' "$tests_run"
+  exit 0
+fi
+
+if [[ "${MAIN_GUARD_E2E_ONLY:-no}" == yes ]]; then
+  test_end_to_end_both_guards
+  printf 'PASS: %d end-to-end two-guard scenario\n' "$tests_run"
+  exit 0
+fi
+
 if [[ "${MAIN_GUARD_ACTUAL_SHAPES_ONLY:-no}" == yes ]]; then
   test_actual_state_shapes_through_guard
   printf 'PASS: %d actual-state-shape main-integration guard scenario\n' "$tests_run"
   exit 0
 fi
 
+test_verdict_decision_text_required
+test_round3_regressions
 test_distinct_acceptance_and_integration_candidates
 test_arbitrary_allowed_state_change_refused
 test_invalid_calendar_transition_date

@@ -66,7 +66,8 @@ review_attestation_from_blob() {
     NR==10 {if($0!="END AUGMENTEDKEYS REVIEW ATTESTATION v1") exit 42; end++; next}
     NR==11 {if($0!="") exit 42; framed=1; next}
     NR>11 {
-      if(dupstate==0) {if($0=="AUGMENTEDKEYS REVIEW ATTESTATION v1") dupstate=1; next}
+      if($0=="AUGMENTEDKEYS REVIEW ATTESTATION v1") {dupstate=1; next}
+      if(dupstate==0) next
       if(dupstate==1) {dupstate=(index($0,"Reviewed candidate: ")==1)?2:0; next}
       if(dupstate==2) {dupstate=(index($0,"Reviewer role: ")==1)?3:0; next}
       if(dupstate==3) {dupstate=(index($0,"Reviewer session: ")==1)?4:0; next}
@@ -206,11 +207,14 @@ if [[ "$(latest_path_commit "$binding_commit" "$binding_path")" != "$binding_com
 
 load_artifact "$binding_commit" "$binding_path" 'canonical main-integration binding'
 if ! binding_status="$(field 'Binding status')" || ! binding_milestone="$(field 'Milestone')" || ! binding_kind="$(field 'Decision kind')" || ! binding_authorization="$(field 'Authorization')" || ! binding_reviewed="$(field 'Reviewed candidate')" || ! binding_milestone_state="$(field 'Resulting milestone state')" ||
+   ! binding_contract_commit="$(field 'Contract commit')" || ! binding_contract_path="$(field 'Contract path')" ||
    ! binding_integration_state="$(field 'Integration state')" || ! package_commit="$(field 'Package commit')" || ! package_path="$(field 'Package path')" ||
    ! verdict_commit="$(field 'Verdict commit')" || ! verdict_path="$(field 'Verdict path')" || ! binding_acceptance="$(field 'Acceptance candidate')" || ! binding_candidate="$(field 'Integration candidate')" ||
    ! binding_milestone_branch="$(field 'Milestone branch')" ||
    ! binding_delta_paths="$(field 'Administrative delta paths')" || ! binding_delta_hash="$(field 'Administrative delta SHA-256')" || ! binding_transition_date="$(field 'Administrative transition date')" ||
    ! binding_guard_commit="$(field 'Reviewed guard commit')" || ! binding_guard_path="$(field 'Reviewed guard path')" || ! binding_guard_hash="$(field 'Reviewed guard SHA-256')" ||
+   ! binding_completion_commit="$(field 'Completion package commit')" || ! binding_completion_path="$(field 'Completion package path')" ||
+   ! binding_acceptance_commit="$(field 'Milestone acceptance binding commit')" || ! binding_acceptance_path="$(field 'Milestone acceptance binding path')" ||
    ! binding_main="$(field 'Target main commit')" || ! binding_critical="$(field 'Critical findings')" || ! binding_important="$(field 'Important findings')"; then
   refuse 'binding is missing required fields' 74
 fi
@@ -244,6 +248,9 @@ if ! package_milestone="$(field 'Milestone')" || ! package_kind="$(field 'Decisi
 [[ "$binding_delta_paths" == "$delta_paths" && "$binding_delta_hash" == "$delta_hash" && "$binding_transition_date" == "$transition_date" ]] || refuse 'binding administrative delta differs from package' 74
 [[ "$binding_guard_commit" == "$package_guard_commit" && "$binding_guard_path" == "$package_guard_path" && "$binding_guard_hash" == "$package_guard_hash" ]] || refuse 'binding reviewed guard provenance differs from package' 74
 [[ "$binding_milestone_branch" == "$package_milestone_branch" ]] || refuse 'binding milestone branch differs from package' 74
+[[ "$binding_contract_commit" == "$package_contract_commit" && "$binding_contract_path" == "$package_contract_path" ]] || refuse 'binding contract identity differs from package' 74
+[[ "$binding_completion_commit" == "$package_completion_commit" && "$binding_completion_path" == "$package_completion_path" ]] || refuse 'binding completion identity differs from package' 74
+[[ "$binding_acceptance_commit" == "$acceptance_binding_commit" && "$binding_acceptance_path" == "$package_acceptance_path" ]] || refuse 'binding acceptance identity differs from package' 74
 [[ "$package_guard_commit" == "$reviewed_guard_commit" && "$package_guard_path" == "$guard_path" && "$package_guard_hash" == "$reviewed_guard_sha" ]] || refuse 'package reviewed guard provenance differs from invocation' 74
 valid_calendar_date "$transition_date" || refuse 'administrative transition date is invalid' 74
 [[ "$package_contract_path" == "$contract_path" && "$package_completion_path" == "$completion_path" ]] || refuse 'contract or completion package path is not canonical' 74
@@ -269,11 +276,15 @@ git merge-base --is-ancestor "$acceptance_binding_commit" "$package_commit" || r
 [[ "$(latest_path_commit "$binding_commit" "$acceptance_binding_path")" == "$acceptance_binding_commit" ]] || refuse 'milestone acceptance binding is not current at final evidence tip' 74
 
 load_artifact "$acceptance_binding_commit" "$acceptance_binding_path" 'milestone acceptance binding'
-if ! acceptance_status="$(field 'Binding status')" || ! acceptance_milestone="$(field 'Milestone')" || ! acceptance_state="$(field 'Resulting milestone state')" ||
+if ! acceptance_status="$(field 'Binding status')" || ! acceptance_milestone="$(field 'Milestone')" || ! acceptance_kind="$(field 'Decision kind')" || ! acceptance_authorization="$(field 'Authorization')" ||
+   ! acceptance_reviewed="$(field 'Reviewed candidate')" || ! acceptance_state="$(field 'Resulting milestone state')" ||
+   ! acceptance_contract_commit="$(field 'Contract commit')" || ! acceptance_contract_path="$(field 'Contract path')" ||
    ! acceptance_package_commit="$(field 'Package commit')" || ! acceptance_package_path="$(field 'Package path')" ||
-   ! acceptance_candidate="$(field 'Accepted milestone tip')" || ! acceptance_main="$(field 'Target main commit')" || ! acceptance_verdict_commit="$(field 'Verdict commit')" ||
+   ! acceptance_candidate="$(field 'Accepted milestone tip')" || ! acceptance_completion_commit="$(field 'Completion package commit')" || ! acceptance_completion_path="$(field 'Completion package path')" ||
+   ! acceptance_main="$(field 'Target main commit')" || ! acceptance_verdict_commit="$(field 'Verdict commit')" ||
    ! acceptance_verdict_path_value="$(field 'Verdict path')" || ! acceptance_critical="$(field 'Critical findings')" || ! acceptance_important="$(field 'Important findings')"; then refuse 'milestone acceptance binding is missing fields' 74; fi
-[[ "$acceptance_status" == Current && "$acceptance_milestone" == "$milestone_id" && "$acceptance_state" == Accepted && "$acceptance_candidate" == "$package_acceptance" && "$acceptance_main" == "$recorded_main_base" && "$acceptance_critical" == 0 && "$acceptance_important" == 0 ]] || refuse 'milestone acceptance binding does not accept package candidate' 74
+[[ "$acceptance_status" == Current && "$acceptance_milestone" == "$milestone_id" && "$acceptance_kind" == APPROVE_MILESTONE && "$acceptance_authorization" == GRANTED && "$acceptance_reviewed" == "$package_acceptance" && "$acceptance_state" == Accepted && "$acceptance_candidate" == "$package_acceptance" && "$acceptance_main" == "$recorded_main_base" && "$acceptance_critical" == 0 && "$acceptance_important" == 0 ]] || refuse 'milestone acceptance binding does not accept package candidate' 74
+[[ "$acceptance_contract_commit" == "$package_contract_commit" && "$acceptance_contract_path" == "$package_contract_path" && "$acceptance_completion_commit" == "$package_completion_commit" && "$acceptance_completion_path" == "$package_completion_path" ]] || refuse 'milestone acceptance binding conflicts with contract or completion evidence' 74
 [[ "$acceptance_package_path" =~ ^docs/orchestration/decisions/$milestone_key/packages/milestone-acceptance-[a-z0-9-]+\.md$ ]] || refuse 'milestone acceptance package path is not canonical' 74
 [[ "$acceptance_verdict_path_value" =~ ^docs/orchestration/decisions/$milestone_key/verdicts/milestone-acceptance-[a-z0-9-]+\.md$ ]] || refuse 'milestone acceptance verdict path is not canonical' 74
 resolve_exact_commit "$acceptance_package_commit" 'milestone acceptance package commit'
@@ -298,23 +309,30 @@ validate_review "$acceptance_package_final_commit" "$acceptance_package_final_pa
 
 load_artifact "$acceptance_verdict_commit" "$acceptance_verdict_path_value" 'milestone acceptance verdict'
 if ! acceptance_controller="$(field 'Controller recorder')" || ! acceptance_role="$(field 'Steward role')" || ! acceptance_session="$(field 'Steward session')" || ! acceptance_timestamp="$(field 'Recorded timestamp')" ||
-   ! acceptance_verdict_package_commit="$(field 'Evidence package commit')" || ! acceptance_verdict_package_path="$(field 'Evidence package path')" || ! acceptance_verdict="$(field 'Verdict')" || ! acceptance_verdict_candidate="$(field 'Reviewed candidate')" || ! acceptance_verdict_state="$(field 'Resulting milestone state')" || ! acceptance_verdict_tip="$(field 'Accepted milestone tip')" || ! acceptance_verdict_main="$(field 'Target main commit')" || ! acceptance_verdict_critical="$(field 'Critical findings')" || ! acceptance_verdict_important="$(field 'Important findings')"; then refuse 'milestone acceptance verdict is missing fields' 74; fi
+   ! acceptance_verdict_decision="$(field 'Decision')" || ! acceptance_verdict_package_commit="$(field 'Evidence package commit')" || ! acceptance_verdict_package_path="$(field 'Evidence package path')" || ! acceptance_verdict="$(field 'Verdict')" || ! acceptance_verdict_milestone="$(field 'Milestone')" ||
+   ! acceptance_verdict_contract_commit="$(field 'Contract commit')" || ! acceptance_verdict_contract_path="$(field 'Contract path')" ||
+   ! acceptance_verdict_candidate="$(field 'Reviewed candidate')" || ! acceptance_verdict_state="$(field 'Resulting milestone state')" || ! acceptance_verdict_tip="$(field 'Accepted milestone tip')" ||
+   ! acceptance_verdict_completion_commit="$(field 'Completion package commit')" || ! acceptance_verdict_completion_path="$(field 'Completion package path')" ||
+   ! acceptance_verdict_main="$(field 'Target main commit')" || ! acceptance_verdict_critical="$(field 'Critical findings')" || ! acceptance_verdict_important="$(field 'Important findings')"; then refuse 'milestone acceptance verdict is missing fields' 74; fi
 [[ "$acceptance_controller" == program-controller && "$acceptance_role" == decision_steward && "$acceptance_session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] && valid_utc_timestamp "$acceptance_timestamp" || refuse 'milestone acceptance Steward provenance is invalid' 74
 [[ "$acceptance_verdict_package_commit" == "$acceptance_package_commit" && "$acceptance_verdict_package_path" == "$acceptance_package_path" ]] || refuse 'milestone acceptance verdict does not bind canonical package' 74
-[[ "$acceptance_verdict" == APPROVE_MILESTONE && "$acceptance_verdict_candidate" == "$package_acceptance" && "$acceptance_verdict_state" == Accepted && "$acceptance_verdict_tip" == "$package_acceptance" && "$acceptance_verdict_main" == "$recorded_main_base" && "$acceptance_verdict_critical" == 0 && "$acceptance_verdict_important" == 0 ]] || refuse 'milestone acceptance verdict does not accept package candidate' 74
+[[ "$acceptance_verdict" == APPROVE_MILESTONE && "$acceptance_verdict_milestone" == "$milestone_id" && "$acceptance_verdict_candidate" == "$package_acceptance" && "$acceptance_verdict_state" == Accepted && "$acceptance_verdict_tip" == "$package_acceptance" && "$acceptance_verdict_main" == "$recorded_main_base" && "$acceptance_verdict_critical" == 0 && "$acceptance_verdict_important" == 0 ]] || refuse 'milestone acceptance verdict does not accept package candidate' 74
+[[ "$acceptance_verdict_contract_commit" == "$acceptance_package_contract_commit" && "$acceptance_verdict_contract_path" == "$acceptance_package_contract_path" && "$acceptance_verdict_completion_commit" == "$acceptance_package_completion_commit" && "$acceptance_verdict_completion_path" == "$acceptance_package_completion_path" ]] || refuse 'milestone acceptance verdict conflicts with contract or completion evidence' 74
+[[ "$acceptance_contract_commit" == "$acceptance_package_contract_commit" && "$acceptance_contract_path" == "$acceptance_package_contract_path" && "$acceptance_completion_commit" == "$acceptance_package_completion_commit" && "$acceptance_completion_path" == "$acceptance_package_completion_path" && "$acceptance_reviewed" == "$acceptance_package_candidate" ]] || refuse 'milestone acceptance binding conflicts with package' 74
 
 load_artifact "$verdict_commit" "$verdict_path" 'canonical main-integration verdict'
 if ! verdict_controller="$(field 'Controller recorder')" || ! verdict_role="$(field 'Steward role')" || ! verdict_session="$(field 'Steward session')" || ! verdict_timestamp="$(field 'Recorded timestamp')" ||
-   ! verdict_package_commit="$(field 'Evidence package commit')" || ! verdict_package_path="$(field 'Evidence package path')" || ! verdict="$(field 'Verdict')" ||
-   ! verdict_milestone="$(field 'Milestone')" || ! verdict_contract="$(field 'Contract commit')" || ! verdict_reviewed="$(field 'Reviewed candidate')" || ! verdict_resulting_state="$(field 'Resulting milestone state')" || ! verdict_integration_state="$(field 'Integration state')" || ! verdict_acceptance="$(field 'Acceptance candidate')" || ! verdict_candidate="$(field 'Integration candidate')" ||
+   ! verdict_decision="$(field 'Decision')" || ! verdict_package_commit="$(field 'Evidence package commit')" || ! verdict_package_path="$(field 'Evidence package path')" || ! verdict="$(field 'Verdict')" ||
+   ! verdict_milestone="$(field 'Milestone')" || ! verdict_contract="$(field 'Contract commit')" || ! verdict_contract_path="$(field 'Contract path')" || ! verdict_reviewed="$(field 'Reviewed candidate')" || ! verdict_resulting_state="$(field 'Resulting milestone state')" || ! verdict_integration_state="$(field 'Integration state')" || ! verdict_acceptance="$(field 'Acceptance candidate')" || ! verdict_candidate="$(field 'Integration candidate')" ||
    ! verdict_milestone_branch="$(field 'Milestone branch')" ||
    ! verdict_delta_paths="$(field 'Administrative delta paths')" || ! verdict_delta_hash="$(field 'Administrative delta SHA-256')" || ! verdict_transition_date="$(field 'Administrative transition date')" ||
    ! verdict_guard_commit="$(field 'Reviewed guard commit')" || ! verdict_guard_path="$(field 'Reviewed guard path')" || ! verdict_guard_hash="$(field 'Reviewed guard SHA-256')" ||
-   ! verdict_completion="$(field 'Completion package commit')" || ! verdict_main="$(field 'Target main commit')" || ! verdict_critical="$(field 'Critical findings')" || ! verdict_important="$(field 'Important findings')"; then refuse 'verdict is missing required approval fields' 74; fi
+   ! verdict_completion="$(field 'Completion package commit')" || ! verdict_completion_path="$(field 'Completion package path')" ||
+   ! verdict_acceptance_binding_commit="$(field 'Milestone acceptance binding commit')" || ! verdict_acceptance_binding_path="$(field 'Milestone acceptance binding path')" || ! verdict_main="$(field 'Target main commit')" || ! verdict_critical="$(field 'Critical findings')" || ! verdict_important="$(field 'Important findings')"; then refuse 'verdict is missing required approval fields' 74; fi
 [[ "$verdict_controller" == program-controller && "$verdict_role" == decision_steward && "$verdict_session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] && valid_utc_timestamp "$verdict_timestamp" || refuse 'main-integration Steward provenance is invalid' 74
 [[ "$verdict_package_commit" == "$package_commit" && "$verdict_package_path" == "$package_path" ]] || refuse 'verdict does not bind canonical package' 74
 [[ "$verdict" == APPROVE_MAIN_INTEGRATION ]] || refuse 'verdict does not approve main integration' 74
-[[ "$verdict_milestone" == "$milestone_id" && "$verdict_contract" == "$package_contract_commit" && "$verdict_completion" == "$package_completion_commit" ]] || refuse 'verdict package fields conflict' 74
+[[ "$verdict_milestone" == "$milestone_id" && "$verdict_contract" == "$package_contract_commit" && "$verdict_contract_path" == "$package_contract_path" && "$verdict_completion" == "$package_completion_commit" && "$verdict_completion_path" == "$package_completion_path" && "$verdict_acceptance_binding_commit" == "$acceptance_binding_commit" && "$verdict_acceptance_binding_path" == "$package_acceptance_path" ]] || refuse 'verdict package fields conflict' 74
 [[ "$verdict_reviewed" == "$accepted_tip" && "$verdict_resulting_state" == Accepted && "$verdict_integration_state" == Pending && "$verdict_acceptance" == "$package_acceptance" && "$verdict_candidate" == "$accepted_tip" ]] || refuse 'verdict candidates differ from package' 74
 [[ "$verdict_milestone_branch" == "$package_milestone_branch" ]] || refuse 'verdict milestone branch differs from package' 74
 [[ "$verdict_delta_paths" == "$delta_paths" && "$verdict_delta_hash" == "$delta_hash" && "$verdict_transition_date" == "$transition_date" ]] || refuse 'verdict administrative delta differs from package' 74
