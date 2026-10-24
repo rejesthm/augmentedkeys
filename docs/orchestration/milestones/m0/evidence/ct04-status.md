@@ -10,3 +10,8 @@ M0 remains Paused for owner decision; no task or milestone Accepted. This is the
 Runtime restriction recorded at 5a624497e43dc6791187e4b3f14d4f0f3846636b. Controller is sole repository writer; Conductor prepares/test proposals only in temporary directory. State remains In progress under this separate revised execution barrier; correction review round remains0.
 
 Correction round1: In progress. Source assignment d4e36ffe968df4561c23706eededd70c36be38da; exact rejected candidate aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5; full independent rejection 0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e. Controller owns repository paths, Conductor authors/tests temporary proposals only. No approval or adoption.
+
+
+## Controller final execution checkpoint
+
+CT04 remains In progress, correction round1. Consume assignment `a293320d0e605854a5073d187c30272c8b115e3b` before final materialization and bounded fixture/prose corrections. Conductor relinquished; controller is the only active repository writer. QA/Security/Final remain idle pending final verification and frozen candidate. Earlier execution records are historical; this same-state checkpoint changes no M0 authority.
