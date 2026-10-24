@@ -15,3 +15,8 @@ Correction round1: In progress. Source assignment d4e36ffe968df4561c23706eededd7
 ## Controller final execution checkpoint
 
 CT04 remains In progress, correction round1. Consume assignment `a293320d0e605854a5073d187c30272c8b115e3b` before final materialization and bounded fixture/prose corrections. Conductor relinquished; controller is the only active repository writer. QA/Security/Final remain idle pending final verification and frozen candidate. Earlier execution records are historical; this same-state checkpoint changes no M0 authority.
+
+
+## Correction round 2 execution barrier
+
+CT04 In progress, correction round2, consuming assignment `933e8c0926813e21706eed0cf85a0f033ea4b18a` after independent rejection `bbe3edf8c0fec323f02f593c3c01d6077905271d`. Exact rejected candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1` remains preserved. Same Conductor temporary author/controller sole repository writer; all independent reviewers idle. Implement only the assigned union of findings and obtain fresh verification/reviews before any adoption. M0 pause and main remain unchanged.
