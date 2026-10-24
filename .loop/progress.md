@@ -108,3 +108,5 @@ Execute owner-approved CT04 governance-only correction and independently verify 
 Evidence publication authorize refused67; local binding `0db258d158f1d212497ccfdf07675ec399e6f870` remains unpublished/unconsumed. MT-002 pause still applies. Last remote milestone `708aaa5968d557a09d3b9f9b207ff3fd77ffd315`; no further push attempted after refusal.
 
 CT04 authorization/archive evidence `fd52158b1e10629843cc60c5f18e18a7519d27e5`: wrong-base history preserved under archive/m0-decision-evidence-base-error-20261024; corrected base recorded before replacement creation. M0 pause unchanged.
+
+CT04 In review, candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5`, verification `59464ede90cbb6db21523b74d8372fc90ec58ec4`. QA/Security independently assigned; Conductor idle; no repository writer active. M0 remains paused.

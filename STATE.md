@@ -50,3 +50,5 @@ The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bb
 ## CT04 approved correction in progress
 
 Owner approved both exact proposals; authorization and archive preservation: `fd52158b1e10629843cc60c5f18e18a7519d27e5`. Controller preserved all unpublished evidence at archive/m0-decision-evidence-base-error-20261024, original worktree unchanged. Canonical evidence branch is now absent; corrected base b1b0c1edd5e42d3ea791f665c22954834e962d05 is recorded in ledger before replacement creation. CT04 task worktree and brief8be352c653084d47929ffecdf6e3dca0c5cb5c3e govern implementation. Earlier pending-authorization wording is historical for this correction. M0 remains paused, exact repaired commits still require review and owner acceptance before reactivation.
+
+CT04 candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` is now frozen for independent QA/Security review under verification `59464ede90cbb6db21523b74d8372fc90ec58ec4`. Controller suites18/34 pass; CP1–CP5 observations remain unresolved. Conductor idle. Correction is unapproved; M0 pause/main unchanged.
