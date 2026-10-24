@@ -4,6 +4,7 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 guard="$script_dir/validate_main_integration.sh"
 decision_guard="$script_dir/validate_decision_evidence.sh"
+publisher_writer="$script_dir/test_validate_decision_evidence.sh"
 [[ -x "$guard" ]] || { printf 'FAIL: guard is missing or not executable: %s\n' "$guard" >&2; exit 1; }
 [[ -x "$decision_guard" ]] || { printf 'FAIL: evidence guard is missing or not executable: %s\n' "$decision_guard" >&2; exit 1; }
 
@@ -114,6 +115,11 @@ append_review_set() {
   qa_path="docs/orchestration/decisions/m0/reviews/qa-$label.md"
   license_path="docs/orchestration/decisions/m0/reviews/security-$label.md"
   final_path="docs/orchestration/decisions/m0/reviews/final-$label.md"
+  if [[ "$label" == acceptance-* ]]; then
+    qa_path="${ACCEPTANCE_QA_PATH_OVERRIDE:-$qa_path}"
+    license_path="${ACCEPTANCE_SECURITY_PATH_OVERRIDE:-$license_path}"
+    final_path="${ACCEPTANCE_FINAL_PATH_OVERRIDE:-$final_path}"
+  fi
   for spec in "qa_performance_verifier:$qa_path" "licensing_security_reviewer:$license_path" "final_code_reviewer:$final_path"; do
     role="${spec%%:*}"; path="${spec#*:}"; mkdir -p "$(dirname "$path")"
     output="APPROVE $role review for $label.
@@ -136,14 +142,38 @@ Metadata-looking review prose remains literal output."
   done
 }
 
+acceptance_review_commit_value() {
+  local role="$1" commit="$2" mode ref
+  case "$role" in
+    qa) mode="${ACCEPTANCE_QA_COMMIT_FORM:-exact}" ;;
+    security) mode="${ACCEPTANCE_SECURITY_COMMIT_FORM:-exact}" ;;
+    final) mode="${ACCEPTANCE_FINAL_COMMIT_FORM:-exact}" ;;
+    *) fail 'unknown acceptance review role' ;;
+  esac
+  case "$mode" in
+    exact) printf '%s\n' "$commit" ;;
+    abbreviated) printf '%.12s\n' "$commit" ;;
+    ref)
+      ref="refs/heads/mutable-$role-review"
+      git branch -f "${ref#refs/heads/}" "$commit" >/dev/null
+      printf '%s\n' "$ref"
+      ;;
+    *) fail 'unknown acceptance review commit form' ;;
+  esac
+}
+
 write_acceptance_package() {
+  local qa_reference security_reference final_reference
+  qa_reference="$(acceptance_review_commit_value qa "$qa_review_commit")"
+  security_reference="$(acceptance_review_commit_value security "$security_review_commit")"
+  final_reference="$(acceptance_review_commit_value final "$final_review_commit")"
   mkdir -p "$(dirname "$acceptance_package_path")"
   {
     printf 'Milestone: M0\nDecision kind: milestone-acceptance\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: %s\n' "$base_sha" "$contract_path"
     printf 'Reviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: %s\n' "$acceptance_package_candidate" "$acceptance_package_candidate" "$acceptance_package_candidate" "$completion_path"
-    printf 'QA review commit: %s\nQA review path: %s\n' "$qa_review_commit" "$qa_path"
-    printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_review_commit" "$license_path"
-    printf 'Final review commit: %s\nFinal review path: %s\n' "$final_review_commit" "$final_path"
+    printf 'QA review commit: %s\nQA review path: %s\n' "$qa_reference" "$qa_path"
+    printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_reference" "$license_path"
+    printf 'Final review commit: %s\nFinal review path: %s\n' "$final_reference" "$final_path"
     printf 'Target main commit: %s\nCritical findings: 0\nImportant findings: 0\n' "$base_sha"
     printf 'Limitations: Temporary repository fixture only.\nRecovery: Stop without replay when state is uncertain.\n'
   } > "$acceptance_package_path"
@@ -209,8 +239,12 @@ reset_sequence_options() {
 
 append_main_sequence() {
   local sequence="$1"
-  local package_path="docs/orchestration/decisions/m0/packages/main-integration-$sequence.md"
-  local verdict_path="docs/orchestration/decisions/m0/verdicts/main-integration-$sequence.md"
+  local package_action="${MAIN_PACKAGE_ACTION_OVERRIDE:-main-integration}"
+  local package_sequence="${MAIN_PACKAGE_SEQUENCE_OVERRIDE:-$sequence}"
+  local verdict_action="${MAIN_VERDICT_ACTION_OVERRIDE:-main-integration}"
+  local verdict_sequence="${MAIN_VERDICT_SEQUENCE_OVERRIDE:-$sequence}"
+  local package_path="docs/orchestration/decisions/m0/packages/$package_action-$package_sequence.md"
+  local verdict_path="docs/orchestration/decisions/m0/verdicts/$verdict_action-$verdict_sequence.md"
   local delta_hash
   delta_hash="$(git diff --binary "$package_acceptance_candidate..$package_candidate" | shasum -a 256 | awk '{print $1}')"
   mkdir -p "$(dirname "$package_path")"
@@ -365,7 +399,11 @@ EOF
     printf 'Governance base: %s\n' "$base_sha" > docs/orchestration/decisions/governance-base.md
     git add docs/orchestration/decisions/governance-base.md
     git commit --quiet -m governance-base-binding
-    append_acceptance_sequence 001
+    if [[ "${USE_PUBLISHER_WRITER:-no}" == yes ]]; then
+      run_publisher_writer acceptance "$acceptance_candidate_sha" >/dev/null
+    else
+      append_acceptance_sequence 001
+    fi
   )
   acceptance_binding_sha="$(git -C "$work_repo" rev-parse HEAD)"
   (
@@ -386,7 +424,11 @@ EOF
     git push --quiet origin refs/heads/milestone/m0-research:refs/heads/milestone/m0-research
     git switch --quiet governance/decision-evidence
     reset_sequence_options
-    append_main_sequence 001
+    if [[ "${USE_PUBLISHER_WRITER:-no}" == yes ]]; then
+      run_publisher_writer main "$candidate_sha" >/dev/null
+    else
+      append_main_sequence 001
+    fi
     git push --quiet origin refs/heads/governance/decision-evidence:refs/heads/governance/decision-evidence
     git switch --quiet main
   )
@@ -409,6 +451,18 @@ run_decision_guard() {
     AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(hash_file "$decision_guard")" \
     "$decision_guard" "$@"
   )
+}
+run_publisher_writer() {
+  local phase="$1" integration="$2"
+  CT04_PUBLISHER_EXTERNAL_WORK_REPO="$work_repo" \
+  CT04_PUBLISHER_BASE_SHA="$base_sha" \
+  CT04_PUBLISHER_ACCEPTANCE_SHA="$acceptance_candidate_sha" \
+  CT04_PUBLISHER_INTEGRATION_SHA="$integration" \
+  CT04_PUBLISHER_CONTROL_SHA="$control_sha" \
+  CT04_PUBLISHER_PHASE="$phase" \
+  CT04_ACCEPTANCE_BINDING_COMMIT="${acceptance_binding_sha:-}" \
+  CT04_PUBLISHER_SEQUENCE=001 \
+  "$publisher_writer"
 }
 capture_head_state() {
   local symbolic commit
@@ -917,20 +971,25 @@ test_review_attestation_mismatch() {
 
 test_end_to_end_both_guards() {
   local approval_tip integrate_output output_hash output_length output_encoded result_path result_commit result_binding_path result_tip
-  setup_fixture end-to-end-both-guards
+  USE_PUBLISHER_WRITER=yes setup_fixture end-to-end-both-guards
   approval_tip="$binding_sha"
+  acceptance_verdict_sha="$(git -C "$work_repo" rev-parse "$acceptance_binding_sha^")"
+  acceptance_package_sha="$(git -C "$work_repo" rev-parse "$acceptance_verdict_sha^")"
+  publisher_artifacts_before="$(git -C "$work_repo" rev-parse "$acceptance_package_sha:docs/orchestration/decisions/m0/packages/milestone-acceptance-001.md" "$acceptance_verdict_sha:docs/orchestration/decisions/m0/verdicts/milestone-acceptance-001.md" "$acceptance_binding_sha:docs/orchestration/decisions/m0/bindings/milestone-acceptance.md" "$package_sha:docs/orchestration/decisions/m0/packages/main-integration-001.md" "$decision_sha:docs/orchestration/decisions/m0/verdicts/main-integration-001.md" "$binding_sha:docs/orchestration/decisions/m0/bindings/main-integration.md")"
   git --git-dir="$remote_repo" update-ref -d refs/heads/governance/decision-evidence
   git -C "$work_repo" switch --quiet governance/decision-evidence
   run_decision_guard authorize "$approval_tip" "$base_sha" >/dev/null
   run_decision_guard push "$approval_tip" "$base_sha" >/dev/null
   run_decision_guard verify "$approval_tip" "$base_sha" >/dev/null
   git -C "$work_repo" switch --quiet main
+  publisher_artifacts_after="$(git -C "$work_repo" rev-parse "$acceptance_package_sha:docs/orchestration/decisions/m0/packages/milestone-acceptance-001.md" "$acceptance_verdict_sha:docs/orchestration/decisions/m0/verdicts/milestone-acceptance-001.md" "$acceptance_binding_sha:docs/orchestration/decisions/m0/bindings/milestone-acceptance.md" "$package_sha:docs/orchestration/decisions/m0/packages/main-integration-001.md" "$decision_sha:docs/orchestration/decisions/m0/verdicts/main-integration-001.md" "$binding_sha:docs/orchestration/decisions/m0/bindings/main-integration.md")"
+  [[ "$publisher_artifacts_after" == "$publisher_artifacts_before" ]] || fail 'publisher artifacts changed before main consumption'
   run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip" >/dev/null
   integrate_output="$(run_guard integrate milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip")"
   run_guard verify milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip" >/dev/null
   output_hash="$(payload_hash_text "$integrate_output")"; output_length="$(payload_length_text "$integrate_output")"; output_encoded="$(payload_base64_text "$integrate_output")"
   git -C "$work_repo" switch --quiet governance/decision-evidence
-  result_path='docs/orchestration/decisions/m0/results/main-integration-e2e.md'
+  result_path='docs/orchestration/decisions/m0/results/main-integration-result-e2e.md'
   mkdir -p "$work_repo/$(dirname "$result_path")"
   {
     printf 'Controller recorder: program-controller\nRecorded timestamp: 2026-10-24T08:09:10Z\nResult status: SUCCEEDED\n'
@@ -965,6 +1024,50 @@ test_actual_state_shapes_through_guard() {
   setup_fixture actual-state-shapes
   run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >/dev/null
   tests_run=$((tests_run + 1))
+}
+
+test_round4_main_action_paths() {
+  MAIN_PACKAGE_ACTION_OVERRIDE=mi setup_fixture round4-main-package-alias
+  assert_refusal_without_mutation 'package action is not main-integration' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+  MAIN_VERDICT_ACTION_OVERRIDE=mi setup_fixture round4-main-verdict-alias
+  assert_refusal_without_mutation 'verdict action or sequence differs from package' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+  MAIN_VERDICT_SEQUENCE_OVERRIDE=999 setup_fixture round4-main-verdict-sequence
+  assert_refusal_without_mutation 'verdict action or sequence differs from package' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+test_round4_prerequisite_review_identity() {
+  local role form_var path_var path_value expected
+  for role in qa security final; do
+    case "$role" in
+      qa) form_var=ACCEPTANCE_QA_COMMIT_FORM; path_var=ACCEPTANCE_QA_PATH_OVERRIDE ;;
+      security) form_var=ACCEPTANCE_SECURITY_COMMIT_FORM; path_var=ACCEPTANCE_SECURITY_PATH_OVERRIDE ;;
+      final) form_var=ACCEPTANCE_FINAL_COMMIT_FORM; path_var=ACCEPTANCE_FINAL_PATH_OVERRIDE ;;
+    esac
+
+    printf -v "$form_var" abbreviated
+    setup_fixture "round4-$role-abbreviated-review"
+    unset "$form_var"
+    assert_refusal_without_mutation 'review commit must be a full 40-hex commit' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+    printf -v "$form_var" ref
+    setup_fixture "round4-$role-mutable-review-ref"
+    unset "$form_var"
+    assert_refusal_without_mutation 'review commit must be a full 40-hex commit' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+    path_value="docs/orchestration/decisions/m1/reviews/$role-acceptance-wrong-milestone.md"
+    printf -v "$path_var" '%s' "$path_value"
+    setup_fixture "round4-$role-wrong-milestone-review"
+    unset "$path_var"
+    assert_refusal_without_mutation 'review path is not canonical for milestone' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+    path_value="docs/orchestration/decisions/m0/packages/$role-acceptance-outside-reviews.md"
+    printf -v "$path_var" '%s' "$path_value"
+    setup_fixture "round4-$role-outside-review-directory"
+    unset "$path_var"
+    assert_refusal_without_mutation 'review path is not canonical for milestone' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+  done
 }
 
 test_round3_main_path_matrix() {
@@ -1096,6 +1199,18 @@ if [[ "${CT04_FOCUSED_TEST:-}" == controller-schema ]]; then
   exit 0
 fi
 
+if [[ "${CT04_FOCUSED_TEST:-}" == round4-main-paths ]]; then
+  test_round4_main_action_paths
+  printf 'PASS: %d focused round4 main action-path scenarios\n' "$tests_run"
+  exit 0
+fi
+
+if [[ "${CT04_FOCUSED_TEST:-}" == round4-review-identity ]]; then
+  test_round4_prerequisite_review_identity
+  printf 'PASS: %d focused round4 prerequisite-review scenarios\n' "$tests_run"
+  exit 0
+fi
+
 if [[ "${CT04_FOCUSED_TEST:-}" == round3 ]]; then
   test_round3_regressions
   printf 'PASS: %d focused round3 main-integration scenarios\n' "$tests_run"
@@ -1116,6 +1231,8 @@ fi
 
 test_verdict_decision_text_required
 test_round3_regressions
+test_round4_main_action_paths
+test_round4_prerequisite_review_identity
 test_distinct_acceptance_and_integration_candidates
 test_arbitrary_allowed_state_change_refused
 test_invalid_calendar_transition_date

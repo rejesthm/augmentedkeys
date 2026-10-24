@@ -120,6 +120,9 @@ valid_calendar_date() { valid_utc_timestamp "$1"'T00:00:00Z'; }
 validate_review() {
   local commit="$1" path="$2" expected_role="$3" expected_candidate="$4" package="$5"
   local header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats attestation att_candidate att_role att_session att_verification att_verdict att_critical att_important att_minor
+  [[ "$commit" =~ ^[0-9a-f]{40}$ ]] || refuse 'review commit must be a full 40-hex commit' 74
+  resolve_exact_commit "$commit" 'review commit'
+  [[ "$path" =~ ^docs/orchestration/decisions/$milestone_key/reviews/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'review path is not canonical for milestone' 74
   require_exact_commit_change "$commit" "$path" A 'review'
   load_artifact "$commit" "$path" 'review artifact'
   header="$(metadata_before_marker "$artifact_text" '--- BEGIN REVIEW OUTPUT ---')" || refuse 'review literal output framing is invalid' 74
@@ -223,8 +226,9 @@ if [[ "$binding_status" != Current || "$binding_milestone" != "$milestone_id" ||
 [[ "$binding_reviewed" == "$binding_candidate" ]] || refuse 'binding reviewed candidate differs from integration tip' 74
 [[ "$binding_milestone_branch" == "$milestone_branch" ]] || refuse 'binding milestone branch differs from invocation' 74
 [[ "$binding_main" == "$recorded_main_base" ]] || refuse 'binding target main differs from recorded base' 74
-[[ "$package_path" =~ ^docs/orchestration/decisions/$milestone_key/packages/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'package path is not canonical' 74
-[[ "$verdict_path" =~ ^docs/orchestration/decisions/$milestone_key/verdicts/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'verdict path is not canonical' 74
+[[ "$package_path" =~ ^docs/orchestration/decisions/$milestone_key/packages/main-integration-([a-z0-9][a-z0-9-]*)\.md$ ]] || refuse 'package action is not main-integration' 74
+main_sequence="${BASH_REMATCH[1]}"
+[[ "$verdict_path" == "docs/orchestration/decisions/$milestone_key/verdicts/main-integration-$main_sequence.md" ]] || refuse 'verdict action or sequence differs from package' 74
 resolve_exact_commit "$package_commit" 'package commit'
 resolve_exact_commit "$verdict_commit" 'verdict commit'
 [[ "$(git rev-parse "$binding_commit^")" == "$verdict_commit" && "$(git rev-parse "$verdict_commit^")" == "$package_commit" ]] || refuse 'package, verdict, and binding are not three ordered commits' 74
@@ -285,8 +289,9 @@ if ! acceptance_status="$(field 'Binding status')" || ! acceptance_milestone="$(
    ! acceptance_verdict_path_value="$(field 'Verdict path')" || ! acceptance_critical="$(field 'Critical findings')" || ! acceptance_important="$(field 'Important findings')"; then refuse 'milestone acceptance binding is missing fields' 74; fi
 [[ "$acceptance_status" == Current && "$acceptance_milestone" == "$milestone_id" && "$acceptance_kind" == APPROVE_MILESTONE && "$acceptance_authorization" == GRANTED && "$acceptance_reviewed" == "$package_acceptance" && "$acceptance_state" == Accepted && "$acceptance_candidate" == "$package_acceptance" && "$acceptance_main" == "$recorded_main_base" && "$acceptance_critical" == 0 && "$acceptance_important" == 0 ]] || refuse 'milestone acceptance binding does not accept package candidate' 74
 [[ "$acceptance_contract_commit" == "$package_contract_commit" && "$acceptance_contract_path" == "$package_contract_path" && "$acceptance_completion_commit" == "$package_completion_commit" && "$acceptance_completion_path" == "$package_completion_path" ]] || refuse 'milestone acceptance binding conflicts with contract or completion evidence' 74
-[[ "$acceptance_package_path" =~ ^docs/orchestration/decisions/$milestone_key/packages/milestone-acceptance-[a-z0-9-]+\.md$ ]] || refuse 'milestone acceptance package path is not canonical' 74
-[[ "$acceptance_verdict_path_value" =~ ^docs/orchestration/decisions/$milestone_key/verdicts/milestone-acceptance-[a-z0-9-]+\.md$ ]] || refuse 'milestone acceptance verdict path is not canonical' 74
+[[ "$acceptance_package_path" =~ ^docs/orchestration/decisions/$milestone_key/packages/milestone-acceptance-([a-z0-9][a-z0-9-]*)\.md$ ]] || refuse 'milestone acceptance package path is not canonical' 74
+acceptance_sequence="${BASH_REMATCH[1]}"
+[[ "$acceptance_verdict_path_value" == "docs/orchestration/decisions/$milestone_key/verdicts/milestone-acceptance-$acceptance_sequence.md" ]] || refuse 'milestone acceptance verdict path is not canonical' 74
 resolve_exact_commit "$acceptance_package_commit" 'milestone acceptance package commit'
 resolve_exact_commit "$acceptance_verdict_commit" 'milestone acceptance verdict commit'
 [[ "$(git rev-parse "$acceptance_binding_commit^")" == "$acceptance_verdict_commit" && "$(git rev-parse "$acceptance_verdict_commit^")" == "$acceptance_package_commit" ]] || refuse 'milestone acceptance package, verdict, and binding are not three ordered commits' 74

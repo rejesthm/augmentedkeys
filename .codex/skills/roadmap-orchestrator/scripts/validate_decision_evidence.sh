@@ -137,11 +137,37 @@ require_exact_single_change() {
   [[ "$count" -eq 1 && "$actual_status" == A && "$actual_path" == "$expected" ]] || refuse "$label commit changes unexpected paths" 74
 }
 
+validate_sequence_path() {
+  local path="$1" stage="$2" expected_action="$3" milestone="$4" action_error="$5"
+  local milestone_key prefix leaf stage_label
+  milestone_key="$(printf '%s' "$milestone" | tr '[:upper:]' '[:lower:]')"
+  prefix="docs/orchestration/decisions/$milestone_key/$stage/"
+  case "$stage" in packages) stage_label=package ;; verdicts) stage_label=verdict ;; results) stage_label=result ;; *) stage_label="$stage" ;; esac
+  [[ "$path" == "$prefix"*.md ]] || {
+    [[ "$path" =~ ^docs/orchestration/decisions/m[0-9]+/ ]] && refuse "$stage_label path milestone conflicts with artifact milestone" 74
+    refuse "$action_error" 74
+  }
+  leaf="${path#"$prefix"}"; leaf="${leaf%.md}"
+  [[ "$leaf" == "$expected_action-"* && "${leaf#"$expected_action-"}" =~ ^[a-z0-9][a-z0-9-]*$ ]] || refuse "$action_error" 74
+  sequence_path_action="$expected_action"
+  sequence_path_id="${leaf#"$expected_action-"}"
+}
+
+validate_binding_path() {
+  local path="$1" expected_action="$2" milestone="$3" milestone_key
+  milestone_key="$(printf '%s' "$milestone" | tr '[:upper:]' '[:lower:]')"
+  [[ "$path" == "docs/orchestration/decisions/$milestone_key/bindings/$expected_action.md" ]] || refuse 'binding action differs from package' 74
+}
+
 validate_review() {
-  local review_commit="$1" review_path="$2" expected_role="$3" expected_candidate="$4" expected_verdict="${5:-APPROVE}"
-  local text header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats attestation att_candidate att_role att_session att_verification att_verdict att_critical att_important att_minor
+  local review_commit="$1" review_path="$2" expected_role="$3" expected_candidate="$4" expected_verdict="${5:-APPROVE}" expected_milestone="${6:-}"
+  local text header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats attestation att_candidate att_role att_session att_verification att_verdict att_critical att_important att_minor expected_milestone_key
   resolve_exact_commit "$review_commit" 'review commit'
   [[ "$review_path" =~ ^docs/orchestration/decisions/m[0-9]+/reviews/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'review path is not canonical' 74
+  if [[ -n "$expected_milestone" ]]; then
+    expected_milestone_key="$(printf '%s' "$expected_milestone" | tr '[:upper:]' '[:lower:]')"
+    [[ "$review_path" =~ ^docs/orchestration/decisions/$expected_milestone_key/reviews/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'review path milestone differs from consuming package' 74
+  fi
   require_exact_single_change "$review_commit" "$review_path" 'review'
   require_regular_blob "$review_commit" "$review_path" 'review artifact'
   git merge-base --is-ancestor "$base_binding_commit" "$review_commit" || refuse 'review commit is outside evidence history' 74
@@ -217,6 +243,12 @@ validate_package_reviews() {
     blocking_status="$(field_from_text "$text" 'Blocking evidence status')" || refuse 'negative package is missing blocking evidence status' 74
     sequence_blocking_status="$blocking_status"
     case "$blocking_status" in
+      HUMAN_GATE) [[ "$package_kind" == human-gate ]] || refuse 'negative package action conflicts with blocking evidence status' 74 ;;
+      MISSING|REJECTED) [[ "$package_kind" == milestone-correction ]] || refuse 'negative package action conflicts with blocking evidence status' 74 ;;
+    esac
+    validate_sequence_path "$path" packages "$package_kind" "$package_milestone" 'package action conflicts with decision kind'
+    sequence_package_action="$sequence_path_action"; sequence_sequence="$sequence_path_id"
+    case "$blocking_status" in
       MISSING)
         field_from_text "$text" 'Missing evidence' >/dev/null || refuse 'negative package is missing evidence description' 74
         [[ ( "$sequence_critical" == Unknown && "$sequence_important" == Unknown ) || ( "$sequence_critical" =~ ^[0-9]+$ && "$sequence_important" =~ ^[0-9]+$ && $((sequence_critical + sequence_important)) -gt 0 ) ]] || refuse 'missing-evidence finding observations are invalid' 74
@@ -226,7 +258,7 @@ validate_package_reviews() {
         blocking_path="$(field_from_text "$text" 'Blocking review path')" || refuse 'negative package is missing rejected review binding' 74
         blocking_role="$(field_from_text "$text" 'Blocking reviewer role')" || refuse 'negative package is missing rejected reviewer role' 74
         case "$blocking_role" in qa_performance_verifier|licensing_security_reviewer|final_code_reviewer) ;; *) refuse 'negative package reviewer role is invalid' 74;; esac
-        validate_review "$blocking_commit" "$blocking_path" "$blocking_role" "$reviewed" REJECT
+        validate_review "$blocking_commit" "$blocking_path" "$blocking_role" "$reviewed" REJECT "$package_milestone"
         [[ "$sequence_critical" == "$last_review_critical" && "$sequence_important" == "$last_review_important" ]] || refuse 'negative package findings differ from rejected review' 74
         ;;
       HUMAN_GATE)
@@ -239,14 +271,16 @@ validate_package_reviews() {
         final_commit="$(field_from_text "$text" 'Final review commit')" || refuse 'human-gate package is missing approved review bindings' 74
         final_path="$(field_from_text "$text" 'Final review path')" || refuse 'human-gate package is missing approved review bindings' 74
         resolve_exact_commit "$reviewed" 'package reviewed candidate'
-        validate_review "$qa_commit" "$qa_path" qa_performance_verifier "$reviewed" APPROVE
-        validate_review "$security_commit" "$security_path" licensing_security_reviewer "$reviewed" APPROVE
-        validate_review "$final_commit" "$final_path" final_code_reviewer "$reviewed" APPROVE
+        validate_review "$qa_commit" "$qa_path" qa_performance_verifier "$reviewed" APPROVE "$package_milestone"
+        validate_review "$security_commit" "$security_path" licensing_security_reviewer "$reviewed" APPROVE "$package_milestone"
+        validate_review "$final_commit" "$final_path" final_code_reviewer "$reviewed" APPROVE "$package_milestone"
         ;;
       *) refuse 'negative package blocking evidence status is invalid' 74 ;;
     esac
     return
   fi
+  validate_sequence_path "$path" packages "$package_kind" "$package_milestone" 'package action conflicts with decision kind'
+  sequence_package_action="$sequence_path_action"; sequence_sequence="$sequence_path_id"
   [[ "$disposition" == APPROVAL && "$sequence_critical" == 0 && "$sequence_important" == 0 ]] || refuse 'approval package disposition or findings are invalid' 74
   qa_commit="$(field_from_text "$text" 'QA review commit')" || refuse 'package is missing review bindings' 74
   qa_path="$(field_from_text "$text" 'QA review path')" || refuse 'package is missing review bindings' 74
@@ -256,9 +290,9 @@ validate_package_reviews() {
   final_path="$(field_from_text "$text" 'Final review path')" || refuse 'package is missing review bindings' 74
   resolve_exact_commit "$reviewed" 'package reviewed candidate'
   if git merge-base --is-ancestor "$commit" "$reviewed"; then refuse 'package commit is an ancestor of reviewed candidate' 74; fi
-  validate_review "$qa_commit" "$qa_path" qa_performance_verifier "$reviewed"
-  validate_review "$security_commit" "$security_path" licensing_security_reviewer "$reviewed"
-  validate_review "$final_commit" "$final_path" final_code_reviewer "$reviewed"
+  validate_review "$qa_commit" "$qa_path" qa_performance_verifier "$reviewed" APPROVE "$package_milestone"
+  validate_review "$security_commit" "$security_path" licensing_security_reviewer "$reviewed" APPROVE "$package_milestone"
+  validate_review "$final_commit" "$final_path" final_code_reviewer "$reviewed" APPROVE "$package_milestone"
 
   package_completion_commit= package_completion_path= package_acceptance_candidate= package_integration_candidate=
   package_acceptance_binding_commit= package_acceptance_binding_path= package_successor_commit= package_successor_path=
@@ -359,6 +393,8 @@ validate_verdict_artifact() {
   resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse 'verdict is missing resulting state' 74
   [[ "$controller" == program-controller && "$role" == decision_steward && "$session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] || refuse 'verdict provenance is invalid' 74
   valid_utc_timestamp "$timestamp" || refuse 'verdict provenance is invalid' 74
+  validate_sequence_path "$path" verdicts "$sequence_package_action" "$milestone" 'verdict action or sequence differs from package'
+  [[ "$sequence_path_id" == "$sequence_sequence" ]] || refuse 'verdict action or sequence differs from package' 74
   [[ "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$candidate" == "$sequence_candidate" ]] || refuse 'verdict does not bind package candidate' 74
   [[ "$milestone" == "$package_milestone" && "$contract" == "$package_contract" && "$contract_path" == "$package_contract_path" && "$target" == "$package_target" ]] || refuse 'verdict bounds differ from package' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'verdict findings differ from package' 74
@@ -431,6 +467,7 @@ validate_binding_artifact() {
   critical="$(field_from_text "$text" 'Critical findings')" || refuse 'binding is missing finding counts' 74
   important="$(field_from_text "$text" 'Important findings')" || refuse 'binding is missing finding counts' 74
   resulting_state="$(field_from_text "$text" 'Resulting milestone state')" || refuse 'binding is missing resulting state' 74
+  validate_binding_path "$path" "$sequence_package_action" "$milestone"
   [[ "$status" == Current && "$milestone" == "$package_milestone" && "$contract" == "$sequence_contract" && "$contract_path" == "$package_contract_path" && "$package" == "$sequence_package_commit" && "$package_path" == "$sequence_package_path" && "$verdict" == "$sequence_verdict_commit" && "$verdict_path" == "$sequence_verdict_path" ]] || refuse 'binding does not bind current package and verdict' 74
   [[ "$kind" == "$sequence_verdict" && "$candidate" == "$sequence_candidate" && "$target" == "$sequence_target" && "$authorization" == "$sequence_authorization" ]] || refuse 'binding decision fields conflict with verdict' 74
   [[ "$critical" == "$sequence_critical" && "$important" == "$sequence_important" ]] || refuse 'binding findings differ from verdict' 74
@@ -485,6 +522,11 @@ validate_result_artifact() {
   approval="$(field_from_text "$header" 'Consumed approval commit')" || refuse 'result is missing consumed approval' 74
   approval_path="$(field_from_text "$header" 'Consumed approval path')" || refuse 'result is missing consumed approval' 74
   milestone_branch="$(field_from_text "$header" 'Milestone branch')" || refuse 'result is missing milestone branch' 74
+  [[ "$milestone_branch" =~ ^milestone/(m[0-9]+)-[a-z0-9][a-z0-9-]*$ ]] || refuse 'result reviewed guard provenance is invalid' 74
+  result_milestone_key="${BASH_REMATCH[1]}"
+  result_milestone="$(printf '%s' "$result_milestone_key" | tr '[:lower:]' '[:upper:]')"
+  validate_sequence_path "$path" results main-integration-result "$result_milestone" 'result action is not canonical'
+  sequence_result_action="$sequence_path_action"; sequence_result_sequence="$sequence_path_id"; sequence_result_milestone="$result_milestone"; sequence_result_milestone_key="$result_milestone_key"
   candidate="$(field_from_text "$header" 'Integration candidate')" || refuse 'result is missing integration candidate' 74
   target="$(field_from_text "$header" 'Target main commit')" || refuse 'result is missing target main' 74
   guard_argv="$(field_from_text "$header" 'Guard argv')" || refuse 'result is missing guard invocation' 74
@@ -510,7 +552,7 @@ validate_result_artifact() {
   resolve_exact_commit "$approval" 'consumed approval commit'
   case "$consumed_approvals" in *"|$approval|"*) refuse 'approval is replayed by multiple results' 74 ;; esac
   consumed_approvals="$consumed_approvals|$approval|"
-  [[ "$approval_path" =~ ^docs/orchestration/decisions/m[0-9]+/bindings/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'consumed approval path is not canonical' 74
+  [[ "$approval_path" == "docs/orchestration/decisions/$result_milestone_key/bindings/main-integration.md" ]] || refuse 'consumed approval path is not canonical' 74
   require_regular_blob "$approval" "$approval_path" 'consumed approval'
   git merge-base --is-ancestor "$approval" "$commit" || refuse 'consumed approval does not precede result' 74
   [[ "$(git log -1 --format=%H "$commit" -- "$approval_path")" == "$approval" ]] || refuse 'consumed approval is not current at result' 74
@@ -588,6 +630,7 @@ validate_result_binding_artifact() {
   recovery="$(field_from_text "$text" 'Recovery state')" || refuse 'result binding is missing recovery state' 74
   snapshot="$(field_from_text "$text" 'Recovery snapshot path')" || refuse 'result binding is missing recovery snapshot path' 74
   replay="$(field_from_text "$text" 'Replay status')" || refuse 'result binding is missing replay status' 74
+  [[ "$path" == "docs/orchestration/decisions/$sequence_result_milestone_key/bindings/$sequence_result_action.md" ]] || refuse 'result action is not canonical' 74
   [[ "$status" == Current && "$result" == "$sequence_result_commit" && "$result_path" == "$sequence_result_path" && "$result_status" == "$sequence_result_status" && "$approval" == "$sequence_result_approval" && "$approval_path" == "$sequence_result_approval_path" && "$milestone_branch" == "$sequence_result_branch" && "$candidate" == "$sequence_result_candidate" && "$target" == "$sequence_result_target" && "$guard_argv" == "$sequence_result_argv" && "$guard_commit" == "$sequence_result_guard_commit" && "$guard_path" == "$sequence_result_guard_path" && "$guard_hash" == "$sequence_result_guard_hash" && "$environment" == "$sequence_result_environment" && "$limitations" == "$sequence_result_limitations" && "$interruption" == "$sequence_result_interruption" && "$output_encoding" == "$sequence_result_output_encoding" && "$output_length" == "$sequence_result_output_length" && "$output_hash" == "$sequence_result_output_hash" && "$pre_local" == "$sequence_result_pre_local" && "$pre_remote" == "$sequence_result_pre_remote" && "$post_local" == "$sequence_result_post_local" && "$post_remote" == "$sequence_result_post_remote" && "$pre_evidence" == "$sequence_result_pre_evidence" && "$post_evidence" == "$sequence_result_post_evidence" && "$recovery" == "$sequence_result_recovery" && "$snapshot" == "$sequence_result_snapshot" && "$replay" == "$sequence_result_replay" ]] || refuse 'result binding conflicts with result' 74
 }
 
