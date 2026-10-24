@@ -20,6 +20,36 @@ field() {
   local name="$1"
   awk -v prefix="$name: " 'index($0,prefix)==1 {count++; value=substr($0,length(prefix)+1)} END {if(count!=1 || value=="") exit 1; print value}' <<< "$artifact_text"
 }
+header_field() {
+  local header="$1" name="$2"
+  awk -v prefix="$name: " 'index($0,prefix)==1 {count++; value=substr($0,length(prefix)+1)} END {if(count!=1 || value=="") exit 1; print value}' <<< "$header"
+}
+metadata_before_marker() {
+  local text_value="$1" marker="$2"
+  awk -v marker="$marker" '$0==marker {found++; exit} {print} END {if(found!=1) exit 1}' <<< "$text_value"
+}
+decode_base64() {
+  if base64 --decode </dev/null >/dev/null 2>&1; then
+    base64 --decode
+  elif base64 -D </dev/null >/dev/null 2>&1; then
+    base64 -D
+  else
+    return 1
+  fi
+}
+encoded_payload_from_blob() {
+  local commit="$1" path="$2" begin="$3" end="$4"
+  git show "$commit:$path" | awk -v begin="$begin" -v end="$end" '$0==begin {if(state!=0) exit 42; state=1; next} $0==end {if(state!=1 || lines!=1) exit 42; state=2; next} state==1 {lines++; if(lines!=1 || $0=="" || $0 !~ /^[A-Za-z0-9+\/]*={0,2}$/) exit 42; print; next} state==2 {exit 42} END {if(state!=2) exit 42}'
+}
+literal_stats_from_blob() {
+  local commit="$1" path="$2" begin="$3" end="$4" encoded canonical hash bytes
+  encoded="$(encoded_payload_from_blob "$commit" "$path" "$begin" "$end")" || return 1
+  canonical="$(printf '%s' "$encoded" | decode_base64 | base64 | tr -d '\n')" || return 1
+  [[ "$canonical" == "$encoded" ]] || return 1
+  hash="$(printf '%s' "$encoded" | decode_base64 | shasum -a 256 | awk '{print $1}')" || return 1
+  bytes="$(printf '%s' "$encoded" | decode_base64 | wc -c | tr -d ' ')" || return 1
+  printf '%s\t%s\n' "$hash" "$bytes"
+}
 require_regular_blob() {
   local commit="$1" path="$2" label="$3" entry
   entry="$(git ls-tree "$commit" -- "$path" 2>/dev/null)"
@@ -56,26 +86,35 @@ valid_utc_timestamp() {
   esac
   (( day <= max_day ))
 }
+valid_calendar_date() { valid_utc_timestamp "$1"'T00:00:00Z'; }
 validate_review() {
   local commit="$1" path="$2" expected_role="$3" expected_candidate="$4" package="$5"
-  local controller role session timestamp candidate verification runtime_hash output_hash verdict critical important minor
+  local header controller role session timestamp candidate verification runtime_hash output_encoding output_length output_hash verdict critical important minor computed_output_hash computed_output_length stats
   require_exact_commit_change "$commit" "$path" A 'review'
   load_artifact "$commit" "$path" 'review artifact'
-  controller="$(field 'Controller recorder')" || refuse 'review provenance is invalid' 74
-  role="$(field 'Reviewer role')" || refuse 'review provenance is invalid' 74
-  session="$(field 'Reviewer session')" || refuse 'review provenance is invalid' 74
-  timestamp="$(field 'Recorded timestamp')" || refuse 'review provenance is invalid' 74
-  candidate="$(field 'Reviewed candidate')" || refuse 'review provenance is invalid' 74
-  verification="$(field 'Verification evidence commit')" || refuse 'review provenance is invalid' 74
-  runtime_hash="$(field 'Runtime evidence SHA-256')" || refuse 'review provenance is invalid' 74
-  output_hash="$(field 'Full review output SHA-256')" || refuse 'review provenance is invalid' 74
-  verdict="$(field 'Verdict')" || refuse 'review provenance is invalid' 74
-  critical="$(field 'Critical findings')" || refuse 'review provenance is invalid' 74
-  important="$(field 'Important findings')" || refuse 'review provenance is invalid' 74
-  minor="$(field 'Minor findings')" || refuse 'review provenance is invalid' 74
+  header="$(metadata_before_marker "$artifact_text" '--- BEGIN REVIEW OUTPUT ---')" || refuse 'review literal output framing is invalid' 74
+  controller="$(header_field "$header" 'Controller recorder')" || refuse 'review provenance is invalid' 74
+  role="$(header_field "$header" 'Reviewer role')" || refuse 'review provenance is invalid' 74
+  session="$(header_field "$header" 'Reviewer session')" || refuse 'review provenance is invalid' 74
+  timestamp="$(header_field "$header" 'Recorded timestamp')" || refuse 'review provenance is invalid' 74
+  candidate="$(header_field "$header" 'Reviewed candidate')" || refuse 'review provenance is invalid' 74
+  verification="$(header_field "$header" 'Verification evidence commit')" || refuse 'review provenance is invalid' 74
+  runtime_hash="$(header_field "$header" 'Runtime evidence SHA-256')" || refuse 'review provenance is invalid' 74
+  output_encoding="$(header_field "$header" 'Review output encoding')" || refuse 'review provenance is invalid' 74
+  output_length="$(header_field "$header" 'Review output byte length')" || refuse 'review provenance is invalid' 74
+  output_hash="$(header_field "$header" 'Full review output SHA-256')" || refuse 'review provenance is invalid' 74
+  verdict="$(header_field "$header" 'Verdict')" || refuse 'review provenance is invalid' 74
+  critical="$(header_field "$header" 'Critical findings')" || refuse 'review provenance is invalid' 74
+  important="$(header_field "$header" 'Important findings')" || refuse 'review provenance is invalid' 74
+  minor="$(header_field "$header" 'Minor findings')" || refuse 'review provenance is invalid' 74
   [[ "$controller" == program-controller && "$role" == "$expected_role" && "$session" =~ ^[A-Za-z0-9][A-Za-z0-9._:-]*$ ]] || refuse 'review provenance is invalid' 74
   valid_utc_timestamp "$timestamp" || refuse 'review provenance is invalid' 74
-  [[ "$runtime_hash" =~ ^[0-9a-f]{64}$ && "$output_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'review provenance is invalid' 74
+  [[ "$runtime_hash" =~ ^[0-9a-f]{64}$ && "$output_hash" =~ ^[0-9a-f]{64}$ && "$output_encoding" == base64 && "$output_length" =~ ^(0|[1-9][0-9]*)$ ]] || refuse 'review provenance is invalid' 74
+  [[ "$(grep -Fc -- '--- BEGIN REVIEW OUTPUT ---' <<< "$artifact_text")" == 1 && "$(grep -Fc -- '--- END REVIEW OUTPUT ---' <<< "$artifact_text")" == 1 ]] || refuse 'review literal output markers are invalid' 74
+  stats="$(literal_stats_from_blob "$commit" "$path" '--- BEGIN REVIEW OUTPUT ---' '--- END REVIEW OUTPUT ---')" || refuse 'review literal output is invalid' 74
+  IFS=$'\t' read -r computed_output_hash computed_output_length <<< "$stats"
+  [[ "$computed_output_length" == "$output_length" ]] || refuse 'review output byte length differs from decoded bytes' 74
+  [[ "$computed_output_hash" == "$output_hash" ]] || refuse 'review full output hash differs from literal bytes' 74
   resolve_exact_commit "$verification" 'verification evidence commit'
   [[ "$candidate" == "$expected_candidate" ]] || refuse 'review candidate differs from package candidate' 74
   [[ "$verdict" == APPROVE && "$critical" == 0 && "$important" == 0 && "$minor" =~ ^[0-9]+$ ]] || refuse 'review does not approve without blocking findings' 74
@@ -154,7 +193,7 @@ require_exact_commit_change "$binding_commit" "$binding_path" AM 'main-integrati
 
 load_artifact "$package_commit" "$package_path" 'canonical integration package'
 if ! package_milestone="$(field 'Milestone')" || ! package_contract_commit="$(field 'Contract commit')" || ! package_contract_path="$(field 'Contract path')" ||
-   ! package_acceptance="$(field 'Acceptance candidate')" || ! package_candidate="$(field 'Integration candidate')" || ! delta_paths="$(field 'Administrative delta paths')" || ! delta_hash="$(field 'Administrative delta SHA-256')" ||
+   ! package_acceptance="$(field 'Acceptance candidate')" || ! package_candidate="$(field 'Integration candidate')" || ! delta_paths="$(field 'Administrative delta paths')" || ! delta_hash="$(field 'Administrative delta SHA-256')" || ! transition_date="$(field 'Administrative transition date')" ||
    ! package_completion_commit="$(field 'Completion package commit')" || ! package_completion_path="$(field 'Completion package path')" ||
    ! qa_commit="$(field 'QA review commit')" || ! qa_artifact_path="$(field 'QA review path')" || ! licensing_commit="$(field 'Licensing review commit')" ||
    ! licensing_path="$(field 'Licensing review path')" || ! final_commit="$(field 'Final review commit')" || ! final_artifact_path="$(field 'Final review path')" ||
@@ -162,6 +201,7 @@ if ! package_milestone="$(field 'Milestone')" || ! package_contract_commit="$(fi
    ! package_main="$(field 'Target main commit')" || ! package_critical="$(field 'Critical findings')" || ! package_important="$(field 'Important findings')" ||
    ! package_limitations="$(field 'Limitations')" || ! package_recovery="$(field 'Recovery')"; then refuse 'integration package is missing required fields' 74; fi
 [[ "$package_milestone" == "$milestone_id" && "$package_acceptance" == "$binding_acceptance" && "$package_candidate" == "$accepted_tip" && "$package_main" == "$recorded_main_base" && "$package_critical" == 0 && "$package_important" == 0 ]] || refuse 'integration package does not bind the requested integration' 74
+valid_calendar_date "$transition_date" || refuse 'administrative transition date is invalid' 74
 [[ "$package_contract_path" == "$contract_path" && "$package_completion_path" == "$completion_path" ]] || refuse 'contract or completion package path is not canonical' 74
 [[ "$package_acceptance_path" == "$acceptance_binding_path" ]] || refuse 'milestone acceptance binding path is not canonical' 74
 [[ "$qa_artifact_path" =~ ^docs/orchestration/decisions/$milestone_key/reviews/[a-z0-9][a-z0-9-]*\.md$ && "$licensing_path" =~ ^docs/orchestration/decisions/$milestone_key/reviews/[a-z0-9][a-z0-9-]*\.md$ && "$final_artifact_path" =~ ^docs/orchestration/decisions/$milestone_key/reviews/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'review path is not canonical' 74
@@ -231,7 +271,7 @@ if ! verdict_controller="$(field 'Controller recorder')" || ! verdict_role="$(fi
 [[ "$verdict_acceptance" == "$package_acceptance" && "$verdict_candidate" == "$accepted_tip" ]] || refuse 'verdict candidates differ from package' 74
 [[ "$verdict_main" == "$recorded_main_base" && "$verdict_critical" == 0 && "$verdict_important" == 0 ]] || refuse 'verdict target or findings do not authorize integration' 74
 
-expected_delta_paths='.loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md'
+expected_delta_paths='.loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md,docs/research/RESEARCH_INDEX.md'
 [[ "$delta_paths" == "$expected_delta_paths" ]] || refuse 'administrative delta path manifest is not exact' 74
 git merge-base --is-ancestor "$package_acceptance" "$accepted_tip" || refuse 'integration candidate does not descend from acceptance candidate' 74
 [[ "$package_acceptance" != "$accepted_tip" ]] || refuse 'acceptance and integration candidates must be distinct' 74
@@ -240,27 +280,82 @@ actual_delta_paths="$(git diff --name-only "$package_acceptance..$accepted_tip" 
 [[ "$actual_delta_paths" == "$expected_delta_paths" ]] || refuse 'integration candidate contains a path outside the administrative delta' 74
 actual_delta_hash="$(git diff --binary "$package_acceptance..$accepted_tip" | shasum -a 256 | awk '{print $1}')"
 [[ "$actual_delta_hash" == "$delta_hash" ]] || refuse 'administrative delta hash differs from package' 74
-old_text="$(git show "$package_acceptance:ROADMAP.md")"; new_text="$(git show "$accepted_tip:ROADMAP.md")"
-expected_text="${old_text/Status: Ready for decision./Status: Accepted.}"
-[[ "$new_text" == "$expected_text" && "$old_text" != "$expected_text" ]] || refuse 'ROADMAP administrative delta is not exact' 74
-old_text="$(git show "$package_acceptance:STATE.md")"; new_text="$(git show "$accepted_tip:STATE.md")"
-expected_text="${old_text/Milestone state: \`Ready for decision\`/Milestone state: \`Accepted\`}"
-[[ "$new_text" == "$expected_text" && "$old_text" != "$expected_text" ]] || refuse 'STATE administrative delta is not exact' 74
-old_text="$(git show "$package_acceptance:.loop/progress.md")"; new_text="$(git show "$accepted_tip:.loop/progress.md")"
-expected_text="${old_text/ (Ready for decision)./ (Accepted).}"
-[[ "$new_text" == "$expected_text" && "$old_text" != "$expected_text" ]] || refuse 'progress administrative delta is not exact' 74
-old_text="$(git show "$package_acceptance:docs/orchestration/milestones/M0_LEDGER.md")"; new_text="$(git show "$accepted_tip:docs/orchestration/milestones/M0_LEDGER.md")"
-expected_text="${old_text/- State: \`Ready for decision\`/- State: \`Accepted\`}"
-expected_text="${expected_text/- Milestone acceptance binding commit: Not yet decided/- Milestone acceptance binding commit: $acceptance_binding_commit}"
-expected_text="${expected_text/- Accepted milestone tip: Not yet decided/- Accepted milestone tip: $package_acceptance}"
-[[ "$new_text" == "$expected_text" && "$old_text" != "$expected_text" ]] || refuse 'ledger administrative delta is not exact' 74
+require_admin_blob() {
+  local commit="$1" path="$2" label="$3" entry last
+  entry="$(git ls-tree "$commit" -- "$path" 2>/dev/null)"
+  [[ "$entry" == 100644\ blob\ *$'\t'"$path" ]] || refuse "$label must be a canonical 100644 blob" 74
+  last="$(git cat-file blob "$commit:$path" | tail -c 1 | od -An -tuC | tr -d ' ')"
+  [[ "$last" == 10 ]] || refuse "$label must end with one preserved newline" 74
+}
+expected_blob_matches() {
+  local path="$1" label="$2" expected_oid="$3" target_oid
+  target_oid="$(git rev-parse "$accepted_tip:$path")"
+  [[ "$expected_oid" == "$target_oid" ]] || refuse "$label administrative delta is not exact" 74
+}
+for admin_path in ROADMAP.md STATE.md .loop/progress.md docs/orchestration/milestones/M0_LEDGER.md docs/research/RESEARCH_INDEX.md; do
+  require_admin_blob "$package_acceptance" "$admin_path" "source $admin_path"
+  require_admin_blob "$accepted_tip" "$admin_path" "target $admin_path"
+done
+expected_oid="$(git show "$package_acceptance:ROADMAP.md" |
+  awk '{ if (index($0,"Status: Ready for decision.")==1) { sub(/^Status: Ready for decision\./,"Status: Accepted."); count++ } print } END { if(count!=1) exit 42 }' |
+  git hash-object --stdin)" || refuse 'ROADMAP source schema is invalid' 74
+expected_blob_matches ROADMAP.md ROADMAP "$expected_oid"
+expected_oid="$(git show "$package_acceptance:STATE.md" |
+  awk '{ if ($0=="Milestone state: `Ready for decision`") { $0="Milestone state: `Accepted`"; count++ } print } END { if(count!=1) exit 42 }' |
+  git hash-object --stdin)" || refuse 'STATE source schema is invalid' 74
+expected_blob_matches STATE.md STATE "$expected_oid"
+expected_oid="$(git show "$package_acceptance:.loop/progress.md" |
+  awk '{ if ($0=="M0 — Research & Architecture (Ready for decision).") { $0="M0 — Research & Architecture (Accepted)."; count++ } print } END { if(count!=1) exit 42 }' |
+  git hash-object --stdin)" || refuse 'progress source schema is invalid' 74
+expected_blob_matches .loop/progress.md progress "$expected_oid"
+expected_oid="$(git show "$package_acceptance:docs/orchestration/milestones/M0_LEDGER.md" |
+  awk -v binding="$acceptance_binding_commit" -v accepted="$package_acceptance" -v date="$transition_date" -v binding_path="$acceptance_binding_path" '
+    {
+      if ($0=="- State: `Ready for decision`") { $0="- State: `Accepted`"; state++ }
+      else if (index($0,"- Milestone acceptance binding commit: ")==1) { $0="- Milestone acceptance binding commit: `" binding "`"; bind++ }
+      else if ($0=="- Accepted milestone tip: Not yet decided") { $0="- Accepted milestone tip: `" accepted "`"; tip++ }
+      else if ($0 ~ /^\| R(0[1-9]|10) \| `Verified` \|/) {
+        id=substr($0,3,3)
+        if (seen[id]++) exit 42
+        sub(/`Verified`/,"`Accepted`"); tasks++
+      }
+      if ($0=="## Task integration log") {
+        if(inserted++) exit 42
+        for(n=1;n<=10;n++) {
+          id=sprintf("R%02d",n)
+          print "|" date "| " id " | `Verified` | `Accepted` | Roadmap Orchestrator | `" binding "` | `" binding_path "` | Exact reviewed task accepted with milestone; no implementation or successor authority |"
+        }
+        print "|" date "| M0 | `Ready for decision` | `Accepted` | Roadmap Orchestrator | `" binding "` | `" binding_path "` | Exact reviewed milestone accepted; no implementation or successor authority |"
+        print ""
+      }
+      print
+    }
+    END {
+      for (n=1;n<=10;n++) { id=sprintf("R%02d",n); if(seen[id]!=1) exit 42 }
+      if(state!=1 || bind!=1 || tip!=1 || tasks!=10 || inserted!=1) exit 42
+    }' | git hash-object --stdin)" || refuse 'ledger source schema is invalid' 74
+expected_blob_matches docs/orchestration/milestones/M0_LEDGER.md ledger "$expected_oid"
+expected_oid="$(git show "$package_acceptance:docs/research/RESEARCH_INDEX.md" |
+  awk '
+    {
+      if ($0 ~ /^## ([1-9]|10)\./) { section=$2; sub(/\.$/,"",section) }
+      if ($0 ~ /^- \*\*Status:\*\* `Verified`/) {
+        if (section !~ /^([1-9]|10)$/ || seen[section]++) exit 42
+        sub(/`Verified`/,"`Accepted`"); count++
+      }
+      print
+    }
+    END { for(n=1;n<=10;n++) if(seen[n]!=1) exit 42; if(count!=10) exit 42 }' |
+  git hash-object --stdin)" || refuse 'research index source schema is invalid' 74
+expected_blob_matches docs/research/RESEARCH_INDEX.md research-index "$expected_oid"
 
 if ! checked_out="$(git symbolic-ref --quiet --short HEAD 2>/dev/null)" || [[ "$checked_out" != main ]]; then refuse 'checked-out branch is not main' 71; fi
-candidate_paths="$(git diff --name-only "$recorded_main_base..$accepted_tip")"
-while IFS= read -r -d '' local_path; do
-  grep -Fx -- "$local_path" <<< "$candidate_paths" >/dev/null && refuse 'ignored or untracked path collides with integration candidate' 70
-done < <({ git ls-files --others --exclude-standard -z; git ls-files --others -i --exclude-standard -z; })
-[[ -z "$(git status --porcelain)" ]] || refuse 'worktree is not clean' 70
+if [[ -n "$(git status --porcelain=v1 --untracked-files=all)" ]] ||
+   [[ -n "$(git ls-files --others -i --exclude-standard -z | od -An -tx1 | tr -d ' \n')" ]] ||
+   [[ -n "$(find . -path ./.git -prune -o -type d -empty -print -quit)" ]] ||
+   [[ -n "$(find . -path ./.git -prune -o \( -type p -o -type s -o -type l \) -print -quit)" ]]; then
+  refuse 'sterile integration worktree required; tracked, untracked, ignored, or special state exists' 70
+fi
 local_main_sha="$(git rev-parse --verify "$main_ref^{commit}" 2>/dev/null)" || refuse 'local main does not resolve to a commit' 68
 remote_main_sha="$(resolve_remote_ref "$main_ref")" || refuse 'remote main does not resolve unambiguously to a commit' 68
 case "$mode" in
@@ -316,25 +411,16 @@ restore_head_state() {
   esac
   [[ "$(capture_head_state)" == "$snapshot" ]]
 }
-snapshot_parent= snapshot_dir= snapshot_owned=no snapshot_cleanup=no original_ignored_manifest=
+snapshot_parent= snapshot_dir= snapshot_owned=no snapshot_cleanup=no
 cleanup_snapshot() {
-  if [[ "$snapshot_owned" == yes && "$snapshot_cleanup" == yes && -n "$snapshot_parent" ]]; then rm -rf -- "$snapshot_parent"; fi
+  if [[ "$snapshot_owned" == yes && "$snapshot_cleanup" == yes && -n "$snapshot_parent" ]]; then
+    rm -f -- "$snapshot_dir/refs" "$snapshot_dir/status" "$snapshot_dir/head" "$snapshot_dir/pseudorefs" "$snapshot_dir/evidence" "$snapshot_dir/remote-main"
+    rmdir -- "$snapshot_dir" "$snapshot_parent"
+  fi
 }
 trap cleanup_snapshot EXIT
-write_ignored_manifest() {
-  local output="$1" path kind value
-  : > "$output"
-  while IFS= read -r -d '' path; do
-    if [[ -L "$path" ]]; then kind=L; value="$(readlink "$path")"
-    elif [[ -f "$path" ]]; then kind=F; value="$(shasum -a 256 "$path" | awk '{print $1}')"
-    elif [[ -d "$path" ]]; then kind=D; value=directory
-    else kind=S; value=special; fi
-    printf '%s\t%s\t%s\n' "$path" "$kind" "$value" >> "$output"
-  done < <(git ls-files --others -i --exclude-standard -z)
-  LC_ALL=C sort -o "$output" "$output"
-}
 prepare_snapshot() {
-  local temp_root="${TMPDIR:-/tmp}" resolved_temp parent_mode parent_uid current_uid path destination
+  local temp_root="${TMPDIR:-/tmp}" resolved_temp parent_mode parent_uid current_uid
   resolved_temp="$(cd "$temp_root" 2>/dev/null && pwd -P)" || refuse 'temporary root is unavailable' 73
   case "$resolved_temp/" in /tmp/*|/private/tmp/*|/var/folders/*|/private/var/folders/*) ;; *) refuse 'temporary root is outside approved local storage' 73 ;; esac
   snapshot_parent="$(mktemp -d "$resolved_temp/augmentedkeys-main-recovery.XXXXXX")" || refuse 'recovery snapshot directory could not be created' 73
@@ -345,34 +431,19 @@ prepare_snapshot() {
   [[ "$parent_mode" == 700 && "$parent_uid" == "$current_uid" && -z "$(find "$snapshot_parent" -mindepth 1 -maxdepth 1 -print -quit)" ]] || refuse 'recovery snapshot directory is not newly empty and private' 73
   snapshot_owned=yes
   snapshot_dir="$snapshot_parent/snapshot"
-  mkdir -m 0700 "$snapshot_dir" "$snapshot_dir/files"
-  original_ignored_manifest="$snapshot_dir/ignored-manifest.txt"
-  write_ignored_manifest "$original_ignored_manifest"
-  while IFS=$'\t' read -r path kind value; do
-    [[ -n "$path" ]] || continue
-    destination="$snapshot_dir/files/$path"; mkdir -p "$(dirname "$destination")"; cp -a "$path" "$destination"
-  done < "$original_ignored_manifest"
+  mkdir -m 0700 "$snapshot_dir"
+  printf '%s\n' "$pre_refs" > "$snapshot_dir/refs"
+  printf '%s\n' "$pre_status" > "$snapshot_dir/status"
+  printf '%s\n' "$pre_head_state" > "$snapshot_dir/head"
+  printf 'ORIG_HEAD=%s\nMERGE_HEAD=%s\nCHERRY_PICK_HEAD=%s\nREVERT_HEAD=%s\n' "$pre_orig_head" "$pre_merge_head" "$pre_cherry_pick_head" "$pre_revert_head" > "$snapshot_dir/pseudorefs"
+  printf '%s\n' "$binding_commit" > "$snapshot_dir/evidence"
+  printf '%s\n' "$remote_main_sha" > "$snapshot_dir/remote-main"
 }
-ignored_state_matches() {
-  local current="$snapshot_dir/current-manifest.txt"
-  write_ignored_manifest "$current"
-  cmp -s "$original_ignored_manifest" "$current"
-}
-restore_ignored_state() {
-  local path kind value source
-  while IFS=$'\t' read -r path kind value; do
-    [[ -n "$path" ]] || continue
-    source="$snapshot_dir/files/$path"
-    case "$kind" in
-      F) [[ ! -e "$path" || -f "$path" ]] || return 1 ;;
-      L) [[ ! -e "$path" || -L "$path" ]] || return 1 ;;
-      D) [[ ! -e "$path" || -d "$path" ]] || return 1 ;;
-      *) return 1 ;;
-    esac
-    if [[ -e "$path" || -L "$path" ]]; then rm -rf -- "$path"; fi
-    mkdir -p "$(dirname "$path")"; cp -a "$source" "$path"
-  done < "$original_ignored_manifest"
-  ignored_state_matches
+sterile_state_matches() {
+  [[ -z "$(git status --porcelain=v1 --untracked-files=all)" ]] &&
+    [[ -z "$(git ls-files --others -i --exclude-standard -z | od -An -tx1 | tr -d ' \n')" ]] &&
+    [[ -z "$(find . -path ./.git -prune -o -type d -empty -print -quit)" ]] &&
+    [[ -z "$(find . -path ./.git -prune -o \( -type p -o -type s -o -type l \) -print -quit)" ]]
 }
 restore_local_main_base() {
   local current_main
@@ -384,8 +455,7 @@ restore_local_main_base() {
   restore_pseudoref MERGE_HEAD "$pre_merge_head" || return 1
   restore_pseudoref CHERRY_PICK_HEAD "$pre_cherry_pick_head" || return 1
   restore_pseudoref REVERT_HEAD "$pre_revert_head" || return 1
-  restore_ignored_state || return 1
-  [[ "$(capture_head_state)" == "$pre_head_state" && "$(git rev-parse HEAD)" == "$recorded_main_base" && "$(git show-ref)" == "$pre_refs" && "$(git status --porcelain=v1 --untracked-files=all)" == "$pre_status" && "$(git diff --binary)" == "$pre_diff" && "$(git diff --cached --binary)" == "$pre_cached_diff" && "$(capture_pseudoref ORIG_HEAD)" == "$pre_orig_head" && "$(capture_pseudoref MERGE_HEAD)" == "$pre_merge_head" && "$(capture_pseudoref CHERRY_PICK_HEAD)" == "$pre_cherry_pick_head" && "$(capture_pseudoref REVERT_HEAD)" == "$pre_revert_head" ]]
+  [[ "$(capture_head_state)" == "$pre_head_state" && "$(git rev-parse HEAD)" == "$recorded_main_base" && "$(git show-ref)" == "$pre_refs" && "$(git status --porcelain=v1 --untracked-files=all)" == "$pre_status" && "$(git diff --binary)" == "$pre_diff" && "$(git diff --cached --binary)" == "$pre_cached_diff" && "$(capture_pseudoref ORIG_HEAD)" == "$pre_orig_head" && "$(capture_pseudoref MERGE_HEAD)" == "$pre_merge_head" && "$(capture_pseudoref CHERRY_PICK_HEAD)" == "$pre_cherry_pick_head" && "$(capture_pseudoref REVERT_HEAD)" == "$pre_revert_head" ]] && sterile_state_matches
 }
 evidence_tip_is_current() {
   [[ "$(git rev-parse --verify "$evidence_ref^{commit}" 2>/dev/null)" == "$binding_commit" ]] || return 1
@@ -404,12 +474,12 @@ case "$mode" in
       partial "fast-forward merge failed and complete pre-integration state is unproved; recovery snapshot retained at: $snapshot_dir"
     fi
     [[ "$(git rev-parse "$main_ref")" == "$accepted_tip" ]] || partial "local main differs from integration tip after merge; recovery snapshot retained at: $snapshot_dir"
-    if ! ignored_state_matches; then
+    if ! sterile_state_matches; then
       if restore_local_main_base && [[ "$(resolve_remote_ref "$main_ref")" == "$recorded_main_base" ]] && evidence_tip_is_current; then
         snapshot_cleanup=yes
-        refuse 'merge changed ignored or untracked state; complete pre-integration state restored' 72
+        refuse 'merge created unexpected state; complete pre-integration state restored' 72
       fi
-      partial "merge changed ignored or untracked state and complete restoration is unproved; recovery snapshot retained at: $snapshot_dir"
+      partial "merge created unexpected state and complete restoration is unproved; recovery snapshot retained at: $snapshot_dir"
     fi
     if ! git -c core.hooksPath=/dev/null push --no-follow-tags --no-signed -- "$remote_endpoint" "$main_refspec"; then
       if remote_main_sha="$(resolve_remote_ref "$main_ref")"; then
@@ -420,8 +490,10 @@ case "$mode" in
           exit 0
         fi
         if restore_local_main_base; then
-          snapshot_cleanup=yes
-          [[ "$remote_main_sha" == "$recorded_main_base" ]] && refuse 'constrained main push failed; local main restored' 72
+          if [[ "$remote_main_sha" == "$recorded_main_base" ]]; then
+            snapshot_cleanup=yes
+            refuse 'constrained main push failed; local main restored' 72
+          fi
           partial "constrained main push failed and remote main moved; local main restored; recovery snapshot retained at: $snapshot_dir"
         fi
         partial "constrained main push failed and local main could not be restored; recovery snapshot retained at: $snapshot_dir"
@@ -431,7 +503,7 @@ case "$mode" in
     remote_main_sha="$(resolve_remote_ref "$main_ref")" || partial "remote main is unverifiable after push; recovery snapshot retained at: $snapshot_dir"
     [[ "$remote_main_sha" == "$accepted_tip" ]] || partial "remote main differs from integration tip after push; recovery snapshot retained at: $snapshot_dir"
     evidence_tip_is_current || partial "evidence binding changed during integration; recovery snapshot retained at: $snapshot_dir"
-    ignored_state_matches || partial "ignored or untracked state changed after push; recovery snapshot retained at: $snapshot_dir"
+    sterile_state_matches || partial "unexpected integration state exists after push; recovery snapshot retained at: $snapshot_dir"
     snapshot_cleanup=yes
     printf 'integrated:%s:%s:%s\n' "$milestone_branch" "$accepted_tip" "$main_refspec"
     ;;

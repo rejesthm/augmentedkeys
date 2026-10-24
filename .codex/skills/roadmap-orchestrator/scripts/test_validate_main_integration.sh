@@ -3,7 +3,9 @@ set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 guard="$script_dir/validate_main_integration.sh"
+decision_guard="$script_dir/validate_decision_evidence.sh"
 [[ -x "$guard" ]] || { printf 'FAIL: guard is missing or not executable: %s\n' "$guard" >&2; exit 1; }
+[[ -x "$decision_guard" ]] || { printf 'FAIL: evidence guard is missing or not executable: %s\n' "$decision_guard" >&2; exit 1; }
 
 export GIT_CONFIG_GLOBAL=/dev/null
 export GIT_CONFIG_SYSTEM=/dev/null
@@ -25,6 +27,59 @@ binding_path='docs/orchestration/decisions/m0/bindings/main-integration.md'
 
 fail() { printf 'FAIL: %s\n' "$1" >&2; exit 1; }
 hash_file() { shasum -a 256 "$1" | awk '{print $1}'; }
+payload_hash_text() { printf '%s\n' "$1" | shasum -a 256 | awk '{print $1}'; }
+payload_length_text() { printf '%s\n' "$1" | wc -c | tr -d ' '; }
+payload_base64_text() { printf '%s\n' "$1" | base64 | tr -d '\n'; }
+payload_hash_file() { shasum -a 256 "$1" | awk '{print $1}'; }
+payload_length_file() { wc -c < "$1" | tr -d ' '; }
+payload_base64_file() { base64 < "$1" | tr -d '\n'; }
+insert_acceptance_rows() {
+  local ledger="$1" binding="$2" accepted="$3" date="$4" next="$1.next"
+  awk -v binding="$binding" -v accepted="$accepted" -v date="$date" -v binding_path="$acceptance_binding_path" '
+    $0=="## Task integration log" {
+      if(inserted++) exit 42
+      for(n=1;n<=10;n++) {
+        id=sprintf("R%02d",n)
+        print "|" date "| " id " | `Verified` | `Accepted` | Roadmap Orchestrator | `" binding "` | `" binding_path "` | Exact reviewed task accepted with milestone; no implementation or successor authority |"
+      }
+      print "|" date "| M0 | `Ready for decision` | `Accepted` | Roadmap Orchestrator | `" binding "` | `" binding_path "` | Exact reviewed milestone accepted; no implementation or successor authority |"
+      print ""
+    }
+    {print}
+    END {if(inserted!=1) exit 42}
+  ' "$ledger" > "$next"
+  mv "$next" "$ledger"
+}
+update_ledger_task_rows() {
+  local ledger="$1" next="$1.next"
+  awk '
+    {
+      if ($0 ~ /^\| R(0[1-9]|10) \| `Verified` \|/) {
+        id=substr($0,3,3)
+        if(seen[id]++) exit 42
+        sub(/`Verified`/,"`Accepted`"); count++
+      }
+      print
+    }
+    END {for(n=1;n<=10;n++){id=sprintf("R%02d",n);if(seen[id]!=1)exit 42} if(count!=10)exit 42}
+  ' "$ledger" > "$next"
+  mv "$next" "$ledger"
+}
+update_research_index_statuses() {
+  local index="$1" next="$1.next"
+  awk '
+    {
+      if ($0 ~ /^## ([1-9]|10)\./) {section=$2; sub(/\.$/,"",section)}
+      if ($0 ~ /^- \*\*Status:\*\* `Verified`/) {
+        if(section !~ /^([1-9]|10)$/ || seen[section]++) exit 42
+        sub(/`Verified`/,"`Accepted`"); count++
+      }
+      print
+    }
+    END {for(n=1;n<=10;n++)if(seen[n]!=1)exit 42; if(count!=10)exit 42}
+  ' "$index" > "$next"
+  mv "$next" "$index"
+}
 refresh_sequence_shas() {
   binding_sha="$(git -C "$work_repo" rev-parse refs/heads/governance/decision-evidence)"
   decision_sha="$(git -C "$work_repo" rev-parse "$binding_sha^")"
@@ -32,18 +87,28 @@ refresh_sequence_shas() {
 }
 
 append_review_set() {
-  local label="$1" reviewed="$2" review_hash
-  review_hash="$(printf review | shasum -a 256 | awk '{print $1}')"
+  local label="$1" reviewed="$2" review_hash review_length review_encoded output
   qa_path="docs/orchestration/decisions/m0/reviews/qa-$label.md"
   license_path="docs/orchestration/decisions/m0/reviews/security-$label.md"
   final_path="docs/orchestration/decisions/m0/reviews/final-$label.md"
   for spec in "qa_performance_verifier:$qa_path" "licensing_security_reviewer:$license_path" "final_code_reviewer:$final_path"; do
     role="${spec%%:*}"; path="${spec#*:}"; mkdir -p "$(dirname "$path")"
+    output="APPROVE $role review for $label.
+Verdict: APPROVE
+Critical findings: 0
+Important findings: 0
+Metadata-looking review prose remains literal output."
+    if [[ -n "${REVIEW_RAW_FILE:-}" ]]; then
+      review_hash="$(payload_hash_file "$REVIEW_RAW_FILE")"; review_length="$(payload_length_file "$REVIEW_RAW_FILE")"; review_encoded="$(payload_base64_file "$REVIEW_RAW_FILE")"
+    else
+      review_hash="$(payload_hash_text "$output")"; review_length="$(payload_length_text "$output")"; review_encoded="$(payload_base64_text "$output")"
+    fi
     {
       printf 'Controller recorder: program-controller\nReviewer role: %s\nReviewer session: %s-%s\n' "$role" "$role" "$label"
       printf 'Recorded timestamp: 2026-10-24T03:04:05Z\nReviewed candidate: %s\nVerification evidence commit: %s\n' "$reviewed" "$reviewed"
-      printf 'Runtime evidence SHA-256: %s\nFull review output SHA-256: %s\n' "$review_hash" "$review_hash"
+      printf 'Runtime evidence SHA-256: %s\nReview output encoding: base64\nReview output byte length: %s\nFull review output SHA-256: %s\n' "$review_hash" "${REVIEW_LENGTH_OVERRIDE:-$review_length}" "$review_hash"
       printf 'Verdict: APPROVE\nCritical findings: 0\nImportant findings: 0\nMinor findings: 0\n'
+      printf '%s\n%s\n%s\n' '--- BEGIN REVIEW OUTPUT ---' "${REVIEW_ENCODED_OVERRIDE:-$review_encoded}" '--- END REVIEW OUTPUT ---'
     } > "$path"
     git add "$path"; git commit --quiet -m "review-$role-$label"
     case "$role" in qa_*) qa_review_commit="$(git rev-parse HEAD)";; licensing_*) security_review_commit="$(git rev-parse HEAD)";; final_*) final_review_commit="$(git rev-parse HEAD)";; esac
@@ -53,7 +118,7 @@ append_review_set() {
 write_acceptance_package() {
   mkdir -p "$(dirname "$acceptance_package_path")"
   {
-    printf 'Milestone: M0\nContract commit: %s\nContract path: %s\n' "$base_sha" "$contract_path"
+    printf 'Milestone: M0\nDecision kind: milestone-acceptance\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: %s\n' "$base_sha" "$contract_path"
     printf 'Reviewed candidate: %s\nCompletion package commit: %s\nCompletion package path: %s\n' "$acceptance_package_candidate" "$acceptance_package_candidate" "$completion_path"
     printf 'QA review commit: %s\nQA review path: %s\n' "$qa_review_commit" "$qa_path"
     printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_review_commit" "$license_path"
@@ -95,9 +160,9 @@ write_acceptance_verdict() {
 write_acceptance_binding() {
   mkdir -p "$(dirname "$acceptance_binding_path")"
   {
-    printf 'Binding status: Current\nMilestone: M0\nMilestone state: Accepted\n'
+    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nDecision kind: APPROVE_MILESTONE\nReviewed candidate: %s\nAuthorization: GRANTED\nMilestone state: Accepted\n' "$base_sha" "$acceptance_package_candidate"
     printf 'Package commit: %s\nPackage path: %s\n' "$acceptance_package_sha" "$acceptance_package_path"
-    printf 'Accepted milestone tip: %s\nTarget main commit: %s\n' "$acceptance_package_candidate" "$base_sha"
+    printf 'Accepted milestone tip: %s\nCompletion package commit: %s\nTarget main commit: %s\n' "$acceptance_package_candidate" "$acceptance_package_candidate" "$base_sha"
     printf 'Verdict commit: %s\nVerdict path: %s\n' "$acceptance_verdict_sha" "$acceptance_verdict_path"
     printf 'Critical findings: 0\nImportant findings: 0\n'
   } > "$acceptance_binding_path"
@@ -121,9 +186,9 @@ append_main_sequence() {
   delta_hash="$(git diff --binary "$package_acceptance_candidate..$package_candidate" | shasum -a 256 | awk '{print $1}')"
   mkdir -p "$(dirname "$package_path")"
   {
-    printf 'Milestone: M0\nContract commit: %s\nContract path: %s\n' "$base_sha" "$contract_path"
+    printf 'Milestone: M0\nDecision kind: main-integration\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: %s\nReviewed candidate: %s\n' "$base_sha" "$contract_path" "$package_candidate"
     printf 'Acceptance candidate: %s\nIntegration candidate: %s\n' "$package_acceptance_candidate" "$package_candidate"
-    printf 'Administrative delta paths: .loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md\nAdministrative delta SHA-256: %s\n' "$delta_hash"
+    printf 'Administrative delta paths: .loop/progress.md,ROADMAP.md,STATE.md,docs/orchestration/milestones/M0_LEDGER.md,docs/research/RESEARCH_INDEX.md\nAdministrative delta SHA-256: %s\nAdministrative transition date: %s\n' "$delta_hash" "${package_transition_date:-2026-10-24}"
     printf 'Completion package commit: %s\nCompletion package path: %s\n' "$package_acceptance_candidate" "$completion_path"
     printf 'QA review commit: %s\nQA review path: %s\n' "$qa_review_commit" "$package_qa_path"
     printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_review_commit" "$license_path"
@@ -142,7 +207,7 @@ append_main_sequence() {
     }
     printf 'Evidence package commit: %s\nEvidence package path: %s\n' "$package_sha" "$package_path"
     printf 'Verdict: %s\nMilestone: M0\nContract commit: %s\n' "$verdict_kind" "$base_sha"
-    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nCompletion package commit: %s\n' "$package_acceptance_candidate" "$verdict_candidate" "$package_acceptance_candidate"
+    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nReviewed candidate: %s\nCompletion package commit: %s\nMilestone acceptance binding commit: %s\n' "$package_acceptance_candidate" "$verdict_candidate" "$verdict_candidate" "$package_acceptance_candidate" "$acceptance_binding_sha"
     [[ "$verdict_include_target" == yes ]] && printf 'Target main commit: %s\n' "$verdict_target"
     printf 'Successor contract commit: Not applicable\nCritical findings: 0\nImportant findings: 0\n'
     printf 'Decision: Decide the exact guarded integration.\n'
@@ -151,9 +216,9 @@ append_main_sequence() {
   decision_sha="$(git rev-parse HEAD)"
   mkdir -p "$(dirname "$binding_path")"
   {
-    printf 'Binding status: Current\nMilestone: M0\nMilestone state: Accepted\nIntegration state: %s\n' "$binding_state"
+    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nDecision kind: APPROVE_MAIN_INTEGRATION\nReviewed candidate: %s\nAuthorization: GRANTED\nMilestone state: Accepted\nIntegration state: %s\n' "$base_sha" "$binding_candidate" "$binding_state"
     printf 'Package commit: %s\nPackage path: %s\nVerdict commit: %s\nVerdict path: %s\n' "$package_sha" "$package_path" "$decision_sha" "$verdict_path"
-    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nTarget main commit: %s\n' "$package_acceptance_candidate" "$binding_candidate" "$binding_target"
+    printf 'Acceptance candidate: %s\nIntegration candidate: %s\nCompletion package commit: %s\nMilestone acceptance binding commit: %s\nTarget main commit: %s\n' "$package_acceptance_candidate" "$binding_candidate" "$package_acceptance_candidate" "$acceptance_binding_sha" "$binding_target"
     printf 'Critical findings: 0\nImportant findings: 0\n'
   } > "$binding_path"
   git add "$binding_path"
@@ -182,13 +247,16 @@ setup_fixture() {
     esac
     mkdir -p .codex/skills/roadmap-orchestrator/scripts
     cp "$guard" .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh
+    cp "$decision_guard" .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     chmod 0755 .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh
+    chmod 0755 .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     git add tracked.txt "$contract_path" docs/orchestration/milestones/contract-target.md 2>/dev/null || git add tracked.txt "$contract_path"
     git add .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh
+    git add .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     git commit --quiet -m base
     git remote add origin "$remote_repo" && git push --quiet origin refs/heads/main:refs/heads/main
     git switch --quiet -c milestone/m0-research && printf 'candidate\n' >> tracked.txt && printf 'candidate-only\n' > candidate-only.txt
-    mkdir -p "$(dirname "$completion_path")" docs/orchestration/milestones .loop
+    mkdir -p "$(dirname "$completion_path")" docs/orchestration/milestones docs/research .loop
     printf '# Completion Package\n' > "$completion_path"
     cat > ROADMAP.md <<'EOF'
 ## M0  Research & Architecture
@@ -205,12 +273,37 @@ EOF
     cat > docs/orchestration/milestones/M0_LEDGER.md <<'EOF'
 # M0 Ledger
 - State: `Ready for decision`
-- Milestone acceptance binding commit: Not yet decided
+- Milestone acceptance binding commit: `0db258d158f1d212497ccfdf07675ec399e6f870` — local unpublished/unconsumed
 - Accepted milestone tip: Not yet decided
 | R01 | `Verified` |
 | R02 | `Verified` |
+| R03 | `Verified` |
+| R04 | `Verified` |
+| R05 | `Verified` |
+| R06 | `Verified` |
+| R07 | `Verified` |
+| R08 | `Verified` |
+| R09 | `Verified` |
+| R10 | `Verified` |
+
+## Task integration log
 EOF
-    git add tracked.txt candidate-only.txt "$completion_path" ROADMAP.md STATE.md .loop/progress.md docs/orchestration/milestones/M0_LEDGER.md
+    for n in 1 2 3 4 5 6 7 8 9 10; do printf '## %s. Fixture task\n- **Status:** `Verified` — fixture\n' "$n"; done > docs/research/RESEARCH_INDEX.md
+    if [[ -n "${ACTUAL_SHAPES_ROOT:-}" ]]; then
+      cp "$ACTUAL_SHAPES_ROOT/ROADMAP.md" ROADMAP.md
+      cp "$ACTUAL_SHAPES_ROOT/STATE.md" STATE.md
+      cp "$ACTUAL_SHAPES_ROOT/.loop/progress.md" .loop/progress.md
+      cp "$ACTUAL_SHAPES_ROOT/docs/orchestration/milestones/M0_LEDGER.md" docs/orchestration/milestones/M0_LEDGER.md
+      cp "$ACTUAL_SHAPES_ROOT/docs/research/RESEARCH_INDEX.md" docs/research/RESEARCH_INDEX.md
+      sed -i '' 's/^Status: Paused for owner decision\./Status: Ready for decision./' ROADMAP.md
+      sed -i '' 's/^Milestone state: `Paused for owner decision`$/Milestone state: `Ready for decision`/' STATE.md
+      sed -i '' 's/^M0 — Research & Architecture (Paused for owner decision under MT-002)\.$/M0 — Research \& Architecture (Ready for decision)./' .loop/progress.md
+      sed -i '' 's/^- State: `Paused for owner decision`$/- State: `Ready for decision`/' docs/orchestration/milestones/M0_LEDGER.md
+    fi
+    if [[ -n "${ACTUAL_SHAPES_ROOT:-}" ]]; then
+      cmp -s "$ACTUAL_SHAPES_ROOT/docs/research/RESEARCH_INDEX.md" docs/research/RESEARCH_INDEX.md || fail 'actual research index was replaced before source commit'
+    fi
+    git add tracked.txt candidate-only.txt "$completion_path" ROADMAP.md STATE.md .loop/progress.md docs/orchestration/milestones/M0_LEDGER.md docs/research/RESEARCH_INDEX.md
     git commit --quiet -m acceptance-candidate
   )
   base_sha="$(git -C "$work_repo" rev-parse refs/heads/main)"
@@ -221,6 +314,10 @@ EOF
   acceptance_package_candidate="$acceptance_candidate_sha"
   (
     cd "$work_repo" && git switch --quiet -c governance/decision-evidence main
+    mkdir -p docs/orchestration/decisions
+    printf 'Governance base: %s\n' "$base_sha" > docs/orchestration/decisions/governance-base.md
+    git add docs/orchestration/decisions/governance-base.md
+    git commit --quiet -m governance-base-binding
     append_acceptance_sequence 001
   )
   acceptance_binding_sha="$(git -C "$work_repo" rev-parse HEAD)"
@@ -231,9 +328,12 @@ EOF
     sed -i '' 's/Milestone state: `Ready for decision`/Milestone state: `Accepted`/' STATE.md
     sed -i '' 's/(Ready for decision)\./(Accepted)./' .loop/progress.md
     sed -i '' 's/- State: `Ready for decision`/- State: `Accepted`/' docs/orchestration/milestones/M0_LEDGER.md
-    sed -i '' "s/- Milestone acceptance binding commit: Not yet decided/- Milestone acceptance binding commit: $acceptance_binding_sha/" docs/orchestration/milestones/M0_LEDGER.md
-    sed -i '' "s/- Accepted milestone tip: Not yet decided/- Accepted milestone tip: $acceptance_candidate_sha/" docs/orchestration/milestones/M0_LEDGER.md
-    git add ROADMAP.md STATE.md .loop/progress.md docs/orchestration/milestones/M0_LEDGER.md
+    sed -i '' "s/^- Milestone acceptance binding commit:.*/- Milestone acceptance binding commit: \`$acceptance_binding_sha\`/" docs/orchestration/milestones/M0_LEDGER.md
+    sed -i '' "s/- Accepted milestone tip: Not yet decided/- Accepted milestone tip: \`$acceptance_candidate_sha\`/" docs/orchestration/milestones/M0_LEDGER.md
+    update_ledger_task_rows docs/orchestration/milestones/M0_LEDGER.md
+    insert_acceptance_rows docs/orchestration/milestones/M0_LEDGER.md "$acceptance_binding_sha" "$acceptance_candidate_sha" 2026-10-24
+    update_research_index_statuses docs/research/RESEARCH_INDEX.md
+    git add ROADMAP.md STATE.md .loop/progress.md docs/orchestration/milestones/M0_LEDGER.md docs/research/RESEARCH_INDEX.md
     git commit --quiet -m integration-administrative-state
     candidate_sha="$(git rev-parse HEAD)"
     git push --quiet origin refs/heads/milestone/m0-research:refs/heads/milestone/m0-research
@@ -253,6 +353,14 @@ run_guard() {
     AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" \
     AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(hash_file "$guard")" \
     "$guard" "$@"
+  )
+}
+run_decision_guard() {
+  (
+    cd "$work_repo"
+    AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" \
+    AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(hash_file "$decision_guard")" \
+    "$decision_guard" "$@"
   )
 }
 capture_head_state() {
@@ -305,7 +413,7 @@ test_valid_flow() {
   tests_run=$((tests_run + 1))
 }
 test_wrong_branch() { setup_fixture wrong-branch; git -C "$work_repo" switch --quiet milestone/m0-research; assert_refusal_without_mutation 'checked-out branch is not main' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"; }
-test_dirty_tree() { setup_fixture dirty; printf 'dirty\n' >> "$work_repo/tracked.txt"; assert_refusal_without_mutation 'worktree is not clean' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"; }
+test_dirty_tree() { setup_fixture dirty; printf 'dirty\n' >> "$work_repo/tracked.txt"; assert_refusal_without_mutation 'sterile integration worktree required' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"; }
 test_stale_candidate() { setup_fixture stale-candidate; git -C "$work_repo" branch --force milestone/m0-research "$base_sha"; assert_refusal_without_mutation 'milestone branch tip differs from accepted tip' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"; }
 test_unconsumed_decision() {
   local old_binding
@@ -455,7 +563,7 @@ test_ignored_tracked_collision_refused() {
   if run_guard integrate milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >"$output_file" 2>&1; then
     fail 'ignored tracked-path collision unexpectedly integrated'
   fi
-  grep -F 'refused: ignored or untracked path collides with integration candidate' "$output_file" >/dev/null || {
+  grep -F 'refused: sterile integration worktree required; tracked, untracked, ignored, or special state exists' "$output_file" >/dev/null || {
     sed -n '1,160p' "$output_file" >&2
     fail 'ignored tracked-path collision refusal absent'
   }
@@ -464,11 +572,33 @@ test_ignored_tracked_collision_refused() {
   tests_run=$((tests_run + 1))
 }
 
+test_sterile_boundary_adversarial_names_and_types() {
+  local name output
+  for name in tab-name newline-name symlink-ancestor fifo socket empty-directory; do
+    setup_fixture "sterile-$name"
+    case "$name" in
+      tab-name) printf x > "$work_repo/"$'tab\tname' ;;
+      newline-name) printf x > "$work_repo/"$'line\nbreak' ;;
+      symlink-ancestor) mkdir "$work_repo/external"; ln -s external "$work_repo/link" ;;
+      fifo) mkfifo "$work_repo/untrusted-fifo" ;;
+      socket)
+        if ! (cd "$work_repo" && python3 -c 'import socket; s=socket.socket(socket.AF_UNIX); s.bind("untrusted.sock"); s.close()') 2>/dev/null; then
+          echo "SKIP: sandbox denied disposable Unix-socket creation; production -S refusal remains source-checked"
+          continue
+        fi
+        ;;
+      empty-directory) mkdir "$work_repo/untracked-empty" ;;
+    esac
+    output="$fixture_root/sterile-$name-output"
+    if run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >"$output" 2>&1; then fail "sterile boundary accepted $name"; fi
+    grep -F 'sterile integration worktree required' "$output" >/dev/null || { cat "$output" >&2; fail "sterile refusal absent for $name"; }
+    tests_run=$((tests_run + 1))
+  done
+}
+
 test_populated_snapshot_directory_refused() {
   local fake_snapshot sentinel_hash wrapper_dir real_mktemp output_file before_remote
   setup_fixture populated-snapshot
-  printf 'owner-secret.bin\n' >> "$work_repo/.git/info/exclude"
-  printf 'owner secret\n' > "$work_repo/owner-secret.bin"
   fake_snapshot="$fixture_root/augmentedkeys-main-recovery.preexisting"
   mkdir -m 0700 "$fake_snapshot"
   printf 'do not touch\n' > "$fake_snapshot/sentinel"
@@ -491,41 +621,49 @@ test_populated_snapshot_directory_refused() {
 }
 
 test_successful_merge_ignored_mutation_restored() {
-  local wrapper_dir real_git output_file owner_hash before_remote
-  setup_fixture successful-ignored-mutation
-  printf 'owner-secret.bin\n' >> "$work_repo/.git/info/exclude"
-  printf 'original owner bytes\n' > "$work_repo/owner-secret.bin"
-  owner_hash="$(shasum -a 256 "$work_repo/owner-secret.bin" | awk '{print $1}')"
+  local wrapper_dir real_git output_file before_remote retained
+  setup_fixture successful-unexpected-state
   wrapper_dir="$fixture_root/success-git-wrapper"; mkdir -p "$wrapper_dir"; real_git="$(command -v git)"
   {
-    printf '#!/usr/bin/env bash\n'
-    printf 'is_merge=no\nfor arg in "$@"; do [[ "$arg" == merge ]] && is_merge=yes; done\n'
-    printf 'if [[ "$is_merge" == yes ]]; then "$REAL_GIT" "$@" || exit $?; printf "corrupted\\n" > owner-secret.bin; exit 0; fi\n'
-    printf 'exec "$REAL_GIT" "$@"\n'
+    printf '#!/usr/bin/env bash
+'
+    printf 'is_merge=no
+for arg in "$@"; do [[ "$arg" == merge ]] && is_merge=yes; done
+'
+    printf 'if [[ "$is_merge" == yes ]]; then "$REAL_GIT" "$@" || exit $?; printf "unexpected\n" > merge-created.txt; exit 0; fi
+'
+    printf 'exec "$REAL_GIT" "$@"
+'
   } > "$wrapper_dir/git"
   chmod +x "$wrapper_dir/git"
-  before_remote="$(snapshot_remote)"; output_file="$fixture_root/successful-ignored-mutation-output"
+  before_remote="$(snapshot_remote)"; output_file="$fixture_root/successful-unexpected-state-output"
   if (cd "$work_repo" && PATH="$wrapper_dir:$PATH" REAL_GIT="$real_git" AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(hash_file "$guard")" "$guard" integrate milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha") >"$output_file" 2>&1; then
-    fail 'successful merge ignored mutation unexpectedly integrated'
+    fail 'merge-created unexpected state integrated'
   fi
-  grep -F 'refused: merge changed ignored or untracked state; complete pre-integration state restored' "$output_file" >/dev/null || { sed -n '1,160p' "$output_file" >&2; fail 'successful mutation restored refusal absent'; }
-  [[ "$(shasum -a 256 "$work_repo/owner-secret.bin" | awk '{print $1}')" == "$owner_hash" ]] || fail 'successful mutation did not restore owner bytes'
-  [[ "$(git -C "$work_repo" rev-parse main)" == "$base_sha" && "$(snapshot_remote)" == "$before_remote" ]] || fail 'successful mutation refusal moved main'
+  grep -F 'partial: merge created unexpected state and complete restoration is unproved; recovery snapshot retained at:' "$output_file" >/dev/null || { sed -n '1,160p' "$output_file" >&2; fail 'unexpected-state PARTIAL absent'; }
+  retained="$(sed -n 's/^partial: .*recovery snapshot retained at: //p' "$output_file" | tail -n 1)"
+  [[ -d "$retained" && -f "$retained/refs" && -e "$work_repo/merge-created.txt" ]] || fail 'unexpected-state recovery evidence was not retained'
+  [[ "$(git -C "$work_repo" rev-parse main)" == "$base_sha" && "$(snapshot_remote)" == "$before_remote" ]] || fail 'unexpected-state PARTIAL moved main'
   tests_run=$((tests_run + 1))
 }
 
 test_partial_retains_recovery_snapshot() {
   local wrapper_dir real_git output_file retained before_remote
   setup_fixture partial-retains-snapshot
-  printf 'owner-secret.bin\n' >> "$work_repo/.git/info/exclude"
-  printf 'original owner bytes\n' > "$work_repo/owner-secret.bin"
   wrapper_dir="$fixture_root/partial-git-wrapper"; mkdir -p "$wrapper_dir"; real_git="$(command -v git)"
   {
-    printf '#!/usr/bin/env bash\n'
-    printf 'is_merge=no\nis_restore=no\nfor arg in "$@"; do [[ "$arg" == merge ]] && is_merge=yes; [[ "$arg" == restore ]] && is_restore=yes; done\n'
-    printf 'if [[ "$is_merge" == yes ]]; then printf "corrupted\\n" > owner-secret.bin; exit 1; fi\n'
-    printf '[[ "$is_restore" == yes ]] && exit 1\n'
-    printf 'exec "$REAL_GIT" "$@"\n'
+    printf '#!/usr/bin/env bash
+'
+    printf 'is_merge=no
+is_restore=no
+for arg in "$@"; do [[ "$arg" == merge ]] && is_merge=yes; [[ "$arg" == restore ]] && is_restore=yes; done
+'
+    printf 'if [[ "$is_merge" == yes ]]; then printf "unexpected\n" > merge-created.txt; exit 1; fi
+'
+    printf '[[ "$is_restore" == yes ]] && exit 1
+'
+    printf 'exec "$REAL_GIT" "$@"
+'
   } > "$wrapper_dir/git"
   chmod +x "$wrapper_dir/git"
   before_remote="$(snapshot_remote)"; output_file="$fixture_root/partial-retains-output"
@@ -534,9 +672,38 @@ test_partial_retains_recovery_snapshot() {
   fi
   grep -F 'partial: fast-forward merge failed and complete pre-integration state is unproved; recovery snapshot retained at:' "$output_file" >/dev/null || { sed -n '1,160p' "$output_file" >&2; fail 'retained snapshot PARTIAL absent'; }
   retained="$(sed -n 's/^partial: .*recovery snapshot retained at: //p' "$output_file" | tail -n 1)"
-  [[ -n "$retained" && -d "$retained" && -f "$retained/files/owner-secret.bin" ]] || fail 'recovery snapshot was not retained'
-  grep -F 'original owner bytes' "$retained/files/owner-secret.bin" >/dev/null || fail 'retained snapshot lacks original owner bytes'
+  [[ -n "$retained" && -d "$retained" && -f "$retained/refs" && -f "$retained/pseudorefs" ]] || fail 'recovery metadata snapshot was not retained'
   [[ "$(snapshot_remote)" == "$before_remote" ]] || fail 'partial recovery moved remote'
+  tests_run=$((tests_run + 1))
+}
+
+test_failed_push_remote_moved_retains_snapshot() {
+  local real_git tree external wrapper output result retained
+  setup_fixture failed-push-remote-moved
+  real_git="$(command -v git)"
+  tree="$(git -C "$work_repo" rev-parse "$base_sha^{tree}")"
+  external="$(printf 'external\n' | git -C "$work_repo" commit-tree "$tree" -p "$base_sha")"
+  git -C "$work_repo" push --quiet origin "$external":refs/heads/external-move
+  printf '#!/usr/bin/env bash\ngit update-ref refs/heads/main %s\n' "$external" > "$remote_repo/hooks/post-receive"
+  chmod +x "$remote_repo/hooks/post-receive"
+  wrapper="$fixture_root/failed-push-wrapper"; mkdir "$wrapper"
+  cat > "$wrapper/git" <<'WRAP'
+#!/usr/bin/env bash
+"$REAL_GIT" "$@"
+result=$?
+if [[ " $* " == *' push --no-follow-tags '* ]]; then exit 1; fi
+exit "$result"
+WRAP
+  chmod +x "$wrapper/git"
+  output="$fixture_root/failed-push-moved-output"
+  set +e
+  (cd "$work_repo" && PATH="$wrapper:$PATH" REAL_GIT="$real_git" AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(hash_file "$guard")" "$guard" integrate milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha") >"$output" 2>&1
+  result=$?
+  set -e
+  [[ "$result" == 75 ]] || { cat "$output" >&2; fail "expected PARTIAL75, got $result"; }
+  retained="$(sed -n 's/.*recovery snapshot retained at: //p' "$output" | tail -n 1)"
+  [[ -n "$retained" && -d "$retained" && -f "$retained/refs" && -f "$retained/remote-main" ]] || fail 'failed-push PARTIAL snapshot did not survive'
+  [[ "$(git -C "$work_repo" rev-parse main)" == "$base_sha" ]] || fail 'failed-push PARTIAL did not restore local base'
   tests_run=$((tests_run + 1))
 }
 
@@ -569,12 +736,173 @@ test_arbitrary_allowed_state_change_refused() {
   assert_refusal_without_mutation 'ROADMAP administrative delta is not exact' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
 }
 
+publish_mutated_candidate() {
+  local sequence="$1"
+  candidate_sha="$(git -C "$work_repo" rev-parse refs/heads/milestone/m0-research)"
+  git -C "$work_repo" push --quiet origin refs/heads/milestone/m0-research:refs/heads/milestone/m0-research
+  (
+    cd "$work_repo"
+    git switch --quiet governance/decision-evidence
+    reset_sequence_options
+    append_main_sequence "$sequence"
+    git push --quiet origin refs/heads/governance/decision-evidence:refs/heads/governance/decision-evidence
+    git switch --quiet main
+  )
+  refresh_sequence_shas
+}
+
+test_administrative_schema_negatives() {
+  setup_fixture missing-acceptance-field
+  git -C "$work_repo" switch --quiet milestone/m0-research
+  sed -i '' '/^- Milestone acceptance binding commit:/d' "$work_repo/docs/orchestration/milestones/M0_LEDGER.md"
+  git -C "$work_repo" add docs/orchestration/milestones/M0_LEDGER.md
+  git -C "$work_repo" commit --quiet -m missing-acceptance-field
+  publish_mutated_candidate 101
+  assert_refusal_without_mutation 'ledger administrative delta is not exact' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+  setup_fixture mode-only
+  git -C "$work_repo" switch --quiet milestone/m0-research
+  chmod 0755 "$work_repo/docs/research/RESEARCH_INDEX.md"
+  git -C "$work_repo" add docs/research/RESEARCH_INDEX.md
+  git -C "$work_repo" commit --quiet -m mode-only
+  publish_mutated_candidate 102
+  assert_refusal_without_mutation 'target docs/research/RESEARCH_INDEX.md must be a canonical 100644 blob' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+  setup_fixture trailing-newline
+  git -C "$work_repo" switch --quiet milestone/m0-research
+  perl -0pi -e 's/\n\z//' "$work_repo/docs/research/RESEARCH_INDEX.md"
+  git -C "$work_repo" add docs/research/RESEARCH_INDEX.md
+  git -C "$work_repo" commit --quiet -m trailing-newline
+  publish_mutated_candidate 103
+  assert_refusal_without_mutation 'target docs/research/RESEARCH_INDEX.md must end with one preserved newline' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+
+  setup_fixture duplicate-field
+  git -C "$work_repo" switch --quiet milestone/m0-research
+  printf 'Milestone state: `Accepted`\n' >> "$work_repo/STATE.md"
+  git -C "$work_repo" add STATE.md
+  git -C "$work_repo" commit --quiet -m duplicate-field
+  publish_mutated_candidate 104
+  assert_refusal_without_mutation 'STATE administrative delta is not exact' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+test_invalid_calendar_transition_date() {
+  setup_fixture invalid-calendar-date
+  (
+    cd "$work_repo"
+    git switch --quiet milestone/m0-research
+    sed -i '' 's/^|2026-10-24| /|2026-02-30| /' docs/orchestration/milestones/M0_LEDGER.md
+    git add docs/orchestration/milestones/M0_LEDGER.md
+    git commit --quiet -m invalid-calendar-administrative-candidate
+    candidate_sha="$(git rev-parse HEAD)"
+    git push --quiet origin refs/heads/milestone/m0-research:refs/heads/milestone/m0-research
+    git switch --quiet governance/decision-evidence
+    reset_sequence_options
+    package_transition_date=2026-02-30 append_main_sequence 105
+    git push --quiet origin refs/heads/governance/decision-evidence:refs/heads/governance/decision-evidence
+    git switch --quiet main
+  )
+  candidate_sha="$(git -C "$work_repo" rev-parse refs/heads/milestone/m0-research)"
+  refresh_sequence_shas
+  assert_refusal_without_mutation 'administrative transition date is invalid' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+test_missing_per_task_acceptance_log() {
+  setup_fixture missing-task-acceptance-log
+  git -C "$work_repo" switch --quiet milestone/m0-research
+  sed -i '' '/^|2026-10-24| R01 /d' "$work_repo/docs/orchestration/milestones/M0_LEDGER.md"
+  git -C "$work_repo" add docs/orchestration/milestones/M0_LEDGER.md
+  git -C "$work_repo" commit --quiet -m missing-task-acceptance-log
+  publish_mutated_candidate 106
+  assert_refusal_without_mutation 'ledger administrative delta is not exact' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+test_review_raw_byte_framing() {
+  local raw
+  raw="$fixture_root/main-review-no-final-newline.txt"
+  printf 'Verdict: APPROVE\nCritical findings: 0\n--- END REVIEW OUTPUT ---' > "$raw"
+  REVIEW_RAW_FILE="$raw" setup_fixture main-review-no-final-newline
+  run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >/dev/null
+  tests_run=$((tests_run + 1))
+
+  if [[ -n "${CT04_SECURITY_RAW_OUTPUT:-}" && -f "$CT04_SECURITY_RAW_OUTPUT" ]]; then
+    REVIEW_RAW_FILE="$CT04_SECURITY_RAW_OUTPUT" setup_fixture main-review-preserved-security
+    run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >/dev/null
+    tests_run=$((tests_run + 1))
+  fi
+
+  REVIEW_LENGTH_OVERRIDE=1 setup_fixture main-review-length-tamper
+  assert_refusal_without_mutation 'review output byte length differs from decoded bytes' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+test_end_to_end_both_guards() {
+  local approval_tip integrate_output output_hash output_length output_encoded result_path result_commit result_binding_path result_tip
+  setup_fixture end-to-end-both-guards
+  approval_tip="$binding_sha"
+  git --git-dir="$remote_repo" update-ref -d refs/heads/governance/decision-evidence
+  git -C "$work_repo" switch --quiet governance/decision-evidence
+  run_decision_guard authorize "$approval_tip" "$base_sha" >/dev/null
+  run_decision_guard push "$approval_tip" "$base_sha" >/dev/null
+  run_decision_guard verify "$approval_tip" "$base_sha" >/dev/null
+  git -C "$work_repo" switch --quiet main
+  run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip" >/dev/null
+  integrate_output="$(run_guard integrate milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip")"
+  run_guard verify milestone/m0-research "$candidate_sha" "$base_sha" "$approval_tip" >/dev/null
+  output_hash="$(payload_hash_text "$integrate_output")"; output_length="$(payload_length_text "$integrate_output")"; output_encoded="$(payload_base64_text "$integrate_output")"
+  git -C "$work_repo" switch --quiet governance/decision-evidence
+  result_path='docs/orchestration/decisions/m0/results/main-integration-e2e.md'
+  mkdir -p "$work_repo/$(dirname "$result_path")"
+  {
+    printf 'Controller recorder: program-controller\nRecorded timestamp: 2026-10-24T08:09:10Z\nResult status: SUCCEEDED\n'
+    printf 'Consumed approval commit: %s\nConsumed approval path: %s\nIntegration candidate: %s\nTarget main commit: %s\n' "$approval_tip" "$binding_path" "$candidate_sha" "$base_sha"
+    printf 'Guard command: validate_main_integration.sh integrate milestone/m0-research %s %s %s\n' "$candidate_sha" "$base_sha" "$approval_tip"
+    printf 'Guard output encoding: base64\nGuard output byte length: %s\nFull guard output SHA-256: %s\nPre local main: %s\nPre remote main: %s\nPost local main: %s\nPost remote main: %s\nPre evidence tip: %s\nPost evidence tip: %s\n' "$output_length" "$output_hash" "$base_sha" "$base_sha" "$candidate_sha" "$candidate_sha" "$approval_tip" "$approval_tip"
+    printf 'Recovery state: Not required\nRecovery snapshot path: None\nReplay status: Consumed\n'
+    printf '%s\n%s\n%s\n' '--- BEGIN GUARD OUTPUT ---' "$output_encoded" '--- END GUARD OUTPUT ---'
+  } > "$work_repo/$result_path"
+  git -C "$work_repo" add "$result_path" && git -C "$work_repo" commit --quiet -m e2e-result
+  result_commit="$(git -C "$work_repo" rev-parse HEAD)"
+  result_binding_path='docs/orchestration/decisions/m0/bindings/main-integration-result.md'
+  {
+    printf 'Binding status: Current\nResult commit: %s\nResult path: %s\nResult status: SUCCEEDED\nConsumed approval commit: %s\n' "$result_commit" "$result_path" "$approval_tip"
+    printf 'Integration candidate: %s\nTarget main commit: %s\nReplay status: Consumed\n' "$candidate_sha" "$base_sha"
+  } > "$work_repo/$result_binding_path"
+  git -C "$work_repo" add "$result_binding_path" && git -C "$work_repo" commit --quiet -m e2e-result-binding
+  result_tip="$(git -C "$work_repo" rev-parse HEAD)"
+  run_decision_guard authorize "$result_tip" "$base_sha" >/dev/null
+  run_decision_guard push "$result_tip" "$base_sha" >/dev/null
+  run_decision_guard verify "$result_tip" "$base_sha" >/dev/null
+  [[ "$(git ls-remote --exit-code -- "$remote_repo" refs/heads/main | awk '{print $1}')" == "$candidate_sha" ]] || fail 'end-to-end remote main differs from I'
+  [[ "$(git ls-remote --exit-code -- "$remote_repo" refs/heads/governance/decision-evidence | awk '{print $1}')" == "$result_tip" ]] || fail 'end-to-end evidence result was not published'
+  tests_run=$((tests_run + 1))
+}
+
+test_actual_state_shapes_through_guard() {
+  [[ -n "${ACTUAL_SHAPES_ROOT:-}" ]] || return 0
+  setup_fixture actual-state-shapes
+  run_guard authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha" >/dev/null
+  tests_run=$((tests_run + 1))
+}
+
+if [[ "${MAIN_GUARD_ACTUAL_SHAPES_ONLY:-no}" == yes ]]; then
+  test_actual_state_shapes_through_guard
+  printf 'PASS: %d actual-state-shape main-integration guard scenario\n' "$tests_run"
+  exit 0
+fi
+
 test_distinct_acceptance_and_integration_candidates
 test_arbitrary_allowed_state_change_refused
+test_invalid_calendar_transition_date
+test_missing_per_task_acceptance_log
+test_review_raw_byte_framing
+test_end_to_end_both_guards
+test_actual_state_shapes_through_guard
+test_administrative_schema_negatives
 test_ignored_tracked_collision_refused
+test_sterile_boundary_adversarial_names_and_types
 test_populated_snapshot_directory_refused
 test_successful_merge_ignored_mutation_restored
 test_partial_retains_recovery_snapshot
+test_failed_push_remote_moved_retains_snapshot
 test_valid_flow; test_wrong_branch; test_dirty_tree; test_stale_candidate; test_unconsumed_decision; test_superseded_decision
 test_missing_acceptance; test_invalid_acceptance_package; test_missing_review; test_wrong_binding; test_stale_decision; test_missing_fields
 test_missing_main_provenance; test_invalid_calendar_timestamp; test_invalid_acceptance_provenance; test_directory_contract; test_symlink_contract; test_co_committed_pause
