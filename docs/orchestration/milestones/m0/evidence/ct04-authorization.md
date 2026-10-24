@@ -1,0 +1,5 @@
+# CT04 owner authorization
+
+On 2026-10-24 the owner replied `approved` to both concrete proposals: governance correction at 8138cf965531ffd34a9dd967b1724c837409a1c8 and publication-history preservation/recovery at 5a23e281b53d38ab43e51a427017c1ea8c0a3918. This authorizes their bounded implementation and independent verification, including the exact preservation operations enumerated in ct04-brief.md. It is not M0 reactivation, milestone acceptance, main integration or M1 authority. No further permission is required to execute that approved correction scope.
+
+Fresh preflight 2026-10-24 proves local milestone bfc5b04aa388e99380c2ab135fe036236175859d, remote milestone 708aaa5968d557a09d3b9f9b207ff3fd77ffd315, local evidence 0db258d158f1d212497ccfdf07675ec399e6f870 clean and unpublished, remote evidence absent, and local/live remote main b1b0c1edd5e42d3ea791f665c22954834e962d05. Original owner guard hashes remain 07a0ca1efe2c635650aad0164b862d43eab44c43f0c84ee9a4099d0405760ec2 and c78291ae9598f4fbaf9a2c43d126d4ab949dc991e7559dbff161afae75364b93. Full observations remain in private governance-correction/preflight.json. No old verdict is consumed.
