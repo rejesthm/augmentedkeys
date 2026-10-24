@@ -20,7 +20,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 - Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224`: freshly observed blocked and not loaded at activation preflight.
 - Canonical ledger: `docs/orchestration/milestones/M0_LEDGER.md`.
 - CT03 review evidence: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`; three independent approvals with zero findings for the exact reviewed baseline.
-- Local decision-evidence branch exists at `0db258d158f1d212497ccfdf07675ec399e6f870`, but publication was refused and remote branch remains absent. Local Steward PAUSE_HUMAN is unpublished/unconsumed; no main integration or successor activation exists.
+- Wrong-base decision evidence is preserved at `archive/m0-decision-evidence-base-error-20261024`, unchanged tip `0db258d158f1d212497ccfdf07675ec399e6f870`. Canonical `governance/decision-evidence` is absent locally and remotely. The old Steward PAUSE_HUMAN remains unpublished/unconsumed; no main integration or successor activation exists.
 
 ## Research preserved
 
@@ -33,7 +33,7 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 M0 is `Paused for owner decision` under MT-002 evidence `8138cf965531ffd34a9dd967b1724c837409a1c8`. R01–R10 are Verified; none Accepted. Completion/status package `8138cf965531ffd34a9dd967b1724c837409a1c8` preserves all exact task candidates, reviews, limitations and publication evidence. R01/R05 nonblocking Minors remain. Independent Final protocol assessment found two Important governance conflicts; the proposed bounded correction is docs/orchestration/milestones/m0/evidence/governance-correction-proposal.md. Whole-range whitespace check also returned nonzero on preserved historical review formatting; it is disclosed, not waived or rewritten.
 
-The independent read-only Decision Steward returned PAUSE_HUMAN with0Critical/2Important, recorded locally at `819cb32709584c7f1e76ce8db336051c6ddc7bb6`. The evidence publication guard then refused the controller-selected base; local binding is unpublished and unconsumed. See decision-publication-recovery.md for exact failure and proposed owner-authorized preservation/recovery. No approval is inferred. Owner authorization is required for control paths outside the M0 allowlist. No M0 acceptance, main integration, M1 activation or implementation is permitted. The full-app Goal remains unfinished; current app is a Flutter shell.
+The independent read-only Decision Steward returned PAUSE_HUMAN with0Critical/2Important, recorded locally at `819cb32709584c7f1e76ce8db336051c6ddc7bb6`. The evidence publication guard then refused the controller-selected base; local binding is unpublished and unconsumed. See decision-publication-recovery.md for exact failure and proposed owner-authorized preservation/recovery. No approval is inferred. Owner authorization for the bounded CT04 control correction is committed at `fd52158b1e10629843cc60c5f18e18a7519d27e5`; it does not reactivate M0. No M0 acceptance, main integration, M1 activation or implementation is permitted. The full-app Goal remains unfinished; current app is a Flutter shell.
 
 The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
 
@@ -49,8 +49,12 @@ The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bb
 
 ## CT04 approved correction in progress
 
+Current: correction round1, pre-review continuation under unchanged assignment `d4e36ffe968df4561c23706eededd70c36be38da` and execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`. Conductor authors temporary proposals only; controller owns repository writes. The first round1 handoff and fresh controller27/45 checks are preserved at `39c58dc3737803f4b9bfa138674c3953838fea98`. Known remaining issues are still being corrected; no round1 candidate is frozen or approved. QA/Security/Final are idle pending the final exact candidate.
+
+### Preserved CT04 sequence
+
 Owner approved both exact proposals; authorization and archive preservation: `fd52158b1e10629843cc60c5f18e18a7519d27e5`. Controller preserved all unpublished evidence at archive/m0-decision-evidence-base-error-20261024, original worktree unchanged. Canonical evidence branch is now absent; corrected base b1b0c1edd5e42d3ea791f665c22954834e962d05 is recorded in ledger before replacement creation. CT04 task worktree and brief8be352c653084d47929ffecdf6e3dca0c5cb5c3e govern implementation. Earlier pending-authorization wording is historical for this correction. M0 remains paused, exact repaired commits still require review and owner acceptance before reactivation.
 
-CT04 candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` is now frozen for independent QA/Security review under verification `59464ede90cbb6db21523b74d8372fc90ec58ec4`. Controller suites18/34 pass; CP1–CP5 observations remain unresolved. Conductor idle. Correction is unapproved; M0 pause/main unchanged.
+Historical round0 checkpoint: CT04 candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` was frozen for independent QA/Security review under verification `59464ede90cbb6db21523b74d8372fc90ec58ec4`. Controller suites18/34 pass; CP1–CP5 observations remain unresolved. Conductor idle. Correction is unapproved; M0 pause/main unchanged.
 
 CT04 correction round1 In progress under assignment `d4e36ffe968df4561c23706eededd70c36be38da` and separate execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`. Source rejection `0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e`; candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` remains rejected with five Important groups. Same Conductor temporary-proposal role; controller sole repository writer. QA/Security idle; Final not launched. M0 pause remains unchanged.
