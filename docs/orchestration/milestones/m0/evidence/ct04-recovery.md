@@ -1,0 +1,7 @@
+# CT04 preservation recovery
+
+Authority: exact owner authorization and brief 8be352c653084d47929ffecdf6e3dca0c5cb5c3e. On 2026-10-24 the controller re-proved all expected refs, clean evidence worktree, absent remote evidence branch and unchanged original owner-edit hashes, then renamed the local branch to archive/m0-decision-evidence-base-error-20261024. Its original .worktrees/decision-evidence worktree remains attached and clean at 0db258d158f1d212497ccfdf07675ec399e6f870. Entire wrong-base anchor/package/verdict/binding history is preserved, unpublished and unconsumed. No commit was rewritten/deleted, no remote push was attempted and main did not move.
+
+Corrected governance base for the future canonical branch: b1b0c1edd5e42d3ea791f665c22954834e962d05, freshly proved live remote main. Planned new worktree: .worktrees/decision-evidence-corrected. Canonical governance/decision-evidence is currently absent locally and remotely; creation awaits independently reviewed corrected controls. Original mistaken base8138cf965531ffd34a9dd967b1724c837409a1c8 remains historical. New decisions require fresh exact reviews, package and independent Steward verdict; no replay is permitted.
+
+Private immutable archive-preservation.json records full before/after refs, command, timestamp and remote proof. M0 remains Paused for owner decision; all ten research tasks Verified, none Accepted. CT04 correction is now owner-authorized, not completed. No acceptance, main integration, successor or app implementation is authorized by this record.
