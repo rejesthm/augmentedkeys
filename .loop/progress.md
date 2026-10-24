@@ -1,42 +1,46 @@
 # Current Milestone
 
-M0 — Research & Architecture (Paused for owner decision under MT-002).
+M0 — Research & Architecture (Active).
 
 # Current Objective
 
-Complete unchanged R01–R10 research with independent reviews under accepted contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Full working-app objective remains unfinished; M0 is the sole contracted execution milestone and is currently paused.
+Complete M0 milestone closure under accepted repaired foundation/contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4` and owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1`. The full working-app objective remains unfinished.
 
 # Active Agents
 
-All CT04 roles idle after exact-candidate technical approvals and actual Steward owner-gate decision. Controller has completed authorized evidence recovery; owner adoption of the exact repaired foundation/contract is pending.
+Program controller owns shared state. No research writer is active. Independent read-only audit/review sessions receive bounded tasks through the validated role-isolated topology.
 
 # Research Questions
 
-R01–R10 Verified. R05 carries one shared nonblocking index-count wording Minor. No task/milestone Accepted. R04 candidate `26b6c2702d21704481969dc99fa51ee504aa9bb7` passed all required reviews0/0/0 through `d9bd4a428e1d1c44f87cf965dde5b61887d7a1cc`. All3 round0 Important findings closed in round1; rejections and initial retrieval failures preserved.
+R01–R10 Verified; none Accepted. R01's provenance-label Minor and R05's shared index-count wording Minor remain visible. Exact candidates, briefs, verification and independent reviews are in the ledger.
 
 # Ready Tasks
 
-R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
+No remaining eligible M0 research task. Do not repeat verified research.
 
 # In Progress
 
-State: `Verified`; correction round5. CT04 In review → Verified, 2026-10-24T10:03:40.289886+00:00, program controller. Decisive finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213` at docs/orchestration/milestones/m0/evidence/ct04-verification.md was committed before this separate task-state barrier. Exact candidate/proposed repaired foundation `552413198ae9ed488f70b3d3db656469292b89a4`; proposed M0 contract at the same commit and docs/orchestration/milestones/M0_CONTRACT.md. All three independent reviews APPROVE0C/0I/0M, CompliancePASS/HonestyPASS; final controller suites125/118. Authorized preservation/recovery complete; corrected evidence binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` published and local/remote equal, actual Steward PAUSE_HUMAN/HUMAN_GATE with authorization DENIED. Main b1b0c1edd5e42d3ea791f665c22954834e962d05 and archived old evidence0db258d158f1d212497ccfdf07675ec399e6f870 unchanged; owner edits preserved. All roles idle. Task branch/worktree preserved. Current accepted contract remains eb0d55bc7e10b219996fdb7ab69a546b1e350e3a. Await exact repaired-foundation/contract owner acceptance before any M0 reactivation. M0 remains Paused for owner decision; R01–R10 Verified, none Accepted. No app implementation, main integration, successor, release or control adoption is implied.
+OD-007 adoption and separate M0 reactivation barrier. CT04 is Verified at exact candidate `552413198ae9ed488f70b3d3db656469292b89a4`, finalized evidence `a15dba413a221e70a02f1a3f9e57a966c2974213`; all three reviews approve with zero findings. Exact controls integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`.
 
 # Verification Needed
 
-CT04 technical correction and authorized evidence recovery are Verified; no further CT04 implementation or re-verification is pending. Exact repaired foundation/M0 contract `552413198ae9ed488f70b3d3db656469292b89a4` requires owner adoption under published PAUSE_HUMAN binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` before reactivation. Character/block dynamic coverage remains an explicit limitation. No app completion or performance claim.
+Verify the activation state, guarded milestone publication and current completion package. Then freeze the completed candidate for fresh independent whole-milestone reviews and a separate Steward decision. CT04 suites125/118 are retained prior evidence, not new runs. Character/block dynamic coverage remains unavailable.
 
 # Completed
 
-OD006 activation and R01–R03 preserved. R04 adds Android audio/lifecycle/AAP documentary findings with54 captured primary bodies, unchanged Apple hosting prefix and no runtime/device/performance claims. QA/Security/Final approval evidence is preserved.
+All ten contracted research tasks Verified. CT04 correction and authorized preservation/recovery complete. Canonical evidence binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` is published and local/remote equal; its owner-adoption requirement is resolved by OD-007, not relabeled as Steward approval.
 
 # Blockers and boundaries
 
-Excluded original main-guard recovery edits remain rejected/unadopted and require correction plus fresh review before main readiness. Independent M0 research/publication remains authorized. No architecture/ADR, package/asset, permission/minimum OS, hardware, credentials/signing, spending/legal commitment, public release, main integration or M1 action is authorized here. App remains Flutter shell without playable audio/MIDI, patches, persistence, variations or setlists.
+Original owner-edited root scripts are excluded and preserved; adopted controls are the independently reviewed C5 versions. Main remains `b1b0c1edd5e42d3ea791f665c22954834e962d05`. No milestone acceptance, main integration or successor activation is implied. App remains a Flutter shell; architecture/ADR, dependencies/assets, hardware, credentials/signing, spending/legal decisions and public release retain their gates.
+
+# Next Highest Priority Task
+
+Verify and publish the activation tip through the milestone guard, then prepare the current M0 completion package and independent decision.
 
 # Source-history note
 
-The following earlier evidence/failed attempts are historical and preserved; current state is controlled by OD-006 and the ledger. No rejection is relabeled as approval. The final next-task section reflects current progress.
+The following earlier evidence/failed attempts are historical and preserved; current state is controlled by OD-007 and the ledger. No rejection is relabeled as approval. The earlier next-task sections below are historical checkpoints.
 
 # Evidence Log
 
@@ -101,7 +105,7 @@ Activation correction round 1 was independently approved at `79a9e0c27154266ab5e
 
 Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud architecture remain undecided pending research, spikes, benchmarks, ADRs, and owner approval.
 
-# Next Highest Priority Task
+# Historical next-task checkpoint before CT04 completion
 
 Execute owner-approved CT04 governance-only correction and independently verify it. No product implementation or successor task is authorized.
 

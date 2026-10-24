@@ -2,19 +2,19 @@
 
 ## Milestone
 
-- State: `Paused for owner decision`
-- Goal: Full-app continuation controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; M0 is its sole authorized execution milestone under OD-006. Historical M0 Goal remains blocked; no competing research writer.
+- State: `Active`
+- Goal: Full-app continuation controller `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; M0 is its sole execution milestone under OD-007; no competing research writer.
 - Milestone branch: `milestone/m0-research`
 - Milestone worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`
-- Accepted foundation commit: `b1b0c1edd5e42d3ea791f665c22954834e962d05`
-- Contract source commit: `b0122f7030331d3e86af28a779075349fc9e74ff`; exact retained governance content; new import commit resolved in construction evidence.
-- Accepted contract commit: `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a` under OD-006; historical contract/OD-005 remain preserved.
+- Accepted foundation commit: `552413198ae9ed488f70b3d3db656469292b89a4` — owner-accepted repaired foundation; original main base remains b1b0c1edd5e42d3ea791f665c22954834e962d05.
+- Contract source commit: `6d143f53ebb7a553c0d17db8386251ee23704380` — latest content-changing ancestor; exact bytes match accepted snapshot.
+- Accepted contract commit: `552413198ae9ed488f70b3d3db656469292b89a4` under OD-007; historical contract/OD-006 remain preserved.
 - Owner decisions: `docs/orchestration/milestones/m0/evidence/owner-decisions.md`
-- Owner-decision commit: `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` (OD-006); original activation OD-001 remains `e9eb4043ec4009dc88c20f7b6c3f9d658f18f48c`.
+- Owner-decision commit: `55727088b8a1a51abe754186c5ef0334e246d4b1` (OD-007); prior decisions remain preserved.
 - Recovery-only owner decision: `4a8349000864b2f06dbe62a287c5a4378e0bd278` (OD-002); no milestone/task state transition, G01 unresolved
 - Setup-correction owner decision: `3fff1f4869a28900956cae0857d5834a13576606` (OD-003); correction/validation only, no milestone/task state transition
 - Role-isolated correction owner decision: `82dc35ac2042ab4697b322dabd1fb03c61a5ae5a` (OD-004); correction and conditional reactivation authority
-- Reactivation owner decision: `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` (OD-006); combined baseline approved under current imported contract. Historical G01/OD-005 reactivation remains `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`.
+- Reactivation owner decision: `55727088b8a1a51abe754186c5ef0334e246d4b1` (OD-007); resolves published repaired-foundation/contract HUMAN_GATE.
 - G01 runtime validation: `ec4e76345519973d09a4dbeff6d043e6477e67bc`, corrected evidence at `5bfbdb5139c4f1936a59ba78c6b1125d8b7cb7db`; `docs/orchestration/milestones/m0/evidence/g01-role-isolated-validation.md`
 - G01 independent review: `88fe4ece13bfedd8b67eaa8882c5adf020654418`; `docs/orchestration/milestones/m0/evidence/g01-role-isolated-review.md`; APPROVE, zero findings
 - Recovery diagnostic evidence: `39fa64bfe4fc34e99207148fd6d1465cf0eb98ee`, `docs/orchestration/milestones/m0/evidence/g01-launch-recovery.md`; three nested mixed-permission designs failed G01
@@ -26,20 +26,20 @@
 
 
 - Decision-evidence branch: `governance/decision-evidence`
-- Decision-evidence worktree: `.worktrees/decision-evidence-corrected` — not created; old `.worktrees/decision-evidence` preserved on archive/m0-decision-evidence-base-error-20261024 at 0db258d158f1d212497ccfdf07675ec399e6f870
+- Decision-evidence worktree: `.worktrees/decision-evidence-corrected`; old `.worktrees/decision-evidence` retained on archive/m0-decision-evidence-base-error-20261024.
 - Decision-evidence writer: Program controller only; Decision Steward and reviewers are read-only
 - Decision-evidence governance base: `b1b0c1edd5e42d3ea791f665c22954834e962d05` — corrected owner-authorized base recorded before replacement branch creation; original mistaken base retained in historical records
-- Local decision-evidence tip: `0db258d158f1d212497ccfdf07675ec399e6f870` — unpublished/unconsumed
-- Remote decision-evidence tip: Absent, freshly proved after authorize refusal
-- Current decision-evidence binding: No published/consumable binding; local `0db258d158f1d212497ccfdf07675ec399e6f870` refused publication
+- Local decision-evidence tip: `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` — published HUMAN_GATE binding.
+- Remote decision-evidence tip: `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` — live equality proved in OD-007 preflight.
+- Current decision-evidence binding: `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8`, `docs/orchestration/decisions/m0/bindings/human-gate.md`; owner-adoption gate resolved by OD-007, no milestone acceptance.
 - Decision Steward status index: `docs/orchestration/milestones/m0/evidence/decision-steward-decisions.md`
 - Canonical Decision Steward evidence root: `docs/orchestration/decisions/m0/` on `governance/decision-evidence`
-- Milestone acceptance package commit: `a17d2891250c4757218dd77753643ec260bf2f62` — local unpublished human-pause package
-- Milestone acceptance verdict commit: `819cb32709584c7f1e76ce8db336051c6ddc7bb6` — local PAUSE_HUMAN, unpublished/unconsumed
-- Milestone acceptance binding commit: `0db258d158f1d212497ccfdf07675ec399e6f870` — local unpublished/unconsumed
-- Steward decision commit: `819cb32709584c7f1e76ce8db336051c6ddc7bb6` — returned verdict only; publication gate failed
+- Milestone acceptance package commit: Not yet decided
+- Milestone acceptance verdict commit: Not yet decided
+- Milestone acceptance binding commit: Not yet decided
+- Steward decision commit: `615478aee5de4f245357a27949eb5110cc0fbbd4` — published PAUSE_HUMAN/HUMAN_GATE; OD-007 resolves the adoption requirement.
 - Accepted milestone tip: Not yet decided
-- Original `main` base: Not yet decided
+- Original `main` base: `b1b0c1edd5e42d3ea791f665c22954834e962d05`
 - Main integration status index: `docs/orchestration/milestones/m0/evidence/main-integration.md`
 - Main integration package commit: Not yet decided
 - Main integration verdict commit: Not yet decided
@@ -57,14 +57,14 @@
 - Successor decision binding commit: Not yet decided
 - Successor decision commit: Not yet decided
 - Successor activation result: Not yet decided
-- Candidate branch: `task/ct03-baseline-reconciliation`
-- Candidate worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/ct03-baseline-reconciliation`
-- Candidate parent: `8fdb7444ed80675269f38f90f84b362f90c9af23`
+- Candidate branch: `task/m0-od007-adoption`
+- Candidate worktree: `.worktrees/m0-od007-adoption`
+- Candidate parent: `b6ce6e73faa96664847056453cc19bf4c09f54fa`; reviewed CT04 merge `fa0656aecd270bd3ae8a7a120b055f0aec0621de`.
 - CT03 brief commit: `efdf3bbfee15d93e7b84fee867ae3d5429ca143d`
 - CT02 reviewed proposal: `b996cd066da941181d5cf13ef4c7c01b2abe7d77`; acceptance evidence `b414edb4cb2bb5fde6a8d730ba008d156b98b96d`
 - CT03 verification/review artifact: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`
 
-This header records OD-006 reactivation after accepted baseline `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. The separate owner-decision commit `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` precedes this state transition. Historical decisions and transitions remain unchanged. Guarded milestone publication must be proved before research; R03–R10 remain Queued.
+This header records OD-007 reactivation from committed owner decision `55727088b8a1a51abe754186c5ef0334e246d4b1`. All ten research tasks retain their Verified states. The former OD-006 header and every earlier checkpoint remain available in immutable parent history.
 
 ## Tasks
 
@@ -194,6 +194,8 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 | 2026-10-23 | R10 | `In review` | `Verified` | Roadmap Orchestrator | `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d` | `docs/orchestration/milestones/m0/evidence/r10-verification.md` | Exact candidate `9cb5eebc3abe7ae4e54d95498863cd7363ddb051`; integrate exact Verified candidate and prove guarded milestone publication; then prepare M0 completion and independent milestone reviews |
 
+| 2026-10-24 | M0 | `Paused for owner decision` | `Active` | Roadmap Orchestrator | `55727088b8a1a51abe754186c5ef0334e246d4b1` | `docs/orchestration/milestones/m0/evidence/owner-decisions.md` (OD-007) | Owner accepted exact repaired foundation/contract; separate barrier preserves all research task states |
+
 ## Task integration log
 
 | Date | Task | Reviewed candidate | Verification | Milestone integration tip | Method | Result |
@@ -216,7 +218,7 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 | 2026-10-23 | R10 | `9cb5eebc3abe7ae4e54d95498863cd7363ddb051` | `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d` | `393300c37cc337c0127ed86203ec110c6c2b8b30` | Hook-disabled non-fast-forward merge; task report and controller evidence diverged from 98bfda76a41f6773c54473bbdeb878f21db0282e | Exact reviewed report blob matches; no conflict; guarded milestone publication follows |
 
-## Current activation boundary
+## Historical activation boundary before OD-007
 
 OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05`, contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, reviewed baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` and acceptance evidence `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Fresh entry evidence is recorded in that owner decision. R01–R10 are Verified. No task/milestone is Accepted.
 
@@ -230,7 +232,7 @@ Publication refusal record `5a23e281b53d38ab43e51a427017c1ea8c0a3918` consumed a
 
 CT04 owner authorization and archive preservation recorded at `fd52158b1e10629843cc60c5f18e18a7519d27e5`. Corrected governance base above is recorded before any replacement creation. Old binding remains unpublished/unconsumed. Correction branch task/ct04-governance-correction, worktree .worktrees/ct04-governance-correction; Conductor intake was pending at that checkpoint. This supersedes prior pending-authorization wording for the bounded correction only; no M0 reactivation.
 
-## CT04 current correction state
+## Historical CT04 verification checkpoint before OD-007
 
 State: `Verified`; correction round5. CT04 In review → Verified, 2026-10-24T10:03:40.289886+00:00, program controller. Decisive finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213` at docs/orchestration/milestones/m0/evidence/ct04-verification.md was committed before this separate task-state barrier. Exact candidate/proposed repaired foundation `552413198ae9ed488f70b3d3db656469292b89a4`; proposed M0 contract at the same commit and docs/orchestration/milestones/M0_CONTRACT.md. All three independent reviews APPROVE0C/0I/0M, CompliancePASS/HonestyPASS; final controller suites125/118. Authorized preservation/recovery complete; corrected evidence binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` published and local/remote equal, actual Steward PAUSE_HUMAN/HUMAN_GATE with authorization DENIED. Main b1b0c1edd5e42d3ea791f665c22954834e962d05 and archived old evidence0db258d158f1d212497ccfdf07675ec399e6f870 unchanged; owner edits preserved. All roles idle. Task branch/worktree preserved. Current accepted contract remains eb0d55bc7e10b219996fdb7ab69a546b1e350e3a. Await exact repaired-foundation/contract owner acceptance before any M0 reactivation. M0 remains Paused for owner decision; R01–R10 Verified, none Accepted. No app implementation, main integration, successor, release or control adoption is implied.
 
@@ -239,3 +241,9 @@ State: `Verified`; correction round5. CT04 In review → Verified, 2026-10-24T10
 Historical state: `In review`; round0. Source verification `59464ede90cbb6db21523b74d8372fc90ec58ec4` separately committed before this transition. Exact candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5`; task branch task/ct04-governance-correction, worktree .worktrees/ct04-governance-correction, clean/frozen. Controller owns repository writes; Conductor temporary proposal is handed off and idle. Fresh controller suites pass18/34; observations CP1–CP5 remain open. Independent QA/Security review pending, then Final after their approval. Earlier task-branch ct04-status.md is the preserved execution-barrier snapshot; this ledger section is current task state. M0 remains Paused; no candidate adoption/main/evidence publication.
 
 CT04 correction round1 In progress under assignment `d4e36ffe968df4561c23706eededd70c36be38da` and separate execution barrier `e4bfd2f949baf8100788716f9f1f03c2293182b9`. Source rejection `0636327b2a6b9d59a50dc7bc6b7039d837c5fd8e`; candidate `aabd1b2ba3d26c35343b9c0bdb5fbf17de62ceb5` remains rejected with five Important groups. Same Conductor temporary-proposal role; controller sole repository writer. QA/Security idle; Final not launched. M0 pause remains unchanged.
+
+## Current OD-007 activation boundary
+
+Owner decision `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaired foundation/contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4`. Reviewed CT04 controls were combined without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`; all source identities and milestone research/evidence are preserved. R01–R10 remain Verified; CT04 remains Verified. No task body was repeated, no research status changed and no milestone was Accepted.
+
+This is the separate Paused for owner decision → Active barrier after the owner artifact. Next verify preparation, fast-forward milestone, prove guarded publication, prepare current completion evidence and fresh independent milestone reviews. Earlier absence/pending/rejection statements above are historical checkpoints, not current controls. Main and original root owner edits remain unchanged.

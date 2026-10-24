@@ -4,23 +4,22 @@
 
 M0 — Research & Architecture
 
-Milestone state: `Paused for owner decision`
+Milestone state: `Active`
 
-Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`. That historical transition activated the reviewed combined baseline. MT-002 now pauses progression for the recorded governance correction; all ten research tasks are Verified.
+Owner decision OD-007 `55727088b8a1a51abe754186c5ef0334e246d4b1` accepts repaired foundation and contract snapshot `552413198ae9ed488f70b3d3db656469292b89a4` and resolves the MT-002 adoption pause. This separate state commit follows the owner-decision artifact.
 
 ## Milestone orchestration
 
 - Sole controller: `01a1671a-5c1d-7ac2-b9a1-5b94d86ed845`; full-app objective retained, only M0 execution authorized.
-- Milestone branch: `milestone/m0-research`; worktree `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/m0-research`.
-- Activation preparation branch/worktree: `task/ct03-baseline-reconciliation`, `.worktrees/ct03-baseline-reconciliation`.
-- Accepted foundation: `b1b0c1edd5e42d3ea791f665c22954834e962d05`.
-- Accepted contract: `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`; retained source `b0122f7030331d3e86af28a779075349fc9e74ff`.
-- Reviewed baseline: `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d`; acceptance/package `a775b71b105a4b3945308a5ee99e1b654f75f8dd`.
-- Historical research contract/activation: `13b864f09ca083d10910bcffa4432b81c040bda9` / OD-005 `5e870b5dc39aee60a8d8a32ca78d1e55dc980cea`, preserved unchanged.
-- Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224`: freshly observed blocked and not loaded at activation preflight.
+- Milestone branch: `milestone/m0-research`; worktree `.worktrees/m0-research`.
+- Activation preparation branch/worktree: `task/m0-od007-adoption`, `.worktrees/m0-od007-adoption`.
+- Accepted repaired foundation and contract snapshot: `552413198ae9ed488f70b3d3db656469292b89a4`; contract path `docs/orchestration/milestones/M0_CONTRACT.md`.
+- Contract latest content-changing ancestor: `6d143f53ebb7a553c0d17db8386251ee23704380`; identical accepted contract bytes.
+- Original main foundation remains `b1b0c1edd5e42d3ea791f665c22954834e962d05`, local/tracking/live remote equal at reactivation preflight.
+- Historical M0 Goal `01a04c45-76d8-7ef0-9cb4-101dbe82a224` remains blocked; no competing research writer.
 - Canonical ledger: `docs/orchestration/milestones/M0_LEDGER.md`.
-- CT03 review evidence: `docs/orchestration/BASELINE_CONSTRUCTION_EVIDENCE.md`; three independent approvals with zero findings for the exact reviewed baseline.
-- Wrong-base decision evidence is preserved at `archive/m0-decision-evidence-base-error-20261024`, unchanged tip `0db258d158f1d212497ccfdf07675ec399e6f870`. Canonical `governance/decision-evidence` is absent locally and remotely. The old Steward PAUSE_HUMAN remains unpublished/unconsumed; no main integration or successor activation exists.
+- Canonical decision-evidence worktree: `.worktrees/decision-evidence-corrected`; local/live remote tip `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8`. Its actual Steward HUMAN_GATE pause is preserved; OD-007 resolves its owner-adoption requirement. It is not a milestone-acceptance approval.
+- Wrong-base evidence remains preserved at `archive/m0-decision-evidence-base-error-20261024`, tip `0db258d158f1d212497ccfdf07675ec399e6f870`, unpublished/unconsumed.
 
 ## Research preserved
 
@@ -31,23 +30,23 @@ Owner approval is committed as OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4`
 
 ## Current gates and next action
 
-M0 is `Paused for owner decision` under MT-002 evidence `8138cf965531ffd34a9dd967b1724c837409a1c8`. R01–R10 are Verified; none Accepted. Completion/status package `8138cf965531ffd34a9dd967b1724c837409a1c8` preserves all exact task candidates, reviews, limitations and publication evidence. R01/R05 nonblocking Minors remain. Independent Final protocol assessment found two Important governance conflicts; the proposed bounded correction is docs/orchestration/milestones/m0/evidence/governance-correction-proposal.md. Whole-range whitespace check also returned nonzero on preserved historical review formatting; it is disclosed, not waived or rewritten.
+R01–R10 remain Verified, with R01/R05 nonblocking Minors retained. CT04 is Verified: finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213`, exact reviewed candidate `552413198ae9ed488f70b3d3db656469292b89a4`, three independent approvals with zero findings. Reviewed controls were integrated without conflicts at `fa0656aecd270bd3ae8a7a120b055f0aec0621de`. Original owner-edited root scripts remain excluded and unchanged; their rejected versions are not the adopted controls.
 
-The independent read-only Decision Steward returned PAUSE_HUMAN with0Critical/2Important, recorded locally at `819cb32709584c7f1e76ce8db336051c6ddc7bb6`. The evidence publication guard then refused the controller-selected base; local binding is unpublished and unconsumed. See decision-publication-recovery.md for exact failure and proposed owner-authorized preservation/recovery. No approval is inferred. Owner authorization for the bounded CT04 control correction is committed at `fd52158b1e10629843cc60c5f18e18a7519d27e5`; it does not reactivate M0. No M0 acceptance, main integration, M1 activation or implementation is permitted. The full-app Goal remains unfinished; current app is a Flutter shell.
+Next verify the isolated activation barrier, fast-forward the milestone and prove guarded milestone publication. Then replace the historical blocked completion package with current completion evidence, freeze the completed candidate, and obtain fresh whole-milestone QA, Security and Final reviews followed by the independent Decision Steward. Existing task/CT04 approvals do not substitute for these reviews. No task or milestone is yet Accepted.
 
-The original checkout's excluded uncommitted main-guard recovery edits remain unchanged. Advisory QA/Security rejected them; data-loss reproductions are preserved. These unresolved findings prohibit adoption/main-integration readiness, with correction and fresh review required. M0 research uses the separately authorized unchanged milestone-publication guard.
-
-At a complete M0 package, request the independent Decision Steward verdict. Main integration and successor activation require separate exact decisions and all gates. Architecture/adoption, credentials/signing, spending/legal decisions, required hardware, destructive action and public release remain owner-only. No task publication or PR is authorized.
+Main integration and successor activation each require separate exact decisions. Architecture/ADR, dependencies/assets, hardware, credentials/signing, spending/legal decisions, destructive action and public release remain owner-only. No task publication or PR is authorized. The preserved historical whole-range whitespace observation remains disclosed for review; no historical review has been rewritten or relabeled.
 
 ## Product status
 
 The app remains the Flutter shell. Audio/MIDI, playable instruments, patch editing, persistence, variations and setlists are not implemented or verified. No new device, latency, workload or long-run evidence exists; no dependency or asset is adopted.
 
-## Preserved source history
+The paragraphs below preserve earlier checkpoints; their then-current pause, pending and absent-branch wording is historical. OD-007 and the current ledger govern continuation.
+
+## Preserved source history — historical checkpoints
 
 The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` and research `8fdb7444ed80675269f38f90f84b362f90c9af23`. OD-001 through OD-005, MT-001, every R01/R02 transition/rejection/correction, and both integration logs remain preserved in their exact source artifacts and the reconciled ledger. CT03 preparation created no activation; OD-006 separately authorizes the current reactivation.
 
-## CT04 correction verified
+## CT04 verification checkpoint before OD-007
 
 State: `Verified`; correction round5. CT04 In review → Verified, 2026-10-24T10:03:40.289886+00:00, program controller. Decisive finalized verification/recovery artifact `a15dba413a221e70a02f1a3f9e57a966c2974213` at docs/orchestration/milestones/m0/evidence/ct04-verification.md was committed before this separate task-state barrier. Exact candidate/proposed repaired foundation `552413198ae9ed488f70b3d3db656469292b89a4`; proposed M0 contract at the same commit and docs/orchestration/milestones/M0_CONTRACT.md. All three independent reviews APPROVE0C/0I/0M, CompliancePASS/HonestyPASS; final controller suites125/118. Authorized preservation/recovery complete; corrected evidence binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8` published and local/remote equal, actual Steward PAUSE_HUMAN/HUMAN_GATE with authorization DENIED. Main b1b0c1edd5e42d3ea791f665c22954834e962d05 and archived old evidence0db258d158f1d212497ccfdf07675ec399e6f870 unchanged; owner edits preserved. All roles idle. Task branch/worktree preserved. Current accepted contract remains eb0d55bc7e10b219996fdb7ab69a546b1e350e3a. Await exact repaired-foundation/contract owner acceptance before any M0 reactivation. M0 remains Paused for owner decision; R01–R10 Verified, none Accepted. No app implementation, main integration, successor, release or control adoption is implied.
 
