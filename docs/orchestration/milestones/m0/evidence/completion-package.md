@@ -1,19 +1,21 @@
-# M0 research completion package — milestone closure blocked
+# M0 research completion package
 
-Status: All ten contracted research tasks Verified; M0 is not accepted or acceptance-ready. Two Important governance findings remain open. This is a truthful completion/status package for a human-only pause, not a successful milestone-acceptance package or an app-completion claim.
+Status: All ten contracted research tasks are Verified. The governance correction is Verified and owner-adopted; M0 is ready to freeze a completed candidate for independent milestone review. This package is completion evidence, not milestone acceptance, main-integration approval or an app-completion claim. The following separate state commit records this package SHA and moves M0 from Active to Ready for decision; its exact resulting candidate must then be published and reviewed.
 
 Milestone: M0
-Contract commit: eb0d55bc7e10b219996fdb7ab69a546b1e350e3a
+Contract commit: 552413198ae9ed488f70b3d3db656469292b89a4
 Contract path: docs/orchestration/milestones/M0_CONTRACT.md
-Owner decision commit: c9c0f9349bd69c7bc7b975b78000361f7a8956d4
-Accepted foundation commit: b1b0c1edd5e42d3ea791f665c22954834e962d05
-Research publication tip: a68e294b88c0157cd02ee2e9c5a3b66b66ef79fd
-Research publication record: 6b71852da8a7e02a8574d577660236fd9ecd0f83
+Owner decision commit: 55727088b8a1a51abe754186c5ef0334e246d4b1
+Accepted repaired foundation commit: 552413198ae9ed488f70b3d3db656469292b89a4
+Original main foundation: b1b0c1edd5e42d3ea791f665c22954834e962d05
+Reactivation state commit: fca8513ff12e605d49a662b85d82a3a20fc6d469
+Reactivation local/remote publication tip: fca8513ff12e605d49a662b85d82a3a20fc6d469
 Target main commit: b1b0c1edd5e42d3ea791f665c22954834e962d05
+Current evidence binding: 23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8
 Successor contract commit: Not applicable — no authorized successor contract
-Critical governance findings: 0
-Important governance findings: 2
-Fresh whole-milestone QA/Security/Final review artifacts: Not created; the independent assessment identifies no lawful exact-candidate recording lane. Existing task approvals are not substituted for whole-milestone approval.
+Unresolved Critical research/governance findings: 0
+Unresolved Important research/governance findings: 0
+Fresh whole-milestone QA/Security/Final review artifacts: Pending after candidate freeze; required before Steward approval. Existing task or CT04 approvals will not be reused as whole-milestone approval.
 
 ## Contracted task results
 
@@ -30,24 +32,42 @@ Fresh whole-milestone QA/Security/Final review artifacts: Not created; the indep
 | R09 | Verified | `ddf797af496c0175e4712ea6dd6b8c56ca8dc166` | `266f263849c737adb1a9759b39967042cd69212b` | `324c06e5302a9009753a884cedbe650a83bb5b13` — `docs/orchestration/milestones/m0/evidence/r09-verification.md` | `26d02a1e71a1ff478240c9737bc41dd588575f6d` |
 | R10 | Verified | `4e5601142e8a60f4db9f19625c7f4cacb04867e3` | `9cb5eebc3abe7ae4e54d95498863cd7363ddb051` | `16b727a9fb777fb36f0e0ab8c4a576ca0cfd840d` — `docs/orchestration/milestones/m0/evidence/r10-verification.md` | `393300c37cc337c0127ed86203ec110c6c2b8b30` |
 
-All task corrections and independent QA/Performance, Licensing/Security and Final outputs remain at the exact task evidence commits and current canonical task artifacts. R01 carries one deferred nonblocking provenance-label Minor; R05 carries one shared nonblocking request-index wording Minor. R02–R04 and R06–R10 have zero remaining task findings. No Critical/Important research-task finding remains. None of those task approvals accepts M0 or resolves the two separate governance findings. R03/R04's shared plugin-hosting report was edited and integrated sequentially under separate ownership.
+All task corrections, rejected candidates and independent reviewer outputs remain at the exact task verification artifacts and their histories. R01 retains one nonblocking provenance-label Minor and R05 retains one shared nonblocking index-count wording Minor; their limitations remain visible, not silently corrected or waived. No task is Blocked or Deferred. No research task or milestone is Accepted by this package. R03/R04 shared plugin-hosting work was edited and integrated sequentially under separate ownership; its final blob matches the exact reviewed R04 candidate.
 
-## Actual outcome and limitations
+## Definition-of-done evidence
 
-The corpus documents mobile audio architecture constraints, UAPMD, Apple and Android audio/hosting, MIDI, sound-engine candidates, licensing, Sunday Keys, MainStage and four other mobile workflows. Sources, failed retrievals, version conflicts, review rejections, runtime permission evidence and correction history remain preserved. No architecture, engine, format, dependency, sound asset, minimum OS, performance threshold or competitor design is adopted. The license ledger remains Not approved for future materials.
+1. R01–R10 are Verified with canonical briefs, assigned isolated task branches, exact candidates, finalized verification and independent QA/Performance, Licensing/Security and Final review. The table above and canonical ledger resolve every task. No completed body was repeated during reactivation.
+2. The owner-adoption artifact and following separate M0 reactivation barrier preserve task states across ledger and research index. ROADMAP, STATE and progress reflect the milestone state through their canonical fields. Historical failed/paused checkpoints are explicitly identified as historical. The following Ready-state barrier will reference this package, not its own commit.
+3. Contracted outputs preserve their source URLs, access/version context, facts, inferences, recommendations and open questions. The research-integrity audit verifies exact candidate ancestry, brief/verification readability and final report blob identity; it is not a fresh source-retrieval or physical-device experiment.
+4. Architecture, ADRs, engines, formats, dependencies, assets, supported minimum OS and performance thresholds remain unadopted. R07 documents rights evidence but grants no legal clearance or distribution permission.
+5. Guarded publication of the reactivation predecessor is recorded below. After this package and the Ready barrier, the completed candidate must be guarded-published; local/live-remote equality must be proved before its independent review and immutable decision package. No self-referential candidate or publication SHA is invented here.
+6. The controller will freeze the Ready candidate before three fresh whole-milestone reviews on the evidence branch and a separate independent Steward milestone decision. Until those reviews and decision exist, no milestone acceptance is claimed.
 
-The app remains the Flutter shell. Audio/MIDI playback, four-layer patch editing, starter sounds, variations, saved edits and local setlists are not implemented by these tasks. No device, simulator, audio/MIDI, latency, continuity, recovery, accessibility, entitlement, security, legal or distribution result is claimed. Documentary changes did not call for Flutter tests/builds; static checks cannot substitute for future physical-device evidence.
+## Adopted governance correction and retained failures
 
-## Fresh controller checks
+CT04 candidate 552413198ae9ed488f70b3d3db656469292b89a4 was independently approved by QA, Security and Final with zero findings, finalized at a15dba413a221e70a02f1a3f9e57a966c2974213 and separately Verified at b6ce6e73faa96664847056453cc19bf4c09f54fa. Existing controller suites passed125 evidence-publication and118 main-integration scenarios. Character/block dynamic fixtures were unavailable and explicitly skipped; no device-node content was read or privilege elevated. These are preserved prior results, not newly run tests. The accepted control blobs match exactly after clean merge fa0656aecd270bd3ae8a7a120b055f0aec0621de.
 
-UTC `2026-10-23T16:01:31.104942+00:00`; macOS arm64. Clean milestone before this evidence commit; Whole-range git diff --check from OD006 activation returned exit2 for whitespace/new-EOF lines in preserved R03/R04/R05 review/verification artifacts. Exact output is retained in private historical-whitespace-observation.json; no historical review was edited and this is not claimed as a passing gate. Individual task-report checks remain as recorded. This additional unreviewed observation is disclosed for owner correction/review triage, not waived or assigned a fabricated severity. Post-activation product/native/manifests/specification/architecture/ADR/gate/budget paths unchanged. Local/live remote main equal `b1b0c1edd5e42d3ea791f665c22954834e962d05`. R10 authorize/push/verify proved milestone equality at `a68e294b88c0157cd02ee2e9c5a3b66b66ef79fd`. Both original owner recovery-file hashes were reverified by that publication record. All reviewed task work and private source/runtime records are retained.
+The canonical evidence branch was repaired under the prior explicit recovery approval and published at23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8. Its actual independent Steward HUMAN_GATE/PAUSE_HUMAN required owner adoption; OD-007 supplies that new owner decision. The pause verdict is not relabeled as approval. The wrong-base archive at0db258d158f1d212497ccfdf07675ec399e6f870 remains unpublished/unconsumed. Earlier rejected proposals, failed fixtures and G01 runtime/rollback evidence remain unchanged. The original owner-edited root guards remain excluded and retain their preflight hashes.
 
-An integration-bookkeeping helper safely refused after the correct R10 merge because its stale STATE replacement matched nothing, leaving two intended state paths staged. A subsequent publication helper stopped before any guard/network action because no publication candidate existed. The controller verified exact merge parents/report blob/staged scope, updated the actual STATE sentence and committed the intended three paths without retrying the merge or resetting history; guarded publication then passed. Full evidence is in private r10/integration-bookkeeping-recovery.json and integration.json. The reviewed report did not change.
+The historical blocked completion package at8138cf965531ffd34a9dd967b1724c837409a1c8 remains immutable in history. Its two governance findings were addressed by the independently reviewed CT04 correction. Its whole-range whitespace observation concerned preserved historical review formatting and remains disclosed. No historical raw review bytes are rewritten to manufacture a clean old diff; current change-specific diff checks pass. Reviewers must assess that limitation explicitly.
 
-## Blocker, proposal and recovery
+## Verification, environment and actual product status
 
-The complete independent assessment is completion-protocol-assessment.md; the proposed bounded owner task is governance-correction-proposal.md. Both are proposals/evidence, not amended controls. The original root's two uncommitted main-guard edits and rejected recovery advisory remain excluded and preserved.
+Controller reactivation checks ran on macOS26.6.2 arm64 with Git2.54.0 (Apple Git-157). They resolve all ten candidate ancestries, canonical briefs and verification artifacts; compare accepted control blobs; check sole owner-decision/following state path scope; prove research/product paths unchanged by adoption; confirm ten Verified ledger rows and index statuses; and check current diff whitespace. Exact outputs, identities and timestamps are retained in the private audit files indexed below. No Flutter source, manifest, lockfile or native-host behavior changed in this work, so these documentary/Git checks do not claim new Flutter tests or build results.
 
-No main integration was attempted. Preserve the clean milestone and all task branches/worktrees; do not reset, rebase, delete, force-push or replay an approval. Next record the separate human-pause state and exact governance base, then request an independent read-only Decision Steward assessment of an immutable human-pause package. The missing whole-milestone review lane and open findings require PAUSE_HUMAN; no approval may be inferred. Record/publish only through the existing guards. A correction outside the current allowlist requires owner authorization; no M1, implementation, hardware, account, dependency, release or deployment action is authorized.
+The application remains a Flutter shell. Playable audio/MIDI, sound assets, a four-layer patch editor, effects, saved patches, variations and setlists are not implemented. No simulator/emulator or physical-device, latency, continuity, interruption, recovery, accessibility, maximum-workload or long-run performance measurement was performed by M0 documentary research or governance fixtures. Future device procedures and architecture/adoption decisions require their own authority and evidence.
 
-Initial package-preparation assertion stopped on that whole-range whitespace result before any repository mutation. This corrected preparation records the actual nonzero result; it does not weaken or pass the gate.
+## Proposed decision sequence and recovery
+
+First obtain APPROVE_MILESTONE for frozen completed candidate C after its fresh reviews. Only then apply the guard-specified exact five-path acceptance delta to create distinct administrative candidate I. Freeze I, obtain fresh I reviews, and request a separate APPROVE_MAIN_INTEGRATION bound to unchanged main b1b0c1edd5e42d3ea791f665c22954834e962d05. Only the reviewed main guard may perform the exact fast-forward and explicit main refspec after its own successful authorization. Neither this package nor OD-007 authorizes a raw main merge/push.
+
+Before any main attempt preserve the required sterile-worktree/pre-ref metadata snapshot. Record the actual guard result and separate result binding. Proved refusal preserves/restores the recorded base; ambiguous/PARTIAL results retain recovery evidence and require human direction, never replay. Preserve all branches/worktrees and owner edits; do not reset, rebase, delete or force-push. A successful main integration still does not activate M1. No successor contract is included; architecture, dependencies/assets and required hardware remain separate owner gates.
+
+## Controller evidence index
+
+- `.git/decision-team-continuation/2026-10-23/od007-adoption/entry-preflight.json`: SHA-256 `275ac34067fb98c71b87e5a66896dd2ab15a096bfc25bec8078216557e05a677`.
+- `.git/decision-team-continuation/2026-10-23/od007-adoption/activation-audit.json`: SHA-256 `9a304e2c2dcdbf127cd7fe12fb82c21d0c29605220dd2eff50d17d00df485af3`.
+- `.git/decision-team-continuation/2026-10-23/od007-adoption/research-integrity.json`: SHA-256 `6e9dc59f246fe3ca8bb1053097cebfd7a28214cc16341c90f8dd18d0eca80551`.
+
+- `.git/decision-team-continuation/2026-10-23/od007-adoption/activation-publication.json`: SHA-256 `14d9051916d24ac8d86acf193cfc3ffdf7d533ac71b66f7cb1f90eb68ebd6441`. The first helper invocation passed a SHA where the guard requires the branch name and was refused with exit 66 before any push. Root-cause inspection and historical successful examples identified the argument contract. The corrected reviewed-guard `authorize → push → verify` sequence passed; local/live remote milestone equal `fca8513ff12e605d49a662b85d82a3a20fc6d469`; main and evidence refs remain unchanged.
+- Independent activation bookkeeping Final Code Review: configured `final_code_reviewer` child `01a16849-b045-7441-88bc-0b8b08e0b156`, relay `01a16849-6b83-7ea2-a178-69b31769b1a3`, gpt-5.6-sol/xhigh/read-only; `APPROVE`, 0 Critical/0 Important/0 Minor, Spec Compliance PASS, Evidence Honesty PASS. Exact raw output SHA-256 `135288d668df2e0cf89d3c9fcc6f6831b83933c67be53be05e6dbf1238aa9d90`; runtime snapshot SHA-256 `fefff0bf61bfaeff92d2725cc145a800ade172453ed6c544e5e9c888f8ca7690`. This validates reactivation bookkeeping only and is not reused as a whole-milestone review.
