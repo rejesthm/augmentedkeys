@@ -19,6 +19,7 @@ tests_run=0
 work_repo=
 remote_repo=
 base_sha=
+control_sha=
 candidate_sha=
 
 fail() {
@@ -28,12 +29,43 @@ fail() {
 
 append_evidence_sequence() {
   local sequence="$1"
-  mkdir -p docs/orchestration/decisions/m0/packages docs/orchestration/decisions/m0/verdicts docs/orchestration/decisions/m0/bindings
-  printf 'package %s\n' "$sequence" > "docs/orchestration/decisions/m0/packages/mi-$sequence.md"
+  local reviewed qa_path security_path final_path qa_commit security_commit final_commit package_commit verdict_commit
+  reviewed="$(git rev-parse refs/heads/main)"
+  qa_path="docs/orchestration/decisions/m0/reviews/qa-$sequence.md"
+  security_path="docs/orchestration/decisions/m0/reviews/security-$sequence.md"
+  final_path="docs/orchestration/decisions/m0/reviews/final-$sequence.md"
+  mkdir -p docs/orchestration/decisions/m0/{packages,verdicts,bindings,reviews}
+  for spec in "qa_performance_verifier:$qa_path" "licensing_security_reviewer:$security_path" "final_code_reviewer:$final_path"; do
+    role="${spec%%:*}"; path="${spec#*:}"
+    {
+      printf 'Controller recorder: program-controller\nReviewer role: %s\nReviewer session: %s-%s\n' "$role" "$role" "$sequence"
+      printf 'Recorded timestamp: 2026-10-24T01:02:03Z\nReviewed candidate: %s\nVerification evidence commit: %s\n' "$reviewed" "$reviewed"
+      printf 'Runtime evidence SHA-256: %064d\nFull review output SHA-256: %064d\n' 1 2
+      printf 'Verdict: APPROVE\nCritical findings: 0\nImportant findings: 0\nMinor findings: 0\n'
+    } > "$path"
+    git add "$path" && git commit --quiet -m "review-$role-$sequence"
+    case "$role" in qa_*) qa_commit="$(git rev-parse HEAD)";; licensing_*) security_commit="$(git rev-parse HEAD)";; final_*) final_commit="$(git rev-parse HEAD)";; esac
+  done
+  {
+    printf 'Milestone: M0\nDecision kind: milestone-acceptance\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\n' "$reviewed"
+    printf 'Reviewed candidate: %s\nCompletion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\n' "$reviewed" "$reviewed"
+    printf 'QA review commit: %s\nQA review path: %s\n' "$qa_commit" "$qa_path"
+    printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_commit" "$security_path"
+    printf 'Final review commit: %s\nFinal review path: %s\n' "$final_commit" "$final_path"
+    printf 'Target main commit: %s\nCritical findings: 0\nImportant findings: 0\nLimitations: Fixture.\nRecovery: Stop.\n' "$reviewed"
+  } > "docs/orchestration/decisions/m0/packages/mi-$sequence.md"
   git add "docs/orchestration/decisions/m0/packages/mi-$sequence.md" && git commit --quiet -m "package-$sequence"
-  printf 'verdict %s\n' "$sequence" > "docs/orchestration/decisions/m0/verdicts/mi-$sequence.md"
+  package_commit="$(git rev-parse HEAD)"
+  {
+    printf 'Controller recorder: program-controller\nSteward role: decision_steward\nSteward session: steward-%s\nRecorded timestamp: 2026-10-24T02:03:04Z\n' "$sequence"
+    printf 'Evidence package commit: %s\nEvidence package path: docs/orchestration/decisions/m0/packages/mi-%s.md\nVerdict: APPROVE_MILESTONE\n' "$package_commit" "$sequence"
+  } > "docs/orchestration/decisions/m0/verdicts/mi-$sequence.md"
   git add "docs/orchestration/decisions/m0/verdicts/mi-$sequence.md" && git commit --quiet -m "verdict-$sequence"
-  printf 'binding %s\n' "$sequence" > docs/orchestration/decisions/m0/bindings/main-integration.md
+  verdict_commit="$(git rev-parse HEAD)"
+  {
+    printf 'Binding status: Current\nPackage commit: %s\nPackage path: docs/orchestration/decisions/m0/packages/mi-%s.md\n' "$package_commit" "$sequence"
+    printf 'Verdict commit: %s\nVerdict path: docs/orchestration/decisions/m0/verdicts/mi-%s.md\n' "$verdict_commit" "$sequence"
+  } > docs/orchestration/decisions/m0/bindings/main-integration.md
   git add docs/orchestration/decisions/m0/bindings/main-integration.md && git commit --quiet -m "binding-$sequence"
 }
 
@@ -50,7 +82,11 @@ setup_fixture() {
     git config user.name 'Evidence Guard Test'
     git config user.email 'evidence-guard@example.invalid'
     printf 'governance base\n' > governance.txt
+    mkdir -p .codex/skills/roadmap-orchestrator/scripts
+    cp "$guard" .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
+    chmod 0755 .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     git add governance.txt
+    git add .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     git commit --quiet -m governance-base
     git remote add origin "$remote_repo"
     git push --quiet origin refs/heads/main:refs/heads/main
@@ -61,12 +97,15 @@ setup_fixture() {
     append_evidence_sequence 001
   )
   base_sha="$(git -C "$work_repo" rev-parse refs/heads/main)"
+  control_sha="$base_sha"
   candidate_sha="$(git -C "$work_repo" rev-parse refs/heads/governance/decision-evidence)"
 }
 
 run_guard() {
   (
     cd "$work_repo"
+    AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" \
+    AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(shasum -a 256 "$guard" | awk '{print $1}')" \
     "$guard" "$@"
   )
 }
@@ -212,20 +251,11 @@ test_historical_nonregular_binding() {
   setup_fixture historical-nonregular-binding
   (
     cd "$work_repo"
-    printf 'package 002\n' > docs/orchestration/decisions/m0/packages/mi-002.md
-    git add docs/orchestration/decisions/m0/packages/mi-002.md && git commit --quiet -m package-002
-    printf 'verdict 002\n' > docs/orchestration/decisions/m0/verdicts/mi-002.md
-    git add docs/orchestration/decisions/m0/verdicts/mi-002.md && git commit --quiet -m verdict-002
-    printf 'binding 002\n' > docs/orchestration/decisions/m0/bindings/main-integration.md
+    append_evidence_sequence 002
     chmod 0755 docs/orchestration/decisions/m0/bindings/main-integration.md
-    git add docs/orchestration/decisions/m0/bindings/main-integration.md && git commit --quiet -m binding-002-executable
-    printf 'package 003\n' > docs/orchestration/decisions/m0/packages/mi-003.md
-    git add docs/orchestration/decisions/m0/packages/mi-003.md && git commit --quiet -m package-003
-    printf 'verdict 003\n' > docs/orchestration/decisions/m0/verdicts/mi-003.md
-    git add docs/orchestration/decisions/m0/verdicts/mi-003.md && git commit --quiet -m verdict-003
-    printf 'binding 003\n' > docs/orchestration/decisions/m0/bindings/main-integration.md
-    chmod 0644 docs/orchestration/decisions/m0/bindings/main-integration.md
-    git add docs/orchestration/decisions/m0/bindings/main-integration.md && git commit --quiet -m binding-003-regular
+    git add docs/orchestration/decisions/m0/bindings/main-integration.md
+    git commit --quiet --amend --no-edit
+    append_evidence_sequence 003
   )
   candidate_sha="$(git -C "$work_repo" rev-parse HEAD)"
   assert_refusal_without_mutation 'evidence history contains a non-regular evidence file' authorize "$candidate_sha" "$base_sha"
@@ -307,7 +337,9 @@ test_unverifiable_push_rejection() {
   before_local="$(snapshot_local)"
   before_remote="$(snapshot_remote)"
   output_file="$fixture_root/unverifiable-rejection-output"
-  if (cd "$work_repo" && PATH="$wrapper_dir:$PATH" REAL_GIT="$real_git" FAIL_MARKER="$marker" "$guard" push "$candidate_sha" "$base_sha") >"$output_file" 2>&1; then
+  if (cd "$work_repo" && PATH="$wrapper_dir:$PATH" REAL_GIT="$real_git" FAIL_MARKER="$marker" \
+      AUGMENTEDKEYS_REVIEWED_GUARD_COMMIT="$control_sha" AUGMENTEDKEYS_REVIEWED_GUARD_SHA256="$(shasum -a 256 "$guard" | awk '{print $1}')" \
+      "$guard" push "$candidate_sha" "$base_sha") >"$output_file" 2>&1; then
     fail 'unverifiable rejected evidence push unexpectedly succeeded'
   fi
   grep -F 'partial: constrained evidence push result is unverifiable; recovery required' "$output_file" >/dev/null || { sed -n '1,120p' "$output_file" >&2; fail 'unverifiable evidence PARTIAL absent'; }
@@ -315,6 +347,34 @@ test_unverifiable_push_rejection() {
   tests_run=$((tests_run + 1))
 }
 
+test_post_freeze_review_lane() {
+  local output review_path
+  setup_fixture post-freeze-review
+  review_path='docs/orchestration/decisions/m0/reviews/qa-integration-001.md'
+  (
+    cd "$work_repo"
+    mkdir -p "$(dirname "$review_path")"
+    {
+      printf 'Controller recorder: program-controller\n'
+      printf 'Reviewer role: qa_performance_verifier\n'
+      printf 'Reviewer session: qa-session-001\n'
+      printf 'Recorded timestamp: 2026-10-24T01:02:03Z\n'
+      printf 'Reviewed candidate: %s\n' "$base_sha"
+      printf 'Verification evidence commit: %s\n' "$base_sha"
+      printf 'Runtime evidence SHA-256: %064d\n' 1
+      printf 'Full review output SHA-256: %064d\n' 2
+      printf 'Verdict: APPROVE\nCritical findings: 0\nImportant findings: 0\nMinor findings: 0\n'
+    } > "$review_path"
+    git add "$review_path"
+    git commit --quiet -m post-freeze-review
+  )
+  candidate_sha="$(git -C "$work_repo" rev-parse HEAD)"
+  output="$(run_guard authorize "$candidate_sha" "$base_sha")"
+  [[ "$output" == "authorized:governance/decision-evidence:$candidate_sha:refs/heads/governance/decision-evidence:refs/heads/governance/decision-evidence" ]] || fail 'post-freeze review lane authorize output differs'
+  tests_run=$((tests_run + 1))
+}
+
+test_post_freeze_review_lane
 test_create_once_and_fast_forward
 test_wrong_branch
 test_dirty_tree

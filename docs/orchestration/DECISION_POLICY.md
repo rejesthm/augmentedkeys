@@ -43,6 +43,14 @@ Decision: <bounded rationale>
 
 Zero Critical and Important findings are approval invariants. A correction or human pause records the actual counts and exact blocking evidence.
 
+## Frozen candidates and immutable reviews
+
+For milestone acceptance, freeze completion candidate `C` before review. The controller records each fresh QA, applicable Licensing/Security, and Final review as one canonical add-only commit under `docs/orchestration/decisions/m<digits>/reviews/`. A review binds the exact candidate, role, session, runtime, output hash, findings, and zero Critical/Important approval state. It must precede its consuming package on the evidence branch and must not be an ancestor of the candidate. A review cannot cite itself, substitute another SHA, or be reused after the candidate changes.
+
+Acceptance binds only `C`. The later main-integration candidate `I` must be a descendant of `C` whose delta is limited to the enumerated milestone-status files and exact acceptance bookkeeping. The guard validates the binary delta and each semantic transition; path membership alone grants no authority. Main integration requires fresh reviews of `I` and a separate package/verdict/binding that binds `C`, `I`, their ancestry, the current acceptance binding, and unchanged `main`. A verdict for `C` cannot approve `I`, and vice versa.
+
+Both governance guards require explicit authoritative provenance: the runtime script hash must equal the canonical executable guard blob at the supplied reviewed commit. This establishes which reviewed guard executed without allowing that script to modify the evidence or `main` worktree beyond its existing authority.
+
 ## Human-only boundaries
 
 Only the owner may authorize or decide:
@@ -75,6 +83,8 @@ The Conductor may select the roles needed for a bounded task, but it returns a d
 `APPROVE_MAIN_INTEGRATION` authorizes only the later deterministic guard to validate and perform one clean fast-forward from the recorded `main` base to the exact accepted candidate. The guard must establish clean state, expected branch, one unambiguous `origin`, local and remote `main` equality with the recorded base, candidate ancestry, exact decision evidence, and an explicit `refs/heads/main:refs/heads/main` refspec. It must refuse moved or divergent refs and must never force, rebase, resolve conflicts, delete, sign, release, or deploy.
 
 ## Staleness and recovery
+
+Before mutation, the main guard rejects candidate paths that would overwrite tracked, untracked, or ignored state. Its recovery snapshot must be a newly created, owned, mode-`0700`, empty directory under a standard private temporary root. It records refs, symbolic or detached HEAD, index, worktree, pseudorefs, ignored content, evidence tip, and remote `main`. The snapshot is deleted only after exact success or exact restoration. Failed or unverifiable restoration returns non-replayable `PARTIAL`, retains the snapshot, records its path, and requires `PAUSE_HUMAN`.
 
 Any change to a bound contract, candidate, completion package, review artifact, target `main`, successor contract, or entry-condition artifact invalidates the affected verdict. The controller must return the changed package for affected verification, independent review, and a fresh Steward decision. It may not reuse an earlier rationale or approval.
 

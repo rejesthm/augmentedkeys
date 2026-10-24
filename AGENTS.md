@@ -29,6 +29,12 @@ Never nest a read-only role beneath a workspace-write role or a workspace-write 
 
 Run at most three spawned specialists concurrently. Parallelize independent read-heavy work. Permit only one active write task, assign each sensitive file set to one agent, use isolated task worktrees, and never let agents edit the same sensitive files concurrently. The manual L1 Loop remains report-only and may not launch the Roadmap Orchestrator or project-agent team.
 
+### Frozen-candidate review chronology
+
+Review evidence uses an immutable lane on `governance/decision-evidence`: each QA, Licensing/Security, or Final review is one add-only canonical review commit created after the exact candidate is frozen and before its consuming package. Review commits must be ancestors of the package, never ancestors of the candidate they review. Milestone acceptance binds the frozen completion candidate `C`. Main integration separately binds the administrative descendant `I`, fresh independent reviews of `I`, the current acceptance binding for `C`, and the exact semantically checked `C`-to-`I` state-only delta. `C` and `I` are never interchangeable.
+
+The controller must invoke each governance guard with the reviewed commit containing the authoritative guard blob and its SHA-256; runtime guard bytes must match both. Main-integration preflight rejects tracked, untracked, or ignored collisions. Recovery removes a private snapshot only after exact restoration is proved. Any incomplete restoration is a non-replayable `PARTIAL` with the snapshot retained for human inspection.
+
 ## Verification and evidence
 
 Run the applicable Flutter verification commands before reporting a Flutter change complete:

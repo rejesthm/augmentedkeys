@@ -30,6 +30,12 @@ If any required source or evidence is missing, conflicting, unsupported, unreada
 
 Evidence uncertainty is a non-delegable human boundary and never qualifies for the correction verdict.
 
+## Candidate and review chronology
+
+Treat completion candidate `C` and main-integration candidate `I` as separate immutable identities. For acceptance, verify that fresh independent reviews were recorded after `C` was frozen and before the package; their commits must be ancestors of the package and must not be ancestors of `C`. For main integration, require `I` to descend from accepted `C` by only the exact semantically validated state and acceptance-reference delta, plus fresh independent reviews of `I`. Reject arbitrary edits in an allowed file, review self-reference, a review for another candidate, reuse of reviews for `C`, or substitution between `C` and `I`.
+
+The consuming package and verdict must bind every review commit and path. A review is valid only when its role/session/runtime/output provenance, exact candidate, approval result, and zero Critical/Important findings are internally consistent. Do not author or repair review evidence.
+
 ## Required immutable evidence
 
 Require the controller's package to identify and prove:
@@ -105,6 +111,8 @@ Every verdict is bound to all recorded SHAs. A change to the contract, candidate
 Remain independent from implementation and review. Do not edit, implement, test on behalf of QA, author review evidence, commit, merge, push, or record the verdict in shared state. The program controller records the verdict verbatim with session provenance and performs any separately authorized guarded action.
 
 ## Recovery
+
+Require the package to identify the reviewed guard commit and runtime hash used by the controller. For a prior main attempt, accept no retry when the current result is `PARTIAL`, recovery evidence was lost, a collision may have overwritten tracked/untracked/ignored state, or the private recovery snapshot was removed before exact restoration was proved. Return `PAUSE_HUMAN` for ambiguous state.
 
 On interruption, resume only from committed canonical state. Re-resolve every bound SHA, compare local and remote `main` with the recorded target, verify decision provenance, and confirm the package has not been superseded. If a fully provable value differs from its bound SHA, return `CORRECT` for stale-package remediation and require affected fresh review and decision.
 

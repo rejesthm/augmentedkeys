@@ -59,6 +59,14 @@ The exact branch, brief, and verification-artifact paths for every task are fixe
 
 Task branches are never published by this workflow. Material unintegrated task branches and worktrees are never deleted automatically.
 
+### Acceptance and integration chronology
+
+The completed milestone candidate `C` is frozen before its independent reviews. Each review is then committed as its own immutable add-only file under `docs/orchestration/decisions/m0/reviews/` on `governance/decision-evidence`; review commits precede their consuming package and are not ancestors of `C`. The acceptance package, verdict, and binding bind exactly `C`.
+
+After acceptance, one administrative descendant `I` may update only `ROADMAP.md`, `STATE.md`, `.loop/progress.md`, and `docs/orchestration/milestones/M0_LEDGER.md`. The guard must prove the exact binary delta and the permitted semantic changes: `Ready for decision` becomes `Accepted`, and the ledger records the current acceptance binding plus the accepted tip while preserving every task row and unrelated byte. Arbitrary edits in those files are forbidden. Fresh independent reviews of exact `I` are committed before the main-integration package. That package, verdict, and binding bind both `C` and `I`, their ancestry, the current acceptance binding, unchanged `main`, and the fresh review commits. Approval for either SHA cannot substitute for the other.
+
+Both publication and main-integration guards must execute bytes whose SHA-256 equals the canonical executable guard blob at an explicitly supplied reviewed guard commit. This provenance check permits use from separate evidence and `main` worktrees without expanding their path authority. A failed integration must preserve collision bytes and recovery evidence. If complete restoration cannot be proved, the result is non-replayable `PARTIAL`, the private snapshot is retained, and human review is required.
+
 ## Ordered queue and dependencies
 
 | Priority | ID | Research question | Dependencies | Task branch | Brief | Verification artifact | Transition evidence | Contracted output |
