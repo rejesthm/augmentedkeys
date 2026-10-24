@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-All role sessions completed and idle. Steward returned PAUSE_HUMAN locally; publication guard refused, so no binding was consumed. Owner decision pending.
+Conductor CT04 intake running in isolated task worktree under owner-approved correction; controller owns preservation/state. Old Steward binding remains unpublished/unconsumed.
 
 # Research Questions
 
@@ -103,6 +103,8 @@ Audio, MIDI, plugin, sound-engine, state-management, persistence, and cloud arch
 
 # Next Highest Priority Task
 
-Owner authorization for governance-correction-proposal.md plus decision-publication-recovery.md. No eligible implementation or successor task exists.
+Execute owner-approved CT04 governance-only correction and independently verify it. No product implementation or successor task is authorized.
 
 Evidence publication authorize refused67; local binding `0db258d158f1d212497ccfdf07675ec399e6f870` remains unpublished/unconsumed. MT-002 pause still applies. Last remote milestone `708aaa5968d557a09d3b9f9b207ff3fd77ffd315`; no further push attempted after refusal.
+
+CT04 authorization/archive evidence `fd52158b1e10629843cc60c5f18e18a7519d27e5`: wrong-base history preserved under archive/m0-decision-evidence-base-error-20261024; corrected base recorded before replacement creation. M0 pause unchanged.

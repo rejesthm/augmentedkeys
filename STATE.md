@@ -46,3 +46,7 @@ The app remains the Flutter shell. Audio/MIDI, playable instruments, patch editi
 ## Preserved source history
 
 The full source snapshots are immutable at governance `4a9a4aa05f47935c7d997c5bbf4c19fc7c1a77a9` and research `8fdb7444ed80675269f38f90f84b362f90c9af23`. OD-001 through OD-005, MT-001, every R01/R02 transition/rejection/correction, and both integration logs remain preserved in their exact source artifacts and the reconciled ledger. CT03 preparation created no activation; OD-006 separately authorizes the current reactivation.
+
+## CT04 approved correction in progress
+
+Owner approved both exact proposals; authorization and archive preservation: `fd52158b1e10629843cc60c5f18e18a7519d27e5`. Controller preserved all unpublished evidence at archive/m0-decision-evidence-base-error-20261024, original worktree unchanged. Canonical evidence branch is now absent; corrected base b1b0c1edd5e42d3ea791f665c22954834e962d05 is recorded in ledger before replacement creation. CT04 task worktree and brief8be352c653084d47929ffecdf6e3dca0c5cb5c3e govern implementation. Earlier pending-authorization wording is historical for this correction. M0 remains paused, exact repaired commits still require review and owner acceptance before reactivation.

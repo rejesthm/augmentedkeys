@@ -26,9 +26,9 @@
 
 
 - Decision-evidence branch: `governance/decision-evidence`
-- Decision-evidence worktree: `/Users/jestherjordanminor/Documents/Projects/Personal/AugmentedKeys/.worktrees/decision-evidence` — local, clean, preserved after guard refusal
+- Decision-evidence worktree: `.worktrees/decision-evidence-corrected` — not created; old `.worktrees/decision-evidence` preserved on archive/m0-decision-evidence-base-error-20261024 at 0db258d158f1d212497ccfdf07675ec399e6f870
 - Decision-evidence writer: Program controller only; Decision Steward and reviewers are read-only
-- Decision-evidence governance base: `8138cf965531ffd34a9dd967b1724c837409a1c8` — recorded before branch creation
+- Decision-evidence governance base: `b1b0c1edd5e42d3ea791f665c22954834e962d05` — corrected owner-authorized base recorded before replacement branch creation; original mistaken base retained in historical records
 - Local decision-evidence tip: `0db258d158f1d212497ccfdf07675ec399e6f870` — unpublished/unconsumed
 - Remote decision-evidence tip: Absent, freshly proved after authorize refusal
 - Current decision-evidence binding: No published/consumable binding; local `0db258d158f1d212497ccfdf07675ec399e6f870` refused publication
@@ -220,10 +220,12 @@ Historical source boundary at `8fdb7444ed80675269f38f90f84b362f90c9af23`: M0 is 
 
 OD-006 `c9c0f9349bd69c7bc7b975b78000361f7a8956d4` accepts foundation `b1b0c1edd5e42d3ea791f665c22954834e962d05`, contract `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`, reviewed baseline `dbd330837391b0ef8ea8bd6f317bd45e50ceaa6d` and acceptance evidence `a775b71b105a4b3945308a5ee99e1b654f75f8dd`. Fresh entry evidence is recorded in that owner decision. R01–R10 are Verified. No task/milestone is Accepted.
 
-Next: owner authorization for the committed governance correction AND explicit unpublished evidence-history preservation/recovery; see decision-publication-recovery.md.
+Next: execute owner-approved CT04 governance correction under brief 8be352c653084d47929ffecdf6e3dca0c5cb5c3e; preserve M0 pause until reviewed repaired commits receive owner acceptance.
 
 The excluded original-checkout main-guard edits were rejected by advisory QA/Security and remain unchanged. They cannot be adopted or used for main integration without correction and fresh review; the independent M0 research/publication procedure remains authorized. No product, device or performance capability is claimed.
 
 MT-002 consumed at this separate state barrier: Active → Paused for owner decision, evidence `8138cf965531ffd34a9dd967b1724c837409a1c8`. All10research tasks Verified;0Critical/2Important governance findings remain open. No acceptance/main/successor action. Governance base `8138cf965531ffd34a9dd967b1724c837409a1c8` is recorded before creation; no branch or verdict is yet claimed.
 
 Publication refusal record `5a23e281b53d38ab43e51a427017c1ea8c0a3918` consumed as failure evidence only. No Steward binding consumed. Existing MT-002 pause remains. Local governance base `8138cf965531ffd34a9dd967b1724c837409a1c8` is retained as mistaken historical setup; guard requires remote main for initial creation. No rewrite or retry authorized.
+
+CT04 owner authorization and archive preservation recorded at `fd52158b1e10629843cc60c5f18e18a7519d27e5`. Corrected governance base above is recorded before any replacement creation. Old binding remains unpublished/unconsumed. Correction branch task/ct04-governance-correction, worktree .worktrees/ct04-governance-correction; Conductor intake pending. This supersedes prior pending-authorization wording for the bounded correction only; no M0 reactivation.
