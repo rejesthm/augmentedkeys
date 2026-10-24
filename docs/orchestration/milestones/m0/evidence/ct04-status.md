@@ -30,3 +30,8 @@ CT04 In progress, correction round3, consuming assignment `868e14632b489835afc53
 ## Round 3 controller execution barrier
 
 CT04 remains In progress, correction round3. Consume assignment `4681de378b2fb4e312cdea92b05e23cb2b97ea3e` before materialization and the bounded contract-type/Decision-text fixes. Conductor relinquished and is idle; controller is sole repository writer and author of this final delta. QA/Security/Final remain idle pending the new frozen candidate and fresh verification. Earlier checkpoints are historical. M0 and all external-action boundaries remain unchanged.
+
+
+## Correction round 4 execution barrier
+
+CT04 In progress, correction round4. Consume assignment `a068ce58b887679efdf412aa88ab2c35368735b5` after Final rejection `e3dce902c15929d0f4a5170ed85112732059d665` for `88aa7f8eea852cf955963acc069ce9e0bc843d42`. Same Conductor temporary author and controller sole repository writer; all reviewers idle. Resolve canonical action-path parity and exact prerequisite review identities; retain prior failure evidence and protections. Fresh complete tests and all affected independent reviews required. No recovery/publication/reactivation or main authority.
