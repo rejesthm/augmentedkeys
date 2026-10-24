@@ -215,6 +215,8 @@ validate_review() {
 validate_package_reviews() {
   local commit="$1" path="$2" text reviewed
   local qa_commit qa_path security_commit security_path final_commit final_path
+  local package_milestone_key expected_contract_path expected_completion_path expected_acceptance_binding_path expected_milestone_branch_prefix
+  local acceptance_milestone acceptance_contract acceptance_contract_path acceptance_completion acceptance_completion_path acceptance_tip successor_id successor_key
   current_package_commit="$commit"
   text="$(git show "$commit:$path" 2>/dev/null)" || refuse 'package artifact is unreadable' 74
   package_milestone="$(field_from_text "$text" 'Milestone')" || refuse 'package is missing milestone' 74
@@ -225,9 +227,14 @@ validate_package_reviews() {
   field_from_text "$text" 'Limitations' >/dev/null || refuse 'package is missing limitations' 74
   field_from_text "$text" 'Recovery' >/dev/null || refuse 'package is missing recovery' 74
   [[ "$package_milestone" =~ ^M[0-9]+$ && "$package_kind" =~ ^[a-z0-9][a-z0-9-]*$ ]] || refuse 'package identity is invalid' 74
+  package_milestone_key="$(printf '%s' "$package_milestone" | tr '[:upper:]' '[:lower:]')"
+  expected_contract_path="docs/orchestration/milestones/${package_milestone}_CONTRACT.md"
+  expected_completion_path="docs/orchestration/milestones/$package_milestone_key/evidence/completion-package.md"
+  expected_acceptance_binding_path="docs/orchestration/decisions/$package_milestone_key/bindings/milestone-acceptance.md"
+  expected_milestone_branch_prefix="milestone/$package_milestone_key-"
   resolve_exact_commit "$package_contract" 'package contract commit'
   resolve_exact_commit "$package_target" 'package target main'
-  [[ "$package_contract_path" == docs/orchestration/milestones/M0_CONTRACT.md ]] || refuse 'package contract path is not canonical' 74
+  [[ "$package_contract_path" == "$expected_contract_path" ]] || refuse 'package contract path differs from package milestone' 74
   require_regular_blob "$package_contract" "$package_contract_path" 'contract artifact'
   disposition="$(field_from_text "$text" 'Decision disposition')" || refuse 'package is missing decision disposition' 74
   reviewed="$(field_from_text "$text" 'Reviewed candidate')" || refuse 'package is missing reviewed candidate' 74
@@ -303,7 +310,7 @@ validate_package_reviews() {
       [[ "$sequence_resulting_state" == Accepted && "$package_accepted_tip" == "$reviewed" ]] || refuse 'milestone-acceptance package state or accepted tip is invalid' 74
       package_completion_commit="$(field_from_text "$text" 'Completion package commit')" || refuse 'milestone-acceptance package is missing completion evidence' 74
       package_completion_path="$(field_from_text "$text" 'Completion package path')" || refuse 'milestone-acceptance package is missing completion evidence' 74
-      [[ "$package_completion_path" =~ ^docs/orchestration/milestones/m[0-9]+/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'milestone-acceptance completion path is not canonical' 74
+      [[ "$package_completion_path" == "$expected_completion_path" ]] || refuse 'milestone-acceptance completion path differs from package milestone' 74
       resolve_exact_commit "$package_completion_commit" 'completion package commit'
       require_regular_blob "$package_completion_commit" "$package_completion_path" 'completion package artifact'
       git merge-base --is-ancestor "$package_contract" "$reviewed" || refuse 'contract is outside milestone candidate history' 74
@@ -326,7 +333,8 @@ validate_package_reviews() {
       package_guard_path="$(field_from_text "$text" 'Reviewed guard path')" || refuse 'main-integration package is missing reviewed guard provenance' 74
       package_guard_hash="$(field_from_text "$text" 'Reviewed guard SHA-256')" || refuse 'main-integration package is missing reviewed guard provenance' 74
       [[ "$package_integration_candidate" == "$reviewed" && "$package_acceptance_candidate" != "$package_integration_candidate" ]] || refuse 'main-integration candidate bounds are invalid' 74
-      [[ "$package_milestone_branch" =~ ^milestone/m[0-9]+-[a-z0-9][a-z0-9-]*$ ]] || refuse 'main-integration milestone branch is invalid' 74
+      [[ "$package_milestone_branch" == "$expected_milestone_branch_prefix"[a-z0-9]* ]] || refuse 'main-integration milestone branch differs from package milestone' 74
+      [[ "${package_milestone_branch#"$expected_milestone_branch_prefix"}" =~ ^[a-z0-9][a-z0-9-]*$ ]] || refuse 'main-integration milestone branch differs from package milestone' 74
       resolve_exact_commit "$package_acceptance_candidate" 'accepted milestone candidate'
       resolve_exact_commit "$package_integration_candidate" 'integration candidate'
       git merge-base --is-ancestor "$package_acceptance_candidate" "$package_integration_candidate" || refuse 'integration candidate does not descend from accepted milestone candidate' 74
@@ -339,8 +347,8 @@ validate_package_reviews() {
       [[ "$package_guard_path" == .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh && "$package_guard_hash" =~ ^[0-9a-f]{64}$ ]] || refuse 'main-integration reviewed guard provenance is invalid' 74
       require_executable_blob "$package_guard_commit" "$package_guard_path" 'reviewed main guard'
       [[ "$(git show "$package_guard_commit:$package_guard_path" | shasum -a 256 | awk '{print $1}')" == "$package_guard_hash" ]] || refuse 'main-integration reviewed guard hash differs from artifact' 74
-      [[ "$package_completion_path" =~ ^docs/orchestration/milestones/m[0-9]+/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'main-integration completion path is not canonical' 74
-      [[ "$package_acceptance_binding_path" =~ ^docs/orchestration/decisions/m[0-9]+/bindings/milestone-acceptance\.md$ ]] || refuse 'main-integration acceptance binding path is not canonical' 74
+      [[ "$package_completion_path" == "$expected_completion_path" ]] || refuse 'main-integration completion path differs from package milestone' 74
+      [[ "$package_acceptance_binding_path" == "$expected_acceptance_binding_path" ]] || refuse 'main-integration acceptance binding path differs from package milestone' 74
       resolve_exact_commit "$package_completion_commit" 'completion package commit'
       resolve_exact_commit "$package_acceptance_binding_commit" 'milestone acceptance binding commit'
       require_regular_blob "$package_completion_commit" "$package_completion_path" 'completion package artifact'
@@ -350,7 +358,13 @@ validate_package_reviews() {
       git merge-base --is-ancestor "$package_acceptance_binding_commit" "$commit" || refuse 'acceptance binding does not precede main-integration package' 74
       [[ "$(git log -1 --format=%H "$commit" -- "$package_acceptance_binding_path")" == "$package_acceptance_binding_commit" ]] || refuse 'main-integration acceptance binding is stale' 74
       acceptance_text="$(git show "$package_acceptance_binding_commit:$package_acceptance_binding_path")" || refuse 'milestone acceptance binding is unreadable' 74
-      [[ "$(field_from_text "$acceptance_text" 'Binding status')" == Current && "$(field_from_text "$acceptance_text" 'Decision kind')" == APPROVE_MILESTONE && "$(field_from_text "$acceptance_text" 'Reviewed candidate')" == "$package_acceptance_candidate" && "$(field_from_text "$acceptance_text" 'Authorization')" == GRANTED && "$(field_from_text "$acceptance_text" 'Critical findings')" == 0 && "$(field_from_text "$acceptance_text" 'Important findings')" == 0 ]] || refuse 'main-integration acceptance binding does not authorize the accepted milestone candidate' 74
+      acceptance_milestone="$(field_from_text "$acceptance_text" 'Milestone')" || refuse 'milestone acceptance binding is missing milestone identity' 74
+      acceptance_contract="$(field_from_text "$acceptance_text" 'Contract commit')" || refuse 'milestone acceptance binding is missing contract identity' 74
+      acceptance_contract_path="$(field_from_text "$acceptance_text" 'Contract path')" || refuse 'milestone acceptance binding is missing contract identity' 74
+      acceptance_completion="$(field_from_text "$acceptance_text" 'Completion package commit')" || refuse 'milestone acceptance binding is missing completion identity' 74
+      acceptance_completion_path="$(field_from_text "$acceptance_text" 'Completion package path')" || refuse 'milestone acceptance binding is missing completion identity' 74
+      acceptance_tip="$(field_from_text "$acceptance_text" 'Accepted milestone tip')" || refuse 'milestone acceptance binding is missing accepted tip' 74
+      [[ "$acceptance_milestone" == "$package_milestone" && "$acceptance_contract" == "$package_contract" && "$acceptance_contract_path" == "$package_contract_path" && "$acceptance_completion" == "$package_completion_commit" && "$acceptance_completion_path" == "$package_completion_path" && "$acceptance_tip" == "$package_acceptance_candidate" && "$(field_from_text "$acceptance_text" 'Binding status')" == Current && "$(field_from_text "$acceptance_text" 'Decision kind')" == APPROVE_MILESTONE && "$(field_from_text "$acceptance_text" 'Reviewed candidate')" == "$package_acceptance_candidate" && "$(field_from_text "$acceptance_text" 'Authorization')" == GRANTED && "$(field_from_text "$acceptance_text" 'Critical findings')" == 0 && "$(field_from_text "$acceptance_text" 'Important findings')" == 0 ]] || refuse 'main-integration acceptance binding does not authorize the package milestone and accepted candidate' 74
       ;;
     next-milestone)
       package_successor_state="$(field_from_text "$text" 'Successor state')" || refuse 'next-milestone package is missing successor state' 74
@@ -359,7 +373,11 @@ validate_package_reviews() {
       package_successor_path="$(field_from_text "$text" 'Successor contract path')" || refuse 'next-milestone package is missing successor contract evidence' 74
       package_entry_commit="$(field_from_text "$text" 'Entry conditions evidence commit')" || refuse 'next-milestone package is missing entry-condition evidence' 74
       package_entry_path="$(field_from_text "$text" 'Entry conditions evidence path')" || refuse 'next-milestone package is missing entry-condition evidence' 74
-      [[ "$package_successor_path" =~ ^docs/orchestration/milestones/[A-Z][A-Z0-9_-]*_CONTRACT\.md$ && "$package_entry_path" =~ ^docs/orchestration/milestones/[a-z0-9_-]+/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'next-milestone evidence paths are not canonical' 74
+      [[ "$package_successor_path" =~ ^docs/orchestration/milestones/(M[0-9]+)_CONTRACT\.md$ ]] || refuse 'next-milestone successor contract path is not canonical' 74
+      successor_id="${BASH_REMATCH[1]}"
+      successor_key="$(printf '%s' "$successor_id" | tr '[:upper:]' '[:lower:]')"
+      [[ "$successor_id" != "$package_milestone" ]] || refuse 'next-milestone successor must differ from active milestone' 74
+      [[ "$package_entry_path" =~ ^docs/orchestration/milestones/$successor_key/evidence/[a-z0-9][a-z0-9-]*\.md$ ]] || refuse 'next-milestone successor and entry milestones differ' 74
       resolve_exact_commit "$package_successor_commit" 'successor contract commit'
       resolve_exact_commit "$package_entry_commit" 'entry conditions evidence commit'
       require_regular_blob "$package_successor_commit" "$package_successor_path" 'successor contract artifact'

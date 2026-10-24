@@ -1193,6 +1193,17 @@ test_verdict_decision_text_required() {
   done
 }
 
+test_round5_acceptance_binding_milestone_content() {
+  ACCEPTANCE_BINDING_OVERRIDE_FIELD=Milestone ACCEPTANCE_BINDING_OVERRIDE_VALUE=M1 setup_fixture round5-acceptance-binding-milestone-content
+  assert_refusal_without_mutation 'milestone acceptance binding does not accept package candidate' authorize milestone/m0-research "$candidate_sha" "$base_sha" "$binding_sha"
+}
+
+if [[ "${CT04_FOCUSED_TEST:-}" == round5-milestone-identity ]]; then
+  test_round5_acceptance_binding_milestone_content
+  printf 'PASS: %d focused round5 main milestone-identity scenarios\n' "$tests_run"
+  exit 0
+fi
+
 if [[ "${CT04_FOCUSED_TEST:-}" == controller-schema ]]; then
   test_verdict_decision_text_required
   printf 'PASS: %d controller verdict-decision scenarios\n' "$tests_run"
@@ -1233,6 +1244,7 @@ test_verdict_decision_text_required
 test_round3_regressions
 test_round4_main_action_paths
 test_round4_prerequisite_review_identity
+test_round5_acceptance_binding_milestone_content
 test_distinct_acceptance_and_integration_candidates
 test_arbitrary_allowed_state_change_refused
 test_invalid_calendar_transition_date

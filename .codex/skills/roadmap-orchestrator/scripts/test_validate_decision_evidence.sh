@@ -93,10 +93,16 @@ append_evidence_sequence() {
   local sequence="$1"
   local reviewed qa_path security_path final_path qa_commit security_commit final_commit package_commit verdict_commit output output_hash output_length output_encoded payload_file
   local acceptance_binding_commit delta_hash actual_delta_paths
-  local milestone_key acceptance_action acceptance_verdict_action acceptance_verdict_sequence acceptance_binding_action
+  local milestone_id milestone_key contract_path completion_path main_completion_path milestone_branch acceptance_binding_milestone main_acceptance_binding_path acceptance_action acceptance_verdict_action acceptance_verdict_sequence acceptance_binding_action
   local main_action main_verdict_action main_verdict_sequence main_binding_action
   local acceptance_package_path acceptance_verdict_path acceptance_binding_path main_package_path main_verdict_path main_binding_path
+  milestone_id="${EVIDENCE_MILESTONE_ID_OVERRIDE:-M0}"
   milestone_key="${EVIDENCE_MILESTONE_KEY_OVERRIDE:-m0}"
+  contract_path="${EVIDENCE_CONTRACT_PATH_OVERRIDE:-docs/orchestration/milestones/M0_CONTRACT.md}"
+  completion_path="${EVIDENCE_COMPLETION_PATH_OVERRIDE:-docs/orchestration/milestones/m0/evidence/completion-package.md}"
+  main_completion_path="${MAIN_COMPLETION_PATH_OVERRIDE:-$completion_path}"
+  milestone_branch="${EVIDENCE_MILESTONE_BRANCH_OVERRIDE:-milestone/m0-research}"
+  acceptance_binding_milestone="${ACCEPTANCE_BINDING_MILESTONE_OVERRIDE:-$milestone_id}"
   acceptance_action="${ACCEPTANCE_ACTION_OVERRIDE:-milestone-acceptance}"
   acceptance_verdict_action="${ACCEPTANCE_VERDICT_ACTION_OVERRIDE:-$acceptance_action}"
   acceptance_verdict_sequence="${ACCEPTANCE_VERDICT_SEQUENCE_OVERRIDE:-$sequence}"
@@ -108,15 +114,16 @@ append_evidence_sequence() {
   acceptance_package_path="docs/orchestration/decisions/$milestone_key/packages/$acceptance_action-$sequence.md"
   acceptance_verdict_path="docs/orchestration/decisions/$milestone_key/verdicts/$acceptance_verdict_action-$acceptance_verdict_sequence.md"
   acceptance_binding_path="docs/orchestration/decisions/$milestone_key/bindings/$acceptance_binding_action.md"
+  main_acceptance_binding_path="${MAIN_ACCEPTANCE_BINDING_PATH_OVERRIDE:-$acceptance_binding_path}"
   main_package_path="docs/orchestration/decisions/$milestone_key/packages/$main_action-$sequence.md"
   main_verdict_path="docs/orchestration/decisions/$milestone_key/verdicts/$main_verdict_action-$main_verdict_sequence.md"
   main_binding_path="docs/orchestration/decisions/$milestone_key/bindings/$main_binding_action.md"
   publisher_phase="${CT04_PUBLISHER_PHASE:-both}"
   if [[ "$publisher_phase" != main ]]; then
   reviewed="$acceptance_sha"
-  qa_path="${ACCEPTANCE_QA_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/qa-$sequence.md}"
-  security_path="${ACCEPTANCE_SECURITY_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/security-$sequence.md}"
-  final_path="${ACCEPTANCE_FINAL_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/final-$sequence.md}"
+  qa_path="${ACCEPTANCE_QA_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/qa-$sequence.md}"
+  security_path="${ACCEPTANCE_SECURITY_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/security-$sequence.md}"
+  final_path="${ACCEPTANCE_FINAL_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/final-$sequence.md}"
   mkdir -p "docs/orchestration/decisions/$milestone_key/packages" "docs/orchestration/decisions/$milestone_key/verdicts" "docs/orchestration/decisions/$milestone_key/bindings" "$(dirname "$qa_path")" "$(dirname "$security_path")" "$(dirname "$final_path")"
   for spec in "qa_performance_verifier:$qa_path" "licensing_security_reviewer:$security_path" "final_code_reviewer:$final_path"; do
     role="${spec%%:*}"; path="${spec#*:}"
@@ -139,8 +146,8 @@ Metadata-looking review prose remains literal output."
     case "$role" in qa_*) qa_commit="$(git rev-parse HEAD)";; licensing_*) security_commit="$(git rev-parse HEAD)";; final_*) final_commit="$(git rev-parse HEAD)";; esac
   done
   {
-    printf 'Milestone: M0\nDecision kind: milestone-acceptance\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\n' "$base_sha"
-    printf 'Reviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\n' "$acceptance_sha" "$acceptance_sha" "$acceptance_sha"
+    printf 'Milestone: %s\nDecision kind: milestone-acceptance\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: %s\n' "$milestone_id" "$base_sha" "$contract_path"
+    printf 'Reviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: %s\n' "$acceptance_sha" "$acceptance_sha" "$acceptance_sha" "$completion_path"
     printf 'QA review commit: %s\nQA review path: %s\n' "$qa_commit" "$qa_path"
     printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_commit" "$security_path"
     printf 'Final review commit: %s\nFinal review path: %s\n' "$final_commit" "$final_path"
@@ -151,16 +158,16 @@ Metadata-looking review prose remains literal output."
   {
     printf 'Controller recorder: program-controller\nSteward role: decision_steward\nSteward session: steward-%s\nRecorded timestamp: 2026-10-24T02:03:04Z\n' "$sequence"
     printf 'Evidence package commit: %s\nEvidence package path: %s\nVerdict: APPROVE_MILESTONE\n' "$package_commit" "$acceptance_package_path"
-    printf 'Milestone: M0\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\nTarget main commit: %s\n' "$base_sha" "$acceptance_sha" "$acceptance_sha" "$acceptance_sha" "$base_sha"
+    printf 'Milestone: %s\nContract commit: %s\nContract path: %s\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: %s\nTarget main commit: %s\n' "$milestone_id" "$base_sha" "$contract_path" "$acceptance_sha" "$acceptance_sha" "$acceptance_sha" "$completion_path" "$base_sha"
     printf 'Critical findings: 0\nImportant findings: 0\nDecision: Approve exact fixture milestone.\n'
   } > "$acceptance_verdict_path"
   mutate_fixture_field "$acceptance_verdict_path" verdict
   git add "$acceptance_verdict_path" && git commit --quiet -m "acceptance-verdict-$sequence"
   verdict_commit="$(git rev-parse HEAD)"
   {
-    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nPackage commit: %s\nPackage path: %s\n' "$base_sha" "$package_commit" "$acceptance_package_path"
+    printf 'Binding status: Current\nMilestone: %s\nContract commit: %s\nContract path: %s\nPackage commit: %s\nPackage path: %s\n' "$acceptance_binding_milestone" "$base_sha" "$contract_path" "$package_commit" "$acceptance_package_path"
     printf 'Verdict commit: %s\nVerdict path: %s\n' "$verdict_commit" "$acceptance_verdict_path"
-    printf 'Decision kind: APPROVE_MILESTONE\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$acceptance_sha" "$acceptance_sha" "$acceptance_sha" "$base_sha"
+    printf 'Decision kind: APPROVE_MILESTONE\nReviewed candidate: %s\nResulting milestone state: Accepted\nAccepted milestone tip: %s\nCompletion package commit: %s\nCompletion package path: %s\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$acceptance_sha" "$acceptance_sha" "$acceptance_sha" "$completion_path" "$base_sha"
   } > "$acceptance_binding_path"
   mutate_fixture_field "$acceptance_binding_path" binding
   git add "$acceptance_binding_path" && git commit --quiet -m "acceptance-binding-$sequence"
@@ -175,9 +182,9 @@ Metadata-looking review prose remains literal output."
   fi
 
   reviewed="$integration_sha"
-  qa_path="${MAIN_QA_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/qa-main-$sequence.md}"
-  security_path="${MAIN_SECURITY_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/security-main-$sequence.md}"
-  final_path="${MAIN_FINAL_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/final-main-$sequence.md}"
+  qa_path="${MAIN_QA_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/qa-main-$sequence.md}"
+  security_path="${MAIN_SECURITY_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/security-main-$sequence.md}"
+  final_path="${MAIN_FINAL_PATH_OVERRIDE:-docs/orchestration/decisions/$milestone_key/reviews/final-main-$sequence.md}"
   mkdir -p "$(dirname "$qa_path")" "$(dirname "$security_path")" "$(dirname "$final_path")"
   for spec in "qa_performance_verifier:$qa_path" "licensing_security_reviewer:$security_path" "final_code_reviewer:$final_path"; do
     role="${spec%%:*}"; path="${spec#*:}"
@@ -202,13 +209,13 @@ Metadata-looking review prose remains literal output."
   delta_hash="$(git diff --binary "$acceptance_sha..$integration_sha" | shasum -a 256 | awk '{print $1}')"
   actual_delta_paths="$(git diff --name-only "$acceptance_sha..$integration_sha" | LC_ALL=C sort | paste -sd, -)"
   {
-    printf 'Milestone: M0\nDecision kind: main-integration\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\n' "$base_sha"
+    printf 'Milestone: %s\nDecision kind: main-integration\nDecision disposition: APPROVAL\nContract commit: %s\nContract path: %s\n' "$milestone_id" "$base_sha" "$contract_path"
     printf 'Reviewed candidate: %s\nResulting milestone state: Accepted\nIntegration state: Pending\nAcceptance candidate: %s\nIntegration candidate: %s\n' "$integration_sha" "$acceptance_sha" "$integration_sha"
-    printf 'Milestone branch: milestone/m0-research\n'
+    printf 'Milestone branch: %s\n' "$milestone_branch"
     printf 'Administrative delta paths: %s\nAdministrative delta SHA-256: %s\nAdministrative transition date: 2026-10-24\n' "$actual_delta_paths" "$delta_hash"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\n' "$control_sha" "$(hash_file "$script_dir/validate_main_integration.sh")"
-    printf 'Completion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\n' "$acceptance_sha"
-    printf 'Milestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\n' "$acceptance_binding_commit" "$acceptance_binding_path"
+    printf 'Completion package commit: %s\nCompletion package path: %s\n' "$acceptance_sha" "$main_completion_path"
+    printf 'Milestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\n' "$acceptance_binding_commit" "$main_acceptance_binding_path"
     printf 'QA review commit: %s\nQA review path: %s\n' "$qa_commit" "$qa_path"
     printf 'Licensing review commit: %s\nLicensing review path: %s\n' "$security_commit" "$security_path"
     printf 'Final review commit: %s\nFinal review path: %s\n' "$final_commit" "$final_path"
@@ -219,26 +226,26 @@ Metadata-looking review prose remains literal output."
   {
     printf 'Controller recorder: program-controller\nSteward role: decision_steward\nSteward session: steward-main-%s\nRecorded timestamp: 2026-10-24T02:13:14Z\n' "$sequence"
     printf 'Evidence package commit: %s\nEvidence package path: %s\nVerdict: APPROVE_MAIN_INTEGRATION\n' "$package_commit" "$main_package_path"
-    printf 'Milestone: M0\nContract commit: %s\n' "$base_sha"
-    [[ "${OMIT_MAIN_VERDICT_CONTRACT_PATH:-no}" == yes ]] || printf 'Contract path: docs/orchestration/milestones/M0_CONTRACT.md\n'
+    printf 'Milestone: %s\nContract commit: %s\n' "$milestone_id" "$base_sha"
+    [[ "${OMIT_MAIN_VERDICT_CONTRACT_PATH:-no}" == yes ]] || printf 'Contract path: %s\n' "$contract_path"
     printf 'Reviewed candidate: %s\nResulting milestone state: Accepted\nIntegration state: Pending\nAcceptance candidate: %s\nIntegration candidate: %s\n' "$integration_sha" "$acceptance_sha" "$integration_sha"
-    printf 'Milestone branch: milestone/m0-research\n'
+    printf 'Milestone branch: %s\n' "$milestone_branch"
     printf 'Administrative delta paths: %s\nAdministrative delta SHA-256: %s\nAdministrative transition date: 2026-10-24\n' "$actual_delta_paths" "$delta_hash"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\n' "$control_sha" "$(hash_file "$script_dir/validate_main_integration.sh")"
-    printf 'Completion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\nTarget main commit: %s\n' "$acceptance_sha" "$acceptance_binding_commit" "$acceptance_binding_path" "$base_sha"
+    printf 'Completion package commit: %s\nCompletion package path: %s\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\nTarget main commit: %s\n' "$acceptance_sha" "$main_completion_path" "$acceptance_binding_commit" "$main_acceptance_binding_path" "$base_sha"
     printf 'Critical findings: 0\nImportant findings: 0\nDecision: Approve exact fixture main integration.\n'
   } > "$main_verdict_path"
   mutate_fixture_field "$main_verdict_path" verdict
   git add "$main_verdict_path" && git commit --quiet -m "verdict-$sequence"
   verdict_commit="$(git rev-parse HEAD)"
   {
-    printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nPackage commit: %s\nPackage path: %s\n' "$base_sha" "$package_commit" "$main_package_path"
+    printf 'Binding status: Current\nMilestone: %s\nContract commit: %s\nContract path: %s\nPackage commit: %s\nPackage path: %s\n' "$milestone_id" "$base_sha" "$contract_path" "$package_commit" "$main_package_path"
     printf 'Verdict commit: %s\nVerdict path: %s\n' "$verdict_commit" "$main_verdict_path"
     printf 'Decision kind: APPROVE_MAIN_INTEGRATION\nReviewed candidate: %s\nResulting milestone state: Accepted\nIntegration state: Pending\nAcceptance candidate: %s\nIntegration candidate: %s\n' "$integration_sha" "$acceptance_sha" "$integration_sha"
-    printf 'Milestone branch: milestone/m0-research\n'
+    printf 'Milestone branch: %s\n' "$milestone_branch"
     printf 'Administrative delta paths: %s\nAdministrative delta SHA-256: %s\nAdministrative transition date: 2026-10-24\n' "$actual_delta_paths" "$delta_hash"
     printf 'Reviewed guard commit: %s\nReviewed guard path: .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh\nReviewed guard SHA-256: %s\n' "$control_sha" "$(hash_file "$script_dir/validate_main_integration.sh")"
-    printf 'Completion package commit: %s\nCompletion package path: docs/orchestration/milestones/m0/evidence/completion-package.md\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$acceptance_sha" "$acceptance_binding_commit" "$acceptance_binding_path" "$base_sha"
+    printf 'Completion package commit: %s\nCompletion package path: %s\nMilestone acceptance binding commit: %s\nMilestone acceptance binding path: %s\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$acceptance_sha" "$main_completion_path" "$acceptance_binding_commit" "$main_acceptance_binding_path" "$base_sha"
   } > "$main_binding_path"
   mutate_fixture_field "$main_binding_path" binding
   git add "$main_binding_path" && git commit --quiet -m "binding-$sequence"
@@ -266,6 +273,7 @@ setup_fixture() {
       executable) printf '# M0 Contract\n' > docs/orchestration/milestones/M0_CONTRACT.md; chmod 0755 docs/orchestration/milestones/M0_CONTRACT.md ;;
       *) fail 'unknown contract fixture kind' ;;
     esac
+    printf '# M1 Contract\n' > docs/orchestration/milestones/M1_CONTRACT.md
     mkdir -p .codex/skills/roadmap-orchestrator/scripts
     cp "$guard" .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
     cp "$script_dir/validate_main_integration.sh" .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh
@@ -276,17 +284,20 @@ setup_fixture() {
       git add docs/orchestration/milestones/M0_CONTRACT.md
     fi
     git add .codex/skills/roadmap-orchestrator/scripts/validate_decision_evidence.sh
-    git add .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh
+    git add .codex/skills/roadmap-orchestrator/scripts/validate_main_integration.sh docs/orchestration/milestones/M1_CONTRACT.md
     git commit --quiet -m governance-base
     control_sha="$(git rev-parse HEAD)"
     git remote add origin "$remote_repo"
     git push --quiet origin refs/heads/main:refs/heads/main
     git switch --quiet -c milestone/m0-research
-    mkdir -p docs/orchestration/milestones/m0/evidence docs/orchestration/milestones/m1/evidence
+    mkdir -p docs/orchestration/milestones/m0/evidence docs/orchestration/milestones/m1/evidence docs/orchestration/milestones/m2/evidence
     printf '# Completion package\n' > docs/orchestration/milestones/m0/evidence/completion-package.md
+    printf '# Alternate completion\n' > docs/orchestration/milestones/m0/evidence/alternate.md
     printf '# M1 Contract\n' > docs/orchestration/milestones/M1_CONTRACT.md
+    printf '# M1 completion package\n' > docs/orchestration/milestones/m1/evidence/completion-package.md
     printf '# M1 entry conditions\n' > docs/orchestration/milestones/m1/evidence/entry-conditions.md
-    git add docs/orchestration/milestones/m0/evidence/completion-package.md docs/orchestration/milestones/M1_CONTRACT.md docs/orchestration/milestones/m1/evidence/entry-conditions.md && git commit --quiet -m acceptance-candidate
+    printf '# M2 entry conditions\n' > docs/orchestration/milestones/m2/evidence/entry-conditions.md
+    git add docs/orchestration/milestones/m0/evidence/completion-package.md docs/orchestration/milestones/m0/evidence/alternate.md docs/orchestration/milestones/M1_CONTRACT.md docs/orchestration/milestones/m1/evidence/completion-package.md docs/orchestration/milestones/m1/evidence/entry-conditions.md docs/orchestration/milestones/m2/evidence/entry-conditions.md && git commit --quiet -m acceptance-candidate
     git tag fixture-acceptance
     printf 'Milestone state: Accepted\n' > STATE.md
     git add STATE.md && git commit --quiet -m integration-candidate
@@ -801,8 +812,10 @@ test_missing_action_specific_bound() {
 }
 
 test_next_milestone_action_bounds() {
-  local sequence=next qa_path security_path final_path qa_commit security_commit final_commit output output_hash output_length output_encoded package_path package_commit verdict_path verdict_commit binding_path
+  local sequence=next qa_path security_path final_path qa_commit security_commit final_commit output output_hash output_length output_encoded package_path package_commit verdict_path verdict_commit binding_path successor_path entry_path
   setup_fixture "next-milestone-action-bounds-${NEXT_CASE_NAME:-valid}"
+  successor_path="${NEXT_SUCCESSOR_PATH_OVERRIDE:-docs/orchestration/milestones/M1_CONTRACT.md}"
+  entry_path="${NEXT_ENTRY_PATH_OVERRIDE:-docs/orchestration/milestones/m1/evidence/entry-conditions.md}"
   (
     cd "$work_repo"
     qa_path="${NEXT_QA_PATH_OVERRIDE:-docs/orchestration/decisions/m0/reviews/qa-next.md}"
@@ -827,7 +840,7 @@ test_next_milestone_action_bounds() {
     package_path='docs/orchestration/decisions/m0/packages/next-milestone-001.md'
     {
       printf 'Milestone: M0\nDecision kind: next-milestone\nDecision disposition: APPROVAL\nResulting milestone state: Accepted\nSuccessor state: Approved for activation\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nReviewed candidate: %s\n' "$base_sha" "$integration_sha"
-      printf 'Successor contract commit: %s\nSuccessor contract path: docs/orchestration/milestones/M1_CONTRACT.md\nEntry conditions evidence commit: %s\nEntry conditions evidence path: docs/orchestration/milestones/m1/evidence/entry-conditions.md\n' "$integration_sha" "$integration_sha"
+      printf 'Successor contract commit: %s\nSuccessor contract path: %s\nEntry conditions evidence commit: %s\nEntry conditions evidence path: %s\n' "$integration_sha" "$successor_path" "$integration_sha" "$entry_path"
       printf 'QA review commit: %s\nQA review path: %s\nLicensing review commit: %s\nLicensing review path: %s\nFinal review commit: %s\nFinal review path: %s\n' "$qa_commit" "$qa_path" "$security_commit" "$security_path" "$final_commit" "$final_path"
       printf 'Target main commit: %s\nCritical findings: 0\nImportant findings: 0\nLimitations: Fixture.\nRecovery: Stop.\n' "$base_sha"
     } > "$package_path"
@@ -836,14 +849,14 @@ test_next_milestone_action_bounds() {
     {
       printf 'Controller recorder: program-controller\nSteward role: decision_steward\nSteward session: steward-next\nRecorded timestamp: 2026-10-24T05:06:07Z\n'
       printf 'Evidence package commit: %s\nEvidence package path: %s\nVerdict: APPROVE_NEXT_MILESTONE\nMilestone: M0\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nReviewed candidate: %s\nResulting milestone state: Accepted\nSuccessor state: Approved for activation\n' "$package_commit" "$package_path" "$base_sha" "$integration_sha"
-      printf 'Successor contract commit: %s\nSuccessor contract path: docs/orchestration/milestones/M1_CONTRACT.md\nEntry conditions evidence commit: %s\nEntry conditions evidence path: docs/orchestration/milestones/m1/evidence/entry-conditions.md\nTarget main commit: %s\nCritical findings: 0\nImportant findings: 0\nDecision: Approve exact successor contract.\n' "$integration_sha" "$integration_sha" "$base_sha"
+      printf 'Successor contract commit: %s\nSuccessor contract path: %s\nEntry conditions evidence commit: %s\nEntry conditions evidence path: %s\nTarget main commit: %s\nCritical findings: 0\nImportant findings: 0\nDecision: Approve exact successor contract.\n' "$integration_sha" "$successor_path" "$integration_sha" "$entry_path" "$base_sha"
     } > "$verdict_path"
     mutate_fixture_field "$verdict_path" verdict
     git add "$verdict_path" && git commit --quiet -m next-verdict; verdict_commit="$(git rev-parse HEAD)"
     binding_path='docs/orchestration/decisions/m0/bindings/next-milestone.md'
     {
       printf 'Binding status: Current\nMilestone: M0\nContract commit: %s\nContract path: docs/orchestration/milestones/M0_CONTRACT.md\nPackage commit: %s\nPackage path: %s\nVerdict commit: %s\nVerdict path: %s\n' "$base_sha" "$package_commit" "$package_path" "$verdict_commit" "$verdict_path"
-      printf 'Decision kind: APPROVE_NEXT_MILESTONE\nReviewed candidate: %s\nResulting milestone state: Accepted\nSuccessor state: Approved for activation\nSuccessor contract commit: %s\nSuccessor contract path: docs/orchestration/milestones/M1_CONTRACT.md\nEntry conditions evidence commit: %s\nEntry conditions evidence path: docs/orchestration/milestones/m1/evidence/entry-conditions.md\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$integration_sha" "$integration_sha" "$integration_sha" "$base_sha"
+      printf 'Decision kind: APPROVE_NEXT_MILESTONE\nReviewed candidate: %s\nResulting milestone state: Accepted\nSuccessor state: Approved for activation\nSuccessor contract commit: %s\nSuccessor contract path: %s\nEntry conditions evidence commit: %s\nEntry conditions evidence path: %s\nTarget main commit: %s\nAuthorization: GRANTED\nCritical findings: 0\nImportant findings: 0\n' "$integration_sha" "$integration_sha" "$successor_path" "$integration_sha" "$entry_path" "$base_sha"
     } > "$binding_path"
     mutate_fixture_field "$binding_path" binding
     git add "$binding_path" && git commit --quiet -m next-binding
@@ -1270,6 +1283,77 @@ test_contract_artifact_types() {
   done
 }
 
+test_round5_body_path_and_contract_milestone() {
+  EVIDENCE_MILESTONE_ID_OVERRIDE=M1 EVIDENCE_MILESTONE_KEY_OVERRIDE=m1 setup_fixture round5-body-path-and-contract-milestone
+  assert_refusal_without_mutation 'package contract path differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_acceptance_completion_milestone() {
+  EVIDENCE_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m1/evidence/completion-package.md setup_fixture round5-acceptance-completion-milestone
+  assert_refusal_without_mutation 'milestone-acceptance completion path differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_acceptance_completion_basename() {
+  EVIDENCE_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m0/evidence/alternate.md setup_fixture round5-acceptance-completion-basename
+  assert_refusal_without_mutation 'milestone-acceptance completion path differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_integration_branch_milestone() {
+  EVIDENCE_MILESTONE_BRANCH_OVERRIDE=milestone/m1-research setup_fixture round5-integration-branch-milestone
+  assert_refusal_without_mutation 'main-integration milestone branch differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_integration_completion_milestone() {
+  MAIN_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m1/evidence/completion-package.md setup_fixture round5-integration-completion-milestone
+  assert_refusal_without_mutation 'main-integration completion path differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_cross_milestone_acceptance_binding() {
+  local m1_binding
+  setup_fixture round5-cross-milestone-acceptance-binding
+  (
+    cd "$work_repo"
+    CT04_PUBLISHER_PHASE=acceptance EVIDENCE_MILESTONE_ID_OVERRIDE=M1 EVIDENCE_MILESTONE_KEY_OVERRIDE=m1 EVIDENCE_CONTRACT_PATH_OVERRIDE=docs/orchestration/milestones/M1_CONTRACT.md EVIDENCE_COMPLETION_PATH_OVERRIDE=docs/orchestration/milestones/m1/evidence/completion-package.md append_evidence_sequence 950 >/dev/null
+  )
+  m1_binding="$(git -C "$work_repo" rev-parse HEAD)"
+  (
+    cd "$work_repo"
+    CT04_PUBLISHER_PHASE=main CT04_ACCEPTANCE_BINDING_COMMIT="$m1_binding" MAIN_ACCEPTANCE_BINDING_PATH_OVERRIDE=docs/orchestration/decisions/m1/bindings/milestone-acceptance.md append_evidence_sequence 951
+  )
+  candidate_sha="$(git -C "$work_repo" rev-parse HEAD)"
+  assert_refusal_without_mutation 'main-integration acceptance binding path differs from package milestone' authorize "$candidate_sha" "$base_sha"
+}
+
+test_round5_successor_milestone_identity() {
+  NEXT_ENTRY_PATH_OVERRIDE=docs/orchestration/milestones/m2/evidence/entry-conditions.md NEXT_EXPECT_REFUSAL='next-milestone successor and entry milestones differ' NEXT_CASE_NAME=round5-successor-milestone test_next_milestone_action_bounds
+}
+
+test_round5_milestone_identity() {
+  test_round5_body_path_and_contract_milestone
+  test_round5_acceptance_completion_milestone
+  test_round5_acceptance_completion_basename
+  test_round5_integration_branch_milestone
+  test_round5_integration_completion_milestone
+  test_round5_cross_milestone_acceptance_binding
+  test_round5_successor_milestone_identity
+}
+
+if [[ "${CT04_FOCUSED_TEST:-}" == round5-milestone-identity ]]; then
+  case "${CT04_ROUND5_CASE:-all}" in
+    contract) test_round5_body_path_and_contract_milestone ;;
+    acceptance-completion-milestone) test_round5_acceptance_completion_milestone ;;
+    acceptance-completion-basename) test_round5_acceptance_completion_basename ;;
+    integration-branch) test_round5_integration_branch_milestone ;;
+    integration-completion) test_round5_integration_completion_milestone ;;
+    acceptance-binding) test_round5_cross_milestone_acceptance_binding ;;
+    successor) test_round5_successor_milestone_identity ;;
+    all) test_round5_milestone_identity ;;
+    *) fail 'unknown round5 milestone-identity case' ;;
+  esac
+  printf 'PASS: %d focused round5 milestone-identity scenarios\n' "$tests_run"
+  exit 0
+fi
+
 if [[ "${CT04_FOCUSED_TEST:-}" == round4-review-milestone ]]; then
   test_round4_package_review_milestone
   printf 'PASS: %d focused round4 package-review-milestone scenarios\n' "$tests_run"
@@ -1329,6 +1413,7 @@ test_contract_artifact_types
 test_round3_regressions
 test_round4_action_path_parity
 test_round4_package_review_milestone
+test_round5_milestone_identity
 test_post_freeze_review_lane
 test_negative_decision_sequence
 test_human_gate_sequence
