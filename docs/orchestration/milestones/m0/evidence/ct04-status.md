@@ -20,3 +20,8 @@ CT04 remains In progress, correction round1. Consume assignment `a293320d0e60585
 ## Correction round 2 execution barrier
 
 CT04 In progress, correction round2, consuming assignment `933e8c0926813e21706eed0cf85a0f033ea4b18a` after independent rejection `bbe3edf8c0fec323f02f593c3c01d6077905271d`. Exact rejected candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1` remains preserved. Same Conductor temporary author/controller sole repository writer; all independent reviewers idle. Implement only the assigned union of findings and obtain fresh verification/reviews before any adoption. M0 pause and main remain unchanged.
+
+
+## Correction round 3 execution barrier
+
+CT04 In progress, correction round3, consuming assignment `868e14632b489835afc531b41614b5ab4ed97c3a` after rejection `e875415327c6374fa4b547ff43e8f8adb6653b1f`. Rejected candidate `6d143f53ebb7a553c0d17db8386251ee23704380` is preserved. Same Conductor temporary author/controller sole repository writer; all independent reviewers idle. Resolve only the assigned three parser/schema groups, then fresh complete verification and exact-SHA reviews. Earlier execution checkpoints are historical; canonical milestone ledger records current task state. M0 pause, main and all owner-only boundaries remain unchanged.
