@@ -179,3 +179,16 @@ Author sandbox reports socket/character/block constructors denied. Controller fi
 
 
 This is final permitted correction round5. Require fresh independent read-only QA/Security and then Final review only if both approve the unchanged candidate with no Critical/Important findings. Reviewers author their own attestations; controller never repairs them. Any unresolved blocking finding after this round requires owner escalation rather than round6. No Flutter/audio/MIDI/device/performance/product capability is claimed. M0 remains paused, R01–R10 Verified/none Accepted. No adoption/reactivation/main/successor/release authority. Already-authorized recovery is eligible only after all required technical approvals and fresh preflight.
+
+
+## Round 5 finalized verification and task disposition
+
+Exact technical candidate and proposed repaired foundation `552413198ae9ed488f70b3d3db656469292b89a4`; proposed M0 contract at the same commit, path `docs/orchestration/milestones/M0_CONTRACT.md`. Accepted contract remains `eb0d55bc7e10b219996fdb7ab69a546b1e350e3a`. Source verification `7e604668968ad729f5e205b26578a87fe62976fb`; QA/Security record `605cca2dd14533d85f9d0ec0c3c2e0ad11d7ccc5`; Final record `817706497319ba3398a9abd29477a1a962350ff7`.
+
+All required technical reviews completed on the unchanged candidate; each APPROVE0C/0I/0M, CompliancePASS/HonestyPASS. Canonical review evidence above preserves full raw responses and runtime proofs. Fresh controller complete suites125/118 and limitations remain as recorded; no affected source changed after testing/review. The already-authorized recovery is complete with actual Steward PAUSE_HUMAN and published/local-equal binding `23a4d9975b899d7d17bbb5e7fc8b4df20ab9b7a8`. See ct04-recovery.md for all package, review, verdict, binding, guard-log and preservation references. This finalized verification is the decisive artifact for a separate CT04 In review → Verified task-state commit. M0 remains paused; no milestone state transition or adoption is authorized.
+
+- `qa_performance_verifier` session `01a16834-4222-7e43-b1f5-6a3c439280eb`; rawSHA256 `171538f0931cb8f1386095f412b6ebf5dea260376cc2b0ea8fbf430bc766b1ab`; runtimeSHA256 `76be862198297581adddd2109f281b3074ff42bf07c31f104dfbde4a4697fef7`; exact candidate `552413198ae9ed488f70b3d3db656469292b89a4`.
+
+- `licensing_security_reviewer` session `01a16834-5a7d-72a1-aa47-30cc726da361`; rawSHA256 `b60ea731c5afb7d6a2d92573601ad8668c383677807149041c14256f01e71232`; runtimeSHA256 `32b6dcc4c809700c65e22e5af7cbf764f2e3cfa2f47b3b2adea998757c2979d4`; exact candidate `552413198ae9ed488f70b3d3db656469292b89a4`.
+
+- `final_code_reviewer` session `01a16849-b045-7441-88bc-0b8b08e0b156`; rawSHA256 `66e37af9bb1e7df846853d46da3102bdb44887a90836f109d70d4acfa671a8d9`; runtimeSHA256 `520872a60afc4a430777f582fc4ba6a9d6d796f18fbed1c1af081673a27bf2a5`; exact candidate `552413198ae9ed488f70b3d3db656469292b89a4`.
