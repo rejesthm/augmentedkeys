@@ -8,7 +8,7 @@ Complete unchanged R01–R10 research with independent reviews under accepted co
 
 # Active Agents
 
-Independent QA/Performance and Licensing/Security are assigned to exact CT04 candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1`; Final waits for both approvals. Conductor idle, controller owns evidence/state, no implementation writer active. Old Steward evidence remains archived and unconsumed.
+Conductor assigned correction round2 in temporary proposals; controller sole repository writer. QA/Security idle after rejecting round1; Final not dispatched. Old Steward evidence remains archived and unconsumed.
 
 # Research Questions
 
@@ -20,7 +20,7 @@ R01–R10 Verified; none Accepted. No remaining eligible M0 research task.
 
 # In Progress
 
-CT04 correction round1 is In review under source verification `7315510930f7be142627e9c64be59e06d1ea0085`; candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1` is frozen. M0 research remains Paused for owner decision, R01–R10 Verified, none Accepted; no eligible research task remains. Full-app Goal unfinished.
+State: `In progress`; correction round2. Source rejection `bbe3edf8c0fec323f02f593c3c01d6077905271d` for exact candidate `b468ac5aaac17197264dd12ac8759fb45db2eef1`; QA0Critical/2Important and Security1Critical/3Important. Assignment `933e8c0926813e21706eed0cf85a0f033ea4b18a` and separate execution barrier `ac21c1ccf577f300987fbef08284eeeb28f1ad54` precede body work. Same Conductor temporary-proposal author; controller sole repository writer; QA/Security/Final idle. Resolve reviewer attestation/metadata binding, complete compatible action/result schemas and argv/provenance, exact negative candidates, and exhaustive sterile path/type checks. Prior raw-response positive fixtures are Critical-C1 reproductions; no live approval was consumed. No adoption, evidence recreation/publication, M0 acceptance/reactivation, main integration or successor action. Full-app Goal unfinished; R01–R10 Verified, none Accepted.
 
 # Verification Needed
 
